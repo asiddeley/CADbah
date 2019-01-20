@@ -1,0 +1,31 @@
+{
+  "name": "cadbah",
+  "version": "1.0.0",
+  "description": "Computer Aided Design * Be Architectural Heroes *",
+  "main": "index.js",
+  "scripts": {
+	"cad":"node index.js",
+    "test": "tcad"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asiddeley/CADbah.git"
+  },
+  "keywords": [
+    "CAD",
+    "DXF"
+  ],
+  "author": "Andrew Siddeley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asiddeley/CADbah/issues"
+  },
+  "homepage": "https://github.com/asiddeley/CADbah#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dxf-parser": "^0.6.1",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.1",
+    "three-dxf": "^0.3.1"
+  }
+}

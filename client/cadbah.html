@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CADbah</title>
+<meta charset="utf-8">
+
+<!--script 
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+</script-->
+			  
+<script type="text/javascript" src="jquery.js"></script>
+<script 
+src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+crossorigin="anonymous">
+</script>
+<!--script type='text/javascript' src="offline/jquery-ui.js"></script-->
+
+<script type="text/javascript" src="dxf-parser.js"></script>
+<!-- Three.js version r89 -->
+<script type="text/javascript" src="three.min.js"></script>
+<!-- Three.js extras -->
+<script type="text/javascript" src="OrbitControls.js"></script>
+<script type="text/javascript" src="three-dxf.js"></script>
+
+<STYLE type="text/css">
+.bimFC {
+	margin:0px; 
+	padding:1px; 
+	border-top: 1px solid black;
+	background: #0b3e6f url("ui-bg_diagonals-thick_15_0b3e6f_40x40.png") 50% 50% repeat;	
+	display:block; 
+	width:100%;
+}
+.bimFC1 {
+	margin:0px; 
+	padding:1px; 
+	border-top: 1px solid black;
+	background-color:silver; 
+	display:block; 
+	width:100%;	
+}
+#cad-view {
+	padding-left:4px;
+	padding-right:4px;
+	display:block;
+	height:500px;
+	width:100%;
+	background-color:black;
+	/*	margin: 10px 0;		border: 1px solid #666;*/
+}
+
+#cad-view > canvas {
+	border: 1px solid #666;
+}
+
+.progress {
+	opacity: 0;
+	-webkit-transition: opacity 1s linear;
+	-moz-transition: opacity 1s linear;
+	-ms-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	transition: opacity 1s linear;
+}
+
+.progress.loading {
+	opacity: 1;
+}	
+	
+#navbar {padding:4px; width:100%;}
+	
+	
+</STYLE>
+
+<link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
+<link rel="stylesheet" type="text/css" href="jquery-ui.structure.css">
+
+<script type="text/javascript" src="cadbah.js"></script>
+
+<script>
+
+
+
+
+$(document).ready(function(){
+
+//Turn off the browser's right-click context menu
+$(document).on('contextmenu', false);
+
+//prevent accidental drag-and-drop on windox
+$(window).on({
+	"drop": function(e){ e=e||event; e.preventDefault(); false;},
+	"dragover":function(e){ e=e||event; e.preventDefault(); false;}
+});
+
+//setup Navbar using jquery-ui controlgroup widget
+$("#navbar").controlgroup({items:{
+	//widgetToApply:selector
+	"button": "a, button, input[type=text], input[type=button], input[type=submit]",
+	"controlgroupLabel": ".ui-controlgroup-label",
+	"checkboxradio": "input[type='checkbox'], input[type='radio']",
+	"selectmenu": "select",
+	"menu":"ul, .dropdown-items",
+	"spinner": ".ui-spinner-input"
+}});
+
+//set behaviour of dropdown menus... 
+$(".menu").menu().css("position","absolute", "width", "200px").hide();
+
+//cleanup any open dropdown menus
+$(".menu").on('mouseleave',function(){$(".menu").hide();});
+
+//clear dropdown autohide (DDAH)
+$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
+
+
+attachMenus("file edit draw help", "-menu");
+
+
+
+///////////////
+// init three-dxf
+
+var progress = document.getElementById('file-progress-bar');
+var $progress = $('.progress');
+
+var $cadview = $('#cad-view');
+var cadCanvas;
+
+// Setup the dnd listeners.
+var dz$ = $('.drop-zone');
+dz$.on('dragover', function(evt){
+	console.log("dragover");
+	dz$.attr("placeholder","dropbox"); 
+	evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy';
+},	false);
+dz$.on('dragleave',function(){
+	dz$.attr("placeholder","command");
+}, false);
+dz$.on('drop', onFileSelected, false);
+
+document.getElementById('dxf').addEventListener('change', onFileSelected, false);
+
+dxf$=$("#DXF-OPEN").dialog({autoOpen:false});
+
+}); //document ready
+</script>
+</head>
+
+
+<body>
+<div id="board" class="container-fluid">
+<form 
+id="navbar" 
+class="controlgroup ui-widget-header"  
+onSubmit="return inputHandler(event)">
+	<button>CADbah</button>
+	<button id="file">File</button>
+	<button id="edit">Edit</button>
+	<button id="draw">Draw</button>	
+	<button id="help">Help</button>	
+
+	<ul id="file-menu" class="menu">
+		<li onclick="cadcmd('new')"><div>New</div></li>
+		<li onclick="dxf$.dialog('open')"><div>Open</div></li>
+		<li onclick="cadcmd('save')"><div>Save</div></li>
+		<li onclick="cadcmd('saveas')"><div>Save as</div></li>
+		
+		<li>--</li>
+		<li onclick="cadcmd('admin')"><div>Admin</div></li>
+		<li>--</li>
+		<li onclick="cadcmd('exit')"><div>Exit</div></li>
+	</ul>
+
+	<ul id="edit-menu" class="menu">
+		<li>--</li>
+		<li onclick="cadcmd('CUT')"><div>Cut</div></li>
+		<li onclick="cadcmd('COPY')"><div>Copy</div></li>
+		<li onclick="cadcmd('PASTE')"><div>Paste</div></li>
+		<li onclick="cadcmd('DELETE')"><div>Delete</div></li>
+		<li onclick="cadcmd('SELECT')"><div>Select</div></li>
+		<li>--</li>
+		<li onclick="cadcmd('BLOCKDEF')"><div>Block-Def</div></li>
+		<li onclick="cadcmd('BLOCKADD')"><div>Block-Add</div></li>
+		<li onclick="cadcmd('BLOCKEDIT')"><div>Block-Edit</div></li>
+		<li>--</li>
+		<li onclick="cadcmd('MOVE')"><div>Move</div></li>
+		<li onclick="cadcmd('MIRROR')"><div>Mirror</div></li>
+		<li onclick="cadcmd('ROTATE')"><div>Rotate</div></li>
+		<li onclick="cadcmd('SCALE')"><div>Scale</div></li>
+		<li>--</li>
+		<li onclick="cadcmd('PROPERTIES')"><div>Properties</div></li>
+		</ul>
+
+	<ul id="draw-menu" class="menu">
+		<li onclick="cadcmd('ARC')"><div>Arc</div></li>
+		<li onclick="cadcmd('BLOCKINS')"><div>Block-Ins</div></li>
+		<li onclick="cadcmd('CIRCLE')"><div>Circle</div></li>
+		<li onclick="cadcmd('IMAGE')"><div>Image</div></li>		
+		<li onclick="cadcmd('LINE')"><div>Line</div></li>
+		<li onclick="cadcmd('POLYLINE')"><div>Polyline</div></li>
+		<li onclick="cadcmd('RECTANGLE')"><div>Rectangle</div></li>
+		<li onclick="cadcmd('TEXT')"><div>Text</div></li>
+	</ul>
+
+	<ul id="help-menu" class="menu">
+		<li onclick="cadcmd('about')"><div>About</div></li>
+		<li><div>User</div>
+			<ul>
+			<li onclick="cadcmd('overview')"><div>Overview</div></li>
+			<li onclick="cadcmd('commandlist')"><div>Command list</div></li>
+			<li onclick="cadcmd('documentation')"><div>Documentation</div></li>
+			</ul>
+		</li>
+		<li><div>Develper</div>
+			<ul>
+			<li><div>Dev Overview</div></li>
+			<li><div>System events</div></li>
+			</ul>		
+		</li>
+		<li><div>MIT License</div></li>
+	</ul>
+	<input id="myInput" type="text" placeholder="command" class="drop-zone">
+	<input type="submit" value="Ok">
+</form>
+<div id="cad-view" >cad-view...</div>
+</div><!-- board -->
+
+
+<div id="DXF-OPEN" class="form-group" style="display:none">
+	<label for="exampleInputFile">Choose a DXF file</label>
+	<input type="file" accept=".dxf" id="dxf" name="file">
+	<div class="progress progress-striped" style="width: 300px;">
+		<div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
+		</div>
+	</div>
+	<div id="file-description" class="help-block"></div>
+</div>
+
+
+</body>
+
+
+
+</html>
