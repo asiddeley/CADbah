@@ -1,0 +1,19890 @@
+  0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1027
+  9
+$ACADMAINTVER
+ 70
+   106
+  9
+$DWGCODEPAGE
+  3
+ANSI_1252
+  9
+$LASTSAVEDBY
+  1
+andrew.siddeley
+  9
+$REQUIREDVERSIONS
+160
+                 0
+  9
+$INSBASE
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$EXTMIN
+ 10
+-45.21881277300678
+ 20
+0.0
+ 30
+0.0
+  9
+$EXTMAX
+ 10
+45.21881277300681
+ 20
+129.3233814351264
+ 30
+0.0
+  9
+$LIMMIN
+ 10
+0.0
+ 20
+0.0
+  9
+$LIMMAX
+ 10
+420.0
+ 20
+297.0
+  9
+$ORTHOMODE
+ 70
+     1
+  9
+$REGENMODE
+ 70
+     1
+  9
+$FILLMODE
+ 70
+     1
+  9
+$QTEXTMODE
+ 70
+     0
+  9
+$MIRRTEXT
+ 70
+     0
+  9
+$LTSCALE
+ 40
+10.0
+  9
+$ATTMODE
+ 70
+     1
+  9
+$TEXTSIZE
+ 40
+20.0
+  9
+$TRACEWID
+ 40
+1.0
+  9
+$TEXTSTYLE
+  7
+ARIAL
+  9
+$CLAYER
+  8
+DIM1
+  9
+$CELTYPE
+  6
+ByLayer
+  9
+$CECOLOR
+ 62
+   256
+  9
+$CELTSCALE
+ 40
+1.0
+  9
+$DISPSILH
+ 70
+     0
+  9
+$DIMSCALE
+ 40
+10.0
+  9
+$DIMASZ
+ 40
+2.0
+  9
+$DIMEXO
+ 40
+2.0
+  9
+$DIMDLI
+ 40
+0.0
+  9
+$DIMRND
+ 40
+5.0
+  9
+$DIMDLE
+ 40
+2.0
+  9
+$DIMEXE
+ 40
+1.0
+  9
+$DIMTP
+ 40
+0.0
+  9
+$DIMTM
+ 40
+0.0
+  9
+$DIMTXT
+ 40
+2.0
+  9
+$DIMCEN
+ 40
+0.0
+  9
+$DIMTSZ
+ 40
+0.0
+  9
+$DIMTOL
+ 70
+     0
+  9
+$DIMLIM
+ 70
+     0
+  9
+$DIMTIH
+ 70
+     0
+  9
+$DIMTOH
+ 70
+     0
+  9
+$DIMSE1
+ 70
+     0
+  9
+$DIMSE2
+ 70
+     0
+  9
+$DIMTAD
+ 70
+     1
+  9
+$DIMZIN
+ 70
+    12
+  9
+$DIMBLK
+  1
+ArchTick
+  9
+$DIMASO
+ 70
+     1
+  9
+$DIMSHO
+ 70
+     1
+  9
+$DIMPOST
+  1
+
+  9
+$DIMAPOST
+  1
+
+  9
+$DIMALT
+ 70
+     0
+  9
+$DIMALTD
+ 70
+     2
+  9
+$DIMALTF
+ 40
+25.4
+  9
+$DIMLFAC
+ 40
+1.0
+  9
+$DIMTOFL
+ 70
+     1
+  9
+$DIMTVP
+ 40
+0.0
+  9
+$DIMTIX
+ 70
+     0
+  9
+$DIMSOXD
+ 70
+     1
+  9
+$DIMSAH
+ 70
+     0
+  9
+$DIMBLK1
+  1
+
+  9
+$DIMBLK2
+  1
+
+  9
+$DIMSTYLE
+  2
+MT-DIMS
+  9
+$DIMCLRD
+ 70
+     0
+  9
+$DIMCLRE
+ 70
+   256
+  9
+$DIMCLRT
+ 70
+   256
+  9
+$DIMTFAC
+ 40
+1.0
+  9
+$DIMGAP
+ 40
+1.0
+  9
+$DIMJUST
+ 70
+     0
+  9
+$DIMSD1
+ 70
+     0
+  9
+$DIMSD2
+ 70
+     0
+  9
+$DIMTOLJ
+ 70
+     1
+  9
+$DIMTZIN
+ 70
+    12
+  9
+$DIMALTZ
+ 70
+    12
+  9
+$DIMALTTZ
+ 70
+    12
+  9
+$DIMUPT
+ 70
+     0
+  9
+$DIMDEC
+ 70
+     0
+  9
+$DIMTDEC
+ 70
+     0
+  9
+$DIMALTU
+ 70
+     2
+  9
+$DIMALTTD
+ 70
+     2
+  9
+$DIMTXSTY
+  7
+ARIAL
+  9
+$DIMAUNIT
+ 70
+     0
+  9
+$DIMADEC
+ 70
+     2
+  9
+$DIMALTRND
+ 40
+0.0
+  9
+$DIMAZIN
+ 70
+     0
+  9
+$DIMDSEP
+ 70
+    46
+  9
+$DIMATFIT
+ 70
+     3
+  9
+$DIMFRAC
+ 70
+     0
+  9
+$DIMLDRBLK
+  1
+
+  9
+$DIMLUNIT
+ 70
+     2
+  9
+$DIMLWD
+ 70
+    -1
+  9
+$DIMLWE
+ 70
+    -1
+  9
+$DIMTMOVE
+ 70
+     0
+  9
+$DIMFXL
+ 40
+1.0
+  9
+$DIMFXLON
+ 70
+     0
+  9
+$DIMJOGANG
+ 40
+0.785398163397448
+  9
+$DIMTFILL
+ 70
+     0
+  9
+$DIMTFILLCLR
+ 70
+     0
+  9
+$DIMARCSYM
+ 70
+     0
+  9
+$DIMLTYPE
+  6
+
+  9
+$DIMLTEX1
+  6
+
+  9
+$DIMLTEX2
+  6
+
+  9
+$DIMTXTDIRECTION
+ 70
+     0
+  9
+$LUNITS
+ 70
+     2
+  9
+$LUPREC
+ 70
+     4
+  9
+$SKETCHINC
+ 40
+1.0
+  9
+$FILLETRAD
+ 40
+0.0
+  9
+$AUNITS
+ 70
+     0
+  9
+$AUPREC
+ 70
+     4
+  9
+$MENU
+  1
+.
+  9
+$ELEVATION
+ 40
+0.0
+  9
+$PELEVATION
+ 40
+0.0
+  9
+$THICKNESS
+ 40
+0.0
+  9
+$LIMCHECK
+ 70
+     0
+  9
+$CHAMFERA
+ 40
+20.0
+  9
+$CHAMFERB
+ 40
+20.0
+  9
+$CHAMFERC
+ 40
+20.0
+  9
+$CHAMFERD
+ 40
+0.0
+  9
+$SKPOLY
+ 70
+     0
+  9
+$TDCREATE
+ 40
+2454718.613227720
+  9
+$TDUCREATE
+ 40
+2454718.821561054
+  9
+$TDUPDATE
+ 40
+2458505.692067431
+  9
+$TDUUPDATE
+ 40
+2458505.900400764
+  9
+$TDINDWG
+ 40
+41.3757845139
+  9
+$TDUSRTIMER
+ 40
+41.3757845139
+  9
+$USRTIMER
+ 70
+     1
+  9
+$ANGBASE
+ 50
+0.0
+  9
+$ANGDIR
+ 70
+     0
+  9
+$PDMODE
+ 70
+     0
+  9
+$PDSIZE
+ 40
+0.0
+  9
+$PLINEWID
+ 40
+0.0
+  9
+$SPLFRAME
+ 70
+     0
+  9
+$SPLINETYPE
+ 70
+     6
+  9
+$SPLINESEGS
+ 70
+     8
+  9
+$HANDSEED
+  5
+D0
+  9
+$SURFTAB1
+ 70
+     6
+  9
+$SURFTAB2
+ 70
+     6
+  9
+$SURFTYPE
+ 70
+     6
+  9
+$SURFU
+ 70
+     6
+  9
+$SURFV
+ 70
+     6
+  9
+$UCSBASE
+  2
+
+  9
+$UCSNAME
+  2
+
+  9
+$UCSORG
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSXDIR
+ 10
+1.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSYDIR
+ 10
+0.0
+ 20
+1.0
+ 30
+0.0
+  9
+$UCSORTHOREF
+  2
+
+  9
+$UCSORTHOVIEW
+ 70
+     0
+  9
+$UCSORGTOP
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGBOTTOM
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGLEFT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGRIGHT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGFRONT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGBACK
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSBASE
+  2
+
+  9
+$PUCSNAME
+  2
+
+  9
+$PUCSORG
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSXDIR
+ 10
+1.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSYDIR
+ 10
+0.0
+ 20
+1.0
+ 30
+0.0
+  9
+$PUCSORTHOREF
+  2
+
+  9
+$PUCSORTHOVIEW
+ 70
+     0
+  9
+$PUCSORGTOP
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGBOTTOM
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGLEFT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGRIGHT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGFRONT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGBACK
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$USERI1
+ 70
+     0
+  9
+$USERI2
+ 70
+     0
+  9
+$USERI3
+ 70
+     0
+  9
+$USERI4
+ 70
+     0
+  9
+$USERI5
+ 70
+     0
+  9
+$USERR1
+ 40
+0.0
+  9
+$USERR2
+ 40
+0.0
+  9
+$USERR3
+ 40
+0.0
+  9
+$USERR4
+ 40
+0.0
+  9
+$USERR5
+ 40
+0.0
+  9
+$WORLDVIEW
+ 70
+     1
+  9
+$SHADEDGE
+ 70
+     3
+  9
+$SHADEDIF
+ 70
+    70
+  9
+$TILEMODE
+ 70
+     1
+  9
+$MAXACTVP
+ 70
+    64
+  9
+$PINSBASE
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PLIMCHECK
+ 70
+     0
+  9
+$PEXTMIN
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PEXTMAX
+ 10
+1182.438175547683
+ 20
+834.6416657545924
+ 30
+0.0
+  9
+$PLIMMIN
+ 10
+0.0999511480330284
+ 20
+-0.0000060796738808
+  9
+$PLIMMAX
+ 10
+1188.899999976158
+ 20
+840.9999939203263
+  9
+$UNITMODE
+ 70
+     0
+  9
+$VISRETAIN
+ 70
+     1
+  9
+$PLINEGEN
+ 70
+     0
+  9
+$PSLTSCALE
+ 70
+     1
+  9
+$TREEDEPTH
+ 70
+  3020
+  9
+$CMLSTYLE
+  2
+Standard
+  9
+$CMLJUST
+ 70
+     0
+  9
+$CMLSCALE
+ 40
+20.0
+  9
+$PROXYGRAPHICS
+ 70
+     1
+  9
+$MEASUREMENT
+ 70
+     1
+  9
+$CELWEIGHT
+370
+    -1
+  9
+$ENDCAPS
+280
+     0
+  9
+$JOINSTYLE
+280
+     0
+  9
+$LWDISPLAY
+290
+     0
+  9
+$INSUNITS
+ 70
+     4
+  9
+$HYPERLINKBASE
+  1
+
+  9
+$STYLESHEET
+  1
+
+  9
+$XEDIT
+290
+     1
+  9
+$CEPSNTYPE
+380
+     0
+  9
+$PSTYLEMODE
+290
+     1
+  9
+$FINGERPRINTGUID
+  2
+{B9BD4522-DC33-4E17-905F-8F3B1FE348EC}
+  9
+$VERSIONGUID
+  2
+{8BEE728B-DDA8-44AE-96D7-1A17D118ECF6}
+  9
+$EXTNAMES
+290
+     1
+  9
+$PSVPSCALE
+ 40
+0.0
+  9
+$OLESTARTUP
+290
+     0
+  9
+$SORTENTS
+280
+   127
+  9
+$INDEXCTL
+280
+     0
+  9
+$HIDETEXT
+280
+     1
+  9
+$XCLIPFRAME
+280
+     0
+  9
+$HALOGAP
+280
+     0
+  9
+$OBSCOLOR
+ 70
+   257
+  9
+$OBSLTYPE
+280
+     0
+  9
+$INTERSECTIONDISPLAY
+280
+     0
+  9
+$INTERSECTIONCOLOR
+ 70
+   257
+  9
+$DIMASSOC
+280
+     1
+  9
+$PROJECTNAME
+  1
+
+  9
+$CAMERADISPLAY
+290
+     0
+  9
+$LENSLENGTH
+ 40
+50.0
+  9
+$CAMERAHEIGHT
+ 40
+0.0
+  9
+$STEPSPERSEC
+ 40
+2.0
+  9
+$STEPSIZE
+ 40
+6.0
+  9
+$3DDWFPREC
+ 40
+2.0
+  9
+$PSOLWIDTH
+ 40
+0.25
+  9
+$PSOLHEIGHT
+ 40
+4.0
+  9
+$LOFTANG1
+ 40
+1.570796326794896
+  9
+$LOFTANG2
+ 40
+1.570796326794896
+  9
+$LOFTMAG1
+ 40
+0.0
+  9
+$LOFTMAG2
+ 40
+0.0
+  9
+$LOFTPARAM
+ 70
+     7
+  9
+$LOFTNORMALS
+280
+     1
+  9
+$LATITUDE
+ 40
+37.795
+  9
+$LONGITUDE
+ 40
+-122.394
+  9
+$NORTHDIRECTION
+ 40
+0.0
+  9
+$TIMEZONE
+ 70
+ -8000
+  9
+$LIGHTGLYPHDISPLAY
+280
+     1
+  9
+$TILEMODELIGHTSYNCH
+280
+     1
+  9
+$CMATERIAL
+347
+52
+  9
+$SOLIDHIST
+280
+     0
+  9
+$SHOWHIST
+280
+     1
+  9
+$DWFFRAME
+280
+     2
+  9
+$DGNFRAME
+280
+     0
+  9
+$REALWORLDSCALE
+290
+     1
+  9
+$INTERFERECOLOR
+ 62
+     1
+  9
+$INTERFEREOBJVS
+345
+6A
+  9
+$INTERFEREVPVS
+346
+A7
+  9
+$CSHADOW
+280
+     0
+  9
+$SHADOWPLANELOCATION
+ 40
+0.0
+  0
+ENDSEC
+  0
+SECTION
+  2
+CLASSES
+  0
+CLASS
+  1
+ACDBDICTIONARYWDFLT
+  2
+AcDbDictionaryWithDefault
+  3
+ObjectDBX Classes
+ 90
+        0
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+DICTIONARYVAR
+  2
+AcDbDictionaryVar
+  3
+ObjectDBX Classes
+ 90
+        0
+ 91
+       10
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+SORTENTSTABLE
+  2
+AcDbSortentsTable
+  3
+ObjectDBX Classes
+ 90
+        0
+ 91
+        2
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+SPATIAL_FILTER
+  2
+AcDbSpatialFilter
+  3
+ObjectDBX Classes
+ 90
+        0
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+DIMASSOC
+  2
+AcDbDimAssoc
+  3
+"AcDbDimAssoc|Product Desc:     AcDim ARX App For Dimension|Company:          Autodesk, Inc.|WEB Address:      www.autodesk.com"
+ 90
+        0
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+PLOTSETTINGS
+  2
+AcDbPlotSettings
+  3
+ObjectDBX Classes
+ 90
+        0
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+RASTERVARIABLES
+  2
+AcDbRasterVariables
+  3
+ISM
+ 90
+        0
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+IMAGEDEF
+  2
+AcDbRasterImageDef
+  3
+ISM
+ 90
+        0
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+IMAGEDEF_REACTOR
+  2
+AcDbRasterImageDefReactor
+  3
+ISM
+ 90
+        1
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+IMAGE
+  2
+AcDbRasterImage
+  3
+ISM
+ 90
+     2175
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+MATERIAL
+  2
+AcDbMaterial
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        3
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+VISUALSTYLE
+  2
+AcDbVisualStyle
+  3
+ObjectDBX Classes
+ 90
+     4095
+ 91
+       25
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+TABLESTYLE
+  2
+AcDbTableStyle
+  3
+ObjectDBX Classes
+ 90
+     4095
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+SCALE
+  2
+AcDbScale
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+       19
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+MLEADERSTYLE
+  2
+AcDbMLeaderStyle
+  3
+ACDB_MLEADERSTYLE_CLASS
+ 90
+     4095
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+CELLSTYLEMAP
+  2
+AcDbCellStyleMap
+  3
+ObjectDBX Classes
+ 90
+     1152
+ 91
+        2
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_REFEDIT_STATUS_TRACKER
+  2
+AecDbRefEditStatusTracker
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+NPOCOLLECTION
+  2
+AcDbImpNonPersistentObjectsCollection
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_NOTIFICATION_TRACKER
+  2
+AecDbNotificationTracker
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+SOLID_BACKGROUND
+  2
+AcDbSolidBackground
+  3
+SCENEOE
+ 90
+     4095
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+EXACXREFPANELOBJECT
+  2
+ExAcXREFPanelObject
+  3
+EXAC_ESW
+ 90
+     1025
+ 91
+        1
+280
+     1
+281
+     0
+  0
+CLASS
+  1
+EXACTERMXREFMAP
+  2
+ExAcTermXrefMap
+  3
+EXAC_SERVICE
+ 90
+     1025
+ 91
+        0
+280
+     1
+281
+     0
+  0
+CLASS
+  1
+ACAD_EVALUATION_GRAPH
+  2
+AcDbEvalGraph
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACAECUSTOBJ
+  2
+AcAeEditorObj
+  3
+AcAeEditorObj
+ 90
+     1024
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_DYNAMICBLOCKPURGEPREVENTER_VERSION
+  2
+AcDbDynamicBlockPurgePreventer
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACSH_WEDGE_CLASS
+  2
+AcDbShWedge
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACSH_HISTORY_CLASS
+  2
+AcDbShHistory
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_BLKREFOBJECTCONTEXTDATA_CLASS
+  2
+AcDbBlkRefObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_MTEXTATTRIBUTEOBJECTCONTEXTDATA_CLASS
+  2
+AcDbMTextAttributeObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CONFIG
+  2
+AecDbDispRepConfig
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SET
+  2
+AecDbDispRepSet
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_2D_SECTION
+  2
+AecDbDispRep2dSection
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR
+  2
+AecDbDispRepAnchor
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_BUB_TO_GRID
+  2
+AecDbDispRepAnchorBubToGrid
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_BUB_TO_GRID_MODEL
+  2
+AecDbDispRepAnchorBubToGridMdl
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_BUB_TO_GRID_RCP
+  2
+AecDbDispRepAnchorBubToGridRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_ENT_TO_NODE
+  2
+AecDbDispRepAnchorEntToNode
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_EXT_TAG_TO_ENT
+  2
+AecDbDispRepAnchorExtendedTagToEnt
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ANCHOR_TAG_TO_ENT
+  2
+AecDbDispRepAnchorTagToEnt
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_ELEVLINE_MODEL
+  2
+AecDbDispRepBdgElevLineModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTIONLINE_PLAN
+  2
+AecDbDispRepBdgElevLinePlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPBDGELEVLINEPLAN100
+  2
+AecDbDispRepBdgElevLinePlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPBDGELEVLINEPLAN50
+  2
+AecDbDispRepBdgElevLinePlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_ELEVLINE_RCP
+  2
+AecDbDispRepBdgElevLineRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTIONLINE_MODEL
+  2
+AecDbDispRepBdgSectionLineModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTIONLINE_PLAN
+  2
+AecDbDispRepBdgSectionLinePlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPBDGSECTIONLINEPLAN100
+  2
+AecDbDispRepBdgSectionLinePlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPBDGSECTIONLINEPLAN50
+  2
+AecDbDispRepBdgSectionLinePlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTIONLINE_RCP
+  2
+AecDbDispRepBdgSectionLineRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTION_MODEL
+  2
+AecDbDispRepBdgSectionModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_BDG_SECTION_SUBDIV
+  2
+AecDbDispRepBdgSectionSubDiv
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CEILING_GRID
+  2
+AecDbDispRepCeilingGrid
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      893
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CEILING_GRID_MODEL
+  2
+AecDbDispRepCeilingGridModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCEILINGGRIDPLAN100
+  2
+AecDbDispRepCeilingGridPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCEILINGGRIDPLAN50
+  2
+AecDbDispRepCeilingGridPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CEILING_GRID_RCP
+  2
+AecDbDispRepCeilingGridRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CLIP_VOLUME_MODEL
+  2
+AecDbDispRepClipVolModel
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CLIP_VOLUME_PLAN
+  2
+AecDbDispRepClipVolPlan
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CLIP_VOLUME_RESULT_SUBDIV
+  2
+AecDbDispRepClipVolResSubDiv
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CLIP_VOLUME_RESULT
+  2
+AecDbDispRepClipVolResult
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_COLUMN_GRID
+  2
+AecDbDispRepColumnGrid
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_COLUMN_GRID_MODEL
+  2
+AecDbDispRepColumnGridModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCOLUMNGRIDPLAN100
+  2
+AecDbDispRepColumnGridPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCOLUMNGRIDPLAN50
+  2
+AecDbDispRepColumnGridPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_COLUMN_GRID_RCP
+  2
+AecDbDispRepColumnGridRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CURTAIN_WALL_LAYOUT_MODEL
+  2
+AecDbDispRepCurtainWallLayoutModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CURTAIN_WALL_LAYOUT_PLAN
+  2
+AecDbDispRepCurtainWallLayoutPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLLAYOUTPLAN100
+  2
+AecDbDispRepCurtainWallLayoutPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLLAYOUTPLAN50
+  2
+AecDbDispRepCurtainWallLayoutPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CURTAIN_WALL_UNIT_MODEL
+  2
+AecDbDispRepCurtainWallUnitModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CURTAIN_WALL_UNIT_PLAN
+  2
+AecDbDispRepCurtainWallUnitPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLUNITPLAN100
+  2
+AecDbDispRepCurtainWallUnitPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLUNITPLAN50
+  2
+AecDbDispRepCurtainWallUnitPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DB_DISP_REP_DIM_GROUP_PLAN
+  2
+AecDbDispRepDimGroupPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DB_DISP_REP_DIM_GROUP_PLAN100
+  2
+AecDbDispRepDimGroupPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DB_DISP_REP_DIM_GROUP_PLAN50
+  2
+AecDbDispRepDimGroupPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DISPLAYTHEME
+  2
+AecDbDispRepDisplayTheme
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_ELEV
+  2
+AecDbDispRepDoorElev
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_MODEL
+  2
+AecDbDispRepDoorModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_NOMINAL
+  2
+AecDbDispRepDoorNominal
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_PLAN
+  2
+AecDbDispRepDoorPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_PLAN_50
+  2
+AecDbDispRepDoorPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_PLAN_HEKTO
+  2
+AecDbDispRepDoorPlanHekto
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_RCP
+  2
+AecDbDispRepDoorRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_THRESHOLD_PLAN
+  2
+AecDbDispRepDoorThresholdPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_DOOR_THRESHOLD_SYMBOL_PLAN
+  2
+AecDbDispRepDoorThresholdSymbolPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_EDITINPLACEPROFILE
+  2
+AecDbDispRepEditInPlaceProfile
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ENT_REF
+  2
+AecDbDispRepEntRef
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_LAYOUT_CURVE
+  2
+AecDbDispRepLayoutCurve
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_LAYOUT_GRID2D
+  2
+AecDbDispRepLayoutGrid2d
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_LAYOUT_GRID3D
+  2
+AecDbDispRepLayoutGrid3d
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASKBLOCK_REF
+  2
+AecDbDispRepMaskBlockRef
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASKBLOCK_REF_RCP
+  2
+AecDbDispRepMaskBlockRefRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_ELEM_MODEL
+  2
+AecDbDispRepMassElemModel
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPMASSELEMPLAN100
+  2
+AecDbDispRepMassElemPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPMASSELEMPLAN50
+  2
+AecDbDispRepMassElemPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_ELEM_RCP
+  2
+AecDbDispRepMassElemRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_ELEM_SCHEM
+  2
+AecDbDispRepMassElemSchem
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_GROUP_MODEL
+  2
+AecDbDispRepMassGroupModel
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_GROUP_PLAN
+  2
+AecDbDispRepMassGroupPlan
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPMASSGROUPPLAN100
+  2
+AecDbDispRepMassGroupPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPMASSGROUPPLAN50
+  2
+AecDbDispRepMassGroupPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MASS_GROUP_RCP
+  2
+AecDbDispRepMassGroupRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MATERIAL
+  2
+AecDbDispRepMaterial
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MVBLOCK_REF
+  2
+AecDbDispRepMvBlockRef
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MVBLOCK_REF_MODEL
+  2
+AecDbDispRepMvBlockRefModel
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPMVBLOCKREFPLAN100
+  2
+AecDbDispRepMvBlockRefPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPMVBLOCKREFPLAN50
+  2
+AecDbDispRepMvBlockRefPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_MVBLOCK_REF_RCP
+  2
+AecDbDispRepMvBlockRefRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_OPENING
+  2
+AecDbDispRepOpening
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_OPENING_MODEL
+  2
+AecDbDispRepOpeningModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPOPENINGPLAN100
+  2
+AecDbDispRepOpeningPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPOPENINGPLAN50
+  2
+AecDbDispRepOpeningPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPOPENINGPLANREFLECTED
+  2
+AecDbDispRepOpeningPlanReflected
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPAECDBDISPREPOPENINGSILLPLAN
+  2
+AecDbDispRepOpeningSillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_POLYGON_MODEL
+  2
+AecDbDispRepPolygonModel
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_POLYGON_TRUECOLOUR
+  2
+AecDbDispRepPolygonTrueColour
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_RAILING_MODEL
+  2
+AecDbDispRepRailingModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_RAILING_PLAN
+  2
+AecDbDispRepRailingPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_RAILING_PLAN_100
+  2
+AecDbDispRepRailingPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_RAILING_PLAN_50
+  2
+AecDbDispRepRailingPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ROOF_MODEL
+  2
+AecDbDispRepRoofModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ROOF_PLAN
+  2
+AecDbDispRepRoofPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFPLAN100
+  2
+AecDbDispRepRoofPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFPLAN50
+  2
+AecDbDispRepRoofPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ROOF_RCP
+  2
+AecDbDispRepRoofRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ROOFSLAB_MODEL
+  2
+AecDbDispRepRoofSlabModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ROOFSLAB_PLAN
+  2
+AecDbDispRepRoofSlabPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFSLABPLAN100
+  2
+AecDbDispRepRoofSlabPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFSLABPLAN50
+  2
+AecDbDispRepRoofSlabPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SCHEDULE_TABLE
+  2
+AecDbDispRepScheduleTable
+  3
+AecSchedule70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SLAB_MODEL
+  2
+AecDbDispRepSlabModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SLAB_PLAN
+  2
+AecDbDispRepSlabPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSLABPLAN100
+  2
+AecDbDispRepSlabPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSLABPLAN50
+  2
+AecDbDispRepSlabPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SLICE
+  2
+AecDbDispRepSlice
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_DECOMPOSED
+  2
+AecDbDispRepSpaceDecomposed
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_MODEL
+  2
+AecDbDispRepSpaceModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_PLAN
+  2
+AecDbDispRepSpacePlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEPLAN100
+  2
+AecDbDispRepSpacePlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEPLAN50
+  2
+AecDbDispRepSpacePlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_RCP
+  2
+AecDbDispRepSpaceRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_VOLUME
+  2
+AecDbDispRepSpaceVolume
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_MODEL
+  2
+AecDbDispRepStairModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_PLAN
+  2
+AecDbDispRepStairPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_PLAN_100
+  2
+AecDbDispRepStairPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_PLAN_50
+  2
+AecDbDispRepStairPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_PLAN_OVERLAPPING
+  2
+AecDbDispRepStairPlanOverlapping
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_STAIR_RCP
+  2
+AecDbDispRepStairRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WALL_GRAPH
+  2
+AecDbDispRepWallGraph
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WALL_MODEL
+  2
+AecDbDispRepWallModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WALL_PLAN
+  2
+AecDbDispRepWallPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWALLPLAN100
+  2
+AecDbDispRepWallPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWALLPLAN50
+  2
+AecDbDispRepWallPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WALL_RCP
+  2
+AecDbDispRepWallRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WALL_SCHEM
+  2
+AecDbDispRepWallSchem
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_ASSEMBLY_MODEL
+  2
+AecDbDispRepWindowAssemblyModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_ASSEMBLY_PLAN
+  2
+AecDbDispRepWindowAssemblyPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWINDOWASSEMBLYPLAN100
+  2
+AecDbDispRepWindowAssemblyPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWINDOWASSEMBLYPLAN50
+  2
+AecDbDispRepWindowAssemblyPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOWASSEMBLY_SILL_PLAN
+  2
+AecDbDispRepWindowAssemblySillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_ELEV
+  2
+AecDbDispRepWindowElev
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_MODEL
+  2
+AecDbDispRepWindowModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_NOMINAL
+  2
+AecDbDispRepWindowNominal
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_PLAN
+  2
+AecDbDispRepWindowPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_PLAN_100
+  2
+AecDbDispRepWindowPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_PLAN_50
+  2
+AecDbDispRepWindowPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_RCP
+  2
+AecDbDispRepWindowRcp
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_WINDOW_SILL_PLAN
+  2
+AecDbDispRepWindowSillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_ZONE
+  2
+AecDbDispRepZone
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPZONE100
+  2
+AecDbDispRepZonePlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPZONE50
+  2
+AecDbDispRepZonePlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_ELEVATION_DESIGN
+  2
+AecsDbDispRepMemberElevationDesign
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_ELEVATION_DETAIL
+  2
+AecsDbDispRepMemberElevationDetail
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_LOGICAL
+  2
+AecsDbDispRepMemberLogical
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_MODEL_DESIGN
+  2
+AecsDbDispRepMemberModelDesign
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_MODEL_DETAIL
+  2
+AecsDbDispRepMemberModelDetail
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_PLAN_DESIGN
+  2
+AecsDbDispRepMemberPlanDesign
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_PLAN_DETAIL
+  2
+AecsDbDispRepMemberPlanDetail
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_REP_MEMBER_PLAN_SKETCH
+  2
+AecsDbDispRepMemberPlanSketch
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SLAB
+  2
+AecDbDispPropsSlab
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW_PLAN_50
+  2
+AecDbDispPropsWindowPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_CLIP_VOLUME
+  2
+AecDbDispPropsClipVol
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_LAYOUT_GRID2D
+  2
+AecDbDispPropsLayoutGrid2d
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_GRID_ASSEMBLY_PLAN
+  2
+AecDbDispPropsGridAssemblyPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ROOF
+  2
+AecDbDispPropsRoof
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ROOFSLAB_PLAN
+  2
+AecDbDispPropsRoofSlabPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ENT
+  2
+AecDbDispPropsEnt
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SLAB_PLAN
+  2
+AecDbDispPropsSlabPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ROOFSLAB
+  2
+AecDbDispPropsRoofSlab
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SPACE_PLAN
+  2
+AecDbDispPropsSpacePlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WALL_PLAN
+  2
+AecDbDispPropsWallPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ZONE
+  2
+AecDbDispPropsZone
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DIM
+  2
+AecDbDispPropsDimGroup
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_GRID_ASSEMBLY_MODEL
+  2
+AecDbDispPropsGridAssemblyModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_STAIR_MODEL
+  2
+AecDbDispPropsStairModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR_PLAN_50
+  2
+AecDbDispPropsDoorPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR_PLAN_100
+  2
+AecDbDispPropsDoorPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR_THRESHOLD_SYMBOL_PLAN
+  2
+AecDbDispPropsDoorThresholdSymbolPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSMASSELEMPLANCOMMON
+  2
+AecDbDispPropsMassElemPlanCommon
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSMASSGROUPPLANCOMMON
+  2
+AecDbDispPropsMassGroupPlanCommon
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSOPENINGPLANCOMMONHATCHED
+  2
+AecDbDispPropsOpeningPlanCommonHatched
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_EDITINPLACEPROFILE_MODEL
+  2
+AecDbDispPropsEditInPlaceProfile
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSOPENINGPLANCOMMON
+  2
+AecDbDispPropsOpeningPlanCommon
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_RAILING_MODEL
+  2
+AecDbDispPropsRailingModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR_THRESHOLD_PLAN
+  2
+AecDbDispPropsDoorThresholdPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW_SILL_PLAN
+  2
+AecDbDispPropsWindowSillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SCHEDULE_TABLE
+  2
+AecDbDispPropsScheduleTable
+  3
+AecSchedule70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_CLIP_VOLUME_RESULT
+  2
+AecDbDispPropsClipVolResSubDiv
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SLICE
+  2
+AecDbDispPropsSlice
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_RAILING_PLAN
+  2
+AecDbDispPropsRailingPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_MASS_ELEM_MODEL
+  2
+AecDbDispPropsMassElem
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW
+  2
+AecDbDispPropsWindow
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_MASS_GROUP
+  2
+AecDbDispPropsMassGroup
+  3
+AecBaseEx70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR
+  2
+AecDbDispPropsDoor
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_STAIR_PLAN
+  2
+AecDbDispPropsStairPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSOPENINGSILLPLAN
+  2
+AecDbDispPropsOpeningSillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WALL_MODEL
+  2
+AecDbDispPropsWallModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DISPLAYTHEME
+  2
+AecDbDispPropsDisplayTheme
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_ROPS_RAILING_PLAN_100
+  2
+AecDbDispPropsRailingPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_OPENING
+  2
+AecDbDispPropsOpening
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW_ASSEMBLY_SILL_PLAN
+  2
+AecDbDispPropsWindowAssemblySillPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_MASKBLOCK
+  2
+AecDbDispPropsMaskBlock
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_POLYGON_MODEL
+  2
+AecDbDispPropsPolygonModel
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_PROPS_MEMBER_PLAN
+  2
+AecsDbDispPropsMemberPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_PROPS_MEMBER
+  2
+AecsDbDispPropsMember
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_ROPS_RAILING_PLAN_50
+  2
+AecDbDispPropsRailingPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_LAYOUT_GRID3D
+  2
+AecDbDispPropsLayoutGrid3d
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SPACE_MODEL
+  2
+AecDbDispPropsSpaceModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_2D_SECTION
+  2
+AecDbDispProps2dSection
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_LAYOUT_CURVE
+  2
+AecDbDispPropsLayoutCurve
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_POLYGON_TRUECOLOUR
+  2
+AecDbDispPropsPolygonTrueColour
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_ROPS_STAIR_PLAN_100
+  2
+AecDbDispPropsStairPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_DOOR_NOMINAL
+  2
+AecDbDispPropsDoorNominal
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_MATERIAL
+  2
+AecDbDispPropsMaterial
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_ROPS_STAIR_PLAN_50
+  2
+AecDbDispPropsStairPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_SPACE_DECOMPOSED
+  2
+AecDbDispPropsSpaceDecomposed
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_STAIR_PLAN_OVERLAPPING
+  2
+AecDbDispPropsStairPlanOverlapping
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_ENT_REF
+  2
+AecDbDispPropsEntRef
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_PROPS_MEMBER_PROJECTED
+  2
+AecsDbDispPropsMemberProjected
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WALL_GRAPH
+  2
+AecDbDispPropsWallGraph
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WALL_SCHEM
+  2
+AecDbDispPropsWallSchem
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW_PLAN_100
+  2
+AecDbDispPropsWindowPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_WINDOW_NOMINAL
+  2
+AecDbDispPropsWindowNominal
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_PROPS_MEMBER_LOGICAL
+  2
+AecsDbDispPropsMemberLogical
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AECS_DISP_PROPS_MEMBER_PLAN_SKETCH
+  2
+AecsDbDispPropsMemberPlanSketch
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_LAYERKEY_STYLE
+  2
+AecDbLayerKeyStyle
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_VARS_ARCHBASE
+  2
+AecDbVarsArchBase
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_VARS_DWG_SETUP
+  2
+AecDbVarsDwgSetup
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_VARS_STRUCTUREBASE
+  2
+AecsDbVarsStructureBase
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_VARS_MUNICH
+  2
+AecDbVarsMunich
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_ALDIMOBJECTCONTEXTDATA_CLASS
+  2
+AcDbAlignedDimensionObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_TEXTOBJECTCONTEXTDATA_CLASS
+  2
+AcDbTextObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_MTEXTOBJECTCONTEXTDATA_CLASS
+  2
+AcDbMTextObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_HATCHSCALECONTEXTDATA_CLASS
+  2
+AcDbHatchScaleContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_HATCHVIEWCONTEXTDATA_CLASS
+  2
+AcDbHatchViewContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+MULTILEADER
+  2
+AcDbMLeader
+  3
+ACDB_MLEADER_CLASS
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+ACDB_LEADEROBJECTCONTEXTDATA_CLASS
+  2
+AcDbLeaderObjectContextData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDB_BLOCKREPRESENTATION_DATA
+  2
+AcDbBlockRepresentationData
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_AREA
+  2
+AecDbDispRepArea
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPAREA100
+  2
+AecDbDispRepArea100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPAREA50
+  2
+AecDbDispRepArea50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_AREA_DECOMPOSED
+  2
+AecDbDispRepAreaDecomposed
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_AREAGROUP
+  2
+AecDbDispRepAreaGroup
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPAREAGROUP100
+  2
+AecDbDispRepAreaGroup100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPAREAGROUP50
+  2
+AecDbDispRepAreaGroup50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_CAMERA
+  2
+AecDbDispRepCamera
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLLAYOUTXSECTION
+  2
+AecDbDispRepCurtainWallLayoutXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPCURTAINWALLUNITXSECTION
+  2
+AecDbDispRepCurtainWallUnitXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPDOORXSECTION
+  2
+AecDbDispRepDoorXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPMASSELEMXSECTION
+  2
+AecDbDispRepMassElemXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPMASSGROUPXSECTION
+  2
+AecDbDispRepMassGroupXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPMEMBERXSECTION
+  2
+AecDbDispRepMemberXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPRAILINGXSECTION
+  2
+AecDbDispRepRailingXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFSLABXSECTION
+  2
+AecDbDispRepRoofSlabXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPROOFXSECTION
+  2
+AecDbDispRepRoofXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSLABXSECTION
+  2
+AecDbDispRepSlabXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_BOUNDARY_DIAGRAM
+  2
+AecDbDispRepSpaceBoundaryDgrm
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_BOUNDARY_MODEL
+  2
+AecDbDispRepSpaceBoundaryModel
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_BOUNDARY_PLAN
+  2
+AecDbDispRepSpaceBoundaryPlan
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEBOUNDARYPLAN100
+  2
+AecDbDispRepSpaceBoundaryPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEBOUNDARYPLAN50
+  2
+AecDbDispRepSpaceBoundaryPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_REP_SPACE_BOUNDARY_SCHEM
+  2
+AecDbDispRepSpaceBoundarySketch
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEBOUNDARYXSECTION
+  2
+AecDbDispRepSpaceBoundaryXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPSPACEXSECTION
+  2
+AecDbDispRepSpaceXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPSTAIRXSECTION
+  2
+AecDbDispRepStairXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPREPWALLXSECTION
+  2
+AecDbDispRepWallXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWINDOWASSEMBLYXSECTION
+  2
+AecDbDispRepWindowAssemblyXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECDBDISPREPWINDOWXSECTION
+  2
+AecDbDispRepWindowXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECSDBDISPREPMEMBERPLAN100
+  2
+AecsDbDispRepMemberPlan100
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_AECSDBDISPREPMEMBERPLAN50
+  2
+AecsDbDispRepMemberPlan50
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_AREA
+  2
+AecDbDispPropsArea
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_AREA_DECOMPOSED
+  2
+AecDbDispPropsAreaDecomposed
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_AREAGROUP
+  2
+AecDbDispPropsAreaGroup
+  3
+AecAreaCalculationBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISP_PROPS_CAMERA
+  2
+AecDbDispPropsCamera
+  3
+AecBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSXSECTIONCOMMON
+  2
+AecDbDispPropsXSectionCmn
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+AEC_DISPROPSXSECTIONWALL
+  2
+AecDbDispPropsWallXSection
+  3
+AecArchBase70|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,Inc. |WEB Address: www.autodesk.com
+ 90
+      129
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKVISIBILITYPARAMETER
+  2
+AcDbBlockVisibilityParameter
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKVISIBILITYGRIP
+  2
+AcDbBlockVisibilityGrip
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKGRIPLOCATIONCOMPONENT
+  2
+AcDbBlockGripExpr
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKLINEARPARAMETER
+  2
+AcDbBlockLinearParameter
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKLINEARGRIP
+  2
+AcDbBlockLinearGrip
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKSTRETCHACTION
+  2
+AcDbBlockStretchAction
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKROTATIONPARAMETER
+  2
+AcDbBlockRotationParameter
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKROTATIONGRIP
+  2
+AcDbBlockRotationGrip
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ROTATIONGRIPENTITY
+  2
+AcDbBlockRotationGripEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+ACAEEEMGROBJ
+  2
+AcAeEEMgrObj
+  3
+AcAeEEMgrObj
+ 90
+     1024
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ROTATIONPARAMETERENTITY
+  2
+AcDbBlockRotationParameterEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+BLOCKROTATEACTION
+  2
+AcDbBlockRotateAction
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ROTATEACTIONENTITY
+  2
+AcDbBlockRotateActionEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+LINEARPARAMETERENTITY
+  2
+AcDbBlockLinearParameterEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+LINEARGRIPENTITY
+  2
+AcDbBlockLinearGripEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+STRETCHACTIONENTITY
+  2
+AcDbBlockStretchActionEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+VISIBILITYPARAMETERENTITY
+  2
+AcDbBlockVisibilityParameterEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+VISIBILITYGRIPENTITY
+  2
+AcDbBlockVisibilityGripEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+FIELD
+  2
+AcDbField
+  3
+ObjectDBX Classes
+ 90
+     1152
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+FIELDLIST
+  2
+AcDbFieldList
+  3
+ObjectDBX Classes
+ 90
+     1152
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKFLIPPARAMETER
+  2
+AcDbBlockFlipParameter
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKFLIPGRIP
+  2
+AcDbBlockFlipGrip
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKFLIPACTION
+  2
+AcDbBlockFlipAction
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKARRAYACTION
+  2
+AcDbBlockArrayAction
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKXYPARAMETER
+  2
+AcDbBlockXYParameter
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKXYGRIP
+  2
+AcDbBlockXYGrip
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+BLOCKMOVEACTION
+  2
+AcDbBlockMoveAction
+  3
+ObjectDBX Classes
+ 90
+     1153
+ 91
+        0
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ARRAYACTIONENTITY
+  2
+AcDbBlockArrayActionEntity
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        0
+280
+     0
+281
+     1
+  0
+CLASS
+  1
+ACDBSECTIONVIEWSTYLE
+  2
+AcDbSectionViewStyle
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        1
+280
+     0
+281
+     0
+  0
+CLASS
+  1
+ACDBDETAILVIEWSTYLE
+  2
+AcDbDetailViewStyle
+  3
+ObjectDBX Classes
+ 90
+     1025
+ 91
+        1
+280
+     0
+281
+     0
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+VPORT
+  5
+30
+102
+{ACAD_XDICTIONARY
+360
+34
+102
+}
+330
+0
+100
+AcDbSymbolTable
+ 70
+     1
+  0
+VPORT
+  5
+31
+330
+30
+100
+AcDbSymbolTableRecord
+100
+AcDbViewportTableRecord
+  2
+*Active
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 11
+1.0
+ 21
+1.0
+ 12
+-85543.87963357854
+ 22
+-11259.60070471483
+ 13
+0.0
+ 23
+0.0
+ 14
+1.0
+ 24
+1.0
+ 15
+1.0
+ 25
+1.0
+ 16
+0.0
+ 26
+0.0
+ 36
+1.0
+ 17
+85543.87963357854
+ 27
+11324.26239543239
+ 37
+0.0
+ 40
+130.36351587026
+ 41
+1.748993288590604
+ 42
+50.0
+ 43
+0.0
+ 44
+0.0
+ 50
+0.0
+ 51
+0.0
+ 71
+     0
+ 72
+ 10000
+ 73
+     1
+ 74
+     1
+ 75
+     0
+ 76
+     0
+ 77
+     0
+ 78
+     0
+281
+     0
+ 65
+     1
+110
+0.0
+120
+0.0
+130
+0.0
+111
+1.0
+121
+0.0
+131
+0.0
+112
+0.0
+122
+1.0
+132
+0.0
+ 79
+     0
+146
+0.0
+348
+32
+ 60
+     3
+ 61
+     5
+292
+     1
+282
+     1
+141
+0.0
+142
+0.0
+ 63
+   250
+421
+  3355443
+1001
+ACAD_NAV_VCDISPLAY
+1070
+     3
+  0
+ENDTAB
+  0
+TABLE
+  2
+LTYPE
+  5
+2B
+330
+0
+100
+AcDbSymbolTable
+ 70
+     1
+  0
+LTYPE
+  5
+2C
+330
+2B
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+ByBlock
+ 70
+     0
+  3
+
+ 72
+    65
+ 73
+     0
+ 40
+0.0
+  0
+LTYPE
+  5
+2D
+330
+2B
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+ByLayer
+ 70
+     0
+  3
+
+ 72
+    65
+ 73
+     0
+ 40
+0.0
+  0
+LTYPE
+  5
+15
+330
+2B
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+Continuous
+ 70
+     0
+  3
+Solid line
+ 72
+    65
+ 73
+     0
+ 40
+0.0
+  0
+ENDTAB
+  0
+TABLE
+  2
+LAYER
+  5
+22
+102
+{ACAD_XDICTIONARY
+360
+23
+102
+}
+330
+0
+100
+AcDbSymbolTable
+ 70
+     3
+  0
+LAYER
+  5
+6
+102
+{ACAD_XDICTIONARY
+360
+7
+102
+}
+330
+22
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+0
+ 70
+     0
+ 62
+     7
+  6
+Continuous
+370
+    -3
+390
+9
+347
+C
+348
+0
+  0
+LAYER
+  5
+80
+330
+22
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+Defpoints
+ 70
+     0
+ 62
+     7
+  6
+Continuous
+290
+     0
+370
+    -3
+390
+9
+347
+C
+348
+0
+  0
+LAYER
+  5
+65
+102
+{ACAD_XDICTIONARY
+360
+66
+102
+}
+330
+22
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+DIM1
+ 70
+     0
+ 62
+   110
+  6
+Continuous
+370
+    -3
+390
+9
+347
+C
+348
+0
+  0
+ENDTAB
+  0
+TABLE
+  2
+STYLE
+  5
+28
+330
+0
+100
+AcDbSymbolTable
+ 70
+     3
+  0
+STYLE
+  5
+29
+330
+28
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+Standard
+ 70
+     0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+     0
+ 42
+20.0
+  3
+txt
+  4
+
+  0
+STYLE
+  5
+42
+330
+28
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+ROMANS
+ 70
+     0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+     0
+ 42
+50.0
+  3
+ROMANS.shx
+  4
+
+  0
+STYLE
+  5
+38
+330
+28
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+ARIAL
+ 70
+     0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+     0
+ 42
+20.0
+  3
+ARIAL.TTF
+  4
+
+1001
+ACAD
+1000
+Arial
+1071
+       34
+  0
+ENDTAB
+  0
+TABLE
+  2
+VIEW
+  5
+2E
+330
+0
+100
+AcDbSymbolTable
+ 70
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+UCS
+  5
+2F
+330
+0
+100
+AcDbSymbolTable
+ 70
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+APPID
+  5
+35
+330
+0
+100
+AcDbSymbolTable
+ 70
+     8
+  0
+APPID
+  5
+27
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD
+ 70
+     0
+  0
+APPID
+  5
+21
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_PSEXT
+ 70
+     0
+  0
+APPID
+  5
+3D
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+AcadAnnotative
+ 70
+     0
+  0
+APPID
+  5
+40
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_DSTYLE_DIMJOGGED_JOGANGLE_SYMBOL
+ 70
+     0
+  0
+APPID
+  5
+3E
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_DSTYLE_DIMJAG
+ 70
+     0
+  0
+APPID
+  5
+3F
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_DSTYLE_DIMTALN
+ 70
+     0
+  0
+APPID
+  5
+4B
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_DSTYLE_DIMBREAK
+ 70
+     0
+  0
+APPID
+  5
+C9
+330
+35
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD_NAV_VCDISPLAY
+ 70
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+DIMSTYLE
+  5
+36
+330
+0
+100
+AcDbSymbolTable
+ 70
+     5
+100
+AcDbDimStyleTable
+ 71
+     5
+340
+37
+340
+41
+340
+4A
+340
+4C
+340
+4D
+  0
+DIMSTYLE
+105
+4C
+330
+36
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+MTARROW
+ 70
+     0
+ 40
+25.0
+ 41
+3.0
+ 42
+2.0
+ 43
+0.0
+ 44
+1.0
+ 46
+2.0
+ 50
+44.99999999999998
+ 73
+     0
+ 74
+     0
+ 77
+     1
+ 78
+    12
+140
+2.0
+141
+0.0
+147
+1.0
+172
+     1
+176
+   256
+177
+   256
+178
+   256
+179
+     4
+279
+     2
+284
+    12
+286
+    12
+340
+42
+371
+    -1
+372
+    -1
+1001
+ACAD_DSTYLE_DIMBREAK
+1070
+   391
+1040
+0.125
+1001
+ACAD_DSTYLE_DIMJAG
+1070
+   388
+1040
+1.5
+1001
+ACAD_DSTYLE_DIMTALN
+1070
+   392
+1070
+     0
+1001
+ACAD_DSTYLE_DIMJOGGED_JOGANGLE_SYMBOL
+1070
+   384
+1040
+0.785398163397448
+  0
+DIMSTYLE
+105
+4D
+330
+36
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+MT-10
+ 70
+     0
+ 40
+10.0
+ 41
+1.0
+ 42
+2.0
+ 43
+0.0
+ 44
+1.0
+ 46
+2.0
+ 73
+     0
+ 74
+     0
+ 77
+     1
+ 78
+    12
+140
+2.0
+141
+0.0
+147
+1.0
+172
+     1
+175
+     1
+176
+   256
+177
+   256
+178
+   256
+179
+     2
+271
+     0
+272
+     0
+279
+     2
+284
+    12
+285
+    12
+286
+    12
+340
+42
+342
+43
+371
+    -1
+372
+    -1
+1001
+ACAD_DSTYLE_DIMBREAK
+1070
+   391
+1040
+3.75
+1001
+ACAD_DSTYLE_DIMJAG
+1070
+   388
+1040
+1.5
+1001
+ACAD_DSTYLE_DIMTALN
+1070
+   392
+1070
+     0
+  0
+DIMSTYLE
+105
+41
+330
+36
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+MT10
+ 70
+     0
+ 40
+10.0
+ 41
+1.0
+ 42
+2.0
+ 43
+0.0
+ 44
+1.0
+ 46
+2.0
+ 50
+45.26366581533504
+ 73
+     0
+ 74
+     0
+ 77
+     1
+ 78
+    12
+140
+2.0
+141
+0.0
+147
+1.0
+172
+     1
+176
+   256
+177
+   256
+178
+   256
+179
+     2
+271
+     0
+272
+     0
+284
+    12
+285
+    12
+286
+    12
+340
+42
+342
+43
+371
+    -1
+372
+    -1
+1001
+ACAD_DSTYLE_DIMJOGGED_JOGANGLE_SYMBOL
+1070
+   384
+1040
+0.7900000000000001
+  0
+DIMSTYLE
+105
+4A
+330
+36
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+MTARROW-10
+ 70
+     0
+ 40
+25.0
+ 41
+2.0
+ 42
+2.0
+ 43
+0.0
+ 44
+1.0
+ 46
+2.0
+ 50
+44.99999999999998
+ 73
+     0
+ 74
+     0
+ 77
+     1
+ 78
+    12
+140
+2.0
+141
+0.0
+144
+10.0
+147
+1.0
+172
+     1
+176
+   256
+177
+   256
+178
+   256
+179
+     4
+279
+     2
+284
+    12
+286
+    12
+340
+42
+371
+    -1
+372
+    -1
+1001
+ACAD_DSTYLE_DIMBREAK
+1070
+   391
+1040
+0.125
+1001
+ACAD_DSTYLE_DIMJAG
+1070
+   388
+1040
+1.5
+1001
+ACAD_DSTYLE_DIMTALN
+1070
+   392
+1070
+     0
+1001
+ACAD_DSTYLE_DIMJOGGED_JOGANGLE_SYMBOL
+1070
+   384
+1040
+0.785398163397448
+  0
+DIMSTYLE
+105
+37
+330
+36
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+MT-DIMS
+ 70
+     0
+ 40
+10.0
+ 41
+2.0
+ 42
+2.0
+ 43
+0.0
+ 44
+1.0
+ 45
+5.0
+ 46
+2.0
+ 50
+45.00010522957485
+ 73
+     0
+ 74
+     0
+ 77
+     1
+ 78
+    12
+140
+2.0
+141
+0.0
+147
+1.0
+172
+     1
+175
+     1
+177
+   256
+178
+   256
+179
+     2
+271
+     0
+272
+     0
+284
+    12
+285
+    12
+286
+    12
+340
+38
+342
+39
+371
+    -1
+372
+    -1
+1001
+AcadAnnotative
+1000
+AnnotativeData
+1002
+{
+1070
+     1
+1070
+     1
+1002
+}
+1001
+ACAD_DSTYLE_DIMJAG
+1070
+   388
+1040
+1.5
+1001
+ACAD_DSTYLE_DIMTALN
+1070
+   392
+1070
+     0
+1001
+ACAD_DSTYLE_DIMJOGGED_JOGANGLE_SYMBOL
+1070
+   384
+1040
+0.7854
+  0
+ENDTAB
+  0
+TABLE
+  2
+BLOCK_RECORD
+  5
+1
+330
+0
+100
+AcDbSymbolTable
+ 70
+     2
+  0
+BLOCK_RECORD
+  5
+2
+102
+{ACAD_XDICTIONARY
+360
+3
+102
+}
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+*Model_Space
+340
+17
+ 70
+     4
+280
+     1
+281
+     0
+  0
+BLOCK_RECORD
+  5
+19
+102
+{ACAD_XDICTIONARY
+360
+1A
+102
+}
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+*Paper_Space
+340
+1E
+ 70
+     0
+280
+     1
+281
+     0
+  0
+BLOCK_RECORD
+  5
+43
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+DIMDOT
+340
+0
+ 70
+     0
+280
+     1
+281
+     0
+  0
+BLOCK_RECORD
+  5
+39
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+_ArchTick
+340
+0
+ 70
+     0
+280
+     1
+281
+     0
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+BLOCKS
+  0
+BLOCK
+  5
+5
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+*Model_Space
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+*Model_Space
+  1
+
+  0
+ENDBLK
+  5
+16
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+1C
+330
+19
+100
+AcDbEntity
+ 67
+     1
+  8
+0
+100
+AcDbBlockBegin
+  2
+*Paper_Space
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+*Paper_Space
+  1
+
+  0
+ENDBLK
+  5
+1D
+330
+19
+100
+AcDbEntity
+ 67
+     1
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+44
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+DIMDOT
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+DIMDOT
+  1
+
+  0
+LINE
+  5
+45
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbLine
+ 10
+0.46875
+ 20
+0.0
+ 30
+0.0
+ 11
+2.46875
+ 21
+0.0
+ 31
+0.0
+  0
+LINE
+  5
+46
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbLine
+ 10
+-0.46875
+ 20
+0.0
+ 30
+0.0
+ 11
+-1.09375
+ 21
+0.0
+ 31
+0.0
+  0
+CIRCLE
+  5
+47
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbCircle
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.46875
+  0
+CIRCLE
+  5
+48
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbCircle
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.21875
+  0
+ENDBLK
+  5
+49
+330
+43
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+3A
+330
+39
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+_ArchTick
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+_ArchTick
+  1
+
+  0
+LWPOLYLINE
+  5
+3B
+330
+39
+100
+AcDbEntity
+  8
+0
+  6
+ByBlock
+ 62
+     0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.15
+ 10
+-0.5
+ 20
+-0.5
+ 10
+0.5
+ 20
+0.5
+  0
+ENDBLK
+  5
+3C
+330
+39
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+LINE
+  5
+7F
+330
+2
+100
+AcDbEntity
+  8
+Defpoints
+100
+AcDbLine
+ 10
+25.0
+ 20
+18.4259745367732
+ 30
+0.0
+ 11
+-25.0
+ 21
+18.42597453677319
+ 31
+0.0
+  0
+POINT
+  5
+81
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPoint
+ 10
+-20.22083024861452
+ 20
+2.107304209054028
+ 30
+0.0
+  0
+POINT
+  5
+82
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPoint
+ 10
+-22.9106079170954
+ 20
+12.63749999999994
+ 30
+0.0
+  0
+LWPOLYLINE
+  5
+83
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       13
+ 70
+     1
+ 43
+0.0
+ 10
+-34.21881277300685
+ 20
+9.937670570259005
+ 10
+-34.21881277300685
+ 20
+8.587670570258953
+ 10
+-35.11881277300688
+ 20
+8.587670570258953
+ 10
+-35.11881277300688
+ 20
+6.43767057025899
+ 42
+0.4142135623730872
+ 10
+-33.91881277300683
+ 20
+5.237670570258945
+ 10
+-32.71881277300679
+ 20
+5.237670570258945
+ 10
+-32.71881277300679
+ 20
+7.979059498236962
+ 10
+-22.91060791709547
+ 20
+9.262670570259025
+ 10
+-32.71881277300679
+ 20
+10.93767057025898
+ 10
+-32.71881277300679
+ 20
+13.28767057025901
+ 10
+-33.91881277300683
+ 20
+13.28767057025901
+ 42
+0.4142135623730951
+ 10
+-35.11881277300688
+ 20
+12.08767057025897
+ 10
+-35.11881277300688
+ 20
+9.937670570259005
+  0
+LWPOLYLINE
+  5
+84
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       13
+ 70
+     0
+ 43
+0.0
+ 10
+-28.81256277300677
+ 20
+26.56249999999991
+ 10
+-31.15631277300677
+ 20
+24.56249999999991
+ 10
+-31.15631277300677
+ 20
+1.5625
+ 10
+-20.21951762125729
+ 20
+1.5625
+ 10
+-20.21951762125729
+ 20
+0.0
+ 10
+-45.21881277300678
+ 20
+0.0
+ 10
+-45.21881277300678
+ 20
+1.5625
+ 10
+-32.71881277300678
+ 20
+1.5625
+ 10
+-32.71881277300678
+ 20
+24.56249999999991
+ 10
+-35.06256277300678
+ 20
+26.56249999999991
+ 10
+-35.06256277300678
+ 20
+39.06249999999992
+ 10
+-28.81256277300677
+ 20
+39.06249999999992
+ 10
+-28.81256277300677
+ 20
+26.56249999999991
+  0
+LWPOLYLINE
+  5
+85
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       11
+ 70
+     0
+ 43
+0.0
+ 10
+-34.39752456421061
+ 20
+53.1454053257609
+ 10
+-30.74898176476282
+ 20
+49.07242352694938
+ 10
+-33.44230455427919
+ 20
+47.4520624848024
+ 10
+-26.8052004499097
+ 20
+40.81495838043278
+ 10
+-28.81256277300677
+ 20
+32.81249999999992
+ 10
+-28.81256277300677
+ 20
+39.06249999999992
+ 10
+-35.06256277300678
+ 20
+39.06249999999992
+ 10
+-35.06256277300678
+ 20
+32.81249999999992
+ 10
+-37.06992509610352
+ 20
+40.81495838043323
+ 10
+-31.93756277300679
+ 20
+45.94732070352987
+ 10
+-31.93756277300679
+ 20
+129.3233814351264
+  0
+LWPOLYLINE
+  5
+86
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       27
+ 70
+     0
+ 43
+0.0
+ 10
+-14.26060791709568
+ 20
+5.562499999999913
+ 42
+-0.4142135623730946
+ 10
+-14.63560791709568
+ 20
+5.187499999999989
+ 10
+-16.0856079170955
+ 20
+5.187499999999914
+ 42
+-0.4142135623730951
+ 10
+-16.46060791709551
+ 20
+5.562499999999914
+ 10
+-16.46060791709566
+ 20
+11.78749999999997
+ 42
+0.4142135623730909
+ 10
+-17.23560791709566
+ 20
+12.56249999999994
+ 10
+-20.38560791709543
+ 20
+12.56249999999997
+ 42
+0.4142135623730951
+ 10
+-21.16060791709543
+ 20
+11.78749999999997
+ 10
+-21.16060791709522
+ 20
+3.562499999999957
+ 10
+-20.60631277300651
+ 20
+3.562499999999943
+ 42
+-0.4142135623730951
+ 10
+-20.23131277300685
+ 20
+3.187499999999943
+ 10
+-20.23131277300651
+ 20
+1.937499999999925
+ 42
+-0.4142135623730951
+ 10
+-20.60631277300686
+ 20
+1.5625
+ 10
+-30.78131277300677
+ 20
+1.5625
+ 42
+-0.4142135623730951
+ 10
+-31.15631277300677
+ 20
+1.937500000000014
+ 10
+-31.15631277300677
+ 20
+13.81249999999996
+ 42
+-0.4803844614151226
+ 10
+-30.69928152300694
+ 20
+14.17841785146865
+ 42
+-0.3510004003204359
+ 10
+-29.15631277300667
+ 20
+12.25125050039705
+ 10
+-29.15631277300683
+ 20
+4.337500000000016
+ 42
+0.414213562373094
+ 10
+-28.38131277300668
+ 20
+3.562500000000016
+ 10
+-23.68560791709555
+ 20
+3.562500000000046
+ 42
+0.4142135623730951
+ 10
+-22.91060791709555
+ 20
+4.337500000000016
+ 10
+-22.9106079170954
+ 20
+12.63749999999994
+ 42
+-0.4142135623730946
+ 10
+-21.36060791709546
+ 20
+14.18749999999995
+ 10
+-15.81060791709561
+ 20
+14.18749999999997
+ 42
+-0.4142135623730951
+ 10
+-14.26060791709561
+ 20
+12.63749999999994
+ 10
+-14.26060791709567
+ 20
+5.55272962733655
+  0
+LWPOLYLINE
+  5
+87
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       54
+ 70
+     1
+ 43
+0.0
+ 10
+0.0000000000000218
+ 20
+4.5625
+ 42
+0.0172454567245713
+ 10
+-14.26060791709564
+ 20
+4.070492280660914
+ 10
+-14.26060791709562
+ 20
+4.826554057669252
+ 10
+-16.14255285024018
+ 20
+4.826554057669252
+ 42
+-0.4142135623730951
+ 10
+-16.51755285024018
+ 20
+5.201554057669266
+ 10
+-16.51755285024019
+ 20
+10.71886777591446
+ 42
+0.2354687434833287
+ 10
+-16.66687221655819
+ 20
+11.0183560921822
+ 10
+-18.47937221655829
+ 20
+12.38417280799355
+ 42
+0.3345953195020688
+ 10
+-18.93073348392235
+ 20
+12.38417280799346
+ 10
+-21.06789316708127
+ 20
+10.77370747303261
+ 42
+0.9407060669056919
+ 10
+-20.86130285024007
+ 20
+10.4615835516892
+ 10
+-20.1425528502401
+ 20
+10.87655405766918
+ 10
+-20.1425528502401
+ 20
+9.601554057669225
+ 10
+-21.07336861144158
+ 20
+8.844419942975001
+ 42
+0.923377719696243
+ 10
+-20.86130285024006
+ 20
+8.536583551689162
+ 10
+-20.1425528502401
+ 20
+8.95155405766923
+ 10
+-20.1425528502401
+ 20
+7.676554057669182
+ 10
+-21.07336861144158
+ 20
+6.919419942974958
+ 42
+0.923377719696243
+ 10
+-20.86130285024006
+ 20
+6.611583551689207
+ 10
+-20.1425528502401
+ 20
+7.026554057669276
+ 10
+-20.1425528502401
+ 20
+5.751554057669228
+ 10
+-21.07336861144158
+ 20
+4.994419942975003
+ 42
+0.923377719696243
+ 10
+-20.86130285024006
+ 20
+4.686583551689253
+ 10
+-20.1425528502401
+ 20
+5.101554057669233
+ 10
+-20.1425528502401
+ 20
+4.826554057669074
+ 10
+-20.21951762125727
+ 20
+3.725906553832032
+ 10
+-20.21951762125727
+ 20
+1.5625
+ 42
+-0.0247134788940335
+ 10
+0.0000000000000217
+ 20
+2.5625
+ 42
+-0.0247134788940335
+ 10
+20.21951762125731
+ 20
+1.5625
+ 10
+20.21951762125731
+ 20
+3.725906553832032
+ 10
+20.14255285024014
+ 20
+4.826554057669074
+ 10
+20.14255285024014
+ 20
+5.101554057669233
+ 10
+20.86130285024011
+ 20
+4.686583551689253
+ 42
+0.923377719696243
+ 10
+21.07336861144162
+ 20
+4.994419942975003
+ 10
+20.14255285024014
+ 20
+5.751554057669228
+ 10
+20.14255285024014
+ 20
+7.026554057669276
+ 10
+20.86130285024011
+ 20
+6.611583551689207
+ 42
+0.923377719696243
+ 10
+21.07336861144162
+ 20
+6.919419942974958
+ 10
+20.14255285024014
+ 20
+7.676554057669182
+ 10
+20.14255285024014
+ 20
+8.95155405766923
+ 10
+20.86130285024011
+ 20
+8.536583551689162
+ 42
+0.923377719696243
+ 10
+21.07336861144162
+ 20
+8.844419942975001
+ 10
+20.14255285024014
+ 20
+9.601554057669225
+ 10
+20.14255285024014
+ 20
+10.87655405766918
+ 10
+20.86130285024012
+ 20
+10.4615835516892
+ 42
+0.9407060669056919
+ 10
+21.06789316708131
+ 20
+10.77370747303261
+ 10
+18.9307334839224
+ 20
+12.38417280799346
+ 42
+0.3345953195020688
+ 10
+18.47937221655833
+ 20
+12.38417280799355
+ 10
+16.66687221655823
+ 20
+11.0183560921822
+ 42
+0.2354687434833287
+ 10
+16.51755285024023
+ 20
+10.71886777591446
+ 10
+16.51755285024022
+ 20
+5.201554057669266
+ 42
+-0.4142135623730951
+ 10
+16.14255285024022
+ 20
+4.826554057669252
+ 10
+14.26060791709567
+ 20
+4.826554057669252
+ 10
+14.26060791709568
+ 20
+4.070492280660914
+ 42
+0.0172454567245713
+  0
+LWPOLYLINE
+  5
+88
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       27
+ 70
+     0
+ 43
+0.0
+ 10
+14.26060791709573
+ 20
+5.562499999999913
+ 42
+0.4142135623730946
+ 10
+14.63560791709572
+ 20
+5.187499999999989
+ 10
+16.08560791709554
+ 20
+5.187499999999914
+ 42
+0.4142135623730951
+ 10
+16.46060791709556
+ 20
+5.562499999999914
+ 10
+16.4606079170957
+ 20
+11.78749999999997
+ 42
+-0.4142135623730909
+ 10
+17.2356079170957
+ 20
+12.56249999999994
+ 10
+20.38560791709547
+ 20
+12.56249999999997
+ 42
+-0.4142135623730951
+ 10
+21.16060791709547
+ 20
+11.78749999999997
+ 10
+21.16060791709526
+ 20
+3.562499999999957
+ 10
+20.60631277300655
+ 20
+3.562499999999943
+ 42
+0.4142135623730951
+ 10
+20.23131277300689
+ 20
+3.187499999999943
+ 10
+20.23131277300655
+ 20
+1.937499999999925
+ 42
+0.4142135623730951
+ 10
+20.60631277300691
+ 20
+1.5625
+ 10
+30.78131277300682
+ 20
+1.5625
+ 42
+0.4142135623730951
+ 10
+31.15631277300682
+ 20
+1.937500000000014
+ 10
+31.15631277300682
+ 20
+13.81249999999996
+ 42
+0.4803844614151226
+ 10
+30.69928152300698
+ 20
+14.17841785146865
+ 42
+0.3510004003204359
+ 10
+29.15631277300672
+ 20
+12.25125050039705
+ 10
+29.15631277300688
+ 20
+4.337500000000016
+ 42
+-0.414213562373094
+ 10
+28.38131277300673
+ 20
+3.562500000000016
+ 10
+23.6856079170956
+ 20
+3.562500000000046
+ 42
+-0.4142135623730951
+ 10
+22.9106079170956
+ 20
+4.337500000000016
+ 10
+22.91060791709545
+ 20
+12.63749999999994
+ 42
+0.4142135623730946
+ 10
+21.36060791709551
+ 20
+14.18749999999995
+ 10
+15.81060791709565
+ 20
+14.18749999999997
+ 42
+0.4142135623730951
+ 10
+14.26060791709565
+ 20
+12.63749999999994
+ 10
+14.26060791709571
+ 20
+5.55272962733655
+  0
+LWPOLYLINE
+  5
+89
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       13
+ 70
+     0
+ 43
+0.0
+ 10
+28.81256277300682
+ 20
+26.56249999999991
+ 10
+31.15631277300682
+ 20
+24.56249999999991
+ 10
+31.15631277300682
+ 20
+1.5625
+ 10
+20.21951762125734
+ 20
+1.5625
+ 10
+20.21951762125734
+ 20
+0.0
+ 10
+45.21881277300681
+ 20
+0.0
+ 10
+45.21881277300681
+ 20
+1.5625
+ 10
+32.71881277300682
+ 20
+1.5625
+ 10
+32.71881277300682
+ 20
+24.56249999999991
+ 10
+35.06256277300682
+ 20
+26.56249999999991
+ 10
+35.06256277300682
+ 20
+39.06249999999992
+ 10
+28.81256277300682
+ 20
+39.06249999999992
+ 10
+28.81256277300682
+ 20
+26.56249999999991
+  0
+LWPOLYLINE
+  5
+8A
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       13
+ 70
+     1
+ 43
+0.0
+ 10
+34.21881277300689
+ 20
+9.937670570259005
+ 10
+34.21881277300689
+ 20
+8.587670570258953
+ 10
+35.11881277300692
+ 20
+8.587670570258953
+ 10
+35.11881277300692
+ 20
+6.43767057025899
+ 42
+-0.4142135623730872
+ 10
+33.91881277300688
+ 20
+5.237670570258945
+ 10
+32.71881277300683
+ 20
+5.237670570258945
+ 10
+32.71881277300683
+ 20
+7.979059498236962
+ 10
+22.91060791709551
+ 20
+9.262670570259025
+ 10
+32.71881277300683
+ 20
+10.93767057025898
+ 10
+32.71881277300683
+ 20
+13.28767057025901
+ 10
+33.91881277300688
+ 20
+13.28767057025901
+ 42
+-0.4142135623730951
+ 10
+35.11881277300692
+ 20
+12.08767057025897
+ 10
+35.11881277300692
+ 20
+9.937670570259005
+  0
+POINT
+  5
+8B
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPoint
+ 10
+20.22083024861456
+ 20
+2.107304209054028
+ 30
+0.0
+ 50
+180.0
+  0
+POINT
+  5
+8C
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPoint
+ 10
+22.91060791709545
+ 20
+12.63749999999994
+ 30
+0.0
+ 50
+180.0
+  0
+LWPOLYLINE
+  5
+8D
+330
+2
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+       11
+ 70
+     0
+ 43
+0.0
+ 10
+34.39752456421066
+ 20
+53.1454053257609
+ 10
+30.74898176476286
+ 20
+49.07242352694938
+ 10
+33.44230455427923
+ 20
+47.4520624848024
+ 10
+26.80520044990975
+ 20
+40.81495838043278
+ 10
+28.81256277300682
+ 20
+32.81249999999992
+ 10
+28.81256277300682
+ 20
+39.06249999999992
+ 10
+35.06256277300682
+ 20
+39.06249999999992
+ 10
+35.06256277300682
+ 20
+32.81249999999992
+ 10
+37.06992509610356
+ 20
+40.81495838043323
+ 10
+31.93756277300683
+ 20
+45.94732070352987
+ 10
+31.93756277300683
+ 20
+129.3233814351264
+  0
+ENDSEC
+  0
+SECTION
+  2
+OBJECTS
+  0
+DICTIONARY
+  5
+B
+330
+0
+100
+AcDbDictionary
+281
+     1
+  3
+ACAD_CIP_PREVIOUS_PRODUCT_INFO
+350
+C3
+  3
+ACAD_COLOR
+350
+62
+  3
+ACAD_DETAILVIEWSTYLE
+350
+BC
+  3
+ACAD_FIELDLIST
+350
+90
+  3
+ACAD_GROUP
+350
+4F
+  3
+ACAD_LAYOUT
+350
+18
+  3
+ACAD_MATERIAL
+350
+D
+  3
+ACAD_MLEADERSTYLE
+350
+B8
+  3
+ACAD_MLINESTYLE
+350
+50
+  3
+ACAD_PLOTSETTINGS
+350
+51
+  3
+ACAD_PLOTSTYLENAME
+350
+A
+  3
+ACAD_SCALELIST
+350
+63
+  3
+ACAD_SECTIONVIEWSTYLE
+350
+BA
+  3
+ACAD_TABLESTYLE
+350
+64
+  3
+ACAD_VISUALSTYLE
+350
+33
+  3
+ACDB_RECOMPOSE_DATA
+350
+CF
+  3
+AcDbVariableDictionary
+350
+99
+  0
+DICTIONARY
+  5
+34
+330
+30
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  0
+DICTIONARY
+  5
+23
+330
+22
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_LAYERFILTERS
+360
+24
+  3
+ACAD_LAYERSTATES
+360
+25
+  3
+ACLYDICTIONARY
+360
+26
+  0
+DICTIONARY
+  5
+7
+330
+6
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ADSK_XREC_LAYER_RECONCILED
+360
+8
+  0
+DICTIONARY
+  5
+66
+330
+65
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  0
+DICTIONARY
+  5
+3
+330
+2
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_SORTENTS
+360
+8F
+  0
+DICTIONARY
+  5
+1A
+330
+19
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_SORTENTS
+360
+8E
+  0
+XRECORD
+  5
+C3
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbXrecord
+280
+     1
+300
+ACD
+300
+2016
+300
+86445ACD_2016_0F
+  0
+DICTIONARY
+  5
+62
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  0
+DICTIONARY
+  5
+BC
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Metric50
+350
+BD
+  0
+FIELDLIST
+  5
+90
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbIdSet
+ 90
+        0
+100
+AcDbFieldList
+  0
+DICTIONARY
+  5
+4F
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  0
+DICTIONARY
+  5
+18
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+A654
+350
+1E
+  3
+Model
+350
+17
+  0
+DICTIONARY
+  5
+D
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+ByBlock
+350
+5A
+  3
+ByLayer
+350
+52
+  3
+Global
+350
+C
+  0
+DICTIONARY
+  5
+B8
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Standard
+350
+B9
+  0
+DICTIONARY
+  5
+50
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Standard
+350
+67
+  0
+DICTIONARY
+  5
+51
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  0
+ACDBDICTIONARYWDFLT
+  5
+A
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Normal
+350
+9
+100
+AcDbDictionaryWithDefault
+340
+9
+  0
+DICTIONARY
+  5
+63
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+A0
+350
+6C
+  3
+A1
+350
+6D
+  3
+A2
+350
+6E
+  3
+A3
+350
+6F
+  3
+A4
+350
+70
+  3
+A5
+350
+71
+  3
+A6
+350
+72
+  3
+A7
+350
+73
+  3
+A8
+350
+74
+  3
+A9
+350
+75
+  3
+B0
+350
+76
+  3
+B1
+350
+77
+  3
+B2
+350
+78
+  3
+B3
+350
+79
+  3
+B4
+350
+7A
+  3
+B5
+350
+7B
+  3
+B6
+350
+7C
+  3
+B7
+350
+7D
+  3
+B8
+350
+7E
+  0
+DICTIONARY
+  5
+BA
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Metric50
+350
+BB
+  0
+DICTIONARY
+  5
+64
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+Standard
+350
+68
+  0
+DICTIONARY
+  5
+33
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+2dWireframe
+350
+32
+  3
+3dWireframe
+350
+6B
+  3
+Basic
+350
+A6
+  3
+Brighten
+350
+AB
+  3
+ColorChange
+350
+AF
+  3
+Conceptual
+350
+A9
+  3
+Dim
+350
+AA
+  3
+EdgeColorOff
+350
+B7
+  3
+Facepattern
+350
+AE
+  3
+Flat
+350
+A2
+  3
+FlatWithEdges
+350
+A3
+  3
+Gouraud
+350
+A4
+  3
+GouraudWithEdges
+350
+A5
+  3
+Hidden
+350
+A8
+  3
+JitterOff
+350
+B5
+  3
+Linepattern
+350
+AD
+  3
+OverhangOff
+350
+B6
+  3
+Realistic
+350
+6A
+  3
+Shaded
+350
+B4
+  3
+Shaded with edges
+350
+B3
+  3
+Shades of Gray
+350
+B0
+  3
+Sketchy
+350
+B1
+  3
+Thicken
+350
+AC
+  3
+Wireframe
+350
+A7
+  3
+X-Ray
+350
+B2
+  0
+XRECORD
+  5
+CF
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbXrecord
+280
+     1
+ 90
+        1
+330
+68
+330
+BB
+330
+BD
+  0
+DICTIONARY
+  5
+99
+102
+{ACAD_REACTORS
+330
+B
+102
+}
+330
+B
+100
+AcDbDictionary
+281
+     1
+  3
+CANNOSCALE
+350
+9E
+  3
+CMLEADERSTYLE
+350
+9B
+  3
+CTABLESTYLE
+350
+9A
+  3
+CVIEWDETAILSTYLE
+350
+C6
+  3
+CVIEWSECTIONSTYLE
+350
+C7
+  3
+HPORIGIN
+350
+9C
+  3
+LAYEREVAL
+350
+9F
+  3
+LAYERNOTIFY
+350
+A0
+  3
+LIGHTINGUNITS
+350
+C8
+  3
+MSLTSCALE
+350
+9D
+  0
+DICTIONARY
+  5
+24
+102
+{ACAD_REACTORS
+330
+23
+102
+}
+330
+23
+100
+AcDbDictionary
+281
+     1
+  0
+DICTIONARY
+  5
+25
+102
+{ACAD_REACTORS
+330
+23
+102
+}
+330
+23
+100
+AcDbDictionary
+281
+     1
+  0
+DICTIONARY
+  5
+26
+102
+{ACAD_REACTORS
+330
+23
+102
+}
+330
+23
+100
+AcDbDictionary
+281
+     1
+1001
+ACAD
+1000
+<All
+  0
+XRECORD
+  5
+8
+102
+{ACAD_REACTORS
+330
+7
+102
+}
+330
+7
+100
+AcDbXrecord
+280
+     1
+290
+     1
+  0
+SORTENTSTABLE
+  5
+8F
+102
+{ACAD_REACTORS
+330
+3
+102
+}
+330
+3
+100
+AcDbSortentsTable
+330
+2
+331
+81
+  5
+84
+331
+82
+  5
+85
+331
+84
+  5
+82
+331
+85
+  5
+86
+331
+86
+  5
+81
+  0
+SORTENTSTABLE
+  5
+8E
+102
+{ACAD_REACTORS
+330
+1A
+102
+}
+330
+1A
+100
+AcDbSortentsTable
+330
+19
+  0
+ACDBDETAILVIEWSTYLE
+  5
+BD
+102
+{ACAD_XDICTIONARY
+360
+CD
+102
+}
+102
+{ACAD_REACTORS
+330
+BC
+102
+}
+330
+BC
+100
+AcDbModelDocViewStyle
+ 70
+     0
+  3
+Metric50
+290
+     0
+100
+AcDbDetailViewStyle
+ 70
+     0
+ 71
+     0
+ 90
+        3
+ 71
+     1
+340
+29
+ 62
+   256
+ 40
+5.0
+340
+0
+ 62
+   256
+ 40
+5.0
+300
+
+ 40
+0.0
+280
+     1
+ 71
+     2
+340
+15
+ 90
+       25
+ 62
+   256
+ 71
+     3
+340
+29
+ 62
+   256
+ 40
+5.0
+ 90
+        0
+ 40
+15.0
+ 90
+        1
+300
+%<\AcVar ViewDetailId>% (%<\AcVar ViewScale \f "%sn">%)
+ 71
+     4
+340
+15
+ 90
+       25
+ 62
+   256
+340
+15
+ 90
+       25
+ 62
+   256
+280
+     0
+  0
+LAYOUT
+  5
+1E
+102
+{ACAD_XDICTIONARY
+360
+1F
+102
+}
+102
+{ACAD_REACTORS
+330
+18
+102
+}
+330
+18
+100
+AcDbPlotSettings
+  1
+
+  2
+CutePDF Writer
+  4
+User156
+  6
+
+ 40
+3.174999952316284
+ 41
+3.174999952316284
+ 42
+3.17498779296875
+ 43
+3.175048828125
+ 44
+841.0
+ 45
+1188.800048828125
+ 46
+-3.174993872642403
+ 47
+-3.274999976158028
+ 48
+0.0
+ 49
+0.0
+140
+1189.0
+141
+841.0
+142
+1.0
+143
+1.0
+ 70
+   676
+ 72
+     1
+ 73
+     1
+ 74
+     4
+  7
+MT Full Size.ctb
+ 75
+    16
+147
+0.9999999999999998
+ 76
+     0
+ 77
+     2
+ 78
+   300
+148
+0.0
+149
+0.0
+100
+AcDbLayout
+  1
+A654
+ 70
+     1
+ 71
+     1
+ 10
+0.0999511480330284
+ 20
+-0.0000060796738808
+ 11
+1188.899999976158
+ 21
+840.9999939203263
+ 12
+0.0
+ 22
+0.0
+ 32
+0.0
+ 14
+0.0
+ 24
+0.0
+ 34
+0.0
+ 15
+1182.438175547683
+ 25
+834.6416657545924
+ 35
+0.0
+146
+0.0
+ 13
+0.0
+ 23
+0.0
+ 33
+0.0
+ 16
+1.0
+ 26
+0.0
+ 36
+0.0
+ 17
+0.0
+ 27
+1.0
+ 37
+0.0
+ 76
+     0
+330
+19
+1001
+ACAD_PSEXT
+1000
+CutePDF Writer
+1000
+CutePDF Writer
+1000
+CPW2:
+1000
+
+1070
+     0
+  0
+LAYOUT
+  5
+17
+102
+{ACAD_REACTORS
+330
+18
+102
+}
+330
+18
+100
+AcDbPlotSettings
+  1
+
+  2
+RICOH MP 6500 BLACK PS
+  4
+11x17
+  6
+
+ 40
+5.027083396911621
+ 41
+5.027085304260253
+ 42
+5.027099609375
+ 43
+5.027069091796875
+ 44
+279.3999938964844
+ 45
+431.7999877929687
+ 46
+1.169999999999999
+ 47
+22.34
+ 48
+1075.0
+ 49
+500.0
+140
+29354.25863482163
+141
+20525.0
+142
+1.0
+143
+75.0
+ 70
+ 11940
+ 72
+     1
+ 73
+     1
+ 74
+     4
+  7
+MT Full Size.ctb
+ 75
+     0
+147
+0.0133333333333333
+ 76
+     0
+ 77
+     2
+ 78
+   300
+148
+-1075.0
+149
+-500.0
+100
+AcDbLayout
+  1
+Model
+ 70
+     1
+ 71
+     0
+ 10
+0.0
+ 20
+0.0
+ 11
+12.0
+ 21
+9.0
+ 12
+0.0
+ 22
+0.0
+ 32
+0.0
+ 14
+0.0
+ 24
+0.0
+ 34
+0.0
+ 15
+0.0
+ 25
+0.0
+ 35
+0.0
+146
+0.0
+ 13
+0.0
+ 23
+0.0
+ 33
+0.0
+ 16
+1.0
+ 26
+0.0
+ 36
+0.0
+ 17
+0.0
+ 27
+1.0
+ 37
+0.0
+ 76
+     0
+330
+2
+331
+31
+  0
+MATERIAL
+  5
+5A
+102
+{ACAD_XDICTIONARY
+360
+5B
+102
+}
+102
+{ACAD_REACTORS
+330
+D
+102
+}
+330
+D
+100
+AcDbMaterial
+  1
+ByBlock
+ 72
+     0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 77
+     0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+171
+     0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+175
+     0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+179
+     0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+  0
+MATERIAL
+  5
+52
+102
+{ACAD_XDICTIONARY
+360
+53
+102
+}
+102
+{ACAD_REACTORS
+330
+D
+102
+}
+330
+D
+100
+AcDbMaterial
+  1
+ByLayer
+ 72
+     0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 77
+     0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+171
+     0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+175
+     0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+179
+     0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+  0
+MATERIAL
+  5
+C
+102
+{ACAD_XDICTIONARY
+360
+E
+102
+}
+102
+{ACAD_REACTORS
+330
+D
+102
+}
+330
+D
+100
+AcDbMaterial
+  1
+Global
+ 72
+     0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0008202099737533
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+0.0
+ 43
+1.0
+ 77
+     0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0008202099737533
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+0.0
+ 47
+1.0
+171
+     0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0008202099737533
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+0.0
+ 49
+1.0
+175
+     0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0008202099737533
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+0.0
+142
+1.0
+179
+     0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0008202099737533
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+0.0
+144
+1.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0008202099737533
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+0.0
+147
+1.0
+  0
+MLEADERSTYLE
+  5
+B9
+102
+{ACAD_REACTORS
+330
+B8
+102
+}
+330
+B8
+100
+AcDbMLeaderStyle
+179
+     2
+170
+     2
+171
+     1
+172
+     0
+ 90
+        2
+ 40
+0.0
+ 41
+0.0
+173
+     1
+ 91
+-1056964608
+340
+2C
+ 92
+       -2
+290
+     1
+ 42
+2.0
+291
+     1
+ 43
+0.36
+  3
+Standard
+ 44
+4.0
+300
+
+342
+29
+174
+     1
+178
+     6
+175
+     1
+176
+     0
+ 93
+-1056964608
+ 45
+4.0
+292
+     0
+297
+     0
+ 46
+4.0
+ 94
+-1056964608
+ 47
+1.0
+ 49
+1.0
+140
+1.0
+293
+     1
+141
+0.0
+294
+     1
+177
+     0
+142
+1.0
+295
+     1
+296
+     0
+143
+0.125
+271
+     0
+272
+     9
+273
+     9
+298
+     1
+  0
+MLINESTYLE
+  5
+67
+102
+{ACAD_REACTORS
+330
+50
+102
+}
+330
+50
+100
+AcDbMlineStyle
+  2
+STANDARD
+ 70
+     0
+  3
+
+ 62
+   256
+ 51
+90.0
+ 52
+90.0
+ 71
+     2
+ 49
+0.5
+ 62
+   256
+  6
+BYLAYER
+ 49
+-0.5
+ 62
+   256
+  6
+BYLAYER
+  0
+ACDBPLACEHOLDER
+  5
+9
+102
+{ACAD_REACTORS
+330
+A
+102
+}
+330
+A
+  0
+SCALE
+  5
+6C
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:25_XREF
+140
+1.0
+141
+25.0
+290
+     0
+  0
+SCALE
+  5
+6D
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:10_XREF
+140
+1.0
+141
+0.01
+290
+     0
+  0
+SCALE
+  5
+6E
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:1
+140
+1.0
+141
+1.0
+290
+     1
+  0
+SCALE
+  5
+6F
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:100
+140
+1.0
+141
+100.0
+290
+     0
+  0
+SCALE
+  5
+70
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:50
+140
+1.0
+141
+50.0
+290
+     0
+  0
+SCALE
+  5
+71
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:10
+140
+1.0
+141
+10.0
+290
+     0
+  0
+SCALE
+  5
+72
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:5
+140
+1.0
+141
+5.0
+290
+     0
+  0
+SCALE
+  5
+73
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:2
+140
+1.0
+141
+2.0
+290
+     0
+  0
+SCALE
+  5
+74
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:4
+140
+1.0
+141
+4.0
+290
+     0
+  0
+SCALE
+  5
+75
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:8
+140
+1.0
+141
+8.0
+290
+     0
+  0
+SCALE
+  5
+76
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:16
+140
+1.0
+141
+16.0
+290
+     0
+  0
+SCALE
+  5
+77
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:20
+140
+1.0
+141
+20.0
+290
+     0
+  0
+SCALE
+  5
+78
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:30
+140
+1.0
+141
+30.0
+290
+     0
+  0
+SCALE
+  5
+79
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+1:40
+140
+1.0
+141
+40.0
+290
+     0
+  0
+SCALE
+  5
+7A
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+2:1
+140
+2.0
+141
+1.0
+290
+     0
+  0
+SCALE
+  5
+7B
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+4:1
+140
+4.0
+141
+1.0
+290
+     0
+  0
+SCALE
+  5
+7C
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+8:1
+140
+8.0
+141
+1.0
+290
+     0
+  0
+SCALE
+  5
+7D
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+10:1
+140
+10.0
+141
+1.0
+290
+     0
+  0
+SCALE
+  5
+7E
+102
+{ACAD_REACTORS
+330
+63
+102
+}
+330
+63
+100
+AcDbScale
+ 70
+     0
+300
+100:1
+140
+100.0
+141
+1.0
+290
+     0
+  0
+ACDBSECTIONVIEWSTYLE
+  5
+BB
+102
+{ACAD_XDICTIONARY
+360
+CB
+102
+}
+102
+{ACAD_REACTORS
+330
+BA
+102
+}
+330
+BA
+100
+AcDbModelDocViewStyle
+ 70
+     0
+  3
+Metric50
+290
+     0
+100
+AcDbSectionViewStyle
+ 70
+     0
+ 71
+     0
+ 90
+      102
+ 71
+     1
+340
+29
+ 62
+   256
+ 40
+5.0
+340
+0
+340
+0
+ 62
+   256
+ 40
+5.0
+300
+I, O, Q, S, X, Z
+ 40
+10.0
+ 90
+        0
+ 40
+2.5
+ 90
+        0
+ 71
+     2
+340
+15
+ 90
+       25
+ 62
+   256
+340
+15
+ 90
+       50
+ 62
+   256
+ 40
+5.0
+ 40
+2.5
+ 40
+5.0
+ 71
+     3
+340
+29
+ 62
+   256
+ 40
+5.0
+ 90
+        0
+ 40
+15.0
+ 90
+        1
+300
+%<\AcVar ViewSectionStartId>%-%<\AcVar ViewSectionEndId>% (%<\AcVar ViewScale \f "%sn">%)
+ 71
+     4
+ 62
+   256
+ 62
+   257
+300
+ANSI31
+ 40
+1.0
+ 90
+        0
+290
+     0
+290
+     0
+ 90
+        6
+ 40
+0.0
+ 40
+1.570796326794896
+ 40
+0.2617993877991494
+ 40
+1.308996938995747
+ 40
+-0.2617993877991494
+ 40
+1.832595714594046
+  0
+TABLESTYLE
+  5
+68
+102
+{ACAD_XDICTIONARY
+360
+69
+102
+}
+102
+{ACAD_REACTORS
+330
+64
+102
+}
+330
+64
+100
+AcDbTableStyle
+280
+     0
+  3
+Standard
+ 70
+     0
+ 71
+     0
+ 40
+1.5
+ 41
+1.5
+280
+     0
+281
+     0
+  7
+Standard
+140
+4.5
+170
+     2
+ 62
+     0
+ 63
+     7
+283
+     0
+ 90
+      512
+ 91
+        0
+  1
+
+274
+    -2
+284
+     1
+ 64
+     0
+275
+    -2
+285
+     1
+ 65
+     0
+276
+    -2
+286
+     1
+ 66
+     0
+277
+    -2
+287
+     1
+ 67
+     0
+278
+    -2
+288
+     1
+ 68
+     0
+279
+    -2
+289
+     1
+ 69
+     0
+  7
+Standard
+140
+6.0
+170
+     5
+ 62
+     0
+ 63
+     7
+283
+     0
+ 90
+      512
+ 91
+        0
+  1
+
+274
+    -2
+284
+     1
+ 64
+     0
+275
+    -2
+285
+     1
+ 65
+     0
+276
+    -2
+286
+     1
+ 66
+     0
+277
+    -2
+287
+     1
+ 67
+     0
+278
+    -2
+288
+     1
+ 68
+     0
+279
+    -2
+289
+     1
+ 69
+     0
+  7
+Standard
+140
+4.5
+170
+     5
+ 62
+     0
+ 63
+     7
+283
+     0
+ 90
+      512
+ 91
+        0
+  1
+
+274
+    -2
+284
+     1
+ 64
+     0
+275
+    -2
+285
+     1
+ 65
+     0
+276
+    -2
+286
+     1
+ 66
+     0
+277
+    -2
+287
+     1
+ 67
+     0
+278
+    -2
+288
+     1
+ 68
+     0
+279
+    -2
+289
+     1
+ 69
+     0
+  0
+VISUALSTYLE
+  5
+32
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+2dWireframe
+ 70
+     4
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        0
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+6B
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+3dWireframe
+ 70
+     5
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        0
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A6
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Basic
+ 70
+     7
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+AB
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Brighten
+ 70
+    12
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+50.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+AF
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+ColorChange
+ 70
+    16
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     8
+420
+  8421504
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     8
+420
+  8421504
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A9
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Conceptual
+ 70
+     9
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        3
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+179.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+AA
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Dim
+ 70
+    11
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+-50.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B7
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+EdgeColorOff
+ 70
+    22
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     0
+ 90
+        2
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+ 40
+0.6
+176
+     0
+ 40
+30.0
+176
+     0
+ 62
+     7
+420
+ 16777215
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        4
+176
+     0
+ 62
+     7
+176
+     0
+ 62
+   257
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        8
+176
+     2
+ 62
+     7
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        6
+176
+     0
+ 90
+        2
+176
+     0
+ 62
+     7
+176
+     0
+ 90
+        5
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+0.0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+290
+     1
+176
+     0
+290
+     1
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 40
+0.0
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        0
+176
+     0
+ 62
+    18
+420
+        0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+        3
+176
+     0
+ 62
+     5
+420
+      255
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     0
+  1
+strokes_ogs.tif
+176
+     0
+290
+     0
+176
+     0
+ 40
+1.0
+176
+     0
+ 40
+1.0
+176
+     0
+  0
+VISUALSTYLE
+  5
+AE
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Facepattern
+ 70
+    15
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A2
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Flat
+ 70
+     0
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A3
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+FlatWithEdges
+ 70
+     1
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A4
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Gouraud
+ 70
+     2
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A5
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+GouraudWithEdges
+ 70
+     3
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A8
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Hidden
+ 70
+     6
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+40.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B5
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+JitterOff
+ 70
+    20
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     0
+ 90
+        2
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+ 40
+0.6
+176
+     0
+ 40
+30.0
+176
+     0
+ 62
+     7
+420
+ 16777215
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        4
+176
+     0
+ 62
+     7
+176
+     0
+ 62
+   257
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+       10
+176
+     2
+ 62
+     7
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        6
+176
+     0
+ 90
+        2
+176
+     0
+ 62
+     7
+176
+     0
+ 90
+        5
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+0.0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+290
+     1
+176
+     0
+290
+     1
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 40
+0.0
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        0
+176
+     0
+ 62
+    18
+420
+        0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+        3
+176
+     0
+ 62
+     5
+420
+      255
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     0
+  1
+strokes_ogs.tif
+176
+     0
+290
+     0
+176
+     0
+ 40
+1.0
+176
+     0
+ 40
+1.0
+176
+     0
+  0
+VISUALSTYLE
+  5
+AD
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Linepattern
+ 70
+    14
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        7
+176
+     1
+ 90
+        7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B6
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+OverhangOff
+ 70
+    21
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     0
+ 90
+        2
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+ 40
+0.6
+176
+     0
+ 40
+30.0
+176
+     0
+ 62
+     7
+420
+ 16777215
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        4
+176
+     0
+ 62
+     7
+176
+     0
+ 62
+   257
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        9
+176
+     2
+ 62
+     7
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        1
+176
+     0
+ 90
+        6
+176
+     0
+ 90
+        2
+176
+     0
+ 62
+     7
+176
+     0
+ 90
+        5
+176
+     0
+ 90
+        0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+ 90
+        1
+176
+     0
+ 40
+0.0
+176
+     0
+ 90
+        0
+176
+     0
+290
+     0
+176
+     0
+290
+     1
+176
+     0
+290
+     1
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 40
+0.0
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        0
+176
+     0
+ 62
+    18
+420
+        0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+        3
+176
+     0
+ 62
+     5
+420
+      255
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+ 90
+       50
+176
+     0
+290
+     0
+176
+     0
+ 90
+       50
+176
+     0
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     0
+  1
+strokes_ogs.tif
+176
+     0
+290
+     0
+176
+     0
+ 40
+1.0
+176
+     0
+ 40
+1.0
+176
+     0
+  0
+VISUALSTYLE
+  5
+6A
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Realistic
+ 70
+     8
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     8
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B4
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Shaded
+ 70
+    27
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     8
+420
+  7895160
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        5
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B3
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Shaded with edges
+ 70
+    26
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+       10
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        5
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B0
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Shades of Gray
+ 70
+    23
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+40.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B1
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Sketchy
+ 70
+    24
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        1
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+40.0
+176
+     1
+ 90
+       11
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+AC
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Thicken
+ 70
+    13
+177
+     3
+291
+     1
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+       12
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        5
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+A7
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+Wireframe
+ 70
+     5
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        0
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+ 40
+0.6
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        4
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+   257
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+VISUALSTYLE
+  5
+B2
+102
+{ACAD_REACTORS
+330
+33
+102
+}
+330
+33
+100
+AcDbVisualStyle
+  2
+X-Ray
+ 70
+    25
+177
+     3
+291
+     0
+ 70
+    58
+ 90
+        2
+176
+     1
+ 90
+        2
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+0.5
+176
+     1
+ 40
+30.0
+176
+     1
+ 62
+     7
+420
+ 16777215
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+     7
+176
+     1
+ 62
+   257
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        1
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        8
+176
+     1
+ 62
+     7
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        1
+176
+     1
+ 90
+        6
+176
+     1
+ 90
+        2
+176
+     1
+ 62
+     7
+176
+     1
+ 90
+        3
+176
+     1
+ 90
+        0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       13
+176
+     1
+ 40
+0.0
+176
+     1
+ 90
+        0
+176
+     1
+290
+     0
+176
+     1
+290
+     1
+176
+     1
+290
+     1
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 40
+0.0
+176
+     1
+ 40
+1.0
+176
+     1
+ 90
+        0
+176
+     1
+ 62
+    18
+420
+        0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+        3
+176
+     1
+ 62
+     5
+420
+      255
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+ 90
+       50
+176
+     1
+290
+     0
+176
+     1
+ 90
+       50
+176
+     1
+ 62
+   256
+176
+     0
+ 40
+1.0
+176
+     0
+ 90
+        2
+176
+     1
+  1
+strokes_ogs.tif
+176
+     1
+290
+     0
+176
+     1
+ 40
+1.0
+176
+     1
+ 40
+1.0
+176
+     1
+  0
+DICTIONARYVAR
+  5
+9E
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+1:10
+  0
+DICTIONARYVAR
+  5
+9B
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+STANDARD
+  0
+DICTIONARYVAR
+  5
+9A
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+STANDARD
+  0
+DICTIONARYVAR
+  5
+C6
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+Metric50
+  0
+DICTIONARYVAR
+  5
+C7
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+Metric50
+  0
+DICTIONARYVAR
+  5
+9C
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+18218.452634;13898.658203
+  0
+DICTIONARYVAR
+  5
+9F
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+0
+  0
+DICTIONARYVAR
+  5
+A0
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+14
+  0
+DICTIONARYVAR
+  5
+C8
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+0
+  0
+DICTIONARYVAR
+  5
+9D
+102
+{ACAD_REACTORS
+330
+99
+102
+}
+330
+99
+100
+DictionaryVariables
+280
+     0
+  1
+1
+  0
+DICTIONARY
+  5
+CD
+330
+BD
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_XREC_ROUNDTRIP
+360
+CE
+  0
+DICTIONARY
+  5
+1F
+330
+1E
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  0
+DICTIONARY
+  5
+5B
+330
+5A
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+BUMPTILE
+360
+5C
+  3
+DIFFUSETILE
+360
+5D
+  3
+OPACITYTILE
+360
+5E
+  3
+REFLECTIONTILE
+360
+5F
+  3
+REFRACTIONTILE
+360
+60
+  3
+SPECULARTILE
+360
+61
+  0
+DICTIONARY
+  5
+53
+330
+52
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+BUMPTILE
+360
+54
+  3
+DIFFUSETILE
+360
+55
+  3
+OPACITYTILE
+360
+56
+  3
+REFLECTIONTILE
+360
+57
+  3
+REFRACTIONTILE
+360
+58
+  3
+SPECULARTILE
+360
+59
+  0
+DICTIONARY
+  5
+E
+330
+C
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+BUMPTILE
+360
+F
+  3
+DIFFUSETILE
+360
+10
+  3
+OPACITYTILE
+360
+11
+  3
+REFLECTIONTILE
+360
+12
+  3
+REFRACTIONTILE
+360
+13
+  3
+SPECULARTILE
+360
+14
+  0
+DICTIONARY
+  5
+CB
+330
+BB
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_XREC_ROUNDTRIP
+360
+CC
+  0
+DICTIONARY
+  5
+69
+330
+68
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
+360
+CA
+  0
+XRECORD
+  5
+CE
+102
+{ACAD_REACTORS
+330
+CD
+102
+}
+330
+CD
+100
+AcDbXrecord
+280
+     1
+102
+DISPLAYNAME
+  1
+Metric50
+102
+FLAGS
+ 90
+        0
+  0
+XRECORD
+  5
+5C
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+5D
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+5E
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+5F
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+60
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+61
+102
+{ACAD_REACTORS
+330
+5B
+102
+}
+330
+5B
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+54
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+55
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+56
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+57
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+58
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+59
+102
+{ACAD_REACTORS
+330
+53
+102
+}
+330
+53
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+F
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+10
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+11
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+12
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+13
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+14
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbXrecord
+280
+     1
+270
+     1
+271
+     1
+  0
+XRECORD
+  5
+CC
+102
+{ACAD_REACTORS
+330
+CB
+102
+}
+330
+CB
+100
+AcDbXrecord
+280
+     1
+102
+DISPLAYNAME
+  1
+Metric50
+102
+FLAGS
+ 90
+        0
+  0
+CELLSTYLEMAP
+  5
+CA
+102
+{ACAD_REACTORS
+330
+69
+102
+}
+330
+69
+100
+AcDbCellStyleMap
+ 90
+        3
+300
+CELLSTYLE
+  1
+TABLEFORMAT_BEGIN
+ 90
+        5
+170
+     1
+ 91
+        0
+ 92
+    32768
+ 62
+   257
+ 93
+        1
+300
+CONTENTFORMAT
+  1
+CONTENTFORMAT_BEGIN
+ 90
+        0
+ 91
+        0
+ 92
+      512
+ 93
+        0
+300
+
+ 40
+0.0
+140
+1.0
+ 94
+        5
+ 62
+     0
+340
+29
+144
+6.0
+309
+CONTENTFORMAT_END
+171
+     1
+301
+MARGIN
+  1
+CELLMARGIN_BEGIN
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+4.5
+ 40
+4.5
+309
+CELLMARGIN_END
+ 94
+        6
+ 95
+        1
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        2
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        4
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        8
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       16
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       32
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+309
+TABLEFORMAT_END
+  1
+CELLSTYLE_BEGIN
+ 90
+        1
+ 91
+        1
+300
+_TITLE
+309
+CELLSTYLE_END
+300
+CELLSTYLE
+  1
+TABLEFORMAT_BEGIN
+ 90
+        5
+170
+     1
+ 91
+        0
+ 92
+        0
+ 62
+   257
+ 93
+        1
+300
+CONTENTFORMAT
+  1
+CONTENTFORMAT_BEGIN
+ 90
+        0
+ 91
+        0
+ 92
+      512
+ 93
+        0
+300
+
+ 40
+0.0
+140
+1.0
+ 94
+        5
+ 62
+     0
+340
+29
+144
+4.5
+309
+CONTENTFORMAT_END
+171
+     1
+301
+MARGIN
+  1
+CELLMARGIN_BEGIN
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+4.5
+ 40
+4.5
+309
+CELLMARGIN_END
+ 94
+        6
+ 95
+        1
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        2
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        4
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        8
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       16
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       32
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+309
+TABLEFORMAT_END
+  1
+CELLSTYLE_BEGIN
+ 90
+        2
+ 91
+        1
+300
+_HEADER
+309
+CELLSTYLE_END
+300
+CELLSTYLE
+  1
+TABLEFORMAT_BEGIN
+ 90
+        5
+170
+     1
+ 91
+        0
+ 92
+        0
+ 62
+   257
+ 93
+        1
+300
+CONTENTFORMAT
+  1
+CONTENTFORMAT_BEGIN
+ 90
+        0
+ 91
+        0
+ 92
+      512
+ 93
+        0
+300
+
+ 40
+0.0
+140
+1.0
+ 94
+        2
+ 62
+     0
+340
+29
+144
+4.5
+309
+CONTENTFORMAT_END
+171
+     1
+301
+MARGIN
+  1
+CELLMARGIN_BEGIN
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+1.5
+ 40
+4.5
+ 40
+4.5
+309
+CELLMARGIN_END
+ 94
+        6
+ 95
+        1
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        2
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        4
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+        8
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       16
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+ 95
+       32
+302
+GRIDFORMAT
+  1
+GRIDFORMAT_BEGIN
+ 90
+        0
+ 91
+        1
+ 62
+     0
+ 92
+       -2
+340
+0
+ 93
+        0
+ 40
+1.125
+309
+GRIDFORMAT_END
+309
+TABLEFORMAT_END
+  1
+CELLSTYLE_BEGIN
+ 90
+        3
+ 91
+        2
+300
+_DATA
+309
+CELLSTYLE_END
+  0
+ENDSEC
+  0
+SECTION
+  2
+ACDSDATA
+ 70
+     2
+ 71
+     8
+  0
+ACDSSCHEMA
+ 90
+        0
+  1
+AcDb_Thumbnail_Schema
+  2
+AcDbDs::ID
+280
+    10
+ 91
+        8
+  2
+Thumbnail_Data
+280
+    15
+ 91
+        0
+101
+ACDSRECORD
+ 95
+        0
+ 90
+        1
+  2
+AcDbDs::TreatedAsObjectData
+280
+     1
+291
+     1
+101
+ACDSRECORD
+ 95
+        0
+ 90
+        2
+  2
+AcDbDs::Legacy
+280
+     1
+291
+     1
+101
+ACDSRECORD
+  1
+AcDbDs::ID
+ 90
+        3
+  2
+AcDs:Indexable
+280
+     1
+291
+     1
+101
+ACDSRECORD
+  1
+AcDbDs::ID
+ 90
+        4
+  2
+AcDbDs::HandleAttribute
+280
+     7
+282
+     1
+  0
+ACDSSCHEMA
+ 90
+        1
+  1
+AcDbDs::TreatedAsObjectDataSchema
+  2
+AcDbDs::TreatedAsObjectData
+280
+     1
+ 91
+        0
+  0
+ACDSSCHEMA
+ 90
+        2
+  1
+AcDbDs::LegacySchema
+  2
+AcDbDs::Legacy
+280
+     1
+ 91
+        0
+  0
+ACDSSCHEMA
+ 90
+        3
+  1
+AcDbDs::IndexedPropertySchema
+  2
+AcDs:Indexable
+280
+     1
+ 91
+        0
+  0
+ACDSSCHEMA
+ 90
+        4
+  1
+AcDbDs::HandleAttributeSchema
+  2
+AcDbDs::HandleAttribute
+280
+     7
+ 91
+        1
+284
+     1
+  0
+ACDSRECORD
+ 90
+        0
+  2
+AcDbDs::ID
+280
+    10
+320
+1E
+  2
+Thumbnail_Data
+280
+    15
+ 94
+     2618
+310
+89504E470D0A1A0A0000000D49484452000000B40000007F0803000000713C187700000300504C5445000000000000FFFFFF0000000000000000000000000000000000000000000000000000330000660000990000CC0000FF0033000033330033660033990033CC0033FF0066000066330066660066990066CC0066FF0099
+310
+000099330099660099990099CC0099FF00CC0000CC3300CC6600CC9900CCCC00CCFF00FF0000FF3300FF6600FF9900FFCC00FFFF3300003300333300663300993300CC3300FF3333003333333333663333993333CC3333FF3366003366333366663366993366CC3366FF3399003399333399663399993399CC3399FF33CC00
+310
+33CC3333CC6633CC9933CCCC33CCFF33FF0033FF3333FF6633FF9933FFCC33FFFF6600006600336600666600996600CC6600FF6633006633336633666633996633CC6633FF6666006666336666666666996666CC6666FF6699006699336699666699996699CC6699FF66CC0066CC3366CC6666CC9966CCCC66CCFF66FF0066
+310
+FF3366FF6666FF9966FFCC66FFFF9900009900339900669900999900CC9900FF9933009933339933669933999933CC9933FF9966009966339966669966999966CC9966FF9999009999339999669999999999CC9999FF99CC0099CC3399CC6699CC9999CCCC99CCFF99FF0099FF3399FF6699FF9999FFCC99FFFFCC0000CC00
+310
+33CC0066CC0099CC00CCCC00FFCC3300CC3333CC3366CC3399CC33CCCC33FFCC6600CC6633CC6666CC6699CC66CCCC66FFCC9900CC9933CC9966CC9999CC99CCCC99FFCCCC00CCCC33CCCC66CCCC99CCCCCCCCCCFFCCFF00CCFF33CCFF66CCFF99CCFFCCCCFFFFFF0000FF0033FF0066FF0099FF00CCFF00FFFF3300FF3333
+310
+FF3366FF3399FF33CCFF33FFFF6600FF6633FF6666FF6699FF66CCFF66FFFF9900FF9933FF9966FF9999FF99CCFF99FFFFCC00FFCC33FFCC66FFCC99FFCCCCFFCCFFFFFF00FFFF33FFFF66FFFF99FFFFCCFFFFFF0000000D0D0D1A1A1A2828283535354343435050505D5D5D6B6B6B787878868686939393A1A1A1AEAEAEBB
+310
+BBBBC9C9C9D6D6D6E4E4E4F1F1F1FFFFFF000000000000000000000000000000000000000000000000000000000000C11FEF66000006F54944415478DAED9C4D72E32A10C7E70CB3992BA4A8E232AEB7C929D871989C8053E80053EF14BD7B152FE405FBD77C0A100284645B4C4D97622771887E6EFDD574D3927FC801EDC7
+310
+349E21B484C1CC430FA48D08BAF8EE6A2F1F1A2CCBAFCA6457834397778CAFB1921D1B5C1ABD028BA12BC6D403570F33FE3597F8E4FF0F6B1ABC41551DFCC7404323B43A8EC341F3C5246E6CF6A21C035A718FE169BA186783C9E38EC67DB0BA3AB48E1E1C34F43027A262166ABBC340D0E866A58FA1A0558CBE8CA7F7CC88
+310
+82C378D09791C71FEF69D4F43542DE4E795C0BBA96C717CAB67A115086EE2D02AA2551C921ECC060C99E58235E117A4879D44FC4BB9B11C1843C18217ADCDDE4321AF4789E566B7F6A461C0A1A6D9283C9C3E61EBAE61A0B1A69D1387D37F4BE1A51CB63F77EDF0A6DA3C740D01F1F269F1E0DFA2EC47D38794CD37D44E8BE
+310
+FD5E0EFAD0AA69CBE073A0D3FE431774FBE023D06A5699A68D7CBA65F06632FEC41AF1828DA2BF2DB957791A9A6549290D9EDEACE97A0030FF9ECED43FC9CBA7A6EE70DAA5A5D9CB712FF4AFD7427B5AF7D403FD2BB2E71701668209AF17B9BAA72DB01C0C9A90494C913C600068E5EAF1A005965B4342136BF88B0FAC669A
+310
+A07F2EF6526804B4D01A1F764103B2EA2FF8F9264FABEF1823BE393E0CB4DE5CBEF37A68D8092D88D05FEAC95A1DFA333412D92BA081CF7A410F66D32B0775954D75F00D0037304F9F2FF734E7B359849C1D336F0B7937B79D09DDD03631F250C639E6D3813C6A830371C06D05BDBF0880B6728BD168725157052DFBDDD1DD
+310
+FABCA59EEE29B79AA1E7194F9BD91AD59BB53AF47FDE3EF566EC1BED08745D1E254FEF68C985F2F8FE3E268FBDB94702DD9E7B84F270D0CF8FD30713A64F38035AFE856E80BE0D087D7BB9A7E3CAE5A33D357DA73C269886930799D2C5DEEBCBC3DC5A726C09E1E5F280135698DE0FDD258FDBBBA1BB2697EF9BB1EFA1A003
+310
+470F02AD3D6CED1DD07AD4CE961CD62E8B3CBAFB88FBA1EDDA3A66EF1D7DC47FFCEF8EF411FFB6E4BA063FAF46BC2274F510965F3E34F8408D189C1074A6323D916CFB424C614BCE6779BA1E77E9B654CE9BBFC2C166014C485B59EE2A30ABD036439E210FCDE5C4B3A969081DB87081D683D575663E709C070D2B68164173
+310
+D8802684DB05C5D9DE8FF6E5A5E3A0397EE9515FC1713803DA01C9309C36404B7FFF5C11FACBD879D0C1FAD13C4BB778641EBD3C18679BD054E152CA095BA043793CC3D394643CCD024D33C639DBF434805B4DB5D0906ADA41EFBCC52E77DF78E86921839B3BF522AEF989D936B382DEF4B4661665E81E79B0894D6A73B552
+310
+388D334EF834C9185AA6D09B9AD68BD582FB05FE82A7F7CA230890E134FED0D05CAF1084F2C077D8183DA4B9D8971320F81E09C985BC08FAC358237420A7185A0896CA43A94139D84187BD92759C0613A77DF4A8C9A371D1C4425B3724D0E0DF8DF334FBFD3B9E5C08414F13F34D193A985FD69EDE792226D73DC4D0AB38CD
+310
+5802CD892C42DB06122F470FFCCD12C59B43DE9495476672893D8D6E2653A3A74F8C1E75E8651AC76F501E0CECCDF9CC281AB1741F71139ACFB4EAE9B3A193C925C82E758F16D33C502D395190076C402F17409D085D49893534BA52DFED2E489C5D86F2C8412757B5E9E270B9C4AD299FCE40B7B4E4166848A065111A0713
+310
+C397856EAC5CFAA0671D9D0575FDB8B02517CB23C9A715B47ECECBA30A5D0A791579D0481EB4200FB6A4A6A1A6B55FB39AEEABC69713D1758E67FD18572E0467CD16E8DC89A84C0A217B1226C61E0FE7BDD4D33ADA09732F8B69D7A7D08CB9402C602B7AA82280CA5CF4509F65021DD143B13E321F69643CADA0315F769E06
+310
+102B676151852F318C781B711A0510CCE25E5BC4BC25D10B5D9487CA3E85E9C7D2C4D3C45C4E4354E50A16DA378A227938AC045AE5E69D33A2FB6091A87279D8E6B7BB6788E2AE29A4D06AFAE66656D980F6545FA93C347D9FA7CBD02A7A09BD51739D81F0314DED575D2EB65883A72368D0770476416F945B81A70379249A
+310
+568F7CA3F9B9824E8B00664ED333AB715BB9708E499CBA76C61C8BE56375FC11E6F1F5D3EBE811C8C3512F2722F4E61EDBF27009B7CD8A3139F2F7F13968E569D6E4E95CC8F3837BA161039A6B547D75550A6DD710F2D0EE9804D0AE0A0CA0FBE4117C2E11CDC983AB6419E710332392441EB85FB6A16963F7247AE8F3F468
+310
+9C2E9E88FA2F885DA099DD0FA13CF08DB10D799805B08A3C3A67C4D2890821671EBA123D7291389E113BA307DBAEC6D5C12C429BF9320FAD43F6123D72D338E61EC7A09369FCE1A1238B9CC520EB69DDA0AADC7D63A0EFB9E3D0A669B6D40D09746094D0B446B40953183D96AE1A93C4CA63BDD6BF0C16FCFEAFB31DB7F605
+310
+173CECAD11DFD773518B736CF2CDBFC5D317EE6E21F043D950D0561E6B4F5FFAE35783D2DD9F88E1E548B929E8C80B67FE2FF78B69CC0F18FE1FA2285EE0CC493CE60000000049454E44AE426082
+  0
+ENDSEC
+  0
+EOF
