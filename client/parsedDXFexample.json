@@ -1,0 +1,242 @@
+{
+   "header": {
+      "$ACADVER": "AC1027",
+      "$ACADMAINTVER": 55,
+      "$DWGCODEPAGE": "ANSI_1252",
+      "$REQUIREDVERSIONS": 0,
+      "$INSBASE": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "$EXTMIN": {
+         "x": 146.8403717847312,
+         "y": 141.8294137695975,
+         "z": -5.934454319554902
+      },
+      "$EXTMAX": {
+         "x": 762.6679804989191,
+         "y": 545.821967323924,
+         "z": 6.065545680445099
+      }
+   },
+   "tables": {
+      "lineType": {
+         "handle": "5",
+         "ownerHandle": "0",
+         "lineTypes": {
+            "Continuous": {
+               "name": "Continuous",
+               "description": "Solid line",
+               "patternLength": 0
+            },
+            "HIDDEN2": {
+               "name": "HIDDEN2",
+               "description": "Hidden (.5x) _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
+               "pattern": [
+                  0.125,
+                  -0.0625
+               ],
+               "patternLength": 0.1875
+            },
+            "CENTER": {
+               "name": "CENTER",
+               "description": "____ _ ____ _ ____ _ ____ _ ____ _ ____ _ ____",
+               "pattern": [
+                  1.25,
+                  -0.25,
+                  0.25,
+                  -0.25
+               ],
+               "patternLength": 2
+            }
+         }
+      },
+      "layer": {
+         "handle": "2",
+         "ownerHandle": "0",
+         "layers": {
+            "FG-Dim": {
+               "name": "FG-Dim",
+               "visible": true,
+               "color": 16711680
+            },
+            "FG-Dtl-Hatch": {
+               "name": "FG-Dtl-Hatch",
+               "visible": true,
+               "color": 8421504
+            },
+            "FG-Dtl-Hidden": {
+               "name": "FG-Dtl-Hidden",
+               "visible": false,
+               "color": 16711680
+            },
+            "Vport": {
+               "name": "Vport",
+               "visible": false,
+               "color": 65535
+            },
+            "FG-Logo": {
+               "name": "FG-Logo",
+               "visible": true,
+               "color": 16711680
+            }
+         }
+      }
+   },
+   "blocks": {
+      "*U34": {
+         "handle": "2269",
+         "ownerHandle": "2268",
+         "layer": "0",
+         "name": "*U34",
+         "type": 3,
+         "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+         },
+         "name2": "*U34",
+         "xrefPath": "",
+         "entities": [
+            {
+               "type": "LINE",
+               "vertices": [
+                  {
+                     "x": 0.1875,
+                     "y": 0,
+                     "z": 0
+                  },
+                  {
+                     "x": -0.1875,
+                     "y": 0,
+                     "z": 0
+                  }
+               ],
+               "handle": "226C",
+               "ownerHandle": "2268",
+               "layer": "0"
+            },
+            {
+               "type": "LINE",
+               "vertices": [
+                  {
+                     "x": 0,
+                     "y": 0.1875,
+                     "z": 0
+                  },
+                  {
+                     "x": 0,
+                     "y": 0.6811772682290212,
+                     "z": 0
+                  }
+               ],
+               "handle": "226F",
+               "ownerHandle": "2268",
+               "layer": "0"
+            }
+         ]
+      }
+   },
+   "entities": [
+      {
+         "type": "LINE",
+         "vertices": [
+            {
+               "x": 516.4647237971784,
+               "y": 330.7069626367825,
+               "z": 0
+            },
+            {
+               "x": 516.1834738922776,
+               "y": 330.8693422367825,
+               "z": 0
+            }
+         ],
+         "handle": "1805",
+         "ownerHandle": "1F",
+         "layer": "FG-Dtl-Fastener"
+      },
+      {
+         "type": "LWPOLYLINE",
+         "vertices": [
+            {
+               "x": 520.4823233451135,
+               "y": 335.7037165715653,
+               "bulge": 0.495500738389451
+            },
+            {
+               "x": 520.4823233451135,
+               "y": 335.385455702,
+               "bulge": -0.7180232138070655
+            },
+            {
+               "x": 520.4641507323038,
+               "y": 335.3315861367825
+            },
+            {
+               "x": 520.09745368689,
+               "y": 335.3315861367825,
+               "bulge": 0.2818610536572053
+            },
+            {
+               "x": 519.9994740971791,
+               "y": 335.3915861367824
+            },
+            {
+               "x": 519.9334740971784,
+               "y": 335.3915861367824
+            },
+            {
+               "x": 519.9334740971784,
+               "y": 335.6975861367825
+            },
+            {
+               "x": 519.9994740971791,
+               "y": 335.6975861367825,
+               "bulge": 0.2818610536572062
+            },
+            {
+               "x": 520.09745368689,
+               "y": 335.7575861367824
+            },
+            {
+               "x": 520.4641507323034,
+               "y": 335.7575861367824,
+               "bulge": -0.7180232138063462
+            }
+         ],
+         "handle": "13E1",
+         "ownerHandle": "1F",
+         "layer": "SHAPE",
+         "shape": true
+      },
+      {
+         "type": "CIRCLE",
+         "handle": "17EA",
+         "ownerHandle": "1F",
+         "layer": "FG-Dtl-Fastener",
+         "center": {
+            "x": 516.1834740971784,
+            "y": 329.0445861367825,
+            "z": 0
+         },
+         "radius": 0.1875
+      },
+      {
+         "type": "ARC",
+         "handle": "17F6",
+         "ownerHandle": "1F",
+         "layer": "FG-Dtl-Fastener",
+         "center": {
+            "x": 516.1834740971784,
+            "y": 330.4508361367829,
+            "z": 0
+         },
+         "radius": 0.28125,
+         "startAngle": 0,
+         "angleLength": 3.141592653589793,
+         "endAngle": 3.141592653589793
+      },
+   ]
+}

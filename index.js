@@ -1,9 +1,8 @@
-/**********************************
-CADBAH * Computer Aided Design * Be Architectural Heroes
+/*****************************************************
+CADBAH = Computer Aided Design Be Architectural Heroes
+Copyright (c) 2019 Andrew Siddeley
 
 MIT License
-
-Copyright (c) 2019 Andrew Siddeley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +21,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-**/
+*****************************************************/
+
 const express = require("express")
 const path = require("path")
 const fs = require("fs")
@@ -30,7 +30,7 @@ const fs = require("fs")
 const url = require("url")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
-const cadbah = require(path.join(__dirname, "server", "cadbah.js"))
+const cadbah = require(path.join(__dirname, "server", "CADbah.js"))
 //const threeDxf = require('./dist/three-dxf.js')
 
 const app = express()
@@ -39,7 +39,7 @@ if (typeof global.uploads_dir=="undefined") {global.uploads_dir="uploads"}
 
 // Main entry
 //app.get('/', function (req, res) {res.sendFile(path.join(__dirname,"client","cadbah.html"));})
-app.get('/', function (req, res) {res.sendFile(path.join(__dirname,"client","cadbah.html"));})
+app.get('/', function (req, res) {res.sendFile(path.join(__dirname,"CADbah.html"));})
 
 
 // Logger
@@ -48,7 +48,6 @@ app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
 
 // File server
 app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, "client")))
 app.use(express.static(path.join(__dirname, "dependencies")))
 app.use(express.static(path.join(__dirname, "dependencies", "images")))
 

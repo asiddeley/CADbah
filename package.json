@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cad": "node index.js",
-    "test": "tcad"
+    "test": "tcad",
+	"dist": "browserify client/CADbah.js -o dependencies/CADbah.dist.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,6 @@
     "browserify": "^16.2.3",
     "dxf-parser": "^0.6.1",
     "express": "^4.16.4",
-    "express-fileupload": "^1.1.1-alpha.1",
-    "three-dxf": "^0.3.1"
+    "express-fileupload": "^1.1.1-alpha.1"
   }
 }
