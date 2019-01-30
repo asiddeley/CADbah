@@ -28,7 +28,7 @@ SOFTWARE.
 
 //var babylon=require('babylon'); //load via <script> in HTML
 //var $=require('jquery'); //load via <script> in HTML  
-var Element=require('./Element.js').Element; //load via browserify
+var Entity=require('./Entity.js').Entity; //load via browserify
 //var Nameable=require('./features/Nameable'); 
 //var Position=require('./features/Position'); 
 //var Pickable=require('./features/Pickable');
@@ -39,7 +39,7 @@ var Line=function(caddoc){
 	**/
 	
 	//javascript inheritance pattern
-	Element.call(this, caddoc);
+	Entity.call(this, caddoc);
 	
 	this.desc='A line between 2 points';
 	//Note that the following method is inherited from Element...
@@ -52,15 +52,15 @@ var Line=function(caddoc){
 };
 
 //inherit prototype and constructor
-Line.prototype=Object.create(Element.prototype);
-Line.prototype.constructor=Element;
+Line.prototype=Object.create(Entity.prototype);
+Line.prototype.constructor=Entity;
 
 //default Line data
-Line.prototype.data=$.extend(Element.prototype.data,{
+Line.prototype.data=$.extend(Entity.prototype.data,{
 	//override type
 	type,"LINE",
 	//add to vertices array initiated by Element
-	vertices:[].concat(Element.prototype.data.vertices).concat(
+	vertices:[].concat(Entity.prototype.data.vertices).concat(
 		{
 			x:function(){return Math.trunc(Math.random()*1000);},
 			y:function(){return Math.trunc(Math.random()*1000);}
@@ -68,9 +68,10 @@ Line.prototype.data=$.extend(Element.prototype.data,{
 	)
 });
 
-Line.prototype.deserialize(scene, data){
+Line.prototype.deserialize(scene, lineData){
 	//overwrite default Line data with data from serial source
-	$.extend(this.data, data);
+	Entity.prototype.deserialize(lineData);
+	//$.extend(this.data, data);
 	this.setScene(scene);
 };
 
@@ -84,7 +85,7 @@ Line.prototype.setScene=function(scene){
 	], scene);
 	
 	//call super (Element) for basics such as colour 
-	Element.prototype.setScene.call(this, scene); 
+	Entity.prototype.setScene.call(this, scene); 
 
 };
 

@@ -25,10 +25,10 @@ SOFTWARE.
 
 //math=require("useful/math.js");
 
-var Element=function(cadbah){
+var Entity=function(caddoc){
 	
-	this.cadbah=cadbah;
-	this.desc='foundation of all CADbah scene-model elements';
+	this.caddoc=caddoc;
+	this.desc='foundation of all CADbah scene-model entities';
 	this.features=[];
 	if (Array.isArray(extraFeatures)){ 
 		//this.Features=extraFeatures; 
@@ -39,16 +39,16 @@ var Element=function(cadbah){
 };
 
 
-Element.prototype.setScene=function(scene){
+Entity.prototype.setScene=function(scene){
 
 	if (this.data.color=="BYLAYER"){
-		this.mesh.color=this.cadbah.getColorBylayer(this.data.layer);			
+		this.mesh.color=this.caddoc.getColorBylayer(this.data.layer);			
 	} else {
-		this.mesh.color=this.cadbah.getColorByIndex(this.data.color);	
+		this.mesh.color=this.caddoc.getColorByIndex(this.data.color);	
 	}
 };
 
-Element.prototype.addFeatures=function(){
+Entity.prototype.addFeatures=function(){
 	//adds a feature constructor function to the handler being constructed
 	for (var a in arguments) {
 		this.Features.push(arguments[a]);
@@ -57,7 +57,7 @@ Element.prototype.addFeatures=function(){
 };
 
 //Default data
-Element.prototype.data={
+Entity.prototype.data={
 
 	type:"ELEMENT",
 	color:"BYLAYER",
@@ -71,21 +71,21 @@ Element.prototype.data={
 	]
 };
 
-Element.prototype.deserialize(scene, data){
+Entity.prototype.deserialize(scene, entityData){
 	//overwrite default element data with data from serial source
-	$.extend(this.data, data);
+	$.extend(this.data, entityData);
 	this.setScene(scene);
 };
 
 
-Element.prototype.dispose=function(mesh){
+Entity.prototype.dispose=function(mesh){
 	//disposes mesh and any children, that is someMesh where someMesh.parent == mesh
 	var cc=mesh.getChildren();
 	for (var c in cc){cc[c].dispose();}
 	mesh.dispose();
 }
 
-Element.prototype.getFeatures=function(mesh) {
+Entity.prototype.getFeatures=function(mesh) {
 	/**********
 	Returns a fresh object of features:
 	{name:{feature}, position:{feature}...}
@@ -102,20 +102,20 @@ Element.prototype.getFeatures=function(mesh) {
 	return features;
 }
 
-Element.prototype.getType=function() {
+Entity.prototype.getType=function() {
 	return this.constructor.name;
 }
 
 //Reserved for temp BABYLON mesh
-Element.prototype.mesh={};
+Entity.prototype.mesh={};
 
-Element.prototype.serialize(){
+Entity.prototype.serialize(){
 	var json={};
 	
 	return json;
 }
 
-exports.Element=Element;
+exports.Entity=Entity;
 
 
 
