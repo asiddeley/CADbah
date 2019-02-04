@@ -23,28 +23,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-//math=require("useful/math.js");
 
-var Entity=function(caddoc){
+var Entity=function(docdxf){
 	
-	this.caddoc=caddoc;
+	this.docdxf=docdxf;
 	this.desc='foundation of all CADbah scene-model entities';
-	this.features=[];
+	/*this.features=[];
 	if (Array.isArray(extraFeatures)){ 
 		//this.Features=extraFeatures; 
 		for (var i in this.Features){this.addFeature(extraFeatures[i]);}	
 	}
 	else {this.Features=[];}
 	//console.log(this.Features);
+	*/
 };
 
-
-Entity.prototype.setScene=function(scene){
-
-	if (this.data.color=="BYLAYER"){
-		this.mesh.color=this.caddoc.getColorBylayer(this.data.layer);			
-	} else {
-		this.mesh.color=this.caddoc.getColorByIndex(this.data.color);	
+Entity.prototype.setScene=function(scene, mesh, entdxf){
+	if (typeof scene!="undefined"){
+		//defaults
+		if (typeof entdxf=="undefined"||entdxf==null){entdxf=this.dxf();}
+		if (typeof mesh=="undefined"||mesh==null){
+			//TODO diameter=pdsize (acad system variable)
+			mesh=BABYLON.Mesh.CreateSphere("mySphere", {diameter:10},scene);
+		}
+		//set colour
+		if (entdxf.color=="BYLAYER"){
+			mesh.color=this.docdxf.getColorBylayer(entdxf.layer);			
+		}
+		else {
+			mesh.color=this.docdxf.getColorByIndex(entdxf.color);	
+		}
 	}
 };
 
@@ -56,22 +64,23 @@ Entity.prototype.addFeatures=function(){
 	}
 };
 
-//Default data
-Entity.prototype.data={
-
-	type:"ELEMENT",
-	color:"BYLAYER",
-	layer:"0",
-	linetype:"BYLAYER",
-	vertices:[
-		{
-			x:function(){return Math.trunc(Math.random()*1000);},
-			y:function(){return Math.trunc(Math.random()*1000);}
-		}
-	]
+//default entity data with random location
+Entity.prototype.dxf=function(){
+	return {
+		type="ELEMENT",
+		color:"BYLAYER",
+		layer:"0",
+		linetype:"BYLAYER",
+		vertices:[
+			{
+				x:function(){return Math.trunc(Math.random()*1000);},
+				y:function(){return Math.trunc(Math.random()*1000);}
+			}
+		]
+	};
 };
 
-Entity.prototype.deserialize(scene, entityData){
+Entity.prototype.deserialize=function(scene, entityData){
 	//overwrite default element data with data from serial source
 	$.extend(this.data, entityData);
 	this.setScene(scene);
@@ -106,10 +115,8 @@ Entity.prototype.getType=function() {
 	return this.constructor.name;
 }
 
-//Reserved for temp BABYLON mesh
-Entity.prototype.mesh={};
 
-Entity.prototype.serialize(){
+Entity.prototype.serialize=function(){
 	var json={};
 	
 	return json;

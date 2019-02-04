@@ -1,6 +1,7 @@
 /*****************************************************
 CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
+
 MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,15 +23,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Hemispheric=function(){}
-Hemispheric.prototype.setScene=function(scene, mesh){
-	var mesh=new BABYLON.HemisphericLight('hemiTop', new BABYLON.Vector3(0,10,0), CAD.scene);
+var Consoleui=require("./Consoleiu.js").Consoleui;
+var Tabsui=require("./Tabsui.js").Tabsui;
+
+exports.uisetup=function(CAD, options){
+	// already done in CAD...
+	//if (typeof options == 'undefined'){options={};}
+	
+	// Create place for user interfaces and controls if not found
+	if (typeof options.div == 'undefined'){
+		CAD.div$=$('<div></div>').appendTo(window.document.body);
+		CAD.div=CAD.div$.get();
+	} 
+	else {
+		//wrap div with jquery if not already
+		if (CAD.div instanceof window.Element){CAD.div$=$(CAD.div);}
+	}
+	
+	/* If div is 1st arg, then the intention is to make this UI its own dialog otherwise, null is the 1st arg meaning this UI will be contianed in and managed by another UI such as a Tabsui */
+	CAD.uis.tabsui=new Tabsui(CAD.div$, "tabs");
+	
+	//add individual uis as tabs to tabsui
+	CAD.uis.tabsui.addTab( 
+		new Consoleui(null, "Command line")
+		//new entitiesui(null, 'Entities'),
+	); 
 };
-
-exports.lights={
-	main:new Hemispheric(),
-	hemi:new Hemispheric()
-};
-
-
-
+	

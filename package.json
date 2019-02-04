@@ -6,7 +6,8 @@
   "scripts": {
     "cad": "node index.js",
     "test": "tcad",
-	"dist": "browserify client/CADbah.js -o dependencies/CADbah.dist.js"
+    "dist": "browserify client/CADbah.js -o dist/CADbah.dist.js",
+    "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   },
   "homepage": "https://github.com/asiddeley/CADbah#readme",
   "dependencies": {
+    "@node-minify/cli": "^4.1.0",
+    "@node-minify/uglify-js": "^4.0.5",
     "body-parser": "^1.18.3",
     "browserify": "^16.2.3",
     "dxf-parser": "^0.6.1",

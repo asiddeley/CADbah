@@ -23,16 +23,16 @@ SOFTWARE.
 *****************************************************/
 
 
-var GUI=function(board, title, options){
+var UI=function(div, title, options){
 
-	// board - DOM element container for user intefaces (UI) 
+	// div - DOM element container for user intefaces (UI) 
 	this.div$=$('<div></div>');
 	if (typeof title != 'undefined' && title != null) {this.alias=title;}
 	else {this.alias='UI';} 
-	// If board is provided, then the intention is to make this UI its own dialog otherwise
-	// it's assumed this will be a ui contianed in and managed by another UI 
-	if (typeof board != 'undefined' && board != null){ 
-		this.board$=$(board).append(this.div$);
+	/* If div is provided, then the intention is to make this UI its own dialog otherwise
+	it's assumed this will be a ui contianed in and managed by another UI */
+	if (typeof div != 'undefined' && div != null){ 
+		this.div$=$(div).append(this.div$);
 		//use jquery-ui to turn div$ into a floating dialog box
 		this.div$.dialog({draggable:true, title:this.alias, autoOpen:true});
 	}
@@ -48,22 +48,19 @@ var GUI=function(board, title, options){
 	else {this.inputHandlers=[];}
 	
 	//Add this UI instance to list all ui instances.
-	if (typeof GUI.instances =='undefined'){GUI.instances=[];} 
-	else {GUI.instances.push(this);}
-	
+	if (typeof UI.instances =='undefined'){UI.instances=[];} 
+	else {UI.instances.push(this);}
+
 	return this;
 };
 
-
-	
-
-GUI.prototype.activeGUI=function(ui){
+UI.prototype.activeUI=function(ui){
 	// triggers an activeui event
 	// used by inputHandler to activate a ui with a command input
 	CAD.fc.trigger('activeui', [ui]);
 };
 
-GUI.prototype.getInputHandlers=function(){
+UI.prototype.getInputHandlers=function(){
 	//returns an array of {alias:['a'], desc:'about', handler:function}
 	//these inputHamdlers are common for all UI if inheritor so chooses
 		
@@ -82,11 +79,13 @@ GUI.prototype.getInputHandlers=function(){
 	}];
 };
 
-GUI.prototype.getEvents=function(){
-	// Returns a list of event handlers that all UIs respond to.  Event handler below -
-	// {name:event_name_str, desc:description_str, data:passed_to_handler_as_arg0, handler:fn}
-	// Beware of using 'this' in event handlers as it will refer to the callers context
-	// Instead assume 'this' is passed in event data thus... handler(ev){ev.data.toggle();}
+UI.prototype.getEvents=function(){
+	/* 
+	Returns a list of event handlers that all UIs respond to.  Event handler below -
+	{name:event_name_str, desc:description_str, data:passed_to_handler_as_arg0, handler:fn}
+	Beware of using 'this' in event handlers as it will refer to the callers context
+	Instead assume 'this' is passed in event data thus... handler(ev){ev.data.toggle();}
+	*/
 	return [{
 		name:'input', 
 		desc:'occurs when a user command is entered', 
@@ -100,7 +99,7 @@ GUI.prototype.getEvents=function(){
 	}];
 };
 
-GUI.prototype.listEvents=function(ev){
+UI.prototype.listEvents=function(ev){
 	//keys - Array of event names
 	var eh=ev.data.getEvents(); 
 	//BIM.fun.log('*** UI:'+ev.data.alias); 
@@ -112,7 +111,7 @@ GUI.prototype.listEvents=function(ev){
 	}
 };
 
-GUI.prototype.listInputs=function(ev){
+UI.prototype.listInputs=function(ev){
 	var ih=ev.data.inputHandlers;
 	//name of UI
 	//BIM.fun.log('*** UI:'+ev.data.alias); 
@@ -124,15 +123,15 @@ GUI.prototype.listInputs=function(ev){
 	}
 };	
 
-GUI.prototype.onActiveGUI=function(ev, activeGUI){
+UI.prototype.onActiveUI=function(ev, activeGUI){
 	// ev - event
 	// ev.data - 'this' as passed from UI decendant instance
 	// activeGUI - ui in focus
 	//console.log('onActiveUI:', activeGUI.alias);
 };
 
-GUI.prototype.onInput=function(ev, input){
-	//BIM.fun.log(input);
+UI.prototype.onInput=function(ev, input){
+	//CAD.fc.log(input);
 	//call others to process input 
 	
 	var firstWord;
@@ -155,18 +154,18 @@ GUI.prototype.onInput=function(ev, input){
 	return propagate;
 };
 
-GUI.prototype.onFocus=function(ev){
+UI.prototype.onFocus=function(ev){
 	// focus handler if UI is a dialog
 	CAD.fc.trigger('activegui', [ev.data]);
 };
 
-GUI.prototype.toggle=function(){
+UI.prototype.toggle=function(){
 	if (this.div$.is(':ui-dialog')){
 		if (this.div$.dialog("isOpen")) {this.div$.dialog("close");} 
 		else {this.div$.dialog("open");}
 	}
 };
 
-exports.GUI=GUI;
+exports.UI=UI;
 
 

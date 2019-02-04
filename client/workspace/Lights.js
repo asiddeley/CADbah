@@ -1,7 +1,6 @@
 /*****************************************************
 CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
-
 MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,30 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
+var Hemispheric=function(){}
 
-var ArcRotateCamera=function(topFeatures){
-
-	this.setScene=function(scene, mesh, canvas){
-		//new ArcRotateCamera(name, alpha, beta, radius, target, scene)
-		var cam = new BABYLON.ArcRotateCamera(
-			"ArcRotateCamera", //name
-			1, //alpha
-			0.8, //beta
-			100, //radius
-			new BABYLON.Vector3(0, 0, 0), //target
-			CAD.scene
-		);
-		
-        cam.attachControl(CAD.options.canvas, true);	
-
-		return cam;
-	};
+Hemispheric.prototype.setScene=function(scene){
+	var mesh=new BABYLON.HemisphericLight(
+		"top",
+		new BABYLON.Vector3(0,10,0),
+		scene
+	);
+	return mesh;
 };
 
+exports.Hemispheric=Hemispheric;
 
-exports.views={
-	main:new ArcRotateCamera( )
-};
+//exports.lights={main:new Hemispheric()};
 
 
 

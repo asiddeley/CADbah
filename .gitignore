@@ -61,8 +61,10 @@ typings/
 # local bat files such as cmd.bat
 *.bat
 
-## cadbah private folders - contains user data & files
+## ignore cadbah private folders - contains user data & files
 uploads/
+## ignore browserify and minify results - always changing
+dist/
 
 
 

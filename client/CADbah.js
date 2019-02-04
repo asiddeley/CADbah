@@ -26,163 +26,87 @@ SOFTWARE.
 /////////////////////////
 //load following in HTML with <script>
 //var $=require('jquery'); 
-//var babylon=require('babylon');
+//var BABYLON=require('BABYLON');
 
-///////////////////////////////////
-//load following with browserify...
-//var TabbedUI=require('united/TabbedUI');
-//var BlackboardUI=require('united/BlackboardUI');
-//var PartsUI=require('united/PartsUI');
-//var PickerUI=require('united/PickerUI');
-//var PeekerUI=require('united/PeekerUI');
-//var PokerUI=require('united/PokerUI');
-//var FeaturesUI=require('united/FeaturesUI');
 
-//camera.noRotationConstraint=true;
 var CAD={};
 
-CAD.canvas$=null;
-CAD.board$=null;
-//CAD.database=null;
-CAD.engine=null;
+CAD.activate=function(options){
 
-// The a, b, c, d & e main API methods...
-CAD.admin=function(user, options){
-	user=(typeof user=='undefined')?'admin':user;
-	options=(typeof options == 'undefined')?{}:options;
-	$.extend(this.options, {admin:user}, options);
-};
+	// check options
+	if (typeof options=="undefined") {this.options=options={};}
+	else {this.options=options;}
 	
-CAD.board=function(div, options){
-	if (typeof div == 'undefined'){div=$('<div></div>').appendTo(window.document.body);}
-	if (typeof options == 'undefined'){options={};}
-	//wrap div with jquery if not already
-	if (div instanceof window.Element){div=$(div);}
-	
-	$.extend( this.options, {board$:div}, options );	
-	
-	var tui=new TabbedUI(div, "Main");
-	this.ui.blackboard=new BlackboardUI(null, "Command line");
-	tui.addTab( 
-		this.ui.blackboard, 
-		//new PartsUI(null, 'Part'),
-		//new PeekerUI(null, 'Peek')
-		//new PickerUI(null, 'Pick'),
-		//new PokerUI(null, 'Poke')
-	); 
-}
+	/* Prepare user interfaces and controls...  
+	Looks in options for {... div:HTMLelementReference, ...} or
+	creates it from scratch if not found */
+	require("./uis/uisetup.js").uisetup(this, options);	
 
-CAD.canvas=function(canvas){ $.extend(this.options, {canvas:canvas}); }
-
-CAD.database=function(udata){ $.extend(this.options, {database:udata}); }
+	// Prepare canvas
+	if (typeof options.canvas=="undefined"){
+		//with jquery $ wrapper
+		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body);
+		//html element
+		this.canvas=canvas$.get();
+	} 
+	else {this.canvas=options.canvas;this.canva$=$(options.canvas);}
 	
-CAD.engage=function(){
-
-	var that=this;	
 	// prepare engine
-	var c=this.options.canvas;
-	var engine = new babylon.Engine(c,  true);
-	this.options.engine=engine;
-	// why warning re. webgl dest rect smaller than viewport rect?
-	// See, http://doc.babylonjs.com/classes/2.5/Engine, try this...
-	// this.engine.setViewport(new babylon.Viewport(0,0,700,500));
+	this.engine = new BABYLON.Engine(this.canvas, true);
+	/* 	Why warning, webgl dest rect smaller than viewport rect?
+	See: http://doc.babylonjs.com/classes/2.5/Engine, 
+	Try this...  this.engine.setViewport(new BABYLON.Viewport(0,0,700,500)); */
 	
 	// initialize the scene
-	this.scene=new babylon.Scene(engine);
-	var s=this.scene;
+	this.scene=new BABYLON.Scene(this.engine);
 	
-	// set light in scene
-	this.lights.main.setScene(this.scene);
-	
-	// visit all parts to set the babylon scene		
-	//this.model.handler.setScene(this.model);
-	
-	// initialize scene materials
-	//this.fun.log('initializing tcm');
-	//for (var key in this.tcmLib) {
-	//	var m=this.tcmLib[key];
-	//	m.handler.setScene(m);
-		//that.fun.log(key);that.fun.log(m.handler.type);
-	//}
-	
-	// initialize main view__camera for the scene
-	this.views.main.setScene(this.scene);
+	// WORKSPACE
+	// includes camera and light
+	this.workspace=new this.Workspace(this);
+	this.workspace.setScene(this.scene);
+
+	// DOCUMENT
+	this.docdxf=new this.Docdxf(this);
+	// set the BABYLON scene by traverses all entities in document 
+	this.docdxf.setScene(this.scene);
 	
 	// This is a cool Babylon feature
-	// s.debugLayer.show();
+	// this.scene.debugLayer.show();
 	
-	// engage the engine!
-	engine.runRenderLoop(function(){ s.render();} );
+	// engage the engine
+	this.engine.runRenderLoop(function(){ this.scene.render();} );
 };
+
+
+CAD.canvas=null;
+CAD.canvas$=null;
+CAD.div=null;
+CAD.div$=null;
+CAD.Docdxf=require("./entities/Docdxf.js").Docdxf;
+CAD.docdxf=null;
+CAD.engine=null;
 	
 // function collection 
-CAD.fc=require("./useful/cad-fc.js").fc;
+CAD.fc=require("./cad-fc/cad-fc.js").fc;
 
-// getters
-CAD.get={
-	activeModel:function(am) {
-		if(typeof am!='undefined') {this.activeModelObj=am;}
-		if(this.activeModelObj==null) {this.activeModelObj=CAD.model;}
-		return this.activeModelObj;	
-	},
-	activeModelObj:null,
-	
-	//gets or sets current mesh - newly created or picked
-	cMesh:function(cm){
-		if(typeof cm!='undefined') {this.cMeshObj=cm;}
-		else {return this.cMeshObj};	
-	},
-	cMeshObj:null,
-	nextAvailableV3:function(){
-		return new BABYLON.Vector3(
-			10*Math.floor(Math.random()*10), 
-			10*Math.floor(Math.random()*10), 
-			10*Math.floor(Math.random()*10)
-		);		
-	},
-	bb:function(){ return CAD.ui.blackboard;},
-	canvas:function() {return CAD.options.canvas;},	
-	scene: function() {return CAD.scene;},
-	uid: function(name) {return CAD.fun.uid(name);},
-	//global variable storage
-	val:function(key, valu){
-		//TO DO...
-		//usage - store 'hello world' as 'msg'
-		//CAD.get.val('msg','hello world'); 
-		//usage - retrieve 'msg'
-		//CAD.get.val('msg');
-		console.log(key.toString() + '='+ valu.toString());
-	},
-	valstore:{}
-};
-
-
-	
-// main light
-CAD.lights=require("./lights.js").lights;
+// getters function collection
+// eg. CAD.get("scene");
+CAD.get=require("./cad-fc/getters.js").fc;
 	
 // Extended by user in API functions above
 CAD.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
-	board:null,
-	canvas:null,
-	database:null,
-	engine:null		
+	database:null, //to be determined
 };	
 	
+// Babylon scene, initialized by CAD.activate()
+CAD.scene=null; 
+// workspace is a documesh and includes such things as Triaxis (UCSicon), lights, views 
+CAD.Workspace=require("./workspace/workspaces.js").Workspace;
+CAD.workspace=null; 
+CAD.uis={};
 	
-//Babylon scene, analog to CAD.model, initialized by engage()
-CAD.scene=null;
-	
-	
-//User interfaces, initialized by this.board()
-CAD.ui={};
-	
-//View library, A view is the CAD analog to babylon camera
-//CAD.views={ main:arcRotateCamera };
-CAD.views=require('./cameras.js').views;
-
 
 
 window.CAD=CAD;

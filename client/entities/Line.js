@@ -22,24 +22,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-// Define a Module with Simplified CommonJS Wrapper...
-// see http://requirejs.org/docs/api.html#cjsmodule
-//define( function(require, exports, module){
 
-//var babylon=require('babylon'); //load via <script> in HTML
-//var $=require('jquery'); //load via <script> in HTML  
-var Entity=require('./Entity.js').Entity; //load via browserify
+ 
+var Entity=require('./Entity.js').Entity; 
 //var Nameable=require('./features/Nameable'); 
 //var Position=require('./features/Position'); 
 //var Pickable=require('./features/Pickable');
 
-var Line=function(caddoc){
-	/****
+var Line=function(docdxf){
+	/**
 	Line is the Handler for all line data, it extends (inherits methods and properties) from Element.  Only one Line needs to be instanciated per scene.  An instantiated line object does have line data as a property but it is only a temporary to hold default data while it bulds the corresponding BABYLON mesh. 
 	**/
 	
 	//javascript inheritance pattern
-	Entity.call(this, caddoc);
+	Entity.call(this, docdxf);
 	
 	this.desc='A line between 2 points';
 	//Note that the following method is inherited from Element...
@@ -56,9 +52,10 @@ Line.prototype=Object.create(Entity.prototype);
 Line.prototype.constructor=Entity;
 
 //default Line data
+/*
 Line.prototype.data=$.extend(Entity.prototype.data,{
 	//override type
-	type,"LINE",
+	type:"LINE",
 	//add to vertices array initiated by Element
 	vertices:[].concat(Entity.prototype.data.vertices).concat(
 		{
@@ -68,25 +65,32 @@ Line.prototype.data=$.extend(Entity.prototype.data,{
 	)
 });
 
-Line.prototype.deserialize(scene, lineData){
+Line.prototype.deserialize=function(scene, linedata){
 	//overwrite default Line data with data from serial source
-	Entity.prototype.deserialize(lineData);
+	Entity.prototype.deserialize(scene, linedata);
 	//$.extend(this.data, data);
 	this.setScene(scene);
 };
+*/
 
+//overwrite Entity.setScene()
+Line.prototype.setScene=function(scene, linedxf){
 
-//override Element.setScene
-Line.prototype.setScene=function(scene){
-
-	this.mesh = BABYLON.Mesh.CreateLines("LINE", [
-		new BABYLON.Vector3(this.data.vertices[0].x, this.data.vertices[0].y, 0),
-		new BABYLON.Vector3(this.data.vertices[1].x, this.data.vertices[1].y, 0),
+	mesh = BABYLON.Mesh.CreateLines("LINE", [
+		new BABYLON.Vector3(
+			linedxf.vertices[0].x, 
+			linedxf.vertices[0].y, 
+			linedxf.vertices[0].z
+		),
+		new BABYLON.Vector3(
+			linedxf.vertices[1].x, 
+			linedxf.vertices[1].y, 
+			linedxf.vertices[0].z
+		),
 	], scene);
-	
-	//call super (Element) for basics such as colour 
-	Entity.prototype.setScene.call(this, scene); 
 
+	//call superclass (prototype or static) method to set basics such as colour 
+	Entity.prototype.setScene.call(this, mesh, linedxf); 
 };
 
 exports.Line=Line;

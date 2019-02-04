@@ -50,6 +50,7 @@ app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
 app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname, "dependencies")))
 app.use(express.static(path.join(__dirname, "dependencies", "images")))
+app.use(express.static(path.join(__dirname, "dist")))
 
 
 if (__dirname!=global.appRoot) {app.use(express.static(global.appRoot))}
