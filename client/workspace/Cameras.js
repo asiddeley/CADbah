@@ -23,13 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-
-function ArcRotateCamera(topFeatures){
-
-
+function ArcRotateCamera(cadbah){
+	this.CAD=cadbah;
 };
 
-ArcRotateCamera.prototype.setScene=function(scene, mesh, canvas){
+ArcRotateCamera.prototype.setScene=function(scene){
 	//new ArcRotateCamera(name, alpha, beta, radius, target, scene)
 	var cam = new BABYLON.ArcRotateCamera(
 		"ArcRotateCamera", //name
@@ -40,14 +38,11 @@ ArcRotateCamera.prototype.setScene=function(scene, mesh, canvas){
 		scene
 	);
 	
-	cam.attachControl(CAD.options.canvas, true);	
-
+	cam.attachControl(this.CAD.canvas, true);	
+	console.log("Cameras.setScene");
 	return cam;
 };
 
-exports.camera=ArcRotateCamera;
-
-//exports.views={	main:new ArcRotateCamera( )};
-
+exports.Camera=ArcRotateCamera;
 
 

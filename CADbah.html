@@ -5,11 +5,11 @@
 <title>CADbah</title>
 <meta charset="utf-8">
 
-<!--script 
+<script 
 src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-</script-->
+</script>
 			  
-<script type="text/javascript" src="jquery.js"></script>
+<!--script type="text/javascript" src="/jquery.js"></script -->
 <script 
 src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
 integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
@@ -48,6 +48,8 @@ crossorigin="anonymous">
 
 #cad-view > canvas {
 	border: 1px solid #666;
+	width:100%;
+	height:100%
 }
 
 .progress {
@@ -72,9 +74,32 @@ crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="jquery-ui.structure.css">
 
 <script type="text/javascript" src="CADbah.dist.js"></script>
+<script type="text/javascript" src="babylon.js"></script>
+<script type="text/javascript" src="babylon.canvas2d.js"></script>
 
 <script>
 
+function initMenus(navbuttonIdStr, menuExtStr){
+	var ids=navbuttonIdStr.split(" "), i;
+	for (i in ids){
+		// Register following function triggered by each nav button
+		// When executed, function positions menu at each navbutton location
+		$('#'+ids[i]).mouseenter({id:ids[i], ext:menuExtStr}, function(ev){
+			//note how data is passed using first argument of mouseenter
+			var navbutton=ev.data.id; 
+			var menu=ev.data.id + ev.data.ext;
+			$('.menu').hide();
+			// Show and position menu of interest at its navbutton
+			$('#'+ menu).show().position({
+				my:'left top',
+				at:'left bottom',
+				of:'#'+navbutton
+			});
+			// autohide in case menu is left hanging - don't forget to disarm if entered
+			document.DDAH=setTimeout(function(){$('#'+menu).hide();}, 2000);
+		});
+	};
+};
 
 
 
@@ -110,13 +135,13 @@ $(".menu").on('mouseleave',function(){$(".menu").hide();});
 $(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
 
 
-CAD.fc.attachMenus("file edit draw help", "-menu");
+initMenus("file edit draw help", "-menu");
+
+CAD.activate({canvas:document.getElementById("cad-canvas")});
 
 
-
-///////////////
+/****
 // init three-dxf
-
 var progress = document.getElementById('file-progress-bar');
 var $progress = $('.progress');
 
@@ -219,6 +244,9 @@ document.getElementById('dxf').addEventListener('change', onFileSelected, false)
 console.log ("ONFILESELECTED...", onFileSelected);
 dxf$=$("#DXF-OPEN").dialog({autoOpen:false});
 
+***/
+
+
 }); //document ready
 </script>
 </head>
@@ -299,7 +327,7 @@ onSubmit="return inputHandler(event)">
 	<input id="myInput" type="text" placeholder="command" class="drop-zone">
 	<input type="submit" value="Ok">
 </form>
-<div id="cad-view" >cad-view...</div>
+<div id="cad-view" ><canvas id="cad-canvas"></canvas></div>
 </div><!-- board -->
 
 

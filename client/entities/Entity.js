@@ -67,16 +67,14 @@ Entity.prototype.addFeatures=function(){
 //default entity data with random location
 Entity.prototype.dxf=function(){
 	return {
-		type="ELEMENT",
+		type:"ELEMENT",
 		color:"BYLAYER",
 		layer:"0",
 		linetype:"BYLAYER",
-		vertices:[
-			{
-				x:function(){return Math.trunc(Math.random()*1000);},
-				y:function(){return Math.trunc(Math.random()*1000);}
-			}
-		]
+		vertices:[{
+			x:function(){return Math.trunc(Math.random()*1000);},
+			y:function(){return Math.trunc(Math.random()*1000);}
+		}]
 	};
 };
 

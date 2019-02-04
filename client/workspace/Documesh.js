@@ -29,7 +29,7 @@ var Documesh=function(CADbah){
 };
 
 
-Documesh.prototype.addmeshmaker(mm){
+Documesh.prototype.addmeshmaker=function(){
 	for (var i=0; i<arguments.length; i++){
 		this.meshmakers.push(arguments[i]);
 	};
@@ -53,10 +53,11 @@ Documesh.prototype.serialize=function(){
 Documesh.prototype.setScene=function(scene){
 	//render meshes
 	
-	for (i=0; i<this.meshmakers; i++){
-		m=this.meshmaker[i];
+	for (i=0; i<this.meshmakers.length; i++){
+		m=this.meshmakers[i];
 		m.setScene(scene);	
-	}	
+	};	
+	console.log("Documesh setScene");
 };
 
 

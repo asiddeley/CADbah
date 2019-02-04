@@ -68,14 +68,14 @@ exports.fc={
 		return r;
 	},
 	
-	dump:function(txt){	CAD.ui.blackboard.divDump$.show().text(txt);},
+	dump:function(txt){	CAD.uis.consoleui.divDump$.show().text(txt);},
 	
 	isActionEnabled:function(){	return CAD.fun.isActionEnabledValu;	},
 	
 	isActionEnabledValu:false,
 	
 	//this.trigger('bimMsg', message);
-	log:function() {for (var a in arguments) CAD.ui.blackboard.log(arguments[a].toString());},
+	log:function() {for (var a in arguments) CAD.uis.consoleui.log(arguments[a].toString());},
 
 	matchAll:function(sourceMesh, targetMesh) {
 		FeaturesUI.prototype.matchAll(sourceMesh, targetMesh);
@@ -86,20 +86,20 @@ exports.fc={
 		//eventHandler eg. {name:'bimInput', data:this, handler:this.onInput }
 		var ee=eventHandlers;
 		//add event handlers to board, the acting event manager
-		for (var n in ee){CAD.options.board$.on(ee[n].name, ee[n].data, ee[n].handler);}	
+		for (var n in ee){CAD.div$.on(ee[n].name, ee[n].data, ee[n].handler);}	
 	},
 	
 	one:function(eventHandlers){
 		//eventHandlers - [{name:'bimInput', data:this, handler:this.onInput }...]
 		var ee=eventHandlers;		
-		for (var n in ee){CAD.options.board$.one(ee[n].name, ee[n].data, ee[n].handler);}	
+		for (var n in ee){CAD.div$.one(ee[n].name, ee[n].data, ee[n].handler);}	
 	},
 
 	off:function(eventHandlers){
 		//eventHandler eg. {name:'bimInput', data:this, handler:this.onInput }
 		var ee=eventHandlers;
 		//add event handlers to board, the acting event manager
-		for (var n in ee){CAD.options.board$.off(ee[n], ee[n].data, ee[n].handler);}	
+		for (var n in ee){CAD.div$.off(ee[n], ee[n].data, ee[n].handler);}	
 	},
 
 	randomInt:function(s) {
@@ -109,13 +109,13 @@ exports.fc={
 	
 	randomV3:function(s) {
 		s=(typeof s=='undefined')?100:s; //default is 100
-		return (new babylon.Vector3(Math.random()*s,  Math.random()*s, Math.random()*s)); 
+		return (new BABYLON.Vector3(Math.random()*s,  Math.random()*s, Math.random()*s)); 
 	},
 	
 	randomV3I:function(s) {
 		//random vertex of 3 integers
 		s=(typeof s=='undefined')?100:s; //default is 100
-		return (new babylon.Vector3(
+		return (new BABYLON.Vector3(
 			Math.trunk(Math.random()*s), 
 			Math.trunk(Math.random()*s),
 			Math.trunk(Math.random()*s)
@@ -125,7 +125,7 @@ exports.fc={
 	trigger:function(eventName, optArrOfExtraArgs){
 		//CAD.ui.uiBlackboard.div$.trigger(ev, arg1);
 		//CAD.fun.log('CAD.trigger:'+ev);
-		CAD.options.board$.trigger(eventName, optArrOfExtraArgs);
+		CAD.div$.trigger(eventName, optArrOfExtraArgs);
 	},
 			
 	uid:function(name){

@@ -22,16 +22,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-var Line=require("./entities/Line.js").Line;
+var Line=require("./Line.js").Line;
 
 
-var CADdoc=function(CADbah){
+var Docdxf=function(CADbah){
 	this.CAD=CADbah;
-	
+	this.dxf=new this.DXF();
 };
 
 //default drawing - DXF FORMAT
-CADdoc.prototype.DXF=function(){
+Docdxf.prototype.DXF=function(){
 	this.header={};
 	this.tables={
 		linetype:{
@@ -68,29 +68,29 @@ CADdoc.prototype.DXF=function(){
 };
 
 //placeholder
-CADdoc.dxf=null;
+Docdxf.prototype.dxf={};
 
 
-CADdoc.prototype.deserialize=function(dxf){
+Docdxf.prototype.deserialize=function(dxf){
 	//merge or overwrite
 	this.dxf=dxf;
 	
 };
 
-CADdoc.prototype.serialize=function(){
+Docdxf.prototype.serialize=function(){
 	//To do...
 	return this.dxf;	
 };
 
-CADdoc.prototype.setScene=function(scene){
+Docdxf.prototype.setScene=function(scene){
 	//render dxf or meshes
 	
 	
 	var i;
 	var line=new Line(this);
 	
-	for (i=0; i<this.data.entities; i++){
-		e=this.data.entities[i];
+	for (i=0; i<this.dxf.entities; i++){
+		e=this.dxf.entities[i];
 		switch (e.type) {
 			case "LINE":line.setScene(scene, e);break;			
 			
@@ -101,4 +101,4 @@ CADdoc.prototype.setScene=function(scene){
 };
 
 
-exports.CADdoc=CADdoc;
+exports.Docdxf=Docdxf;

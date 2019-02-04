@@ -35,15 +35,15 @@ var Workspace=function(CADbah){
 	
 	this.desc="Basic workspace";
 	this.addmeshmaker(
-		new Light(),
-		new Camera(),
-		new Triaxis()
+		new Light(CADbah),
+		new Camera(CADbah),
+		new Triaxis(CADbah)
 	);
 };
 
 //Next steps of js inheritance patterns, inherit prototype and constructor...
 Workspace.prototype=Object.create(Documesh.prototype);
-Workspace.prototype.constructor=Documesh;
+Workspace.prototype.constructor=Workspace;
 
 exports.Workspace=Workspace;
 

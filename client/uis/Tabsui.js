@@ -53,7 +53,7 @@ var Tabsui=function(div, title){
 
 // Inherit prototype from UI
 Tabsui.prototype=Object.create(UI.prototype);
-Tabsui.prototype.constructor=TabbedUI;
+Tabsui.prototype.constructor=Tabsui;
 Tabsui.prototype.addTab=function(){
 
 	var c, index, tab$, panel$, ui;

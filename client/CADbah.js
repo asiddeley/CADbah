@@ -49,7 +49,7 @@ CAD.activate=function(options){
 		//html element
 		this.canvas=canvas$.get();
 	} 
-	else {this.canvas=options.canvas;this.canva$=$(options.canvas);}
+	else {this.canvas=options.canvas;this.canvas$=$(options.canvas);}
 	
 	// prepare engine
 	this.engine = new BABYLON.Engine(this.canvas, true);
@@ -74,7 +74,8 @@ CAD.activate=function(options){
 	// this.scene.debugLayer.show();
 	
 	// engage the engine
-	this.engine.runRenderLoop(function(){ this.scene.render();} );
+	var that=this;
+	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
 
