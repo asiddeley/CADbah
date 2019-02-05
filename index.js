@@ -48,9 +48,11 @@ app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
 
 // File server
 app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, "dependencies")))
-app.use(express.static(path.join(__dirname, "dependencies", "images")))
 app.use(express.static(path.join(__dirname, "dist")))
+app.use(express.static(path.join(__dirname, "resources")))
+app.use(express.static(path.join(__dirname, "resources", "ui")))
+app.use(express.static(path.join(__dirname, "resources", "skyboxes")))
+
 
 
 if (__dirname!=global.appRoot) {app.use(express.static(global.appRoot))}
