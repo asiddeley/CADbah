@@ -5,17 +5,7 @@
 <title>CADbah</title>
 <meta charset="utf-8">
 
-<script 
-src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-</script>
-			  
-<!--script type="text/javascript" src="/jquery.js"></script -->
-<script 
-src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-crossorigin="anonymous">
-</script>
-<!--script type='text/javascript' src="offline/jquery-ui.js"></script-->
+
 
 
 
@@ -70,6 +60,9 @@ crossorigin="anonymous">
 	
 </STYLE>
 
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+
 <link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
 <link rel="stylesheet" type="text/css" href="jquery-ui.structure.css">
 
@@ -79,15 +72,16 @@ crossorigin="anonymous">
 
 <script>
 
-function initMenus(navbuttonIdStr, menuExtStr){
-	var ids=navbuttonIdStr.split(" "), i;
-	for (i in ids){
+function initMenus(navbuttonIdStr, menuIdStr){
+	var bids=navbuttonIdStr.split(" ");
+	var mids=menuIdStr.split(" ");
+	for (var i in bids){
 		// Register following function triggered by each nav button
 		// When executed, function positions menu at each navbutton location
-		$('#'+ids[i]).mouseenter({id:ids[i], ext:menuExtStr}, function(ev){
+		$('#'+bids[i]).mouseenter({bid:bids[i], mid:mids[i]}, function(ev){
 			//note how data is passed using first argument of mouseenter
-			var navbutton=ev.data.id; 
-			var menu=ev.data.id + ev.data.ext;
+			var navbutton=ev.data.bid; 
+			var menu=ev.data.mid;
 			$('.menu').hide();
 			// Show and position menu of interest at its navbutton
 			$('#'+ menu).show().position({
@@ -135,116 +129,10 @@ $(".menu").on('mouseleave',function(){$(".menu").hide();});
 $(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
 
 
-initMenus("file edit draw help", "-menu");
+initMenus("file edit draw help", "file-menu edit-menu draw-menu help-menu");
 
 CAD.activate({canvas:document.getElementById("cad-canvas")});
 
-
-/****
-// init three-dxf
-var progress = document.getElementById('file-progress-bar');
-var $progress = $('.progress');
-
-var $cadview = $('#cad-view');
-var cadCanvas;
-
-function onFileSelected(evt) {
-    progress.style.width = '0%';
-    progress.textContent = '0%';
-
-    var file = evt.target.files[0];
-    var output = [];
-    output.push(
-		'<li><strong>', encodeURI(file.name), 
-		'</strong> (', file.type || 'n/a', ') - ',
-        file.size, ' bytes, last modified: ',
-        file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a',
-        '</li>'
-	);
-    document.getElementById('file-description').innerHTML = '<ul>' + output.join('') + '</ul>';
-
-    $progress.addClass('loading');
-
-    var reader = new FileReader();
-    reader.onprogress = updateProgress;
-    reader.onloadend = onSuccess;
-    reader.onabort = abortUpload;
-    reader.onerror = errorHandler;
-    reader.readAsText(file);
-}
-
-function abortUpload() {
-    console.log('Aborted read!')
-}
-
-function errorHandler(evt) {
-    switch(evt.target.error.code) {
-    case evt.target.error.NOT_FOUND_ERR:
-        alert('File Not Found!');
-        break;
-    case evt.target.error.NOT_READABLE_ERR:
-        alert('File is not readable');
-        break;
-    case evt.target.error.ABORT_ERR:
-        break; // noop
-    default:
-        alert('An error occurred reading this file.');
-    }
-}
-
-function updateProgress(evt) {
-    console.log('progress');
-    console.log(Math.round((evt.loaded /evt.total) * 100));
-    if(evt.lengthComputable) {
-        var percentLoaded = Math.round((evt.loaded /evt.total) * 100);
-        if (percentLoaded < 100) {
-            progress.style.width = percentLoaded + '%';
-            progress.textContent = percentLoaded + '%';
-        }
-    }
-}
-
-function onSuccess(evt){
-	dxf$.dialog("close");
-    var fileReader = evt.target;
-    if(fileReader.error) return console.log("error onloadend!?");
-    progress.style.width = '100%';
-    progress.textContent = '100%';
-    setTimeout(function() { $progress.removeClass('loading'); }, 2000);
-    var parser = new window.DxfParser();
-    var dxf = parser.parseSync(fileReader.result);
-    
-    // Three.js changed the way fonts are loaded, and now we need to use FontLoader to load a font
-    //  and enable TextGeometry. See this example http://threejs.org/examples/?q=text#webgl_geometry_text
-    //  and this discussion https://github.com/mrdoob/three.js/issues/7398 
-    var font;
-    var loader = new THREE.FontLoader();
-    loader.load( 'helvetiker_regular.typeface.json',
-	function(response) {
-        font = response;
-		console.log("Loader font...", response);
-        cadCanvas = new ThreeDxf.Viewer(dxf, document.getElementById('cad-view'), null, null, font);
-    });
-}
-// Setup the dnd listeners.
-var dz$ = $('.drop-zone');
-dz$.on('dragover', function(evt){
-	console.log("dragover");
-	dz$.attr("placeholder","dropbox"); 
-	evt.stopPropagation();
-    evt.preventDefault();
-    evt.dataTransfer.dropEffect = 'copy';
-},	false);
-dz$.on('dragleave',function(){
-	dz$.attr("placeholder","command");
-}, false);
-dz$.on('drop', onFileSelected, false);
-
-document.getElementById('dxf').addEventListener('change', onFileSelected, false);
-console.log ("ONFILESELECTED...", onFileSelected);
-dxf$=$("#DXF-OPEN").dialog({autoOpen:false});
-
-***/
 
 
 }); //document ready
