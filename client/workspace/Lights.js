@@ -34,8 +34,9 @@ Hemispheric.prototype.setScene=function(scene){
 };
 
 exports.Hemispheric=Hemispheric;
+exports.Light=Hemispheric;
+exports.Main=Hemispheric;
 
-//exports.lights={main:new Hemispheric()};
 
 
 

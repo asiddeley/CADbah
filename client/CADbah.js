@@ -88,7 +88,7 @@ CAD.docdxf=null;
 CAD.engine=null;
 	
 // function collection 
-CAD.fc=require("./cad-fc/cad-fc.js").fc;
+CAD.fc=require("./cad-fc/cad-fc.js");
 
 // getters function collection
 // eg. CAD.get("scene");

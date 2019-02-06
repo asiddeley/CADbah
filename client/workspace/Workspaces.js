@@ -24,9 +24,10 @@ SOFTWARE.
 *****************************************************/
 
 var Documesh=require("./Documesh").Documesh; 
-var Light=require("./Lights").Hemispheric;
-var Camera=require("./Cameras").Camera;
-var Triaxis=require("./Triaxis").Triaxis;
+var Light=require("./Lights").Main;
+var Camera=require("./Cameras").Main;
+var Ucsicon=require("./Ucsicon").Ucsicon;
+var skybox=require("./Skybox");
 
 
 var Workspace=function(CADbah){
@@ -37,7 +38,8 @@ var Workspace=function(CADbah){
 	this.addmeshmaker(
 		new Light(CADbah),
 		new Camera(CADbah),
-		new Triaxis(CADbah)
+		new Ucsicon(CADbah),
+		skybox.cloudy()
 	);
 };
 

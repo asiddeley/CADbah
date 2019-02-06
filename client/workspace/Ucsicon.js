@@ -24,20 +24,20 @@ SOFTWARE.
 *****************************************************/
 
 
-var Triaxis=function(documesh, options){
+var Ucsicon=function(documesh, options){
 
 	this.documesh=documesh;
 	this.desc='Three axii of a coordinate system';
 
 }
 
-Triaxis.prototype.axis=function(v1, v2, colour, scene) {
+Ucsicon.prototype.axis=function(v1, v2, colour, scene) {
 	var ax=BABYLON.Mesh.CreateLines('axis', [v1, v2], scene);
 	ax.color=colour;
 	return ax;
 };
 
-Triaxis.prototype.cone=function(v1, v2, v3, colour, scene){
+Ucsicon.prototype.cone=function(v1, v2, v3, colour, scene){
 
 	//https://doc.babylonjs.com/overviews/how_rotations_and_translations_work
 		
@@ -51,7 +51,7 @@ Triaxis.prototype.cone=function(v1, v2, v3, colour, scene){
 		false,	//canBeRegenerated(opt), 
 		BABYLON.Mesh.DEFAULTSIDE
 	);
-	tip.material=new BABYLON.StandardMaterial("triaxis", scene);
+	tip.material=new BABYLON.StandardMaterial("Ucsicon", scene);
 	tip.material.diffuseColor=colour;
 	/* Note that RotationFromAxis() changes the vertex objects provided by normalizing them so if they are used elsewhere, then it's best to provide copies (clones) as arguments */
 	tip.rotation = new BABYLON.Vector3.RotationFromAxis(v1.clone(), v2.clone(), v3.clone());
@@ -60,7 +60,7 @@ Triaxis.prototype.cone=function(v1, v2, v3, colour, scene){
 	return tip;
 }
 
-Triaxis.prototype.setScene=function(scene, parentMesh, entdata){
+Ucsicon.prototype.setScene=function(scene, parentMesh, entdata){
 	//mesh - optional
 
 	var red=new BABYLON.Color3(1, 0, 0);
@@ -91,5 +91,5 @@ Triaxis.prototype.setScene=function(scene, parentMesh, entdata){
 	
 };
 
-exports.Triaxis=Triaxis;
+exports.Ucsicon=Ucsicon;
 

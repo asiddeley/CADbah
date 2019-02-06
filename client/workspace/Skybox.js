@@ -23,95 +23,86 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-define(
-// load dependencies...
-['jquery', 'babylon',  'textures/TMCstdLib'],
+function Skybox(workspace, options){
 
-
-// modelHandlers inherits from partHandlers
-var Skybox=$.extend( {}, {
-
-	bimSuperType:null,
-	bimType:'worldBox',
-	desc:'wrapper with skybox, ground, units, lights and views',
-	
-	create:function(userHash) { return $.extend( {}, Worldbox, userHash); },
-
-	creaters:{
-		sky:function(){
-			var s=WORLDBOX.create(); 
-			//WORLDBOX.setUnits(s, units.create( 'metres' ) );
-			return s;
-		},
-		snow:function(){
-			var s=WORLDBOX.create(); 
-			//WORLDBOX.setUnits(s, units.create( 'feet' ) );
-			return s;
-		}
-	},
-		
-	getFeatures:function(worldbox){
-		return $.extend(
-			//new object  
-			{}, 
-			//superType's (model) features - like calling super 
-			//worldBox.handler.getFeatures(worldBox), 
-			//space's features - overriding some things set by model such as bimType
-			{ 
-				bimType:{ valu:worldbox.handler.bimType, onFeature:function(){}, widget:'text'}, 
-			}
-		);
-	},
-	
-	setScene:function(worldbox){
-
-		worldbox.baby=BABYLON.Mesh.CreateBox(
-			worldbox.name, 
-			worldbox.size, 
-			BIM.scene, 
-			false, 
-			babylon.Mesh.DEFAULTSIDE);
-		// note two way relation between BIM part and babylon element 
-		worldbox.baby.bim=worldbox;
-		
-		var m=new babylon.StandardMaterial("skyBox", BIM.scene);
-		worldbox.baby.material = m;
-		worldbox.baby.infiniteDistance = true;
-		
-		m.backFaceCulling = false;
-		m.disableLighting = true;
-		m.diffuseColor = new babylon.Color3(0, 0, 0);
-		m.specularColor = new babylon.Color3(0, 0, 0);
-		m.reflectionTexture = new babylon.CubeTexture("textures/worldBoxes/brownBlue", BIM.scene);
-		m.reflectionTexture.coordinatesMode = babylon.Texture.SKYBOX_MODE;
-	},
-	
-});
-
-
-// Construct model data.  
-var Worldbox={
-	handler:WORLDBOX,
-	lights:{},
-	model:null,
-	name:'unnamed',
-	/*************
-	textures:[
-		tcm.create( $.extend( {name:'Up'}, tcm.colour.blue), 
-		tcm.create( $.extend( {name:'Down') tcm.colour.fireBrick),
-		tcm.create( $.extend( {name:'North'}, tcm.colour.cyan), 
-		tcm.create( $.extend( {name:'East'}, tcm.colour.cyan), 	
-		tcm.create( $.extend( {name:'South') tcm.colour.coral),
-		tcm.create( $.extend( {name:'West') tcm.colour.coral),		
-	],
-	******************/
-	size:100,
-	views:{}
+	if (typeof options != "object"){options={};}
+	//bimSuperType:null,
+	cadtype="Skybox";
+	desc="wrapper with skybox, ground, units, lights and views";
+	$.extend(this.options, options);
 
 };
 
+Skybox.prototype.options={
+	name:"basic skybox",
+	decals:"resources/skyboxes/sky1",
+	size:1000	
+};
+		
+Skybox.prototype.getFeatures=function(worldbox){
+	//TO BE REWORKED...
+	return $.extend({}, 
 
+		//superType's (model) features - like calling super 
+		//worldBox.handler.getFeatures(worldBox), 
+		//space's features - overriding some things set by model such as bimType
+		{ 
+			cadtype:{ valu:worldbox.handler.bimType, onFeature:function(){}, widget:'text'}, 
+		}
+	);
+};
+	
+Skybox.prototype.setScene=function(scene){
 
+	var mesh=BABYLON.Mesh.CreateBox(
+		this.options.name, 
+		this.options.size, 
+		scene, 
+		false, 
+		BABYLON.Mesh.DEFAULTSIDE);
+	// a way to relate mash back to it's creator/handler. Useful for calling back when mesh is picked or other events. 
+	mesh.cadtype=this;
+	
+	var m=new BABYLON.StandardMaterial("skyBox", scene);
+	mesh.material = m;
+	mesh.infiniteDistance = true;
+	
+	m.backFaceCulling = false;
+	m.disableLighting = true;
+	m.diffuseColor = new BABYLON.Color3(0, 0, 0);
+	m.specularColor = new BABYLON.Color3(0, 0, 0);
+	m.reflectionTexture = new BABYLON.CubeTexture(this.options.decals, scene);
+	m.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+};
+
+/** skybox Class
+@usage sb=new Skybox();
+*/
+exports.Skybox=Skybox;
+
+/** returns a Skybox object with a snow theme
+@usage sb=brownbox();
+*/
+exports.brownblue=function(){return new Skybox({
+	name:"Skybox brownblue",
+	decals:"resources/skyboxes/brownBlue"
+});};
+
+/** returns a Skybox object with a cloudy theme
+@usage sb=clooudbox();
+*/
+exports.cloudy=function(){return new Skybox({
+	name:"Skybox cloudy",
+	decals:"resources/skyboxes/sky1"
+});};
+
+/**
+@usage sb=snowbox();
+*/
+exports.snowy=function(){return new Skybox({
+	name:"Skybox snowy",
+	decals:"resources/skyboxes/snow"
+});};
 
 
 

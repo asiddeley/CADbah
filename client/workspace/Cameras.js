@@ -43,6 +43,8 @@ ArcRotateCamera.prototype.setScene=function(scene){
 	return cam;
 };
 
+exports.ArcRotateCamera=ArcRotateCamera;
 exports.Camera=ArcRotateCamera;
+exports.Main=ArcRotateCamera;
 
 
