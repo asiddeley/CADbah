@@ -55,24 +55,24 @@ Skybox.prototype.getFeatures=function(worldbox){
 Skybox.prototype.setScene=function(scene){
 
 	var mesh=BABYLON.Mesh.CreateBox(
-		this.options.name, 
-		this.options.size, 
-		scene, 
-		false, 
+		this.options.name,
+		this.options.size,
+		scene,
+		false,
 		BABYLON.Mesh.DEFAULTSIDE);
 	// a way to relate mash back to it's creator/handler. Useful for calling back when mesh is picked or other events. 
 	mesh.cadtype=this;
 	
-	var m=new BABYLON.StandardMaterial("skyBox", scene);
-	mesh.material = m;
-	mesh.infiniteDistance = true;
-	
+	var m=new BABYLON.StandardMaterial(this.options.name, scene);
 	m.backFaceCulling = false;
 	m.disableLighting = true;
 	m.diffuseColor = new BABYLON.Color3(0, 0, 0);
 	m.specularColor = new BABYLON.Color3(0, 0, 0);
 	m.reflectionTexture = new BABYLON.CubeTexture(this.options.decals, scene);
 	m.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+	
+	mesh.material = m;
+	mesh.infiniteDistance = true;
 };
 
 /** skybox Class
@@ -83,24 +83,32 @@ exports.Skybox=Skybox;
 /** returns a Skybox object with a snow theme
 @usage sb=brownbox();
 */
-exports.brownblue=function(){return new Skybox({
-	name:"Skybox brownblue",
+exports.brownblue=function(workspace){return new Skybox(workspace,{
+	name:"Skybox-brownblue",
 	decals:"resources/skyboxes/brownBlue"
 });};
 
 /** returns a Skybox object with a cloudy theme
 @usage sb=clooudbox();
 */
-exports.cloudy=function(){return new Skybox({
-	name:"Skybox cloudy",
+exports.classic=function(workspace){return new Skybox(workspace,{
+	name:"Skybox-classic",
+	decals:"resources/skyboxes/classic"
+});};
+
+/** returns a Skybox object with a cloudy theme
+@usage sb=clooudbox();
+*/
+exports.cloudy=function(workspace){return new Skybox(workspace,{
+	name:"Skybox-cloudy",
 	decals:"resources/skyboxes/sky1"
 });};
 
 /**
 @usage sb=snowbox();
 */
-exports.snowy=function(){return new Skybox({
-	name:"Skybox snowy",
+exports.snowy=function(workspace){return new Skybox(workspace,{
+	name:"Skybox-snowy",
 	decals:"resources/skyboxes/snow"
 });};
 

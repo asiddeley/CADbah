@@ -48,7 +48,8 @@ Entity.prototype.setScene=function(scene, mesh, entdxf){
 		}
 		//set colour
 		if (entdxf.color=="BYLAYER"){
-			mesh.color=this.docdxf.getColorBylayer(entdxf.layer);			
+			//console.log("Entity.setScene():", entdxf);
+			mesh.color=this.docdxf.getColorByLayer(entdxf.layer);			
 		}
 		else {
 			mesh.color=this.docdxf.getColorByIndex(entdxf.color);	
@@ -67,7 +68,7 @@ Entity.prototype.addFeatures=function(){
 //default entity data with random location
 Entity.prototype.dxf=function(){
 	return {
-		type:"ELEMENT",
+		type:"ENTITY",
 		color:"BYLAYER",
 		layer:"0",
 		linetype:"BYLAYER",

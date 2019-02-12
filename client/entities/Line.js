@@ -76,7 +76,7 @@ Line.prototype.deserialize=function(scene, linedata){
 //overwrite Entity.setScene()
 Line.prototype.setScene=function(scene, linedxf){
 
-	mesh = BABYLON.Mesh.CreateLines("LINE", [
+	var mesh = BABYLON.Mesh.CreateLines("LINE", [
 		new BABYLON.Vector3(
 			linedxf.vertices[0].x, 
 			linedxf.vertices[0].y, 
@@ -85,7 +85,7 @@ Line.prototype.setScene=function(scene, linedxf){
 		new BABYLON.Vector3(
 			linedxf.vertices[1].x, 
 			linedxf.vertices[1].y, 
-			linedxf.vertices[0].z
+			linedxf.vertices[1].z
 		),
 	], scene);
 

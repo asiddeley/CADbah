@@ -54,6 +54,14 @@ exports.cameraPlay=function(eventName){
 	CAD.fc.trigger(eventName);	
 };
 
+exports.clearScene=function(CAD){
+	CAD.scene.dispose();
+
+	//var gl=CAD.canvas.getContext('webgl');
+	//canvas.addEventListener('webglcontextlost', function(e) { console.log(e); }, false);
+	//gl.getExtension('WEBGL_lose_context').loseContext();
+};
+
 /** Returns a BABYLON.Vector3 representing the closest axis to the argument vector.  Thanks to http://stackoverflow.com/questions/25825464/get-closest-cartesian-axis-aligned-vector-in-javascript
 */
 exports.closestAxis=function(vector3){

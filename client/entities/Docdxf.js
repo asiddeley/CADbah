@@ -28,6 +28,7 @@ var Line=require("./Line.js").Line;
 var Docdxf=function(CADbah){
 	this.CAD=CADbah;
 	this.dxf=new this.DXF();
+	this.line=new Line(this);
 };
 
 //default drawing - DXF FORMAT
@@ -56,15 +57,7 @@ Docdxf.prototype.DXF=function(){
 		}
 	};
 	this.blocks={};
-	this.entities=[
-		{
-			type: "LINE",
-			vertices: [{x:0,y:0,z:0}, {x:100,y:100,z:0}],
-			handle:"1805",
-			ownerHandle:"1F",
-			layer: "0"
-		}	
-	];	
+	this.entities=[];	
 };
 
 //placeholder
@@ -77,6 +70,17 @@ Docdxf.prototype.deserialize=function(dxf){
 	
 };
 
+Docdxf.prototype.getColorByIndex=function(index){
+
+	return "Black";
+};
+
+Docdxf.prototype.getColorByLayer=function(layer){
+
+	return "Black";
+};
+
+
 Docdxf.prototype.serialize=function(){
 	//To do...
 	return this.dxf;	
@@ -84,20 +88,21 @@ Docdxf.prototype.serialize=function(){
 
 Docdxf.prototype.setScene=function(scene){
 	//render dxf or meshes
-	
-	
-	var i;
-	var line=new Line(this);
-	
-	for (i=0; i<this.dxf.entities; i++){
+	var e;
+	for (var i=0; i<this.dxf.entities.length; i++){
 		e=this.dxf.entities[i];
+		console.log("entity:",e.type);
 		switch (e.type) {
-			case "LINE":line.setScene(scene, e);break;			
-			
+			case "LINE": 
+				//console.log("line entity...");
+				//this.line.setScene(scene, e);
+				this.line.setScene(scene,e);
+			break;			
 			
 		}		
-	}	
+	};
 	
+	console.log("docdxf.setScene() done");
 };
 
 

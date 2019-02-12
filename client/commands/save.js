@@ -23,31 +23,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Documesh=require("./Documesh").Documesh; 
-var Light=require("./Lights").Main;
-var Camera=require("./Cameras").Main;
-var Ucsicon=require("./Ucsicon").Ucsicon;
-var skybox=require("./Skybox");
+/*** SEE 
+https://doc.babylonjs.com/resources/save_babylon  
+***/
 
+//place for temporary anchor element <a> used to download file
+var objectUrl;
 
-var Workspace=function(CADbah){
-	//First step of javascript inherit pattern, call constructor...
-	Documesh.call(this, CADbah);
+exports.savefile=function(CAD){
 	
-	this.desc="Basic workspace";
-	this.addmeshmaker(
-		new Light(CADbah),
-		new Camera(CADbah),
-		new Ucsicon(CADbah),
-		skybox.classic()
-	);
+	//delete if previously created
+	if(objectUrl) {window.URL.revokeObjectURL(objectUrl);}
+
+	var serializedScene = BABYLON.SceneSerializer.Serialize(CAD.scene);
+
+	var strScene = JSON.stringify(serializedScene);
+
+	//TO DO CAD.scenename??
+	var filename="unnamed";
+	var ext=".bah";
+	if (filename.toLowerCase().lastIndexOf(ext) !== (filename.length - ext.length) || filename.length < (ext.length + 1)){ filename += ext;	}
+
+	var blob = new Blob ( [ strScene ], { type : "octet/stream" } );
+
+	// turn blob into an object URL; saved as a member, so can be cleaned out later
+	objectUrl = (window.webkitURL || window.URL).createObjectURL(blob);
+
+	var link = window.document.createElement("a");
+	link.href = objectUrl;
+	link.download = filename;
+	var click = document.createEvent("MouseEvents");
+	click.initEvent("click", true, false);
+	link.dispatchEvent(click);      
 };
-
-//Next steps of js inheritance patterns, inherit prototype and constructor...
-Workspace.prototype=Object.create(Documesh.prototype);
-Workspace.prototype.constructor=Workspace;
-
-exports.Workspace=Workspace;
-
 
 

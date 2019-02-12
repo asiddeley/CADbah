@@ -27,11 +27,20 @@ SOFTWARE.
 var UI=require('./UI.js').UI;
 
 
-var Tabsui=function(div, title){
+var Tabsui=function(div, title, options){
 
 	// This class extends UI, call super constructor
 	// note that call always requires this as its first arg
-	UI.call(this, div, title); 
+	UI.call(this, div, title, options); 
+	
+	/* if (typeof options=="undefined" || options==null){options={};}
+	$.extend({
+		draggable:true,
+		title:this.alias,
+		autoOpen:false, 
+		width:500,
+		position:{ my: "right bottom", at: "center", of: window }
+	}, options);*/
 	
 	this.tabcount=0;
 	
@@ -40,15 +49,10 @@ var Tabsui=function(div, title){
 	
 	//use jquery-ui to turn div$ into a floating dialog box
 	//note that this.div$ was initialized by UI.call() above
-	this.div$.dialog({
-		draggable:true,
-		title:this.alias,
-		autoOpen:true, 
-		width:500,
-		position:{ my: "right bottom", at: "center", of: window }
-	});
+	//this.div$.dialog(options);
+	//this.div$.dialog("option","autoOpen",false);
 
-	return this;
+	//return this;
 };
 
 // Inherit prototype from UI
@@ -88,7 +92,7 @@ Tabsui.prototype.addTab=function(){
 				ui=UI.instances[i];
 				if (divs.newPanel.find('div')[0]==ui.div$[0]){activeUI=ui;}
 			}
-			BIM.fun.trigger('activeui', [activeUI]);
+			//BIM.fun.trigger('activeui', [activeUI]);
 			
 		}
 	});

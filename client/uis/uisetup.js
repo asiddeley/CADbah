@@ -41,7 +41,7 @@ exports.uisetup=function(CAD, options){
 	}
 	
 	/* If div is 1st arg, then the intention is to make this UI its own dialog otherwise, null is the 1st arg meaning this UI will be contianed in and managed by another UI such as a Tabsui */
-	CAD.uis.tabsui=new Tabsui(CAD.div$, "tabs");
+	CAD.uis.tabsui=new Tabsui(CAD.div$, "Main", options);
 	
 	//add individual uis as tabs to tabsui
 	CAD.uis.tabsui.addTab( 

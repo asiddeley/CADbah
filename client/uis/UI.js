@@ -29,14 +29,19 @@ var UI=function(div, title, options){
 	this.div$=$('<div></div>');
 	if (typeof title != 'undefined' && title != null) {this.alias=title;}
 	else {this.alias='UI';} 
+	if (typeof options == 'undefined' || options==null) {options={};}
+	options=$.extend(
+		{ignoreInput:false, draggable:true, title:this.alias},
+		options
+	);
+	
 	/* If div is provided, then the intention is to make this UI its own dialog otherwise
 	it's assumed this will be a ui contianed in and managed by another UI */
 	if (typeof div != 'undefined' && div != null){ 
 		this.div$=$(div).append(this.div$);
 		//use jquery-ui to turn div$ into a floating dialog box
-		this.div$.dialog({draggable:true, title:this.alias, autoOpen:true});
+		this.div$.dialog(options);
 	}
-	if (typeof options == 'undefined') {options={ignoreInput:false};}
 	
 	// REGISTER EVENTS 
 	CAD.fc.on(this.getEvents());

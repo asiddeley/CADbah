@@ -23,13 +23,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-/////////////////////////
-//load following in HTML with <script>
-//var $=require('jquery'); 
-//var BABYLON=require('BABYLON');
+/**
+Main CAD library entry point and initializer.  
 
+Following dependencies need to be loaded in HTML:
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
+<link rel="stylesheet" type="text/css" href="jquery-ui.structure.css">
+<script type="text/javascript" src="babylon.js"></script>
+<script type="text/javascript" src="babylon.canvas2d.js"></script>
 
+Then load this library:
+<script type="text/javascript" src="CADbah.dist.js"></script>
+
+Start the CAD app in HTML thus:
+$(document).ready(function(){
+	//...
+	CAD.activate({canvas:document.getElementById("cad-canvas")});
+	//...
+});
+*/
+
+window.CAD=function(){
+	
 var CAD={};
+var command=require("./commands/command.js").command;
+var Docdxf=require("./entities/Docdxf.js").Docdxf;
+var FC=require("./cad-fc/cad-fc.js");
+var uisetup=require("./uis/uisetup.js").uisetup;
+var Workspace=require("./workspace/workspaces.js").Workspace;
 
 CAD.activate=function(options){
 
@@ -40,7 +63,8 @@ CAD.activate=function(options){
 	/* Prepare user interfaces and controls...  
 	Looks in options for {... div:HTMLelementReference, ...} or
 	creates it from scratch if not found */
-	require("./uis/uisetup.js").uisetup(this, options);	
+	uisetup(this, {autoOpen:false});	
+	
 
 	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
@@ -62,11 +86,11 @@ CAD.activate=function(options){
 	
 	// WORKSPACE
 	// includes camera and light
-	this.workspace=new this.Workspace(this);
+	this.workspace=new Workspace(this);
 	this.workspace.setScene(this.scene);
 
 	// DOCUMENT
-	this.docdxf=new this.Docdxf(this);
+	this.docdxf=new Docdxf(this);
 	// set the BABYLON scene by traverses all entities in document 
 	this.docdxf.setScene(this.scene);
 	
@@ -81,37 +105,36 @@ CAD.activate=function(options){
 
 CAD.canvas=null;
 CAD.canvas$=null;
+CAD.cmd=function(input){command(this, input);};
 CAD.div=null;
 CAD.div$=null;
-CAD.Docdxf=require("./entities/Docdxf.js").Docdxf;
 CAD.docdxf=null;
 CAD.engine=null;
 	
 // function collection 
-CAD.fc=require("./cad-fc/cad-fc.js");
+CAD.fc=FC;
 
-// getters function collection
-// eg. CAD.get("scene");
-CAD.get=require("./cad-fc/getters.js").fc;
-	
+
 // Extended by user in API functions above
 CAD.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
 	database:null, //to be determined
-};	
+};
 	
 // Babylon scene, initialized by CAD.activate()
-CAD.scene=null; 
+CAD.scene=null;
 // workspace is a documesh and includes such things as Triaxis (UCSicon), lights, views 
-CAD.Workspace=require("./workspace/workspaces.js").Workspace;
-CAD.workspace=null; 
+CAD.Workspace=Workspace;
+CAD.workspace=null;
 CAD.uis={};
-	
 
 
-window.CAD=CAD;
 return CAD;
+}();
+
+//window.CAD=CAD;
+//return CAD;
 
 
 

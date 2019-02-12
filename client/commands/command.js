@@ -23,31 +23,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Documesh=require("./Documesh").Documesh; 
-var Light=require("./Lights").Main;
-var Camera=require("./Cameras").Main;
-var Ucsicon=require("./Ucsicon").Ucsicon;
-var skybox=require("./Skybox");
 
+var dxfin=require("./dxfin").dxfin;
+var openfile=require("./open").openfile;
+var savefile=require("./save").savefile;
 
-var Workspace=function(CADbah){
-	//First step of javascript inherit pattern, call constructor...
-	Documesh.call(this, CADbah);
-	
-	this.desc="Basic workspace";
-	this.addmeshmaker(
-		new Light(CADbah),
-		new Camera(CADbah),
-		new Ucsicon(CADbah),
-		skybox.classic()
-	);
+exports.command=function(CAD, inputstr){
+	console.log("command:", inputstr);
+	var first=inputstr.split(" ")[0];
+	var rest=inputstr.substring(first.length);
+	switch(first.toUpperCase()){
+		
+		case "LINE": console.log("LINE", rest);	break;
+		
+		case "DXFIN": dxfin(CAD); break;
+		
+		case "OPEN": openfile(CAD); break;
+		
+		case "SAVE": savefile(CAD); break;
+
+		
+	};
 };
 
-//Next steps of js inheritance patterns, inherit prototype and constructor...
-Workspace.prototype=Object.create(Documesh.prototype);
-Workspace.prototype.constructor=Workspace;
-
-exports.Workspace=Workspace;
 
 
 

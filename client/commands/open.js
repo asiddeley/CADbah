@@ -23,31 +23,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Documesh=require("./Documesh").Documesh; 
-var Light=require("./Lights").Main;
-var Camera=require("./Cameras").Main;
-var Ucsicon=require("./Ucsicon").Ucsicon;
-var skybox=require("./Skybox");
+var filed=require("file-dialog");
 
 
-var Workspace=function(CADbah){
-	//First step of javascript inherit pattern, call constructor...
-	Documesh.call(this, CADbah);
-	
-	this.desc="Basic workspace";
-	this.addmeshmaker(
-		new Light(CADbah),
-		new Camera(CADbah),
-		new Ucsicon(CADbah),
-		skybox.classic()
-	);
-};
-
-//Next steps of js inheritance patterns, inherit prototype and constructor...
-Workspace.prototype=Object.create(Documesh.prototype);
-Workspace.prototype.constructor=Workspace;
-
-exports.Workspace=Workspace;
-
+exports.openfile=function(CAD){
+		
+	//show file dialog
+	filed({accept:"bah"}).then(function(files){
+		
+		//TO DO upload files to server so sceneloader can retrieve
+		
+		var f=files[0];		
+		console.log("loading file...", f);
+		BABYLON.SceneLoader.Load(
+			"./uploads/", 
+			f.name, 
+			CAD.engine, 
+			function(scene) {CAD.fc.clearScene(CAD); CAD.scene=scene;}
+		);	
+	});
+}
 
 
