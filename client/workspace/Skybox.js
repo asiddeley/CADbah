@@ -83,34 +83,20 @@ exports.Skybox=Skybox;
 /** returns a Skybox object with a snow theme
 @usage sb=brownbox();
 */
-exports.brownblue=function(workspace){return new Skybox(workspace,{
-	name:"Skybox-brownblue",
-	decals:"resources/skyboxes/brownBlue"
+exports.cad=function(workspace){return new Skybox(workspace,{
+	name:"Skybox-cad",
+	decals:"resources/skyboxes/cad"
 });};
 
 /** returns a Skybox object with a cloudy theme
 @usage sb=clooudbox();
 */
-exports.classic=function(workspace){return new Skybox(workspace,{
+exports.hilltop=function(workspace){return new Skybox(workspace,{
 	name:"Skybox-classic",
-	decals:"resources/skyboxes/classic"
+	decals:"resources/skyboxes/hilltop"
 });};
 
-/** returns a Skybox object with a cloudy theme
-@usage sb=clooudbox();
-*/
-exports.cloudy=function(workspace){return new Skybox(workspace,{
-	name:"Skybox-cloudy",
-	decals:"resources/skyboxes/sky1"
-});};
 
-/**
-@usage sb=snowbox();
-*/
-exports.snowy=function(workspace){return new Skybox(workspace,{
-	name:"Skybox-snowy",
-	decals:"resources/skyboxes/snow"
-});};
 
 
 

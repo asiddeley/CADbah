@@ -39,7 +39,7 @@ var Workspace=function(CADbah){
 		new Light(CADbah),
 		new Camera(CADbah),
 		new Ucsicon(CADbah),
-		skybox.classic()
+		skybox.hilltop()
 	);
 };
 

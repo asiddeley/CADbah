@@ -39,7 +39,12 @@ exports.openfile=function(CAD){
 			"./uploads/", 
 			f.name, 
 			CAD.engine, 
-			function(scene) {CAD.fc.clearScene(CAD); CAD.scene=scene;}
+			function(scene) {
+				CAD.fc.clearScene(CAD); 
+				CAD.scene=scene;
+				CAD.workspace.setScene();
+				
+			}
 		);	
 	});
 }
