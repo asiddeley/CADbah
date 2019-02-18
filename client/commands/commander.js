@@ -23,28 +23,65 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
+// command objects
+var cobs=[
+	require("./dxfin"),
+	require("./fullscreen"),
+	require("./open"),
+	require("./save"),
+	require("./zoom"),
+];
 
-var dxfin=require("./dxfin").dxfin;
-var openfile=require("./open").openfile;
-var savefile=require("./save").savefile;
 
-exports.command=function(CAD, inputstr){
+exports.input=function(CAD, inputstr){
+	
 	console.log("command:", inputstr);
 	var first=inputstr.split(" ")[0];
-	var rest=inputstr.substring(first.length);
-	switch(first.toUpperCase()){
+	var rest=inputstr.substring(first.length).trim();
+	var txt="";
+	if (first=="") {return;}
+	
+	switch(first.toLowerCase()){
 		
-		case "LINE": console.log("LINE", rest);	break;
+		// discover commands
+		case "dir":
+			for (var i=0; i<cobs.length; i++){
+				txt+=cobs[i].name;
+				txt+=(i+1%3==0)?"\n":"\t";
+			}
+			alert(txt);
+		break;
 		
-		case "DXFIN": dxfin(CAD); break;
+		// help on a command
+		case "help":
+		case "?":			
+			if (rest!=""){
+				for (var i=0; i<cobs.length; i++){
+					if (cobs[i].name==rest) {txt=cobs[i].desc; break;}
+				}
+			} 
+			if (txt==""){
+				txt=(rest)?"Sorry, nothing found for '"+rest+"'.\n":"\n";
+				txt+="Enter:\n";
+				txt+="dir\tto list all commands.\n";
+				txt+="help <command>\tto display information on that command.";
+			}
+			alert(txt);
+		break;
 		
-		case "OPEN": openfile(CAD); break;
-		
-		case "SAVE": savefile(CAD); break;
-
-		
-	};
-};
+		// execute command 
+		default:
+			// TO DO, Aliases		
+			// find matching command to execute
+			for (var i=0; i<cobs.length; i++){		
+				if (cobs[i].name==first){
+					cobs[i].action(CAD, rest);
+					break;
+				}
+			}
+		break;
+	}
+}
 
 
 

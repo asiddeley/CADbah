@@ -23,35 +23,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Documesh=require("./Documesh").Documesh; 
-var Light=require("./Lights").Main;
-var Camera=require("./Cameras").Main;
-var Ucsicon=require("./Ucsicon").Ucsicon;
-var skybox=require("./Skybox");
-var zoomer=require("./zoomer");
-
-var Workspace=function(CADbah){
-	//First step of javascript inherit pattern, call constructor...
-	Documesh.call(this, CADbah);
-
-	this.desc="Basic workspace";
-	this.addTools(
-		new Light(CADbah),
-		new Camera(CADbah),
-		new Ucsicon(CADbah),
-		skybox.hilltop(),
-		zoomer.init(this)
-	);
-
-	//shortcut
-	this.zoomer=zoomer;
+function ArcRotateCamera(cadbah){
+	this.CAD=cadbah;
 };
 
-//Next steps of js inheritance patterns, inherit prototype and constructor...
-Workspace.prototype=Object.create(Documesh.prototype);
-Workspace.prototype.constructor=Workspace;
+ArcRotateCamera.prototype.setScene=function(scene){
+	//new ArcRotateCamera(name, alpha, beta, radius, target, scene)
+	var cam = new BABYLON.ArcRotateCamera(
+		"ArcRotateCamera", //name
+		1, //alpha
+		0.8, //beta
+		500, //radius
+		new BABYLON.Vector3(0, 0, 0), //target
+		scene
+	);
 
-exports.Workspace=Workspace;
+	cam.attachControl(this.CAD.canvas, true);
+	console.log("Cameras.setScene");
+	return cam;
+};
 
+exports.ArcRotateCamera=ArcRotateCamera;
+exports.Camera=ArcRotateCamera;
+exports.Main=ArcRotateCamera;
 
 

@@ -48,7 +48,7 @@ $(document).ready(function(){
 window.CAD=function(){
 	
 var CAD={};
-var command=require("./commands/command.js").command;
+var commander=require("./commands/commander.js");
 var Docdxf=require("./entities/Docdxf.js").Docdxf;
 var FC=require("./cad-fc/cad-fc.js");
 var uisetup=require("./uis/uisetup.js").uisetup;
@@ -105,7 +105,7 @@ CAD.activate=function(options){
 
 CAD.canvas=null;
 CAD.canvas$=null;
-CAD.cmd=function(input){command(this, input);};
+CAD.cmd=function(input){commander.input(this, input);};
 CAD.div=null;
 CAD.div$=null;
 CAD.docdxf=null;

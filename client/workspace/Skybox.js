@@ -36,7 +36,7 @@ function Skybox(workspace, options){
 Skybox.prototype.options={
 	name:"basic skybox",
 	decals:"resources/skyboxes/sky1",
-	size:1000	
+	size:5000	
 };
 		
 Skybox.prototype.getFeatures=function(worldbox){

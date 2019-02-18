@@ -29,7 +29,7 @@ var Documesh=function(CADbah){
 };
 
 
-Documesh.prototype.addmeshmaker=function(){
+Documesh.prototype.addTools=function(){
 	for (var i=0; i<arguments.length; i++){
 		this.meshmakers.push(arguments[i]);
 	};

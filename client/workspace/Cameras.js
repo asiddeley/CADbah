@@ -33,12 +33,12 @@ ArcRotateCamera.prototype.setScene=function(scene){
 		"ArcRotateCamera", //name
 		1, //alpha
 		0.8, //beta
-		100, //radius
+		500, //radius
 		new BABYLON.Vector3(0, 0, 0), //target
 		scene
 	);
-	
-	cam.attachControl(this.CAD.canvas, true);	
+	//scene.activeCamera.panningSensibility = 0;
+	cam.attachControl(this.CAD.canvas, true);
 	console.log("Cameras.setScene");
 	return cam;
 };
