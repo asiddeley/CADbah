@@ -83,14 +83,26 @@ function inputHandler(ev){
 
 $(document).ready(function(){
 
+var $cl=$("#myInput");
+
 //Turn off the browser's right-click context menu
 $(document).on('contextmenu', false);
 
-//prevent accidental drag-and-drop on windox
+//basic behavior
 $(window).on({
-	"drop": function(e){ e=e||event; e.preventDefault(); false;},
-	"dragover":function(e){ e=e||event; e.preventDefault(); false;}
+	//prevent accidental drag-and-drop on windox
+	"drop": function(e){ e=e||event; e.preventDefault(); return false;},
+	"dragover":function(e){ e=e||event; e.preventDefault(); false;},
+	//focus on command line (if not already) when keys pressed
+	"keypress":function(e){ e=e||event;
+		if(!$cl.is(":focus")){
+			//$cl.focus(); //should work but not fully
+			$cl.get(0).focus();
+			$cl.get(0).select();
+		};
+	}
 });
+
 
 //setup Navbar using jquery-ui controlgroup widget
 $("#navbar").controlgroup({items:{
