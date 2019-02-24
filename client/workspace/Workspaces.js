@@ -29,6 +29,7 @@ var Camera=require("./Cameras").Main;
 var Ucsicon=require("./Ucsicon").Ucsicon;
 var skybox=require("./Skybox");
 var zoomer=require("./zoomer");
+var undoer=require("./undoer");
 
 var Workspace=function(CADbah){
 	//First step of javascript inherit pattern, call constructor...
@@ -40,7 +41,8 @@ var Workspace=function(CADbah){
 		new Camera(CADbah),
 		new Ucsicon(CADbah),
 		skybox.hilltop(),
-		zoomer.init(this)
+		zoomer.init(this),
+		undoer.init(this)
 	);
 
 	//shortcut

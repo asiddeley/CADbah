@@ -13,10 +13,34 @@
 	width:100%;
 }
 
+.cad-debug {
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.6em;
+	color:gray; 
+}
+
+.cad-msg {
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.6em;
+	color:white; 
+}
+
+#cad-console {
+	padding:5px;
+	margin:0px;
+	float:left;
+	word-wrap:break-word;
+	height:100%;
+	width:19%;
+	background-color:rgb(11,62,111);
+	overflow-y:auto;
+}
+
 
 #cad-view > canvas {
 	/* border: 1px solid #666; */
-	width:100%;
+	display:block;
+	width:80%;
 	height:100%
 }
 
@@ -99,14 +123,16 @@ $(window).on({
 			//$cl.focus(); //should work but not fully
 			$cl.get(0).focus();
 			$cl.get(0).select();
-		};
+			//enter pressed outside of command line can also submit command
+			if(e.code==13){document.forms.navbar.submit();}
+		};		
 	}
 });
 
 
-//setup Navbar using jquery-ui controlgroup widget
+// setup Navbar using jquery-ui controlgroup widget
 $("#navbar").controlgroup({items:{
-	//widgetToApply:selector
+	// widgetToApply:selector
 	"button": "a, button, input[type=text], input[type=button], input[type=submit]",
 	"controlgroupLabel": ".ui-controlgroup-label",
 	"checkboxradio": "input[type='checkbox'], input[type='radio']",
@@ -115,20 +141,26 @@ $("#navbar").controlgroup({items:{
 	"spinner": ".ui-spinner-input"
 }});
 
-//set behaviour of dropdown menus... 
+// init dropdown menus... 
 $(".menu").menu().css("position","absolute", "width", "200px").hide();
 
-//cleanup any open dropdown menus
+// auto cleanup any open dropdown menus
 $(".menu").on('mouseleave',function(){$(".menu").hide();});
 
-//clear dropdown autohide (DDAH)
+// auto clear dropdown autohide (DDAH)
 $(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
 
-
+// attach menus to navbar buttons
 initMenus("file edit draw help", "file-menu edit-menu draw-menu help-menu");
 
 // Start the CAD app
-CAD.activate({canvas:document.getElementById("cad-canvas")});
+CAD.activate({
+	canvas:document.getElementById("cad-canvas"),
+	console:document.getElementById("cad-console")
+});
+
+// load standard command aliases or shortcuts
+CAD.cmd("alias load aliases.json");
 
 }); //end of document ready
 </script>
@@ -138,21 +170,21 @@ CAD.activate({canvas:document.getElementById("cad-canvas")});
 <body>
 <div id="board" class="container-fluid">
 <form 
+name="navbar"
 id="navbar" 
 class="controlgroup ui-widget-header"  
 onSubmit="return inputHandler(event)">
 	<button>CADbah</button>
 	<button id="file">File</button>
 	<button id="edit">Edit</button>
-	<button id="draw">Draw</button>	
-	<button id="help">Help</button>	
+	<button id="draw">Draw</button>
+	<button id="help">Help</button>
 
 	<ul id="file-menu" class="menu">
 		<li onclick="CAD.cmd('new')"><div>New</div></li>
 		<li onclick="dxf$.dialog('open')"><div>Open</div></li>
 		<li onclick="CAD.cmd('save')"><div>Save</div></li>
 		<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
-		
 		<li>--</li>
 		<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
 		<li>--</li>
@@ -210,7 +242,10 @@ onSubmit="return inputHandler(event)">
 	<input id="myInput" type="text" placeholder="command" class="drop-zone">
 	<input type="submit" value="Ok">
 </form>
-<div id="cad-view" ><canvas id="cad-canvas"></canvas></div>
+<div id="cad-view">
+<div id="cad-console"></div>
+<canvas id="cad-canvas"></canvas>
+</div>
 </div><!-- board -->
 
 

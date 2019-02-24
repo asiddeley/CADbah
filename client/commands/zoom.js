@@ -5,13 +5,13 @@ MIT License
 ***/
 
 //required exports for any command
-exports.desc="Zoom tool.\n(w)indow\tPick upper left and lower right of area to zoom to";
+exports.desc="Zoom tool:\nzoom rect <press-move-release>\t";
+exports.desc+="Zooms to part of scene indicated by pointer";
 exports.name="zoom";
-exports.action=function(CAD, argstr){
-
+exports.action=function(CAD, argstr, callback){
 	switch(argstr.toLowerCase()){
 		case "r":
-		case "rect": CAD.workspace.zoomer.zoomRect(CAD.workspace);
+		case "rect": CAD.workspace.zoomer.zoomRect(callback);
 		break;
 		default:		
 	}

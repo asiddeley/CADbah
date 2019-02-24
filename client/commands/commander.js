@@ -22,20 +22,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
+var alias=require("./alias");
 
 // command objects
 var cobs=[
+	alias,
 	require("./dxfin"),
 	require("./fullscreen"),
 	require("./open"),
 	require("./save"),
-	require("./zoom"),
+	require("./zoom")	
 ];
 
+// executed actions
+var acts=[];
 
 exports.input=function(CAD, inputstr){
 	
-	console.log("command:", inputstr);
+	CAD.msg("&gt;", inputstr);
+	inputstr=alias.subst(inputstr);
+	CAD.debug("alias subst:", inputstr);
+	
 	var first=inputstr.split(" ")[0];
 	var rest=inputstr.substring(first.length).trim();
 	var txt="";
@@ -67,15 +74,15 @@ exports.input=function(CAD, inputstr){
 				txt+="help <command>\tto display information on that command.";
 			}
 			alert(txt);
+			
 		break;
 		
 		// execute command 
 		default:
-			// TO DO, Aliases		
 			// find matching command to execute
 			for (var i=0; i<cobs.length; i++){		
 				if (cobs[i].name==first){
-					cobs[i].action(CAD, rest);
+					cobs[i].action(CAD, rest, function(done){acts.push(done);});
 					break;
 				}
 			}

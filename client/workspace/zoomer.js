@@ -10,10 +10,21 @@ MIT License
 var CAD;
 var background;
 var camera;
+
+var done; //callback provided by caller (zoom command)
+
+var undoer=require("../workspace/undoer");
+var undo;
+var u=0;
+var v=0;
+var x=0;
+var y=0;
+var zoom=function(u,v,x,y){
+	CAD.msg("ZOOM",u,v,x,y);
+};
+
 var zoomf=-1.5;
 var zoomrect;
-var zoomrectx;
-var zoomrecty;
 var zoomrectMD=function(){
 	//console.log("zoom mousedown...");
 	zoomrect.isVisible=true;
@@ -24,8 +35,8 @@ var zoomrectMD=function(){
 	);
 	if (pick.hit){
 		//console.log("pick hit...");
-		zoomrectx=pick.pickedPoint.x;
-		zoomrecty=pick.pickedPoint.y;
+		u=pick.pickedPoint.x;
+		v=pick.pickedPoint.y;
 	};
 	// done so remove
 	window.removeEventListener("mousedown", zoomrectMD);
@@ -41,12 +52,12 @@ var zoomrectMM=function(){
 	);
 
 	if (pick.hit){
-		var vx=pick.pickedPoint.x;
-		var vy=pick.pickedPoint.y;
-		zoomrect.position.x=zoomrectx+(vx-zoomrectx)/2;
-		zoomrect.position.y=zoomrecty+(vy-zoomrecty)/2;
-		zoomrect.scaling.x=zoomrectx-vx;
-		zoomrect.scaling.y=zoomrecty-vy;
+		x=pick.pickedPoint.x;
+		y=pick.pickedPoint.y;
+		zoomrect.position.x=u+(x-u)/2;
+		zoomrect.position.y=v+(y-v)/2;
+		zoomrect.scaling.x=u-x;
+		zoomrect.scaling.y=v-y;
 		camera.radius=zoomf*Math.abs(Math.max(zoomrect.scaling.x, zoomrect.scaling.y));
 		//console.log("zoomrect.scale",zoomrect.scaling.x,zoomrect.scaling.y);
 	};	
@@ -62,6 +73,13 @@ var zoomrectMU=function(){
 	CAD.scene.activeCamera=camera;
 	//zoomrect.isVisible=false;
 
+	if (typeof done=="function"){
+		//finalize undo object by defining the pro (forward) and retro functions
+		undo.setPro(function(){zoom(this.f.u, this.f.v, this.f.x, this.f.y);});
+		undo.setRetro(function(){zoom(this.b.u, this.b.v, this.b.x, this.b.y);});	
+		//execute callback with undo object as argument 
+		done(undo);
+	}
 };
 
 // Public methods
@@ -112,7 +130,13 @@ exports.setScene=function(scene){
 	camera.lockedTarget=zoomrect;
 };
 
-exports.zoomRect=function(){
+exports.zoomRect=function(callback){
+
+	done=callback;
+	if (typeof done=="function"){
+		undo=undoer.create(CAD, "zoom rect");
+		undo.set("b",{u:u, v:v, x:x, y:y});		
+	};
 
 	//CAD=workspace.CAD;
 	zoomrect.isVisible=true;

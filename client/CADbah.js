@@ -72,9 +72,14 @@ CAD.activate=function(options){
 		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body);
 		//html element
 		this.canvas=canvas$.get();
-	} 
-	else {this.canvas=options.canvas;this.canvas$=$(options.canvas);}
-	
+	} else {this.canvas=options.canvas;this.canvas$=$(options.canvas);}
+
+	// Prepare optional console for messages
+	if (typeof options.console!="undefined"){
+		this.console=options.console;
+		this.console$=$(options.console);
+	};
+		
 	// prepare engine
 	this.engine = new BABYLON.Engine(this.canvas, true);
 	/* 	Why warning, webgl dest rect smaller than viewport rect?
@@ -105,15 +110,43 @@ CAD.activate=function(options){
 
 CAD.canvas=null;
 CAD.canvas$=null;
+CAD.console=null;
+CAD.console$=null;
 CAD.cmd=function(input){commander.input(this, input);};
 CAD.div=null;
 CAD.div$=null;
 CAD.docdxf=null;
+
+CAD.debug=function(){
+	var i, a, p$=$("<p></p>").addClass("cad-debug");
+	for (i in arguments){
+		a=arguments[i]+" ";
+		if (this.console$){p$.append(a);} 
+		else {console.log(a);}
+	};
+	if (this.console$){
+		this.console$.append(p$);
+		this.console.scrollTop=this.console.scrollHeight;
+	}
+}
+
 CAD.engine=null;
 	
 // function collection 
 CAD.fc=FC;
 
+CAD.msg=function(){
+	var i, a, p$=$("<p></p>").addClass("cad-msg");
+	for (i in arguments){
+		a=arguments[i]+" ";
+		if (this.console$){p$.append(a);} 
+		else {console.log(a);}
+	};
+	if (this.console$){
+		this.console$.append(p$);
+		this.console.scrollTop=this.console.scrollHeight;
+	}
+};
 
 // Extended by user in API functions above
 CAD.options={
