@@ -13,6 +13,8 @@
 	width:100%;
 }
 
+#cad-input{width:300px;}
+
 .cad-debug {
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 0.6em;
@@ -98,7 +100,7 @@ function initMenus(navbuttonIdStr, menuIdStr){
 
 function inputHandler(ev){
 	ev.preventDefault(); //disable normal form submit behavior that refreshes page
-	var i=$("#myInput").val(); //get text from form 
+	var i=$("#cad-input").val(); //get text from form 
 	$("#myInput").val(''); //clear the form
 	CAD.cmd(i); //pass command to CAD for processing
 	return false; //prevent further bubbling of event
@@ -107,7 +109,7 @@ function inputHandler(ev){
 
 $(document).ready(function(){
 
-var $cl=$("#myInput");
+var $cl=$("#cad-input");
 
 //Turn off the browser's right-click context menu
 $(document).on('contextmenu', false);
@@ -239,7 +241,7 @@ onSubmit="return inputHandler(event)">
 		</li>
 		<li><div>MIT License</div></li>
 	</ul>
-	<input id="myInput" type="text" placeholder="command" class="drop-zone">
+	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
 	<input type="submit" value="Ok">
 </form>
 <div id="cad-view">
@@ -249,7 +251,7 @@ onSubmit="return inputHandler(event)">
 </div><!-- board -->
 
 
-<div id="DXF-OPEN" class="form-group" style="display:none">
+<!--div id="DXF-OPEN" class="form-group" style="display:none">
 	<label for="exampleInputFile">Choose a DXF file...</label>
 	<input type="file" accept=".dxf" id="dxf" name="file">
 	<div class="progress progress-striped" style="width: 300px;">
@@ -257,7 +259,7 @@ onSubmit="return inputHandler(event)">
 		</div>
 	</div>
 	<div id="file-description" class="help-block"></div>
-</div>
+</div-->
 
 
 </body>

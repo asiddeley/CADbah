@@ -6,13 +6,12 @@ MIT License
 
 // This module is written as though it's a single instantiated class, a singleton.
 
-// Private 
+// Private Static
 var CAD;
-var background;
+var workspace;
+var backgroundmesh;
 var camera;
-
-var done; //callback provided by caller (zoom command)
-
+var done; //callback provided by caller (zoom command) needed for undoer
 var undoer=require("../workspace/undoer");
 var undo;
 var u=0;
@@ -31,7 +30,7 @@ var zoomrectMD=function(){
 	// find where pointer hits background for upper left of zoom rect
 	// Note predicate function to single out background
 	var pick=CAD.scene.pick(CAD.scene.pointerX, CAD.scene.pointerY,		
-		function(mesh){return mesh===background;}
+		function(mesh){return mesh===backgroundmesh;}
 	);
 	if (pick.hit){
 		//console.log("pick hit...");
@@ -48,7 +47,7 @@ var zoomrectMD=function(){
 var zoomrectMM=function(){
 	//console.log("zoom mouse move...");
 	var pick = CAD.scene.pick(CAD.scene.pointerX, CAD.scene.pointerY,
-		function(mesh){return mesh===background;}
+		function(mesh){return mesh===backgroundmesh;}
 	);
 
 	if (pick.hit){
@@ -64,15 +63,18 @@ var zoomrectMM=function(){
 };
 
 var zoomrectMU=function(){
-	//console.log("zoom mouse up...");
 	//cleanup
 	window.removeEventListener("mousemove", zoomrectMM);
 	window.removeEventListener("mouseup", zoomrectMU);
 
 	camera.attachControl(CAD.canvas, true);
 	CAD.scene.activeCamera=camera;
-	//zoomrect.isVisible=false;
-
+	
+	camera.lockedTarget=zoomrect;
+	
+	//hide rect, allow some time for follow camera animation
+	setTimeout(function(){zoomrect.isVisible=false;}, 2000);
+	
 	if (typeof done=="function"){
 		//finalize undo object by defining the pro (forward) and retro functions
 		undo.setPro(function(){zoom(this.f.u, this.f.v, this.f.x, this.f.y);});
@@ -82,27 +84,19 @@ var zoomrectMU=function(){
 	}
 };
 
+// exports=require("tool"); //extends tools
+
 // Public methods
-exports.init=function(workspace){
+exports.init=function(workspacE){
+	workspace=workspacE;
 	CAD=workspace.CAD; 
+
+	//CAD.debug(backgroundmesh.toString());
 	return exports;
 };
 
 exports.setScene=function(scene){
 	
-	//BACKGROUND to act as picking target
-	background=BABYLON.MeshBuilder.CreatePlane("background", {
-		width:800,
-		height:400,
-		sideOrientation:BABYLON.Mesh.DOUBLESIDE,
-		sourcePlane:new BABYLON.Plane(0,0,1,0),
-		updateable:true
-	}, 	scene);
-	var bgm = new BABYLON.StandardMaterial("backgroundmat", scene);
-	//bgm.diffuseColor=new BABYLON.Color3(91, 84.7, 59.6); //beige
-	bgm.diffuseColor=new BABYLON.Color3(0, 0, 0); //black
-	background.material=bgm;
-
 	//ZOOM rectangle for aiming camera
 	//width and height are imutable, use scale to vary height and width instead
 	zoomrect=BABYLON.MeshBuilder.CreatePlane("zoomrect", {
@@ -121,13 +115,10 @@ exports.setScene=function(scene){
 	//zoom camera
 	camera=new BABYLON.FollowCamera("zoomcam", new BABYLON.Vector3(0, 0, 100), scene);
 	camera.radius = 30;
-	camera.heightOffset = 10;
+	camera.heightOffset = 0;
 	camera.rotationOffset = 0;
-	camera.cameraAcceleration = 0.01;
+	camera.cameraAcceleration = 0.1;
 	camera.maxCameraSpeed = 25;
-	// camera.attachControl(CAD.canvas, true);	
-	// camera.lockedTarget=background; 
-	camera.lockedTarget=zoomrect;
 };
 
 exports.zoomRect=function(callback){
@@ -138,19 +129,24 @@ exports.zoomRect=function(callback){
 		undo.set("b",{u:u, v:v, x:x, y:y});		
 	};
 
+	//use background for pick target
+	backgroundmesh=workspace.background.getMesh();
+	
 	//CAD=workspace.CAD;
 	zoomrect.isVisible=true;
 	
 	//disable camera motion by mouse
 	CAD.scene.activeCamera.detachControl(CAD.canvas);
+	
+	//hold tracking until zoom rectangle finished on mouseup 
+	camera.lockedTarget=null;
 
 	//now listen for mousedown to start zoom operation
 	window.addEventListener("mousedown", zoomrectMD);
 };
 
-exports.onDxfin=function(workspace){
-	//resize backround
-	
+exports.onLoadDxf=function(workspace){
+	//zoom to extents	
 };
 
 

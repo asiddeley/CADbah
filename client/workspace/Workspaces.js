@@ -29,24 +29,31 @@ var Camera=require("./Cameras").Main;
 var Ucsicon=require("./Ucsicon").Ucsicon;
 var skybox=require("./Skybox");
 var zoomer=require("./zoomer");
+var background=require("./background");
 var undoer=require("./undoer");
 
+/* Constructor - Workspace is a tool manager.
+Most tools are singletons and modules are written like classes with vars being static.*/
 var Workspace=function(CADbah){
 	//First step of javascript inherit pattern, call constructor...
 	Documesh.call(this, CADbah);
 
 	this.desc="Basic workspace";
-	this.addTools(
+	
+	this.zoomer=zoomer;
+	this.background=background;
+	
+	this.addTools(		
 		new Light(CADbah),
 		new Camera(CADbah),
 		new Ucsicon(CADbah),
 		skybox.hilltop(),
-		zoomer.init(this),
+		zoomer.init(this), 
+		background.init(this),
 		undoer.init(this)
 	);
 
-	//shortcut
-	this.zoomer=zoomer;
+
 };
 
 //Next steps of js inheritance patterns, inherit prototype and constructor...

@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 var alias=require("./alias");
+var last_inputstr="";
 
 // command objects
 var cobs=[
@@ -38,7 +39,7 @@ var cobs=[
 var acts=[];
 
 exports.input=function(CAD, inputstr){
-	
+	if (!inputstr){inputstr=last_inputstr;};
 	CAD.msg("&gt;", inputstr);
 	inputstr=alias.subst(inputstr);
 	CAD.debug("alias subst:", inputstr);
@@ -82,6 +83,9 @@ exports.input=function(CAD, inputstr){
 			// find matching command to execute
 			for (var i=0; i<cobs.length; i++){		
 				if (cobs[i].name==first){
+					// valid so keep a copy
+					last_inputstr=inputstr;
+					// execute the command
 					cobs[i].action(CAD, rest, function(done){acts.push(done);});
 					break;
 				}
