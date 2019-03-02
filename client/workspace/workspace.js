@@ -23,42 +23,42 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-var Documesh=function(CADbah){
+// PRIVATE STATIC
+
+// MIXINS
+$.extend(exports, require("../cadEvents.js"));
+
+// PUBLIC
+exports.activate=function(CADbah){
+
 	this.CAD=CADbah;
-	//default
+	this.name="workspace";
+
+	this.tools=[
+		require("./background").activate(this),
+		require("./light").activate(this),
+		require("./orbiter").activate(this),
+		require("./skybox").activate(this),
+		require("./ucsicon").activate(this),
+		require("./undoer").activate(this),
+		require("./zoomer").activate(this)
+	];
+	
+	//make it chainable
+	return this;
 };
 
+exports.getTool=function(toolname){
+	return this.tools.find(function(t){
+		return (t.name==toolname);		
+	});
+};
 
-Documesh.prototype.addTools=function(){
-	for (var i=0; i<arguments.length; i++){
-		this.meshmakers.push(arguments[i]);
+exports.setScene=function(scene){
+	//render meshes	
+	for (i=0; i<this.tools.length; i++){
+		CAD.debug("workspace.setScene()...", this.tools[i].name);
+		this.tools[i].setScene(scene);
 	};
 };
 
-//placeholder
-Documesh.prototype.meshmakers=[];
-
-
-Documesh.prototype.deserialize=function(json){
-
-	
-};
-
-Documesh.prototype.serialize=function(){
-	//To do...
-	var json={};
-	return json;	
-};
-
-Documesh.prototype.setScene=function(scene){
-	//render meshes
-	
-	for (i=0; i<this.meshmakers.length; i++){
-		m=this.meshmakers[i];
-		m.setScene(scene);	
-	};	
-	console.log("Documesh setScene");
-};
-
-
-exports.Documesh=Documesh;

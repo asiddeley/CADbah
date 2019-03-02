@@ -6,6 +6,17 @@ MIT License
 
 var mesh;
 
+exports.activate=function(workspacE){
+	//workspace=workspacE;
+	//CAD=workspace.CAD; 
+	//background=workspace.background;
+	return exports;
+};
+
+exports.getMesh=function(){return mesh;};
+
+exports.name="background";
+
 exports.setScene=function(scene){
 	
 	//BACKGROUND to act as picking target
@@ -19,15 +30,8 @@ exports.setScene=function(scene){
 	var bgm = new BABYLON.StandardMaterial("backgroundmat", scene);
 	bgm.diffuseColor=new BABYLON.Color3(0, 0, 0); //black
 	mesh.material=bgm;
-	CAD.debug("background mesh set");
-
+	//CAD.debug("background mesh set");
 };
 
-exports.init=function(workspacE){
-	//workspace=workspacE;
-	//CAD=workspace.CAD; 
-	//background=workspace.background;
-	return exports;
-};
 
-exports.getMesh=function(){return mesh;};
+

@@ -6,7 +6,7 @@ MIT License
 
 // This module is written as though it's a single instantiated class, a singleton.
 
-// Private Static
+// PRIVATE STATIC
 var CAD;
 var workspace;
 var backgroundmesh;
@@ -18,7 +18,7 @@ var u=0;
 var v=0;
 var x=0;
 var y=0;
-var zoom=function(u,v,x,y){
+var zoom_uvxy=function(u,v,x,y){
 	CAD.msg("ZOOM",u,v,x,y);
 };
 
@@ -46,20 +46,23 @@ var zoomrectMD=function(){
 
 var zoomrectMM=function(){
 	//console.log("zoom mouse move...");
-	var pick = CAD.scene.pick(CAD.scene.pointerX, CAD.scene.pointerY,
+	var pick = CAD.scene.pick(
+		CAD.scene.pointerX, CAD.scene.pointerY,
 		function(mesh){return mesh===backgroundmesh;}
 	);
 
 	if (pick.hit){
+		//make camera position the centre of the zoom rectangle
 		x=pick.pickedPoint.x;
 		y=pick.pickedPoint.y;
 		zoomrect.position.x=u+(x-u)/2;
 		zoomrect.position.y=v+(y-v)/2;
 		zoomrect.scaling.x=u-x;
 		zoomrect.scaling.y=v-y;
+		//make camera distance is proportional to greatest side of zoom rectangle
 		camera.radius=zoomf*Math.abs(Math.max(zoomrect.scaling.x, zoomrect.scaling.y));
 		//console.log("zoomrect.scale",zoomrect.scaling.x,zoomrect.scaling.y);
-	};	
+	};
 };
 
 var zoomrectMU=function(){
@@ -76,25 +79,35 @@ var zoomrectMU=function(){
 	setTimeout(function(){zoomrect.isVisible=false;}, 2000);
 	
 	if (typeof done=="function"){
-		//finalize undo object by defining the pro (forward) and retro functions
-		undo.setPro(function(){zoom(this.f.u, this.f.v, this.f.x, this.f.y);});
-		undo.setRetro(function(){zoom(this.b.u, this.b.v, this.b.x, this.b.y);});	
+		//finish the undo object by defining the pro (forward) and retro functions
+		undo.setPro(function(){zoom_uvxy(this.f.u, this.f.v, this.f.x, this.f.y);});
+		undo.setRetro(function(){zoom_uvxy(this.b.u, this.b.v, this.b.x, this.b.y);});	
 		//execute callback with undo object as argument 
 		done(undo);
 	}
 };
 
-// exports=require("tool"); //extends tools
+// MIXINS
+// mix in functionality including name(), setScene(), onLoadDxf() & other handlers 
+// which should be overriden as required
+$.extend(exports,
+	require("../cadEvents"), 
+	require("../cloneable"), 
+	require("./tool")
+);
 
-// Public methods
-exports.init=function(workspacE){
+// PUBLIC
+exports.activate=function(workspacE){
 	workspace=workspacE;
 	CAD=workspace.CAD; 
-
+	//console.log("zoomer.activate()...", CAD);
 	//CAD.debug(backgroundmesh.toString());
 	return exports;
 };
 
+exports.name="zoomer";
+
+// override
 exports.setScene=function(scene){
 	
 	//ZOOM rectangle for aiming camera
@@ -106,6 +119,7 @@ exports.setScene=function(scene){
 		sourcePlane:new BABYLON.Plane(0,0,1,-1),
 		updateable:true
 	}, scene);	
+	
 	var zrm = new BABYLON.StandardMaterial("zoomrectmat", scene);
 	zrm.diffuseColor=new BABYLON.Color3(1, 0, 0); //red
 	zrm.alpha=0.5;
@@ -122,7 +136,7 @@ exports.setScene=function(scene){
 };
 
 exports.zoomRect=function(callback){
-
+	CAD.debug("zoomer.zoomRect...");
 	done=callback;
 	if (typeof done=="function"){
 		undo=undoer.create(CAD, "zoom rect");
@@ -130,7 +144,8 @@ exports.zoomRect=function(callback){
 	};
 
 	//use background for pick target
-	backgroundmesh=workspace.background.getMesh();
+	//backgroundmesh=workspace.background.getMesh();
+	backgroundmesh=workspace.getTool("background").getMesh();
 	
 	//CAD=workspace.CAD;
 	zoomrect.isVisible=true;
@@ -145,7 +160,8 @@ exports.zoomRect=function(callback){
 	window.addEventListener("mousedown", zoomrectMD);
 };
 
-exports.onLoadDxf=function(workspace){
+// override
+exports.onLoadDXF=function(workspace){
 	//zoom to extents	
 };
 

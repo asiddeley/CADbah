@@ -6,7 +6,7 @@ MIT License
 
 // This module is written as like a single instantiated class, a singleton.
 
-// Private 
+// PRIVATE STATIC
 var CAD;
 var ulist=[];
 var ui=-1;
@@ -16,17 +16,20 @@ var Undo=function(){
 	this.setRetro=function(fn){this.retro=fn;};
 };
 
+// PUBLIC
 
-// Public methods
-exports.init=function(workspace){
+// MIXINS
+// mix in functionality including name(), setScene(), onLoadDxf() & other handlers 
+// which should be overriden as required
+$.extend(exports,
+	require("../cadEvents"), 
+	require("./tool")
+);
+
+exports.activate=function(workspace){
 	CAD=workspace.CAD; 
 	return exports;
 };
-
-exports.setScene=function(scene){
-	
-};
-
 
 exports.create=function(name){
 	/* Check index against undo list. If less it means actions have been undone by goback() so need to purge ulist from index onward to allow list to continue with a revised branch of actions. */
@@ -34,6 +37,12 @@ exports.create=function(name){
 	var u=new Undo(name);
 	ulist.push(u); ui=ulist.length-1;
 	return u;
+};
+
+exports.name="undoer";
+
+exports.setScene=function(scene){
+	
 };
 
 exports.goforth=function(){
