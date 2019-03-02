@@ -11,7 +11,10 @@ exports.name="zoom";
 exports.action=function(CAD, argstr, callback){
 	switch(argstr.toLowerCase()){
 		case "r":
-		case "rect": CAD.workspace.zoomer.zoomRect(callback);
+		case "rect": 
+			//CAD.workspace.zoomer.zoomRect(callback);
+			try { CAD.workspace.getTool("zoomer").zoomRect(callback);}
+			catch(er){CAD.debug("zoom command...",er);}
 		break;
 		default:		
 	}

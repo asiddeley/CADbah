@@ -23,28 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-/**
-Main CAD library entry point and initializer.  
-
-Following dependencies need to be loaded in HTML:
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
-<link rel="stylesheet" type="text/css" href="jquery-ui.structure.css">
-<script type="text/javascript" src="babylon.js"></script>
-<script type="text/javascript" src="babylon.canvas2d.js"></script>
-
-Then load this library:
-<script type="text/javascript" src="CADbah.dist.js"></script>
-
-Start the CAD app in HTML thus:
-$(document).ready(function(){
-	//...
-	CAD.activate({canvas:document.getElementById("cad-canvas")});
-	//...
-});
-*/
-
 window.CAD=function(){
 	
 var CAD={};
@@ -52,7 +30,7 @@ var commander=require("./commands/commander.js");
 var Docdxf=require("./entities/Docdxf.js").Docdxf;
 var FC=require("./cad-fc/cad-fc.js");
 var uisetup=require("./uis/uisetup.js").uisetup;
-var Workspace=require("./workspace/workspaces.js").Workspace;
+
 
 CAD.activate=function(options){
 
@@ -90,9 +68,7 @@ CAD.activate=function(options){
 	this.scene=new BABYLON.Scene(this.engine);
 	
 	// WORKSPACE
-	// includes camera and light
-	this.workspace=new Workspace(this);
-	this.workspace.setScene(this.scene);
+	this.workspace.activate(this).setScene(this.scene);
 
 	// DOCUMENT
 	this.docdxf=new Docdxf(this);
@@ -157,9 +133,8 @@ CAD.options={
 	
 // Babylon scene, initialized by CAD.activate()
 CAD.scene=null;
-// workspace is a documesh and includes such things as Triaxis (UCSicon), lights, views 
-CAD.Workspace=Workspace;
-CAD.workspace=null;
+// Manages tools including light, camera, background, skybox, zoomer etc
+CAD.workspace=require("./workspace/workspace.js");
 CAD.uis={};
 
 
