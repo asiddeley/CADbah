@@ -3,12 +3,16 @@ CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
-
+// PRIVATE
 var filed=require("file-dialog");
+var htm="Displays a file dialog for the user to select a native CAD'bah' file for upload. Once uploaded file is displayed in the workspace.";
 
-//required exports for any command
-exports.desc="Opens a cadbah document.";
+// MIXINS
+$.extend(exports, require("./command"));
+
+// PUBLIC
 exports.name="open";
+exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
 
 	//show file dialog

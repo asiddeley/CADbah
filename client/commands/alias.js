@@ -4,15 +4,23 @@ Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
 
-// Required exports for any command
+// This module is writen like a single instantiated class
+
+// PRIVATE
+var htm="Manages custom command abreviations<br>";
+htm+="&gt;alias add [alias] [commands|expression(s)]<br>";
+htm+="Adds an alias definition<br>";
+htm+="&gt;alias clear<br>";
+htm+="Clears alias definitions for current session<br>";
+htm+="&gt;alias load [filename]<br>";
+htm+="Loads an alias file, adding definitions.<br>";
+
+// PUBLIC
+// MIXINS
+$.extend(exports,require("./command"));
+
 exports.name="alias";
-
-exports.desc="Manages custom command abreviations known as aliases.\n";
-exports.desc+="Arguments:\n";
-exports.desc+="add <alias> <commands or expressions>\tAdds an alias definition";
-exports.desc+="clear\tClears current alias definitions";
-exports.desc+="load <filename>\tLoads an alias file, adding definitions.\n";
-
+exports.help=function(CAD){return htm;}
 exports.action=function(CAD, argstr){
 	if (typeof argstr!="undefined"){
 		var first=argstr.split(" ")[0].trim();
@@ -26,8 +34,6 @@ exports.action=function(CAD, argstr){
 		}
 	};
 };
-
-// This module is writen like a single instantiated class
 
 // Public methods
 exports.subst=function(cmd){return subst(cmd, 0);}

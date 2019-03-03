@@ -26,7 +26,7 @@ SOFTWARE.
 window.CAD=function(){
 	
 var CAD={};
-var commander=require("./commands/commander.js");
+//var commander=require("./commands/commander.js");
 var Docdxf=require("./entities/Docdxf.js").Docdxf;
 var FC=require("./cad-fc/cad-fc.js");
 var uisetup=require("./uis/uisetup.js").uisetup;
@@ -83,12 +83,12 @@ CAD.activate=function(options){
 	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
-
+CAD.commander=require("./commands/commander.js");
 CAD.canvas=null;
 CAD.canvas$=null;
 CAD.console=null;
 CAD.console$=null;
-CAD.cmd=function(input){commander.input(this, input);};
+CAD.cmd=function(input){this.commander.input(this, input);};
 CAD.div=null;
 CAD.div$=null;
 CAD.docdxf=null;

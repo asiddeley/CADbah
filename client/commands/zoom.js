@@ -3,11 +3,21 @@ CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
+// PRIVATE
+var CAD;
+var htm="Controls zooming and panning for navigating to parts of the drawing<br>";
+htm+="&gt;zoom rect [mouse press-move-release]<br>";
+htm+="Zoom to part of scene indicated by mouse<br>";
+htm+="&gt;zoom extents<br>";
+htm+="Zooms to the full extent of the drawing";
 
-//required exports for any command
-exports.desc="Zoom tool:\nzoom rect <press-move-release>\t";
-exports.desc+="Zooms to part of scene indicated by pointer";
+// MIXINS
+$.extend(exports, require("./command"));
+
+// PUBLIC
+// overrides
 exports.name="zoom";
+exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr, callback){
 	switch(argstr.toLowerCase()){
 		case "r":
@@ -19,5 +29,4 @@ exports.action=function(CAD, argstr, callback){
 		default:		
 	}
 };
-
 

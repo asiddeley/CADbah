@@ -3,16 +3,17 @@ CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
-
+// PRIVATE
 var filed=require("file-dialog");
 var DxfParser=require("dxf-parser");
+var htm="Displays a file dialog for the user to select a dxf file. The file is then uploaded, converted into a native cadbah document and displayed in the workspace<br>";
 
-//required exports for any command
-exports.desc="Uploads, converts and opens a dxfin file as a native cadbah document";
+// PUBLIC
+// required exports for any command
 exports.name="dxfin";
+exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
-	
-	
+
 	//setup file reader
 	var reader = new FileReader();
 	reader.onprogress = function(evt){};

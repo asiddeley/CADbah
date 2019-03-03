@@ -22,6 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
+// PRIVATE
 var alias=require("./alias");
 var last_inputstr="";
 
@@ -32,11 +33,18 @@ var cobs=[
 	require("./fullscreen"),
 	require("./open"),
 	require("./save"),
-	require("./zoom")	
+	require("./zoom"),	
+	require("./orbit"),
+	require("./clear"),
+	require("./dir"),
+	require("./help"),
 ];
 
 // executed actions
 var acts=[];
+
+//PUBLIC
+exports.getCommands=function(){return cobs;}
 
 exports.input=function(CAD, inputstr){
 	if (!inputstr){inputstr=last_inputstr;};
@@ -46,51 +54,18 @@ exports.input=function(CAD, inputstr){
 	
 	var first=inputstr.split(" ")[0];
 	var rest=inputstr.substring(first.length).trim();
-	var txt="";
+	var htm="";
 	if (first=="") {return;}
 	
-	switch(first.toLowerCase()){
-		
-		// discover commands
-		case "dir":
-			for (var i=0; i<cobs.length; i++){
-				txt+=cobs[i].name;
-				txt+=(i+1%3==0)?"\n":"\t";
-			}
-			alert(txt);
-		break;
-		
-		// help on a command
-		case "help":
-		case "?":			
-			if (rest!=""){
-				for (var i=0; i<cobs.length; i++){
-					if (cobs[i].name==rest) {txt=cobs[i].desc; break;}
-				}
-			} 
-			if (txt==""){
-				txt=(rest)?"Sorry, nothing found for '"+rest+"'.\n":"\n";
-				txt+="Enter:\n";
-				txt+="dir\tto list all commands.\n";
-				txt+="help <command>\tto display information on that command.";
-			}
-			alert(txt);
-			
-		break;
-		
-		// execute command 
-		default:
-			// find matching command to execute
-			for (var i=0; i<cobs.length; i++){		
-				if (cobs[i].name==first){
-					// valid so keep a copy
-					last_inputstr=inputstr;
-					// execute the command
-					cobs[i].action(CAD, rest, function(done){acts.push(done);});
-					break;
-				}
-			}
-		break;
+	// find matching command to execute
+	for (var i=0; i<cobs.length; i++){		
+		if (cobs[i].name==first){
+			// valid so keep a copy
+			last_inputstr=inputstr;
+			// execute the command
+			cobs[i].action(CAD, rest, function(done){acts.push(done);});
+			break;
+		}
 	}
 }
 

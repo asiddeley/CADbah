@@ -3,13 +3,17 @@ CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
-
-//temp anchor <a> used to download file
+// PRIVATE
+// temp anchor <a> used to download file
 var objectUrl; 
+var htm="Saves the currently open cadbah document to server.";
 
-//required exports for any command
-exports.desc="Saves the current cadbah document to server.";
+// MIXINS
+$.extend(exports, require("./command"));
+
+// PUBLIC
 exports.name="save";
+exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
 	
 	//delete if previously created
