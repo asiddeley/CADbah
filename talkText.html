@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+
+<title>talk-to-text</title>
+
+<!-- link rel="stylesheet" href="style.css"-->
+<!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<STYLE type="text/css">
+
+.msgbox {
+	border:solid;
+	border-width:2px;
+	border-color:gray;
+	padding:5px;
+	margin:5px;
+	float:left;
+	word-wrap:break-word;
+	background-color:rgb(11,62,111);
+	overflow-y:auto;
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.6em;
+	color:white; 
+}
+
+.big {height:200px;	width:50%;}
+.little {height:100px;	width:50%;}
+
+#buttonbox {
+	border:solid;
+	border-width:1px;
+	border-color:gray;
+	padding:5px;
+	margin:5px;
+	float:left;
+	width:50%;
+	float:left;
+}
+
+
+</STYLE>
+
+
+<script src="jquery.js"></script>
+
+<script>
+
+
+const recognition = new webkitSpeechRecognition();
+
+// on ready
+$(function(){
+
+	recognition.continuous = true;
+	recognition.interimResults = true;
+	recognition.onresult = function(event) {
+		if (event.results[0].isFinal) {
+		$("#transcript").append(event.results[0][0].transcript);
+		//recognition.stop();
+		}
+		console.log(event.results);
+		$("#transcript").append(event.results[0][0].transcript);
+		
+	}
+
+	recognition.onaudiostart = function(e){
+		$("#console").append("<p>Audio capture started </p>");
+	}
+
+	recognition.onaudioend = function(e){
+		$("#console").append("<p>Audio capture ended </p>");
+	}
+
+
+	$("#start").on("click", function(){
+		$("#console").append("<p>recognition start...</p>");
+		recognition.start();
+	});
+	
+	$("#stop").on("click", function(){
+		$("#console").append("<p>recognition stop</p>");
+		recognition.stop();
+	});
+	
+	
+	$("#clear").on("click", function(){
+		$("#transcript").empty();
+		$("#console").empty();
+	});
+	
+	
+});	
+	
+	
+	
+</script>	
+
+
+
+
+</head>
+
+<body>
+<h1>talk-to-text</h1>
+<div id="transcript" class="big msgbox"></div>
+<div id="console" class="little msgbox"></div>
+<div id="buttonbox">
+	<button id="start">start</button>
+	<button id="stop">start</button>
+	<button id="clear">clear</button>
+	
+</div>
+
+
+
+
+</body>
+</html>
