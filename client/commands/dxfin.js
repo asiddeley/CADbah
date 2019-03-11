@@ -13,27 +13,37 @@ var htm="Displays a file dialog for the user to select a dxf file. The file is t
 exports.name="dxfin";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
+	var c=5; 
 
 	//setup file reader
 	var reader = new FileReader();
-	reader.onprogress = function(evt){};
+	reader.onprogress = function(evt){
+		if (evt.lengthComputable){
+			CAD.msg("loaded:"+ evt.loaded + " / " + evt.total);	
+		} else {
+			//animate the dots
+			CAD.msg("loading.....".substr(0, 7+(c++ % 5)));		
+		}				
+	};
 	reader.onloadend = function(evt){
 		//success
 		
+		//should be part of docdxf.setScene()
 		CAD.fc.clearScene(CAD);
-		CAD.scene=new BABYLON.Scene(CAD.engine);
+		CAD.scene = new BABYLON.Scene(CAD.engine);
 		CAD.workspace.setScene(CAD.scene);
 	
 		var fileReader = evt.target;
-		if (fileReader.error) {console.log("error reading file")};
+		if (fileReader.error) {CAD.msg("error reading file")};
 		var parser = new DxfParser();
 		try {
-			CAD.docdxf.dxf = parser.parseSync(fileReader.result);
-			console.log("DXF:", CAD.docdxf);
-			CAD.docdxf.setScene(CAD.scene);			
+			CAD.docdxf.setDxf(parser.parseSync(fileReader.result));
+			CAD.msg("DXF:", CAD.docdxf);
+			//CAD.docdxf.setScene(CAD.scene);			
 		}
 		catch(err) {
-			return console.error(err.stack);
+			//return console.error(err.stack);
+			CAD.debug(err.stack);
 		};
 	};
 	reader.onabort = function(evt){};
@@ -55,7 +65,7 @@ exports.action=function(CAD, argstr){
 	//show file dialog
 	filed({accept:"dxf"}).then(function(files){
 		// files contains an array of FileList
-		console.log("loading file:", files[0].name);
+		CAD.msg("loading file:", files[0].name);
 		// execute reader with file as arg
 		reader.readAsText(files[0]);
 	});

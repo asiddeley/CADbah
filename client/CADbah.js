@@ -27,7 +27,7 @@ window.CAD=function(){
 	
 var CAD={};
 //var commander=require("./commands/commander.js");
-var Docdxf=require("./entities/Docdxf.js").Docdxf;
+//var Docdxf=require("./entities/Docdxf.js").Docdxf;
 var FC=require("./cad-fc/cad-fc.js");
 var uisetup=require("./uis/uisetup.js").uisetup;
 
@@ -71,7 +71,8 @@ CAD.activate=function(options){
 	this.workspace.activate(this).setScene(this.scene);
 
 	// DOCUMENT
-	this.docdxf=new Docdxf(this);
+	//this.docdxf=new Docdxf(this);
+	this.docdxf.activate(this);
 	// set the BABYLON scene by traverses all entities in document 
 	this.docdxf.setScene(this.scene);
 	
@@ -91,7 +92,7 @@ CAD.console$=null;
 CAD.cmd=function(input){this.commander.input(this, input);};
 CAD.div=null;
 CAD.div$=null;
-CAD.docdxf=null;
+CAD.docdxf=require("./entities/Docdxf.js");
 
 CAD.debug=function(){
 	var i, a, p$=$("<p></p>").addClass("cad-debug");

@@ -22,21 +22,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-var Line=require("./Line.js").Line;
+
+// PRIVATE STATIC
+
+var line=require("./Line.js");
+var CAD; //set with docdxf.activate()
 
 
-var Docdxf=function(CADbah){
-	this.CAD=CADbah;
-	this.dxf=new this.DXF();
-	this.line=new Line(this);
-};
-
-//default drawing - DXF FORMAT
-Docdxf.prototype.DXF=function(){
-	this.header={};
+function DXF(){
+	// Constructor for a dxf drawing object
+	this.header={
+		$INSBASE:{x:0,y:0,z:0},
+		$EXTMIN:{x:0,y:0,z:0},
+		$EXTMAX:{x:10,y:10,z:0}
+	};
 	this.tables={
 		linetype:{
-			Continuous: {
+			Continuous:{
                name: "Continuous",
                description: "Solid line",
                patternLength: 0
@@ -52,58 +54,78 @@ Docdxf.prototype.DXF=function(){
 			handle: "2",
 			ownerHandle: "0",
 			layers: {
-				"0": {Name:"0", Visible:true, color:16711680}
+				"0":{Name:"0", Visible:true, color:16711680},
+				"A-WALL":{Name:"0", Visible:true, color:16711680}
 			}		
 		}
 	};
 	this.blocks={};
-	this.entities=[];	
+	this.entities=[
+		{
+			type:"LINE",
+			vertices:[{x:0,y:0,z:0},{x:10,y:10,z:0}],
+			handle:"1805",
+			ownerHandle: "1F",
+			layer:"A-WALL"
+		}
+	];	
 };
 
-//placeholder
-Docdxf.prototype.dxf={};
+// MIXINS
+// none
+
+// PUBLIC
 
 
-Docdxf.prototype.deserialize=function(dxf){
+exports.activate=function(CADbah){
+	CAD=CADbah;
+	//default 
+	this.dxf=new DXF();
+	line.activate(this);
+};
+
+
+exports.deserialize=function(dxf){
 	//merge or overwrite
 	this.dxf=dxf;
 	
 };
 
-Docdxf.prototype.getColorByIndex=function(index){
+exports.getColorByIndex=function(index){
 
 	return "Black";
 };
 
-Docdxf.prototype.getColorByLayer=function(layer){
+exports.getColorByLayer=function(layer){
 
 	return "Black";
 };
+exports.getExtents=function(){
+	return [this.dxf.header.$EXTMIN, this.dxf.header.$EXTMAX];
+}
 
+exports.setDxf=function(dxf){
+	this.dxf=dxf;
+	this.setScene(CAD.scene);
+	//trigger docdxf changed
+}
 
-Docdxf.prototype.serialize=function(){
+exports.serialize=function(){
 	//To do...
 	return this.dxf;	
 };
 
-Docdxf.prototype.setScene=function(scene){
+exports.setScene=function(scene){
 	//render dxf or meshes
 	var e;
 	for (var i=0; i<this.dxf.entities.length; i++){
 		e=this.dxf.entities[i];
-		console.log("entity:",e.type);
-		switch (e.type) {
-			case "LINE": 
-				//console.log("line entity...");
-				//this.line.setScene(scene, e);
-				this.line.setScene(scene,e);
-			break;			
-			
+		CAD.debug("entity:",e.type);
+		switch (e.type){
+			case "LINE":line.setScene(scene,e);break;			
 		}		
 	};
 	
-	console.log("docdxf.setScene() done");
+	CAD.debug("docdxf.setScene() done");
 };
 
-
-exports.Docdxf=Docdxf;
