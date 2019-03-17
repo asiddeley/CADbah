@@ -74,6 +74,8 @@
 <script type="text/javascript" src="CADbah.dist.js"></script>
 
 <script>
+//command line
+var input$;
 
 function initMenus(navbuttonIdStr, menuIdStr){
 	var bids=navbuttonIdStr.split(" ");
@@ -99,66 +101,67 @@ function initMenus(navbuttonIdStr, menuIdStr){
 };
 
 function inputHandler(ev){
-	ev.preventDefault(); //disable normal form submit behavior that refreshes page
-	var i=$("#cad-input").val(); //get text from form 
-	$("#myInput").val(''); //clear the form
-	CAD.cmd(i); //pass command to CAD for processing
-	return false; //prevent further bubbling of event
+	// disable normal form submit behavior that refreshes page
+	ev.preventDefault(); 
+	//get text from form and pass command to CADbah for processing
+	CAD.cmd(input$.val()); 
+	//clear the form
+	input$.val("");
+	//prevent further bubbling of event
+	return false; 
 };
-
 
 $(document).ready(function(){
 
-var $cl=$("#cad-input");
+	input$=$("#cad-input");
 
-//Turn off the browser's right-click context menu
-$(document).on('contextmenu', false);
+	//Turn off the browser's right-click context menu
+	$(document).on('contextmenu', false);
 
-//basic behavior
-$(window).on({
-	//prevent accidental drag-and-drop on windox
-	"drop": function(e){ e=e||event; e.preventDefault(); return false;},
-	"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-	//focus on command line (if not already) when keys pressed
-	"keypress":function(e){ e=e||event;
-		if(!$cl.is(":focus")){
-			//$cl.focus(); //should work but not fully
-			$cl.get(0).focus();
-			$cl.get(0).select();
-			//enter pressed outside of command line can also submit command
-			if(e.code==13){document.forms.navbar.submit();}
-		};		
-	}
-});
+	//basic behavior
+	$(window).on({
+		//prevent accidental drag-and-drop on windox
+		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
+		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
+		//if command line doesn't have focus then give it focus
+		"keypress":function(e){ e=e||event;
+			if(!input$.is(":focus")){
+				input$.get(0).focus();
+				input$.get(0).select();
+				if(e.keyCode==13){document.forms.navbar.submit();}
+				else {input$.val(e.key);}
+			}	
+		}
+	});
 
 
-// setup Navbar using jquery-ui controlgroup widget
-$("#navbar").controlgroup({items:{
-	// widgetToApply:selector
-	"button": "a, button, input[type=text], input[type=button], input[type=submit]",
-	"controlgroupLabel": ".ui-controlgroup-label",
-	"checkboxradio": "input[type='checkbox'], input[type='radio']",
-	"selectmenu": "select",
-	"menu":"ul, .dropdown-items",
-	"spinner": ".ui-spinner-input"
-}});
+	// setup Navbar using jquery-ui controlgroup widget
+	$("#navbar").controlgroup({items:{
+		// widgetToApply:selector
+		"button": "a, button, input[type=text], input[type=button], input[type=submit]",
+		"controlgroupLabel": ".ui-controlgroup-label",
+		"checkboxradio": "input[type='checkbox'], input[type='radio']",
+		"selectmenu": "select",
+		"menu":"ul, .dropdown-items",
+		"spinner": ".ui-spinner-input"
+	}});
 
-// init dropdown menus... 
-$(".menu").menu().css("position","absolute", "width", "200px").hide();
+	// init dropdown menus... 
+	$(".menu").menu().css("position","absolute", "width", "200px").hide();
 
-// auto cleanup any open dropdown menus
-$(".menu").on('mouseleave',function(){$(".menu").hide();});
+	// auto cleanup any open dropdown menus
+	$(".menu").on('mouseleave',function(){$(".menu").hide();});
 
-// auto clear dropdown autohide (DDAH)
-$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
+	// auto clear dropdown autohide (DDAH)
+	$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
 
-// attach menus to navbar buttons
-initMenus("file edit draw help", "file-menu edit-menu draw-menu help-menu");
+	// attach menus to navbar buttons
+	initMenus("file edit draw help", "file-menu edit-menu draw-menu help-menu");
 
-// Start the CAD app
-CAD.activate({
-	canvas:document.getElementById("cad-canvas"),
-	console:document.getElementById("cad-console")
+	// Start the CAD app
+	CAD.activate({
+		canvas:document.getElementById("cad-canvas"),
+		console:document.getElementById("cad-console")
 });
 
 // load standard command aliases or shortcuts
@@ -250,20 +253,5 @@ onSubmit="return inputHandler(event)">
 </div>
 </div><!-- board -->
 
-
-<!--div id="DXF-OPEN" class="form-group" style="display:none">
-	<label for="exampleInputFile">Choose a DXF file...</label>
-	<input type="file" accept=".dxf" id="dxf" name="file">
-	<div class="progress progress-striped" style="width: 300px;">
-		<div id="file-progress-bar" class="progress-bar progress-bar-success" role="progressbar" style="width: 0">
-		</div>
-	</div>
-	<div id="file-description" class="help-block"></div>
-</div-->
-
-
 </body>
-
-
-
 </html>

@@ -6,7 +6,7 @@
   "scripts": {
     "cad": "node index.js",
     "test": "tcad",
-    "dist": "browserify client/CADbah.js -o dist/CADbah.dist.js",
+    "dist": "browserify client/index.js -o dist/CADbah.dist.js",
     "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js"
   },
   "repository": {

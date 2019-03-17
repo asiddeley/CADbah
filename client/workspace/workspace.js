@@ -48,6 +48,12 @@ exports.activate=function(CADbah){
 	return this;
 };
 
+exports.getItem=function(toolname){
+	return this.tools.find(function(t){
+		return (t.name==toolname);		
+	});
+};
+
 exports.getTool=function(toolname){
 	return this.tools.find(function(t){
 		return (t.name==toolname);		

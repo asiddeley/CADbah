@@ -18,8 +18,8 @@ $.extend(exports,require("./command"));
 exports.name="orbit";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
-	var oc=CAD.workspace.getTool("orbiter").camera;
-	var bm=CAD.workspace.getTool("background").getMesh();
+	var oc=CAD.workspace.getItem("orbiter").camera;
+	var bm=CAD.workspace.getItem("background").getMesh();
 	//disable current camera
 	CAD.scene.activeCamera.detachControl(CAD.canvas);	
 	switch(argstr.toLowerCase()){

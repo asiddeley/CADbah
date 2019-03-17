@@ -19,7 +19,7 @@ exports.action=function(CAD, argstr){
 	for (var i=0; i<cobs.length; i++){
 		htm+=cobs[i].name+"<br>";
 	};
-	CAD.msg(htm);
+	CAD.msg(htm+"<hr>");
 };
 
 

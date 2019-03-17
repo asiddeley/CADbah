@@ -19,16 +19,15 @@ exports.action=function(CAD, argstr){
 
 	for (var i=0; i<cobs.length; i++){
 		if (cobs[i].name==argstr) {
-			h="<h3>"+cobs[i].name+"</h3>"+cobs[i].help(CAD); 
+			h="<h3>"+cobs[i].name+"</h3>"+cobs[i].help(CAD)+"<hr>"; 
 			break;
 		}
 	}
 
 	if (!h){
 		h=(typeof argstr=="string")?"&gt;"+argstr+"&lt; is not a valid command'<br>":""; 
-		h+="<h3>help</h3>"+htm;
+		h+="<h3>help</h3>"+htm+"<hr>";
 	}
-	
 	CAD.msg(h);
 };
 

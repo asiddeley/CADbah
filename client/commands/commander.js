@@ -26,7 +26,7 @@ SOFTWARE.
 var alias=require("./alias");
 var last_inputstr="";
 
-// command objects
+// command objects. Note that these do not need activating 
 var cobs=[
 	alias,
 	require("./dxfin"),
@@ -38,19 +38,20 @@ var cobs=[
 	require("./clear"),
 	require("./dir"),
 	require("./help"),
+	require("./debug"),
 ];
 
 // executed actions
-var acts=[];
+var actioned=[];
 
 //PUBLIC
 exports.getCommands=function(){return cobs;}
 
 exports.input=function(CAD, inputstr){
 	if (!inputstr){inputstr=last_inputstr;};
-	CAD.msg("&gt;", inputstr);
+	CAD.msg("&gt;"+inputstr);
 	inputstr=alias.subst(inputstr);
-	CAD.debug("alias subst:", inputstr);
+	CAD.debug("alias subst:"+inputstr);
 	
 	var first=inputstr.split(" ")[0];
 	var rest=inputstr.substring(first.length).trim();
@@ -63,7 +64,7 @@ exports.input=function(CAD, inputstr){
 			// valid so keep a copy
 			last_inputstr=inputstr;
 			// execute the command
-			cobs[i].action(CAD, rest, function(done){acts.push(done);});
+			cobs[i].action(CAD, rest, function(undoobj){actioned.push(undoobj);});
 			break;
 		}
 	}

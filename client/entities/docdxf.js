@@ -60,15 +60,7 @@ function DXF(){
 		}
 	};
 	this.blocks={};
-	this.entities=[
-		{
-			type:"LINE",
-			vertices:[{x:0,y:0,z:0},{x:10,y:10,z:0}],
-			handle:"1805",
-			ownerHandle: "1F",
-			layer:"A-WALL"
-		}
-	];	
+	this.entities=[];	
 };
 
 // MIXINS
@@ -101,6 +93,7 @@ exports.getColorByLayer=function(layer){
 	return "Black";
 };
 exports.getExtents=function(){
+	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
 	return [this.dxf.header.$EXTMIN, this.dxf.header.$EXTMAX];
 }
 

@@ -22,17 +22,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-
-window.CAD=function(){
-	
-var CAD={};
-//var commander=require("./commands/commander.js");
-//var Docdxf=require("./entities/Docdxf.js").Docdxf;
+// PRIVATE STATIC
 var FC=require("./cad-fc/cad-fc.js");
 var uisetup=require("./uis/uisetup.js").uisetup;
 
-
-CAD.activate=function(options){
+var cout=function(CAD, htm, cssClass, count, limit){
+	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
+	//add new message
+	CAD.console$.append(p$);
+	//delete old messages	
+	if (count>limit){
+		$("[id="+ cssClass + (count-limit) + "]").remove();
+	}
+	CAD.console.scrollTop=CAD.console.scrollHeight;
+};
+// PUBLIC
+exports.activate=function(options){
 
 	// check options
 	if (typeof options=="undefined") {this.options=options={};}
@@ -84,66 +89,53 @@ CAD.activate=function(options){
 	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
-CAD.commander=require("./commands/commander.js");
-CAD.canvas=null;
-CAD.canvas$=null;
-CAD.console=null;
-CAD.console$=null;
-CAD.cmd=function(input){this.commander.input(this, input);};
-CAD.div=null;
-CAD.div$=null;
-CAD.docdxf=require("./entities/Docdxf.js");
+exports.commander=require("./commands/commander.js");
+exports.canvas=null;
+exports.canvas$=null;
+exports.console=null;
+exports.console$=null;
+exports.cmd=function(input){this.commander.input(this, input);};
+exports.div=null;
+exports.div$=null;
+exports.docdxf=require("./entities/Docdxf.js");
 
-CAD.debug=function(){
-	var i, a, p$=$("<p></p>").addClass("cad-debug");
-	for (i in arguments){
-		a=arguments[i]+" ";
-		if (this.console$){p$.append(a);} 
-		else {console.log(a);}
+// DEBUGGING
+exports.debug=function(){
+	for (var i in arguments){
+		//cout (CAD, "text", "class", count, limit)
+		cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit);
 	};
-	if (this.console$){
-		this.console$.append(p$);
-		this.console.scrollTop=this.console.scrollHeight;
-	}
-}
+};
+exports.debugcount=0;
+exports.debuglimit=100;
 
-CAD.engine=null;
+// ENGINE
+exports.engine=null;
 	
 // function collection 
-CAD.fc=FC;
+exports.fc=FC;
 
-CAD.msg=function(){
-	var i, a, p$=$("<p></p>").addClass("cad-msg");
-	for (i in arguments){
-		a=arguments[i]+" ";
-		if (this.console$){p$.append(a);} 
-		else {console.log(a);}
+// MESSAGING
+exports.msg=function(){
+	for (var i in arguments){
+		//cout (CAD, "text", "class", count, limit)
+		cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit);
 	};
-	if (this.console$){
-		this.console$.append(p$);
-		this.console.scrollTop=this.console.scrollHeight;
-	}
 };
+exports.msgcount=0;
+exports.msglimit=100;
 
 // Extended by user in API functions above
-CAD.options={
+exports.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
 	database:null, //to be determined
 };
 	
 // Babylon scene, initialized by CAD.activate()
-CAD.scene=null;
+exports.scene=null;
 // Manages tools including light, camera, background, skybox, zoomer etc
-CAD.workspace=require("./workspace/workspace.js");
-CAD.uis={};
-
-
-return CAD;
-}();
-
-//window.CAD=CAD;
-//return CAD;
-
+exports.workspace=require("./workspace/workspace.js");
+exports.uis={};
 
 

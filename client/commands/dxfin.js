@@ -38,8 +38,8 @@ exports.action=function(CAD, argstr){
 		var parser = new DxfParser();
 		try {
 			CAD.docdxf.setDxf(parser.parseSync(fileReader.result));
-			CAD.msg("DXF:", CAD.docdxf);
-			//CAD.docdxf.setScene(CAD.scene);			
+			CAD.msg("DXF file loaded");
+			CAD.cmd("zoom extents");
 		}
 		catch(err) {
 			//return console.error(err.stack);
