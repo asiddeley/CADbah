@@ -17,16 +17,17 @@
 .msgbox {
 	border:solid;
 	border-width:2px;
-	border-color:gray;
+	border-color:black;
 	padding:5px;
 	margin:5px;
 	float:left;
 	word-wrap:break-word;
-	background-color:rgb(11,62,111);
+	/* background-color:rgb(11,62,111); */
+	background-color:silver;
 	overflow-y:auto;
 	font-family: Verdana,Arial,sans-serif;
-	font-size: 0.6em;
-	color:white; 
+	font-size: 1em;
+	color:black; 
 }
 
 .big {height:200px;	width:50%;}
@@ -47,26 +48,35 @@
 </STYLE>
 
 
-<script src="jquery.js"></script>
+<script src="resources/jquery.js"></script>
 
 <script>
 
 
 const recognition = new webkitSpeechRecognition();
-
+var count=1;
+var r;
 // on ready
 $(function(){
+	var $t=$("#transcript");
 
 	recognition.continuous = true;
 	recognition.interimResults = true;
+	
 	recognition.onresult = function(event) {
-		if (event.results[0].isFinal) {
-		$("#transcript").append(event.results[0][0].transcript);
-		//recognition.stop();
-		}
-		console.log(event.results);
-		$("#transcript").append(event.results[0][0].transcript);
+		//if (event.results[0].isFinal) {
+			//$t.val(event.results[0][0].transcript);
+		//}
+		//else {
 		
+		
+		r=event.results;//[0][0].transcript;
+		if (r.length>count){
+			count=r.length;
+			//console.log("result", event.results);
+			if (count==1){$t.val(r[count-1][0].transcript);}
+			else {$t.val($t.val() + " " + r[count-1][0].transcript);}			
+		}			
 	}
 
 	recognition.onaudiostart = function(e){
@@ -90,7 +100,7 @@ $(function(){
 	
 	
 	$("#clear").on("click", function(){
-		$("#transcript").empty();
+		$("#transcript").val("");
 		$("#console").empty();
 	});
 	
@@ -108,11 +118,11 @@ $(function(){
 
 <body>
 <h1>talk-to-text</h1>
-<div id="transcript" class="big msgbox"></div>
+<textarea id="transcript" type="text" class="big msgbox"></textarea>
 <div id="console" class="little msgbox"></div>
 <div id="buttonbox">
 	<button id="start">start</button>
-	<button id="stop">start</button>
+	<button id="stop">stop</button>
 	<button id="clear">clear</button>
 	
 </div>
