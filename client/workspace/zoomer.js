@@ -1,8 +1,4 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-***/
+/*** CADbah - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 
 // This module is written as a single instantiated class, a singleton.
 
@@ -13,7 +9,8 @@ var backgroundmesh;
 var camera;
 var done; //callback provided by caller (zoom command) needed for undoer
 var undoer=require("../workspace/undoer");
-var addUndo;
+var undo; 
+//var addUndo;
 var u=0;
 var v=0;
 var x=0;
@@ -23,76 +20,97 @@ var zoom_uvxy=function(u,v,x,y){
 };
 
 var zoomf=-1.0;
-var zoomrect;
-var zoomrectMD=function(){
-	//console.log("zoom mousedown...");
-	zoomrect.isVisible=true;
+var zoomRectMesh;
+var zoomRectMD=function(){
+	
+	window.removeEventListener("mousedown", zoomRectMD);	
+	
+	zoomRectMesh.isVisible=true;
 	// find where pointer hits background for upper left of zoom rect
-	// Note predicate function to single out background
-	var pick=CAD.scene.pick(CAD.scene.pointerX, CAD.scene.pointerY,		
+	var pick=CAD.scene.pick(
+		CAD.scene.pointerX, CAD.scene.pointerY,	
+		//predicate function to single out background
 		function(mesh){return mesh===backgroundmesh;}
 	);
-	if (pick.hit){u=pick.pickedPoint.x;	v=pick.pickedPoint.y;};
-	
-	// done so remove
-	window.removeEventListener("mousedown", zoomrectMD);
-	// now listen for...
-	window.addEventListener("mousemove", zoomrectMM);
-	window.addEventListener("mouseup", zoomrectMU);
+	if (pick.hit){
+		u=pick.pickedPoint.x;
+		v=pick.pickedPoint.y;
+		
+		//start a new transaction
+		undo=undoer.create("zoom rect"); 
+		undo.set("b",{u:u, v:v, x:x, y:y});		
+		
+		//next, listen for...
+		window.addEventListener("mousemove", zoomRectMM);
+		window.addEventListener("mouseup", zoomRectMU);		
+	} else {
+		//missed so fadeout zoomRectMesh
+		setTimeout(function(){zoomRectMesh.isVisible=false;}, 2000);
+	}
 };
 
-var zoomrectMM=function(){
-	//console.log("zoom mouse move...");
+var zoomRectMM=function(){
 	var pick = CAD.scene.pick(
 		CAD.scene.pointerX, CAD.scene.pointerY,
 		function(mesh){return mesh===backgroundmesh;}
 	);
 	if (pick.hit){
-		setExtents(u, v, pick.pickedPoint.x, pick.pickedPoint.y);
+		zoomRectSetExtents(u, v, pick.pickedPoint.x, pick.pickedPoint.y);
 	};
 };
 
-var zoomrectMU=function(){
+var zoomRectMU=function(){
 	//cleanup
-	window.removeEventListener("mousemove", zoomrectMM);
-	window.removeEventListener("mouseup", zoomrectMU);
+	window.removeEventListener("mousemove", zoomRectMM);
+	window.removeEventListener("mouseup", zoomRectMU);
 
-	camera.attachControl(CAD.canvas, true);
-	CAD.scene.activeCamera=camera;
-	camera.lockedTarget=zoomrect;
+	//fade zoom window
+	zoomRectFlash();
+	//camera.attachControl(CAD.canvas, true); //why is this necessary for a follow cam?
+	//CAD.scene.activeCamera=camera;
+	//camera.lockedTarget=zoomRectMesh;
 	//hide rect, allow some time for follow camera animation
-	setTimeout(function(){zoomrect.isVisible=false;}, 2000);
+	//setTimeout(function(){zoomRectMesh.isVisible=false;}, 2000);
 
-	if (typeof addUndo=="function"){
-		//finish the undo object by defining the pro (forward) and retro functions
-		undo.setPro(function(){zoom_uvxy(this.f.u, this.f.v, this.f.x, this.f.y);});
-		undo.setRetro(function(){zoom_uvxy(this.b.u, this.b.v, this.b.x, this.b.y);});	
-		//execute callback with undo object as argument 		
-		addUndo(undo);
-	}
+	undo.setPro(function(){
+		var f=this.get("f");
+		zoomRectSetExtents(f.u, f.v, f.x, f.y);
+		zoomRectFlash();
+	});
+	
+	undo.setRetro(function(){
+		var b=this.get("b");
+		zoomRectSetExtents(b.u, b.v, b.x, b.y);
+		zoomRectFlash();
+	});	
 };
 
-var setExtents=function(xfixed, yfixed, xmoved, ymoved){
+var zoomRectSetExtents=function(ufixed, vfixed, xmoved, ymoved){
 
-	//check if xfixed is an array like this [{x:0,y:0},{x:1,y:1}]
-	if (arguments.length==1){
-		u=xfixed[0].x; v=xfixed[0].y; x=xfixed[1].x; y=xfixed[1].y;	
-	} else {
-		u=xfixed; v=yfixed;	x=xmoved; y=ymoved;
-	}
-                    
-	zoomrect.position.x=u+(x-u)/2;
-	zoomrect.position.y=v+(y-v)/2;
-	zoomrect.scaling.x=Math.abs(x-u);
-	zoomrect.scaling.y=Math.abs(y-v);
+	//single argument means ufixed is an array such as [{x:0,y:0},{x:1,y:1}]
+	if (arguments.length==1){u=ufixed[0].x; v=ufixed[0].y; x=ufixed[1].x; y=ufixed[1].y;}
+	else {u=ufixed; v=vfixed;	x=xmoved; y=ymoved;}
+	
+	zoomRectMesh.position.x=u+(x-u)/2;
+	zoomRectMesh.position.y=v+(y-v)/2;
+	zoomRectMesh.scaling.x=Math.abs(x-u);
+	zoomRectMesh.scaling.y=Math.abs(y-v);
 	
 	//adjust camera distance to updated zoom rectangle size
-	camera.radius=zoomf*Math.abs(Math.max(zoomrect.scaling.x, zoomrect.scaling.y));
+	camera.radius=zoomf*Math.abs(Math.max(zoomRectMesh.scaling.x, zoomRectMesh.scaling.y));
 };
 
+var zoomRectFlash=function(){
+	//camera.attachControl(CAD.canvas, true); //why needed for a follow cam?
+	zoomRectMesh.isVisible=true;
+	CAD.scene.activeCamera=camera;
+	camera.lockedTarget=zoomRectMesh;
+	//hide rect, allow some time for follow camera animation
+	setTimeout(function(){zoomRectMesh.isVisible=false;}, 2000);
+};
+
+
 // MIXINS
-// mix in functionality including name(), setScene(), onLoadDxf() & other handlers 
-// which should be overriden as required
 $.extend(exports,
 	require("../cadEvents"), 
 	require("../cloneable"), 
@@ -113,7 +131,7 @@ exports.setScene=function(scene){
 	
 	//ZOOM rectangle for aiming camera
 	//width and height are imutable, use scale to vary height and width instead
-	zoomrect=BABYLON.MeshBuilder.CreatePlane("zoomrect", {
+	zoomRectMesh=BABYLON.MeshBuilder.CreatePlane("zoomRectMesh", {
 		width:1,
 		height:1,
 		sideOrientation:BABYLON.Mesh.DOUBLESIDE,
@@ -124,8 +142,8 @@ exports.setScene=function(scene){
 	var zrm = new BABYLON.StandardMaterial("zoomrectmat", scene);
 	zrm.diffuseColor=new BABYLON.Color3(1, 0, 0); //red
 	zrm.alpha=0.5;
-	zoomrect.material=zrm;
-	zoomrect.isVisible=false;
+	zoomRectMesh.material=zrm;
+	zoomRectMesh.isVisible=false;
 
 	//zoom camera
 	camera=new BABYLON.FollowCamera("zoomcam", new BABYLON.Vector3(0, 0, 100), scene);
@@ -136,25 +154,24 @@ exports.setScene=function(scene){
 	camera.maxCameraSpeed = 25;
 };
 
-exports.zoomRect=function(addUndoFn){
-	CAD.debug("zoomer.zoomRect...");
+exports.zoomRect=function(){
 	
-	addUndo=addUndoFn;
-	if (typeof addUndo=="function"){
-		undo=undoer.create(CAD, "zoom rect");
-		undo.set("b",{u:u, v:v, x:x, y:y});		
-	};
-
+	CAD.debug("zoomer.zoomRect()");
+	
 	//use background for pick target
 	backgroundmesh=workspace.getItem("background").getMesh();
+	
 	//show mesh
-	zoomrect.isVisible=true;
-	//disable camera motion by mouse
+	zoomRectMesh.isVisible=true;
+	
+	//disable camera motion by mouse in case it is an orbit or other camera
 	CAD.scene.activeCamera.detachControl(CAD.canvas);
-	//hold tracking until zoom rectangle finished on mouseup 
+
+	//hold camera follow until zoom rectangle finalized on mouseup 
 	camera.lockedTarget=null;
+	
 	//now listen for mousedown to start zoom operation
-	window.addEventListener("mousedown", zoomrectMD);
+	window.addEventListener("mousedown", zoomRectMD);
 };
 
 // override
@@ -162,40 +179,48 @@ exports.onLoadDXF=function(workspace){
 	//zoom to extents	
 };
 
-exports.zoomExtents=function(addUndo){
-	CAD.debug("zoomer.zoomExtents...");
+exports.zoomExtents=function(){
+	CAD.debug("zoomer.zoomExtents()");
 	
-	if (typeof addUndo=="function"){
-		undo=undoer.create(CAD, "zoom extents");
-		//record the before condition of the zoom rectangle
-		undo.set("b",{u:u, v:v, x:x, y:y});	
-	};
+	//start a new undo transaction
+	undo=undoer.create(CAD, "zoom extents");
 	
-	zoomrect.isVisible=true;
+	//save the initial extents of the zoom rectangle
+	undo.set("start",{u:u, v:v, x:x, y:y});	
+	
+	//show the zoom window
+	zoomRectMesh.isVisible=true;
+	
 	//disable camera motion by mouse
 	CAD.scene.activeCamera.detachControl(CAD.canvas);
+	
 	//get bounding box, min and max coordinates of docdxf eg.[{},{}]
 	var ext=CAD.docdxf.getExtents();
+	
 	//change background extents to match dxf document
 	workspace.getItem("background").setExtents(ext);
-	//change zoom Rectangle extents
-	setExtents(ext);
-	//ensure camera settings good
-	camera.attachControl(CAD.canvas, true);
-	CAD.scene.activeCamera=camera;
-	camera.lockedTarget=zoomrect;	
-	//hide rect, allow some time for follow camera animation
-	setTimeout(function(){zoomrect.isVisible=false;}, 2000);
 	
-	if (typeof addUndo=="function"){
-		//record the finished condition of the zoom rectangle. 
-		//Note that u,v,x & y are static vars ie. scoped to this zoomer module.
-		undo.set("f",{u:u, v:v, x:x, y:y});	
-		//set the forward operation
-		undo.setPro(function(){zoom_uvxy(this.f.u, this.f.v, this.f.x, this.f.y);});
-		//set the backward operation
-		undo.setRetro(function(){zoom_uvxy(this.b.u, this.b.v, this.b.x, this.b.y);});	
-		//register the undo object
-		addUndo(undo);
-	};
+	//change zoom window extents	
+	zoomRectSetExtents(ext);
+
+	//show and fade zoom window
+	zoomRectFlash();	
+
+	//save final extents of the zoom rectangle
+	undo.set("finish",{u:u, v:v, x:x, y:y});
+	
+	//set the forward operation
+	undo.setPro(function(){
+		var f=this.get("finish");
+		zoomRectSetExtents(f.u, f.v, f.x, f.y);
+		zoomRectFlash();
+	});
+	
+	//set the backward operation
+	undo.setRetro(function(){
+		var s=this.get("start");
+		zoomRectSetExtents(s.u, s.v, s.x, s.y);
+		zoomRectFlash();
+	});	
+
 };

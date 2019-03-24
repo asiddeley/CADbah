@@ -1,17 +1,15 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-***/
+/*** CADbah - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 //PUBLIC
-var htm="Activates the orbital camera<br>";
-htm+="&gt;orbit x|y|z<br>";
-htm+="Orbits around the specified axis with mouse control<br>";
-htm+="&gt;orbit auto<br>";
-htm+="Orbits automatically without mouse control<br>";
+var htm="Activates the orbital camera<br>"+
+"&gt;&nbsp;orbit x|y|z<br>"+
+"Orbits around the specified axis with mouse control<br>"+
+"&gt;&nbsp;orbit go<br>"+
+"Starts orbit motion<br>"+
+"&gt;&nbsp;orbit stop<br>"+
+"Stops orbits motion<br>";
 
 //MIXINS
-$.extend(exports,require("./command"));
+$.extend(exports, require("./command"));
 
 //PUBLIC
 //overrides
@@ -38,7 +36,7 @@ exports.action=function(CAD, argstr){
 			oc.target=bm.position;
 			break;		
 		case "z": 
-		default:		
+		default:
 			oc.alpha=-0.5*Math.PI;
 			oc.beta=0.5*Math.PI;	
 			oc.radius=Math.max(bm.scaling.x, bm.scaling.y);

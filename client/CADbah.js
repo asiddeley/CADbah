@@ -1,5 +1,6 @@
 /*****************************************************
-CADBAH = Computer Aided Design Be Architectural Heroes
+CADbah
+Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
 
 MIT License
@@ -23,8 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 // PRIVATE STATIC
-var FC=require("./cad-fc/cad-fc.js");
-var uisetup=require("./uis/uisetup.js").uisetup;
+//var FC=require("./cad-fc/cad-fc.js");
+//var uisetup=require("./uis/uisetup.js").uisetup;
 
 var cout=function(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
@@ -46,7 +47,7 @@ exports.activate=function(options){
 	/* Prepare user interfaces and controls...  
 	Looks in options for {... div:HTMLelementReference, ...} or
 	creates it from scratch if not found */
-	uisetup(this, {autoOpen:false});	
+	//uisetup(this, {autoOpen:false});	
 	
 
 	// Prepare canvas
@@ -76,7 +77,6 @@ exports.activate=function(options){
 	this.workspace.activate(this).setScene(this.scene);
 
 	// DOCUMENT
-	//this.docdxf=new Docdxf(this);
 	this.docdxf.activate(this);
 	// set the BABYLON scene by traverses all entities in document 
 	this.docdxf.setScene(this.scene);
@@ -89,6 +89,12 @@ exports.activate=function(options){
 	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
+/* convenience function that takes a string and returns an array containing [0] the first word and [1] the remainder of the string */
+exports.chop=function(argstr){
+	var firstword=argstr.split(" ")[0];
+	var rest=argstr.substring(firstword.length).trim();
+	return [firstword, rest];
+};	
 exports.commander=require("./commands/commander.js");
 exports.canvas=null;
 exports.canvas$=null;
@@ -113,7 +119,8 @@ exports.debuglimit=100;
 exports.engine=null;
 	
 // function collection 
-exports.fc=FC;
+//exports.fc=FC;
+//exports.fc=require("./cad-fc/cad-fc.js");
 
 // MESSAGING
 exports.msg=function(){
@@ -136,6 +143,6 @@ exports.options={
 exports.scene=null;
 // Manages tools including light, camera, background, skybox, zoomer etc
 exports.workspace=require("./workspace/workspace.js");
-exports.uis={};
+//exports.uis={};
 
 

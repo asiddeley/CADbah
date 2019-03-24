@@ -19,7 +19,7 @@ exports.action=function(CAD, argstr){
 	var reader = new FileReader();
 	reader.onprogress = function(evt){
 		if (evt.lengthComputable){
-			CAD.msg("loaded:"+ evt.loaded + " / " + evt.total);	
+			CAD.msg("loaded:"+ Math.round(100 * evt.loaded / evt.total)+"%");	
 		} else {
 			//animate the dots
 			CAD.msg("loading.....".substr(0, 7+(c++ % 5)));		
@@ -27,9 +27,8 @@ exports.action=function(CAD, argstr){
 	};
 	reader.onloadend = function(evt){
 		//success
-		
-		//should be part of docdxf.setScene()
-		CAD.fc.clearScene(CAD);
+
+		CAD.scene.dispose();
 		CAD.scene = new BABYLON.Scene(CAD.engine);
 		CAD.workspace.setScene(CAD.scene);
 	

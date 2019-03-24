@@ -1,13 +1,9 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-****/
+/*** CADBAH - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 // PRIVATE
 var htm="Controls wheter debugging messages are shown<br>"+
-"&gt; debug show<br>"+
+"&gt;debug show<br>"+
 "shows debugging messages<br>"+
-"&gt; debug hide<br>"+
+"&gt;debug hide<br>"+
 "hides debugging messages";
 
 // MIXINS
@@ -18,11 +14,26 @@ $.extend(exports, require("./command"));
 exports.name="debug";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
-	switch(argstr.toLowerCase()){
-		case "show": $(".cad-debug").show(); break;
-		case "hide": $(".cad-debug").hide(); break;
-		default: $(".cad-debug").show();
+	//change the contents of <style> </style> 
+	var bug$=$("#cad-debug-style");
+	if (bug$.length==0){
+		CAD.debug("missing style tag (id='cad-debug-style')");
+		return;
 	}
+	switch(argstr.toLowerCase()){
+		case "show": 
+			//$(".cad-debug").show(); 
+			bug$.html(bug$.html().replace("display:none","display:block"));
+		break;
+		case "hide": 
+			//$(".cad-debug").hide(); 
+			bug$.html(bug$.html().replace("display:block","display:none"));
+		break;
+		default: 
+			//$(".cad-debug").show();
+			bug$.html(bug$.html().replace("display:none","display:block"));
+	}
+	CAD.console.scrollTop=CAD.console.scrollHeight;
 };
 
 

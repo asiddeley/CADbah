@@ -4,8 +4,8 @@ Copyright (c) 2019 Andrew Siddeley
 MIT License
 ****/
 // PRIVATE
-var htm="Provides help on a specified command, type:<br>";
-htm+="&gt;help [command]";
+var htm="Provides help on a specified command<br>"+
+"&gt; help [command]";
 
 // MIXINS
 $.extend(exports, require("./command"));
@@ -25,7 +25,7 @@ exports.action=function(CAD, argstr){
 	}
 
 	if (!h){
-		h=(typeof argstr=="string")?"&gt;"+argstr+"&lt; is not a valid command'<br>":""; 
+		h=(typeof argstr=="string")?"&gt; '"+argstr+"' is not a valid command<br>":""; 
 		h+="<h3>help</h3>"+htm+"<hr>";
 	}
 	CAD.msg(h);

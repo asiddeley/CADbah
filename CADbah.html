@@ -4,7 +4,14 @@
 <head>
 <title>CADbah</title>
 <meta charset="utf-8">
-
+<style id="cad-debug-style" type="text/css">
+.cad-debug {
+	display:block;
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.6em;
+	color:gray; 
+}
+</style>
 <STYLE type="text/css">
 
 #cad-view {
@@ -14,12 +21,6 @@
 }
 
 #cad-input{width:300px;}
-
-.cad-debug {
-	font-family: Verdana,Arial,sans-serif;
-	font-size: 0.6em;
-	color:gray; 
-}
 
 .cad-msg {
 	font-family: Verdana,Arial,sans-serif;
@@ -123,7 +124,7 @@ $(document).ready(function(){
 		//prevent accidental drag-and-drop on windox
 		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
 		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-		//if command line doesn't have focus then give it focus
+		//if command line doesn't have focus then give it focus and clear it
 		"keypress":function(e){ e=e||event;
 			if(!input$.is(":focus")){
 				input$.get(0).focus();
@@ -162,7 +163,7 @@ $(document).ready(function(){
 	CAD.activate({
 		canvas:document.getElementById("cad-canvas"),
 		console:document.getElementById("cad-console")
-});
+	});
 
 // load standard command aliases or shortcuts
 CAD.cmd("alias load aliases.json");
@@ -174,84 +175,100 @@ CAD.cmd("alias load aliases.json");
 
 <body>
 <div id="board" class="container-fluid">
-<form 
-name="navbar"
-id="navbar" 
-class="controlgroup ui-widget-header"  
-onSubmit="return inputHandler(event)">
-	<button>CADbah</button>
-	<button id="file">File</button>
-	<button id="edit">Edit</button>
-	<button id="draw">Draw</button>
-	<button id="help">Help</button>
+	<form 
+	name="navbar"
+	id="navbar" 
+	class="controlgroup ui-widget-header"  
+	onSubmit="return inputHandler(event)">
+		<button>CADbah</button>
+		<button id="file">File</button>
+		<button id="edit">Edit</button>
+		<button id="draw">Draw</button>
+		<button id="help">Help</button>
 
-	<ul id="file-menu" class="menu">
-		<li onclick="CAD.cmd('new')"><div>New</div></li>
-		<li onclick="dxf$.dialog('open')"><div>Open</div></li>
-		<li onclick="CAD.cmd('save')"><div>Save</div></li>
-		<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
-		<li>--</li>
-		<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
-		<li>--</li>
-		<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
-	</ul>
-
-	<ul id="edit-menu" class="menu">
-		<li>--</li>
-		<li onclick="CAD.cmd('CUT')"><div>Cut</div></li>
-		<li onclick="CAD.cmd('COPY')"><div>Copy</div></li>
-		<li onclick="CAD.cmd('PASTE')"><div>Paste</div></li>
-		<li onclick="CAD.cmd('DELETE')"><div>Delete</div></li>
-		<li onclick="CAD.cmd('SELECT')"><div>Select</div></li>
-		<li>--</li>
-		<li onclick="CAD.cmd('BLOCKDEF')"><div>Block-Def</div></li>
-		<li onclick="CAD.cmd('BLOCKADD')"><div>Block-Add</div></li>
-		<li onclick="CAD.cmd('BLOCKEDIT')"><div>Block-Edit</div></li>
-		<li>--</li>
-		<li onclick="CAD.cmd('MOVE')"><div>Move</div></li>
-		<li onclick="CAD.cmd('MIRROR')"><div>Mirror</div></li>
-		<li onclick="CAD.cmd('ROTATE')"><div>Rotate</div></li>
-		<li onclick="CAD.cmd('SCALE')"><div>Scale</div></li>
-		<li>--</li>
-		<li onclick="CAD.cmd('PROPERTIES')"><div>Properties</div></li>
+		<ul id="file-menu" class="menu">
+			<li onclick="CAD.cmd('new')"><div>New</div></li>
+			<li onclick="dxf$.dialog('open')"><div>Open</div></li>
+			<li onclick="CAD.cmd('save')"><div>Save</div></li>
+			<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
+			<li>--</li>
+			<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
+			<li>--</li>
+			<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
 		</ul>
 
-	<ul id="draw-menu" class="menu">
-		<li onclick="CAD.cmd('ARC')"><div>Arc</div></li>
-		<li onclick="CAD.cmd('BLOCKINS')"><div>Block-Ins</div></li>
-		<li onclick="CAD.cmd('CIRCLE')"><div>Circle</div></li>
-		<li onclick="CAD.cmd('IMAGE')"><div>Image</div></li>		
-		<li onclick="CAD.cmd('LINE')"><div>Line</div></li>
-		<li onclick="CAD.cmd('POLYLINE')"><div>Polyline</div></li>
-		<li onclick="CAD.cmd('RECTANGLE')"><div>Rectangle</div></li>
-		<li onclick="CAD.cmd('TEXT')"><div>Text</div></li>
-	</ul>
-
-	<ul id="help-menu" class="menu">
-		<li onclick="CAD.cmd('about')"><div>About</div></li>
-		<li><div>User</div>
-			<ul>
-			<li onclick="CAD.cmd('overview')"><div>Overview</div></li>
-			<li onclick="CAD.cmd('commandlist')"><div>Command list</div></li>
-			<li onclick="CAD.cmd('documentation')"><div>Documentation</div></li>
+		<ul id="edit-menu" class="menu">
+			<li>--</li>
+			<li onclick="CAD.cmd('CUT')"><div>Cut</div></li>
+			<li onclick="CAD.cmd('COPY')"><div>Copy</div></li>
+			<li onclick="CAD.cmd('PASTE')"><div>Paste</div></li>
+			<li onclick="CAD.cmd('DELETE')"><div>Delete</div></li>
+			<li onclick="CAD.cmd('SELECT')"><div>Select</div></li>
+			<li>--</li>
+			<li onclick="CAD.cmd('BLOCKDEF')"><div>Block-Def</div></li>
+			<li onclick="CAD.cmd('BLOCKADD')"><div>Block-Add</div></li>
+			<li onclick="CAD.cmd('BLOCKEDIT')"><div>Block-Edit</div></li>
+			<li>--</li>
+			<li onclick="CAD.cmd('MOVE')"><div>Move</div></li>
+			<li onclick="CAD.cmd('MIRROR')"><div>Mirror</div></li>
+			<li onclick="CAD.cmd('ROTATE')"><div>Rotate</div></li>
+			<li onclick="CAD.cmd('SCALE')"><div>Scale</div></li>
+			<li>--</li>
+			<li onclick="CAD.cmd('PROPERTIES')"><div>Properties</div></li>
 			</ul>
-		</li>
-		<li><div>Develper</div>
-			<ul>
-			<li><div>Dev Overview</div></li>
-			<li><div>System events</div></li>
-			</ul>		
-		</li>
-		<li><div>MIT License</div></li>
-	</ul>
-	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
-	<input type="submit" value="Ok">
-</form>
-<div id="cad-view">
-<div id="cad-console"></div>
-<canvas id="cad-canvas"></canvas>
+
+		<ul id="draw-menu" class="menu">
+			<li onclick="CAD.cmd('ARC')"><div>Arc</div></li>
+			<li onclick="CAD.cmd('BLOCKINS')"><div>Block-Ins</div></li>
+			<li onclick="CAD.cmd('CIRCLE')"><div>Circle</div></li>
+			<li onclick="CAD.cmd('IMAGE')"><div>Image</div></li>		
+			<li onclick="CAD.cmd('LINE')"><div>Line</div></li>
+			<li onclick="CAD.cmd('POLYLINE')"><div>Polyline</div></li>
+			<li onclick="CAD.cmd('RECTANGLE')"><div>Rectangle</div></li>
+			<li onclick="CAD.cmd('TEXT')"><div>Text</div></li>
+		</ul>
+
+		<ul id="help-menu" class="menu">
+			<li onclick="CAD.cmd('about')"><div>About</div></li>
+			<li><div>Commands</div>
+				<ul>
+				<li onclick="CAD.cmd('about')"><div>about</div></li>
+				<li onclick="CAD.cmd('help alias')"><div>alias</div></li>
+				<li onclick="CAD.cmd('help clear')"><div>clear</div></li>
+				<li onclick="CAD.cmd('help dir')"><div>dir</div></li>
+				<li onclick="CAD.cmd('help dxfin')"><div>dxfin</div></li>
+				<li onclick="CAD.cmd('help fullscreen')"><div>fullscreen</div></li>
+				<li onclick="CAD.cmd('help open')"><div>open</div></li>
+				<li onclick="CAD.cmd('help orbit')"><div>orbit</div></li>
+				<li onclick="CAD.cmd('help save')"><div>save</div></li>
+				<li onclick="CAD.cmd('help zoom')"><div>zoom</div></li>
+				<li>--</li>
+				<li onclick="CAD.cmd('dir')"><div>Directory</div></li>
+				</ul>
+			</li>
+			<li><div>Develper</div>
+				<ul>
+				<li onclick="CAD.cmd('help debug')"><div>debug</div></li>
+				<li><div>Dev Overview</div></li>
+				<li><div>System events</div></li>
+				</ul>		
+			</li>
+			<li><div>Entities</div>
+				<ul>
+				<li onclick="CAD.cmd('help arc')"><div>arc</div></li>
+				<li onclick="CAD.cmd('help line')"><div>line</div></li>
+				</ul>
+			</li>		
+			<li><div>MIT License</div></li>
+		</ul>
+		<input id="cad-input" type="text" placeholder="command" class="drop-zone">
+		<input type="submit" value="Ok">
+	</form>
+	<div id="cad-view">
+		<div id="cad-console"></div>
+		<canvas id="cad-canvas"></canvas>
+	</div>
 </div>
-</div><!-- board -->
 
 </body>
 </html>

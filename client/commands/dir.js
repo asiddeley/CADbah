@@ -1,8 +1,4 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-****/
+/*** CADbah - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 // PRIVATE
 var htm="Lists all available commands";
 
@@ -15,11 +11,11 @@ exports.name="dir";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
 	var cobs=CAD.commander.getCommands();
-	var htm="<h3>Command Directory</h3>";
+	var htm="<h3>Directory</h3><ol>";
 	for (var i=0; i<cobs.length; i++){
-		htm+=cobs[i].name+"<br>";
+		htm+="<li>"+cobs[i].name+"</li>";
 	};
-	CAD.msg(htm+"<hr>");
+	CAD.msg(htm+"</ol><hr>");
 };
 
 

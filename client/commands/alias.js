@@ -1,19 +1,15 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-***/
+/*** CADBAH - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 
 // This module is writen like a single instantiated class
 
-// PRIVATE
-var htm="Manages custom command abreviations<br>";
-htm+="&gt;alias add [alias] [commands|expression(s)]<br>";
-htm+="Adds an alias definition<br>";
-htm+="&gt;alias clear<br>";
-htm+="Clears alias definitions for current session<br>";
-htm+="&gt;alias load [filename]<br>";
-htm+="Loads an alias file, adding definitions.<br>";
+// PRIVATE STATIC
+var htm="Manages custom command abreviations<br>"+
+"&gt; alias add [alias] [commands|expression(s)]<br>"+
+"Adds an alias definition<br>"+
+"&gt; alias clear<br>"+
+"Clears alias definitions for current session<br>"+
+"&gt; alias load [filename]<br>"+
+"Loads an alias file, adding definitions.<br>";
 
 // PUBLIC
 // MIXINS
@@ -26,33 +22,28 @@ exports.action=function(CAD, argstr){
 		var first=argstr.split(" ")[0].trim();
 		var rest=argstr.substring(first.length).trim();
 		switch(first){
-			case "clear":aliases={};break;
-			case "load":load(rest);break;
-			case "list":list(rest);break;
-			case "add":add(rest);break;		
-			case "undefined":break; 
+			case "clear":aliases={}; break;
+			case "load":load(CAD, rest); break;
+			case "list":list(CAD, rest); break;
+			case "add":add(CAD, rest); break;		
+			case "undefined": break; 
 		}
 	};
 };
 
-// Public methods
 exports.subst=function(cmd){return subst(cmd, 0);}
 
-// Private static members of this module
- 
-// aliases={zr:"zoom rect";};
+// PRIVATE STATIC
+
 var aliases={};
-// titles={zr:"zoom rect";};
-//var titles={};
 
-
-var add=function(argstr){
+var add=function(CAD, argstr){
 	var first=argstr.split(" ")[0].trim();
 	var rest=argstr.substring(first.length).trim();
 	aliases[first]=rest;	
 };
 
-var load=function(argstr){
+var load=function(CAD, argstr){
 	var url=argstr.split(" ")[0].trim();
 	console.log("alias file...",url);
 	//var rest=argstr.substring(url.length).trim();
@@ -63,21 +54,13 @@ var load=function(argstr){
 		//data: {},
 		success: function(json){
 			aliases=json;
-			console.log("alias data...", json);
+			CAD.debug("alias data...", json);
 		},
-		error:function(err){console.log("alias file load fail", err);}
-		
+		error:function(err){CAD.debug("alias file load fail", err);}
 	});
-	/*
-	try{$.getJSON(url, function(json){
-		aliases=json;
-		console.log("alias data...", json);
-	});
-	} catch(e){console.log("Error loading alias file:",e);};	
-	*/
 };
 
-var list=function(argstr){
+var list=function(CAD, argstr){
 	var keys=Object.keys(aliases);
 	var msg="Aliases:\n";
 	for (var k in keys){

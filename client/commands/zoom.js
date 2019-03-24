@@ -26,18 +26,18 @@ action executes the zoom command
 @param {function} optional callback to force additional user input
 @returns nil
 **/
-exports.action=function(CAD, argstr, callback){
+exports.action=function(CAD, argstr){
 	switch(argstr.toLowerCase()){
 		case "r":
 		case "rect": 
 			//CAD.workspace.zoomer.zoomRect(callback);
-			try { CAD.workspace.getTool("zoomer").zoomRect(callback);}
+			try { CAD.workspace.getTool("zoomer").zoomRect();}
 			catch(er){CAD.debug("zoom command error...",er);}
 		break;
 		
 		case "extents": 
 			//CAD.workspace.zoomer.zoomRect(callback);
-			try { CAD.workspace.getTool("zoomer").zoomExtents(callback);}
+			try { CAD.workspace.getTool("zoomer").zoomExtents();}
 			catch(er){CAD.debug("zoom command error...",er);}
 		break;
 	

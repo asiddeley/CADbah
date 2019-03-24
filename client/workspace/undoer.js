@@ -1,17 +1,14 @@
-/***
-CADBAH = Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
-MIT License
-***/
+/*** CADbah - Copyright (c) 2019 Andrew Siddeley - MIT License ***/
 
-// This module is written as a single instantiated class, a singleton.
+// This module is written as a single instantiated class (singleton)
 
 // PRIVATE STATIC
 var CAD;
-var ulist=[];
-var ui=-1;
-var Undo=function(operation){
-	this.operation=operation; //name of undo operation
+var history=[];
+var hi=-1;
+var Undo=function(name){
+	this.name=name; //name of undo operation
+	this.get=function(valname){return this.values[valname];};
 	this.set=function(valname, val){this.values[valname]=val;};	
 	this.setPro=function(fn){this.pro=fn;};
 	this.setRetro=function(fn){this.retro=fn;};	
@@ -36,37 +33,53 @@ exports.activate=function(workspace){
 };
 
 exports.create=function(name){
-	/* Check index against undo list. If less it means actions have been undone by goback() so need to purge ulist from index onward to allow list to continue with a revised branch of operations */
-	while (ui+1<ulist.length){ulist.pop();}
+	/* Check index against undo list. If less it means actions have been undone by goback() so need to purge history from index onward to allow list to continue with a revised branch of operations */
+	while (hi+1<history.length){history.pop();}
 	var u=new Undo(name);
-	ulist.push(u); ui=ulist.length-1;
+	history.push(u); hi=history.length-1;
 	return u;
 };
 
-exports.dir=function(){
-	var htm="<ol>";
-	for (var i=0 to ui){
-		htm+="<li>"+i.operation+"</li>";
-	}
-	return htm+"</ol>";
-}
-
-exports.goforth=function(){
-	//execute retro function and move index back
-	if (ui+1 < ulist.length){ulist[ui].pro();ui++;}
-	else {CAD.msg("Nothing to redo");}	
+var li=function(i, u){
+	//var f="PRO:\n"+u.pro.toString(); //unescaped literal err
+	//CAD.debug(JSON.stringify(u.name));
+	//define an command
+	//CAD.cmd("alias add " + i + " alert " + txt );
+	var h="<li onclick='alert(\""+u.name+"\");'>"+u.name+"</li>";
+	return h;
 };
 
-exports.goback=function(toIndex){
-	toIndex=toIndex||ui-1;
-	//execute retro function and move index back
-	while (ui >= 0 && toIndex<ui){
-		CAD.msg("undo &gt;"+ulist[ui].operation);
-		try{ulist[ui].retro();ui--;}
-		catch(e){CAD.msg("error"+e.msg);}
+exports.list=function(){
+	var htm="<ol>";
+	for (var i=0; i<=hi; i++){
+		htm+=li(i,history[i]);
 	}
-	if (ui<0){CAD.msg("Nothing to undo");}
+	return htm+"</ol>";
+};
 
+exports.execPro=function(){
+	//execute pro function and move index forward
+	if (hi+1 < history.length){
+		CAD.debug("redoing:"+history[hi].name);
+		try{ 
+			history[hi].pro(); 
+			hi++;
+			CAD.msg(history[hi].name + " redone");
+		} catch(e){CAD.msg("redo error:" + e.msg);}		
+		hi++;
+	} else {CAD.msg("Nothing to redo");}	
+};
+
+exports.execRetro=function(){
+	//execute retro function and move index back	
+	if (hi >=0 ){
+		CAD.debug("undoing:"+history[hi].name);
+		try{
+			history[hi].retro(); 
+			hi--;
+			CAD.msg(history[hi].name + " undone");
+		} catch(e){ CAD.msg("undo error:" + e.msg);}
+	} else { CAD.msg("Nothing to undo"); }
 };
 
 exports.setScene=function(scene){};
