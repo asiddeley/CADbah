@@ -7,9 +7,10 @@ MIT License
 var htm="Maximizes the browser content window<br>Hit escape key to exit<br>";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
+exports.allowed=["cadbah", "caddeley"];
 exports.name="fullscreen";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, first, rest){

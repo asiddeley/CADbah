@@ -9,9 +9,10 @@ var objectUrl;
 var htm="Saves the currently open cadbah document to server.";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
+exports.allowed=["cadbah"];
 exports.name="save";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){

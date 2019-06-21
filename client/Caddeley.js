@@ -1,6 +1,6 @@
 /*****************************************************
-CADbah
-Computer Aided Design Be Architectural Heroes
+Caddeley
+Computer Aided Design - Elementary !
 Copyright (c) 2019 Andrew Siddeley
 
 MIT License
@@ -24,9 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 // PRIVATE STATIC
-//var FC=require("./cad-fc/cad-fc.js");
-//var uisetup=require("./uis/uisetup.js").uisetup;
-
 var cout=function(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
 	//add new message
@@ -39,7 +36,7 @@ var cout=function(CAD, htm, cssClass, count, limit){
 };
 
 // PUBLIC
-exports.appname="cadbah";
+exports.appname="caddeley";
 exports.activate=function(options){
 
 	// check options
@@ -66,29 +63,12 @@ exports.activate=function(options){
 		this.console$=$(options.console);
 	};
 		
-	// prepare engine
-	this.engine = new BABYLON.Engine(this.canvas, true);
-	/* 	Why warning, webgl dest rect smaller than viewport rect?
-	See: http://doc.babylonjs.com/classes/2.5/Engine, 
-	Try this...  this.engine.setViewport(new BABYLON.Viewport(0,0,700,500)); */
-	
-	// initialize the scene
-	this.scene=new BABYLON.Scene(this.engine);
-	
-	// WORKSPACE
-	this.workspace.activate(this).setScene(this.scene);
-
+	// GRAPHIC CONTEXT
+	this.gc=this.canvas.getContext("2d");
+		
 	// DOCUMENT
 	this.drawing.activate(this);
-	// set the BABYLON scene by traverses all entities in document 
-	this.drawing.setScene(this.scene);
 	
-	// This is a cool Babylon feature
-	// this.scene.debugLayer.show();
-	
-	// engage the engine
-	var that=this;
-	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
 /* convenience function that takes a string and returns an array containing [0] the first word and [1] the remainder of the string */
@@ -107,6 +87,9 @@ exports.div=null;
 exports.div$=null;
 exports.drawing=require("./drawing.js");
 
+//GRAPHIC CONTEXT
+exports.gc=null;
+
 // DEBUGGING
 exports.debug=function(){
 	for (var i in arguments){
@@ -120,10 +103,6 @@ exports.debuglimit=100;
 // ENGINE
 exports.engine=null;
 	
-// function collection 
-//exports.fc=FC;
-//exports.fc=require("./cad-fc/cad-fc.js");
-
 // MESSAGING
 exports.msg=function(){
 	for (var i in arguments){
@@ -141,10 +120,6 @@ exports.options={
 	database:null, //to be determined
 };
 	
-// Babylon scene, initialized by CAD.activate()
-exports.scene=null;
-// Manages tools including light, camera, background, skybox, zoomer etc
-exports.workspace=require("./workspace/workspace.js");
-//exports.uis={};
+
 
 

@@ -4,25 +4,25 @@ Copyright (c) 2019 Andrew Siddeley
 MIT License
 *****************************************************/
 // PRIVATE
-var alias=require("./alias");
+var alias=require("./commands/alias");
 var last_inputstr="";
 
 // command objects. Note that these do not need activating 
 var cobs=[
 	alias,
-	require("./dxfin"),
-	require("./fullscreen"),
-	require("./open"),
-	require("./save"),
-	require("./zoom"),	
-	require("./orbit"),
-	require("./clear"),
-	require("./dir"),
-	require("./help"),
-	require("./debug"),
-	require("./license"),
-	require("./undo"),
-	require("./alert")
+	require("./commands/dxfin"),
+	require("./commands/fullscreen"),
+	require("./commands/open"),
+	require("./commands/save"),
+	require("./commands/zoom"),	
+	require("./commands/orbit"),
+	require("./commands/clear"),
+	require("./commands/dir"),
+	require("./commands/help"),
+	require("./commands/debug"),
+	require("./commands/license"),
+	require("./commands/undo"),
+	require("./commands/alert")
 ];
 
 //PUBLIC
@@ -46,8 +46,14 @@ exports.input=function(CAD, inputstr){
 		if (cobs[i].name==first){
 			// valid so keep a copy
 			last_inputstr=inputstr;
-			// execute the command
-			cobs[i].action(CAD, rest);
+			// is command allowed in "cadbah" or "caddeley"
+			if (cobs[i].allowed.includes(CAD.appname)){
+				// execute the command
+				cobs[i].action(CAD, rest);
+			} 
+			else {
+				CAD.msg("Sorry, command not allowed in " + CAD.appname);
+			}
 			break;
 		}
 	}

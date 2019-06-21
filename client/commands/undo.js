@@ -9,9 +9,10 @@ var htm="Manages the command history, allowing for commands to be undone or redo
 "Lists the command history<br>";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
+exports.allowed=["cadbah", "caddeley"];
 exports.name="undo";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){

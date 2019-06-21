@@ -6,27 +6,40 @@ MIT License
 
 // PRIVATE STATIC
 
-// default entity data with random location
-var createDxf=function(){
-	return {
-		type:"ENTITY",
-		color:"BYLAYER",
-		layer:"0",
-		linetype:"BYLAYER",
-		vertices:[{
-			x:function(){return Math.trunc(Math.random()*1000);},
-			y:function(){return Math.trunc(Math.random()*1000);}
-		}]
-	};
+// Default entity data with random location
+var Entity=function(){
+	/* Constructor of an object identical to applicable object created by dxf-parser node library */
+
+	this.type="entity";
+	this.color="BYLAYER";
+	this.layer="0";
+	this.linetype="BYLAYER";
+	this.vertices=[{
+		x:function(){return Math.trunc(Math.random()*1000);},
+		y:function(){return Math.trunc(Math.random()*1000);}
+	}];
 };
 
 // MIXINS - None
 
 // PUBLIC
-exports.activate=function(docdxf){
-	this.docdxf=docdxf;
-	this.desc='foundation of all CADbah scene-model entities';
-	this.dxf=createDxf();	
+exports.activate=function(drawing){
+	//meant to activate this library... why is this necessary?	
+	this.drawing=drawing;
+	//this.desc='foundation of all CADbah scene-model entities';
+	//this.dxf=new entity();	
+};
+
+exports.create=function(){
+	return new Entity();	
+};
+
+exports.description="Foundation for all graphical drawing elements";
+
+exports.setGC=function(gc, entity){
+	//Caddeley rendering with canvas
+	//defaults
+	
 };
 
 exports.setScene=function(scene, mesh, entdxf){

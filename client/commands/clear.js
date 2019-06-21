@@ -7,10 +7,11 @@ MIT License
 var htm="Clears the message console";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // required funcitons for command modules
+exports.allowed=["cadbah", "caddeley"];
 exports.name="clear";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){CAD.console$.empty();};

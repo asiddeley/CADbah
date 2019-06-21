@@ -40,10 +40,11 @@ SOFTWARE.<hr>
 
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // required funcitons for command modules
+exports.allowed=["cadbah", "caddeley"];
 exports.name="license";
 exports.help=function(CAD){return html;};
 exports.action=function(CAD, argstr){CAD.msg(html);};

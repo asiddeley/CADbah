@@ -194,8 +194,8 @@ exports.zoomExtents=function(){
 	//disable camera motion by mouse
 	CAD.scene.activeCamera.detachControl(CAD.canvas);
 	
-	//get bounding box, min and max coordinates of docdxf eg.[{},{}]
-	var ext=CAD.docdxf.getExtents();
+	//get bounding box, min and max coordinates of drawing eg.[{},{}]
+	var ext=CAD.drawing.getExtents();
 	
 	//change background extents to match dxf document
 	workspace.getItem("background").setExtents(ext);

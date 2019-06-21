@@ -8,8 +8,12 @@ var filed=require("file-dialog");
 var DxfParser=require("dxf-parser");
 var htm="Displays a file dialog for the user to select a dxf file. The file is then uploaded, converted into a native cadbah document and displayed in the workspace<br>";
 
+// MIXINS
+$.extend(exports, require("../command"));
+
 // PUBLIC
 // required exports for any command
+exports.allowed=["caddeley", "cadbah"]
 exports.name="dxfin";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
@@ -28,15 +32,16 @@ exports.action=function(CAD, argstr){
 	reader.onloadend = function(evt){
 		//success
 
-		CAD.scene.dispose();
-		CAD.scene = new BABYLON.Scene(CAD.engine);
-		CAD.workspace.setScene(CAD.scene);
+		//MOVED TO CAD.drawing.setDrawing()...
+		//CAD.scene.dispose();
+		//CAD.scene = new BABYLON.Scene(CAD.engine);
+		//CAD.workspace.setScene(CAD.scene);
 	
 		var fileReader = evt.target;
 		if (fileReader.error) {CAD.msg("error reading file")};
 		var parser = new DxfParser();
 		try {
-			CAD.docdxf.setDxf(parser.parseSync(fileReader.result));
+			CAD.drawing.setDrawing(parser.parseSync(fileReader.result));
 			CAD.msg("DXF file loaded");
 			CAD.cmd("zoom extents");
 		}

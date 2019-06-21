@@ -25,12 +25,12 @@ SOFTWARE.
 
 // PRIVATE STATIC
 
-var line=require("./Line.js");
-var CAD; //set with docdxf.activate()
+var line=require("./entities/line.js");
+var CAD; //set with drawing.activate()
 
+//drawing data constructor
+function Drawing(){
 
-function DXF(){
-	// Constructor for a dxf drawing object
 	this.header={
 		$INSBASE:{x:0,y:0,z:0},
 		$EXTMIN:{x:0,y:0,z:0},
@@ -60,7 +60,9 @@ function DXF(){
 		}
 	};
 	this.blocks={};
-	this.entities=[];	
+	this.entities=[
+		line.create(this)
+	];	
 };
 
 // MIXINS
@@ -68,23 +70,20 @@ function DXF(){
 
 // PUBLIC
 
-
 exports.activate=function(CADbah){
+	//CADbah.msg("drawing activate...", CADbah);
 	CAD=CADbah;
-	//default 
-	this.dxf=new DXF();
 	line.activate(this);
+	this.drawing=new Drawing();
 };
 
 
 exports.deserialize=function(dxf){
 	//merge or overwrite
-	this.dxf=dxf;
-	
+	this.drawing=dxf;	
 };
 
 exports.getColorByIndex=function(index){
-
 	return "Black";
 };
 
@@ -92,33 +91,61 @@ exports.getColorByLayer=function(layer){
 
 	return "Black";
 };
+
 exports.getExtents=function(){
 	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
-	return [this.dxf.header.$EXTMIN, this.dxf.header.$EXTMAX];
+	return [this.drawing.header.$EXTMIN, this.drawing.header.$EXTMAX];
 }
 
-exports.setDxf=function(dxf){
-	this.dxf=dxf;
-	this.setScene(CAD.scene);
-	//trigger docdxf changed
+exports.setDrawing=function(drawing){
+	if (typeof drawing == "undefined"){drawing=new Drawing}
+
+	this.drawing=drawing;
+
+	//Display using Babylon scene OR
+	if (CAD.appname == "cadbah"){
+		CAD.scene.dispose();
+		CAD.scene = new BABYLON.Scene(CAD.engine);
+		CAD.workspace.setScene(CAD.scene);
+		this.setScene(CAD.scene);		
+	}
+	//Canvas Graphic Context
+	else if (CAD.appname == "caddeley" ){
+		this.setGC(CAD.gc);
+	}
+	//trigger drawing change
 }
 
 exports.serialize=function(){
 	//To do...
-	return this.dxf;	
+	return this.drawing;	
+};
+
+exports.setGC=function(gc){
+	//render using canvas graphic context
+	var e;
+	for (var i=0; i<this.drawing.entities.length; i++){
+		e=this.drawing.entities[i];
+		CAD.debug("entity:",e.type);
+		switch (e.type){
+			case "LINE":line.setGC(gc,e);break;			
+		}		
+	};
+	
+	CAD.debug("drawing.setGC() done");
 };
 
 exports.setScene=function(scene){
 	//render dxf or meshes
 	var e;
-	for (var i=0; i<this.dxf.entities.length; i++){
-		e=this.dxf.entities[i];
+	for (var i=0; i<this.drawing.entities.length; i++){
+		e=this.drawing.entities[i];
 		CAD.debug("entity:",e.type);
 		switch (e.type){
 			case "LINE":line.setScene(scene,e);break;			
 		}		
 	};
 	
-	CAD.debug("docdxf.setScene() done");
+	CAD.debug("drawing.setScene() done");
 };
 

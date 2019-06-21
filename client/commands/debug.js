@@ -7,10 +7,11 @@ var htm="Controls wheter debugging messages are shown<br>"+
 "hides debugging messages";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // required funcitons for command modules
+exports.allowed=["cadbah", "caddeley"];
 exports.name="debug";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){

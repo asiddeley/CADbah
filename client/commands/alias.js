@@ -11,10 +11,11 @@ var htm="Manages custom command abreviations<br>"+
 "&gt; alias load [filename]<br>"+
 "Loads an alias file, adding definitions.<br>";
 
-// PUBLIC
 // MIXINS
-$.extend(exports,require("./command"));
+$.extend(exports,require("../command"));
 
+// PUBLIC
+exports.allowed=["cadbah", "caddeley"];
 exports.name="alias";
 exports.help=function(CAD){return htm;}
 exports.action=function(CAD, argstr){

@@ -8,10 +8,11 @@ var htm="Provides help on a specified command<br>"+
 "&gt; help [command]";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // required funcitons for command modules
+exports.allowed=["cadbah", "caddeley"];
 exports.name="help";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){

@@ -12,10 +12,11 @@ var htm="Controls zooming and panning for navigating to parts of the drawing<br>
 "Zooms to the full extent of the drawing";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // overrides
+exports.allowed=["cadbah"];
 exports.name="zoom";
 exports.help=function(CAD){return htm;};
 

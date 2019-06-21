@@ -6,83 +6,68 @@ MIT License
 
 // PRIVATE STATIC
 
-var entity=require("./Entity.js");
+var entity=require("../entity.js");
+
+//line data constructor
+function Line(){
+	/* Constructor of an object identical to applicable object created by dxf-parser node library */
+	
+	//inherit common entity stuff
+	Object.assign(this, entity.create());
+	
+	//override entity.type="entity" 
+	this.type="line";
+	
+}
 
 // MIXINS
-//var Entity=require('./Entity.js').Entity; 
 $.extend(exports, entity);
 //var Nameable=require('./features/Nameable'); 
 //var Position=require('./features/Position'); 
 //var Pickable=require('./features/Pickable');
 
 // PUBLIC
-exports.activate=function(docdxf){
-	
-	this.dxf=docdxf;
-	entity.activate(docdxf);
-	
-	/**
-	Line is the Handler for all line data, it extends (inherits methods and properties) from Element.  Only one Line needs to be instanciated per scene.  An instantiated line object does have line data as a property but it is only a temporary to hold default data while it bulds the corresponding BABYLON mesh. 
-	**/
-	
-	//javascript inheritance pattern
-	//Entity.call(this, docdxf);
-	
-	this.desc='A line between 2 points';
-	//Note that the following method is inherited from Element...
-	//this.addFeatures(
-		//Nameable, 
-		//Position,
-		//Pickable
- 	//);
+exports.activate=function(drawing){
+	//Meant to be called once (by drawing module) to activate this module
+	//other modules that may require this module don't need to activate it.
+	this.drawing=drawing;
 };
+
+exports.create=function(options){
+	return new Line(options);
+}
+
+exports.description="line between 2 vertices"
 
 exports.features=[];
 
-//inherit prototype and constructor
-//Line.prototype=Object.create(Entity.prototype);
-//Line.prototype.constructor=Entity;
-
-//default Line data
-/*
-Line.prototype.data=$.extend(Entity.prototype.data,{
-	//override type
-	type:"LINE",
-	//add to vertices array initiated by Element
-	vertices:[].concat(Entity.prototype.data.vertices).concat(
-		{
-			x:function(){return Math.trunc(Math.random()*1000);},
-			y:function(){return Math.trunc(Math.random()*1000);}
-		}
-	)
-});
-
-Line.prototype.deserialize=function(scene, linedata){
-	//overwrite default Line data with data from serial source
-	Entity.prototype.deserialize(scene, linedata);
-	//$.extend(this.data, data);
-	this.setScene(scene);
+exports.setGC=function(gc, line){
+	//Caddeley rendering with canvas
+	//defaults
+	gc.lineWidth=1;
+	gc.moveTo(line.vertices[0].x, line.vertices[0].y);
+	gc.lineTo(line.vertices[1].x, line.vertices[1].y);
+	gc.stroke();
 };
-*/
 
-//overwrite Entity.setScene()
-exports.setScene=function(scene, linedxf){
+//override Entity.setScene()
+exports.setScene=function(scene, line){
 
 	var mesh = BABYLON.Mesh.CreateLines("LINE", [
 		new BABYLON.Vector3(
-			linedxf.vertices[0].x, 
-			linedxf.vertices[0].y, 
-			linedxf.vertices[0].z
+			line.vertices[0].x, 
+			line.vertices[0].y, 
+			line.vertices[0].z
 		),
 		new BABYLON.Vector3(
-			linedxf.vertices[1].x, 
-			linedxf.vertices[1].y, 
-			linedxf.vertices[1].z
+			line.vertices[1].x, 
+			line.vertices[1].y, 
+			line.vertices[1].z
 		)
 	], scene);
 
 	//call superclass (prototype or static) method to set basics such as colour 
 	//Entity.prototype.setScene.call(this, mesh, linedxf); 
-	entity.setScene(scene, mesh, linedxf);
+	entity.setScene(scene, mesh, line);
 };
 

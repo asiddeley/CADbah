@@ -9,7 +9,7 @@ var htm="Activates the orbital camera<br>"+
 "Stops orbits motion<br>";
 
 //MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 //PUBLIC
 //overrides

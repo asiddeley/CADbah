@@ -3,11 +3,12 @@
 var htm="Lists all available commands";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
 // required funcitons for command modules
 exports.name="dir";
+exports.allowed=["cadbah", "caddeley"];
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
 	var cobs=CAD.commander.getCommands();

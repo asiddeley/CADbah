@@ -8,9 +8,10 @@ var filed=require("file-dialog");
 var htm="Displays a file dialog for the user to select a native CAD'bah' file for upload. Once uploaded file is displayed in the workspace.";
 
 // MIXINS
-$.extend(exports, require("./command"));
+$.extend(exports, require("../command"));
 
 // PUBLIC
+exports.allowed=["cadbah"];
 exports.name="open";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
