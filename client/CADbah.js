@@ -38,6 +38,17 @@ var cout=function(CAD, htm, cssClass, count, limit){
 	CAD.console.scrollTop=CAD.console.scrollHeight;
 };
 
+var chop=function(argstr){
+	/* 	Takes a string and returns an array containing
+	[0] the first word and
+	[1] the remainder of the string */
+	
+	var firstword=argstr.split(" ")[0];
+	var rest=argstr.substring(firstword.length).trim();
+	return [firstword, rest];
+};	
+
+
 // PUBLIC
 exports.appname="cadbah";
 exports.activate=function(options){
@@ -79,9 +90,10 @@ exports.activate=function(options){
 	this.workspace.activate(this).setScene(this.scene);
 
 	// DOCUMENT
-	this.drawing.activate(this);
-	// set the BABYLON scene by traverses all entities in document 
-	this.drawing.setScene(this.scene);
+	this.drawing.activate(this).setScene(this.scene);
+	
+	// UNDOER
+	this.undoer.activate(this);
 	
 	// This is a cool Babylon feature
 	// this.scene.debugLayer.show();
@@ -91,12 +103,7 @@ exports.activate=function(options){
 	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
-/* convenience function that takes a string and returns an array containing [0] the first word and [1] the remainder of the string */
-exports.chop=function(argstr){
-	var firstword=argstr.split(" ")[0];
-	var rest=argstr.substring(firstword.length).trim();
-	return [firstword, rest];
-};	
+exports.chop=chop;	
 exports.commander=require("./commander.js");
 exports.canvas=null;
 exports.canvas$=null;
@@ -106,8 +113,6 @@ exports.cmd=function(input){this.commander.input(this, input);};
 exports.div=null;
 exports.div$=null;
 exports.drawing=require("./drawing.js");
-
-// DEBUGGING
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
@@ -116,15 +121,7 @@ exports.debug=function(){
 };
 exports.debugcount=0;
 exports.debuglimit=100;
-
-// ENGINE
 exports.engine=null;
-	
-// function collection 
-//exports.fc=FC;
-//exports.fc=require("./cad-fc/cad-fc.js");
-
-// MESSAGING
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
@@ -133,18 +130,17 @@ exports.msg=function(){
 };
 exports.msgcount=0;
 exports.msglimit=100;
-
 // Extended by user in API functions above
 exports.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
 	database:null, //to be determined
-};
-	
+};	
 // Babylon scene, initialized by CAD.activate()
 exports.scene=null;
-// Manages tools including light, camera, background, skybox, zoomer etc
-exports.workspace=require("./workspace/workspace.js");
-//exports.uis={};
+exports.undoer=require("./helpers/undoer");
+// Manages workspace (AKA scenery) light, camera, background, skybox, zoomer etc
+exports.workspace=require("./workspace.js");
+
 
 

@@ -24,7 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 // PRIVATE STATIC
-var cout=function(CAD, htm, cssClass, count, limit){
+
+function cout(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
 	//add new message
 	CAD.console$.append(p$);
@@ -35,27 +36,35 @@ var cout=function(CAD, htm, cssClass, count, limit){
 	CAD.console.scrollTop=CAD.console.scrollHeight;
 };
 
+function chop(argstr){
+	/* 	Takes a string and returns an array containing
+	[0] the first word and
+	[1] the remainder of the string */
+	
+	var firstword=argstr.split(" ")[0];
+	var rest=argstr.substring(firstword.length).trim();
+	return [firstword, rest];
+};	
+
+
 // PUBLIC
 exports.appname="caddeley";
 exports.activate=function(options){
 
-	// check options
+	// Check options
 	if (typeof options=="undefined") {this.options=options={};}
 	else {this.options=options;}
 	
-	/* Prepare user interfaces and controls...  
-	Looks in options for {... div:HTMLelementReference, ...} or
-	creates it from scratch if not found */
-	//uisetup(this, {autoOpen:false});	
-	
-
 	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
 		//with jquery $ wrapper
 		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body);
 		//html element
 		this.canvas=canvas$.get();
-	} else {this.canvas=options.canvas;this.canvas$=$(options.canvas);}
+	} else {
+		this.canvas=options.canvas;
+		this.canvas$=$(options.canvas);
+	}
 
 	// Prepare optional console for messages
 	if (typeof options.console!="undefined"){
@@ -63,20 +72,18 @@ exports.activate=function(options){
 		this.console$=$(options.console);
 	};
 		
-	// GRAPHIC CONTEXT
+	// Prepare Graphic Context
 	this.gc=this.canvas.getContext("2d");
 		
-	// DOCUMENT
+	// Prepare Main Document
 	this.drawing.activate(this);
+		
+	// Prepare the undoer
+	this.undoer.activate(this);
 	
 };
 
-/* convenience function that takes a string and returns an array containing [0] the first word and [1] the remainder of the string */
-exports.chop=function(argstr){
-	var firstword=argstr.split(" ")[0];
-	var rest=argstr.substring(firstword.length).trim();
-	return [firstword, rest];
-};	
+exports.chop=chop;
 exports.commander=require("./commander.js");
 exports.canvas=null;
 exports.canvas$=null;
@@ -86,11 +93,7 @@ exports.cmd=function(input){this.commander.input(this, input);};
 exports.div=null;
 exports.div$=null;
 exports.drawing=require("./drawing.js");
-
-//GRAPHIC CONTEXT
 exports.gc=null;
-
-// DEBUGGING
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
@@ -99,11 +102,7 @@ exports.debug=function(){
 };
 exports.debugcount=0;
 exports.debuglimit=100;
-
-// ENGINE
 exports.engine=null;
-	
-// MESSAGING
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
@@ -119,7 +118,9 @@ exports.options={
 	actionsEnabled:false,
 	database:null, //to be determined
 };
-	
+exports.undoer=require("./helpers/undoer");
+
+
 
 
 

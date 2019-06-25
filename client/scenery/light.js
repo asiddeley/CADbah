@@ -14,7 +14,7 @@ MIT License
 
 $.extend(exports,
 	require("../cadEvents"), 
-	require("./tool")
+	require("../tool")
 );
 
 exports.activate=function(workspace){

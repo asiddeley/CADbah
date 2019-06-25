@@ -4,11 +4,9 @@
   "description": "Computer Aided Design * Be Architectural Heroes *",
   "main": "index.js",
   "scripts": {
-    "cad": "node index.js",
-	"cad1": "node index1.js",
-    "test": "tcad",
-    "dist": "browserify client/index.js -o dist/CADbah.dist.js",
-	"dist1": "browserify client/index1.js -o dist/Caddeley.dist.js",
+    "cad": "node index.js CADbah.html",
+	"caddeley": "node index.js Caddeley.html",
+ 	"dist": "browserify client/index.js -o dist/CADbah.dist.js && browserify client/index1.js -o dist/Caddeley.dist.js",
     "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js"
   },
   "repository": {

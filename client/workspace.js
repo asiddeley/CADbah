@@ -26,22 +26,21 @@ SOFTWARE.
 // PRIVATE STATIC
 
 // MIXINS
-$.extend(exports, require("../cadEvents.js"));
+$.extend(exports, require("./cadEvents.js"));
 
 // PUBLIC
 exports.activate=function(CADbah){
 
 	this.CAD=CADbah;
-	this.name="workspace";
+	this.name="scenery";
 
 	this.tools=[
-		require("./background").activate(this),
-		require("./light").activate(this),
-		require("./orbiter").activate(this),
-		require("./skybox").activate(this),
-		require("./ucsicon").activate(this),
-		require("./undoer").activate(this),
-		require("./zoomer").activate(this)
+		require("./scenery/background").activate(this),
+		require("./scenery/light").activate(this),
+		require("./scenery/orbiter").activate(this),
+		require("./scenery/skybox").activate(this),
+		require("./scenery/ucsicon").activate(this),
+		require("./scenery/zoomer").activate(this)
 	];
 	
 	//make it chainable

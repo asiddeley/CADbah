@@ -8,7 +8,7 @@ var workspace;
 var backgroundmesh;
 var camera;
 var done; //callback provided by caller (zoom command) needed for undoer
-var undoer=require("../workspace/undoer");
+var undoer=require("../helpers/undoer");
 var undo; 
 //var addUndo;
 var u=0;
@@ -114,7 +114,7 @@ var zoomRectFlash=function(){
 $.extend(exports,
 	require("../cadEvents"), 
 	require("../cloneable"), 
-	require("./tool")
+	require("../tool")
 );
 
 // PUBLIC

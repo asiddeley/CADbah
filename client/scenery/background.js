@@ -4,6 +4,7 @@ Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
 
+// STATIC
 var marginf=1.05; 
 var mesh;
 var scalex=800;
@@ -17,6 +18,10 @@ var options={
 	updateable:true
 };
 
+// MIXINS
+
+
+// PUBLIC
 exports.activate=function(workspace){
 	this.worspace=workspace;
 	return exports;

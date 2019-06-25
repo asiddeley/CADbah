@@ -4,7 +4,7 @@ Copyright (c) 2019 Andrew Siddeley
 MIT License
 ***/
 
-$.extend(exports, require("./tool"));
+$.extend(exports, require("../tool"));
 exports.mixins.push("skybox");
 exports.name="skybox";
 

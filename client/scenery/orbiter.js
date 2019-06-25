@@ -16,7 +16,10 @@ var radius=500;
 var target=new BABYLON.Vector3(0, 0, 0);	
 
 // MIXINS, functions like name(), setScene(), onLoadDxf() to be overriden as required
-$.extend(exports, require("../cadEvents"), require("./tool"));
+$.extend(exports, 
+	require("../cadEvents"), 
+	require("../tool")
+);
 
 // PUBLIC
 exports.activate=function(workspace){

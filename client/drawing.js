@@ -75,6 +75,8 @@ exports.activate=function(CADbah){
 	CAD=CADbah;
 	line.activate(this);
 	this.drawing=new Drawing();
+	//make it chainable, eg. drawing.activate(CADbah).setScene(scene)
+	return exports;
 };
 
 

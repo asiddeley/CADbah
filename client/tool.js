@@ -12,7 +12,7 @@ exports.setScene=function(scene){
 };
 
 exports.mixins=["tool"];
-exports.mane="tool";
+exports.name="tool";
 //exports.name=function(){return this.mixins.pop();};
 
 

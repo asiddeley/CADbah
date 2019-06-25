@@ -26,25 +26,26 @@ SOFTWARE.
 const express = require("express")
 const path = require("path")
 const fs = require("fs")
-//const fsp = require(path.join(__dirname,"server","fs+"))
 const url = require("url")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
 const cadbah = require(path.join(__dirname, "server", "CADbah.js"))
-//const threeDxf = require('./dist/three-dxf.js')
 
+// Command line arguments
+var roothtml=process.argv[2]
+console.log("Serving ", roothtml)
+if (typeof roothtml=="undefined"){roothtml="CADbah.html"}
+
+// Express
 const app = express()
 if (typeof global.appRoot=="undefined") {global.appRoot=path.resolve(__dirname)}
 if (typeof global.uploads_dir=="undefined") {global.uploads_dir="uploads"}
 
-// Main entry
-//app.get('/', function (req, res) {res.sendFile(path.join(__dirname,"client","cadbah.html"));})
-app.get('/', function (req, res) {res.sendFile(path.join(__dirname,"CADbah.html"));})
-
+// Main entry 
+app.get('/', function (req, res) {res.sendFile(path.join(__dirname, roothtml));})
 
 // Logger
 app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
-
 
 // File server
 app.use(express.static(__dirname))
@@ -52,7 +53,6 @@ app.use(express.static(path.join(__dirname, "dist")))
 app.use(express.static(path.join(__dirname, "resources")))
 app.use(express.static(path.join(__dirname, "resources", "ui")))
 app.use(express.static(path.join(__dirname, "resources", "skyboxes")))
-
 
 
 if (__dirname!=global.appRoot) {app.use(express.static(global.appRoot))}
@@ -68,8 +68,7 @@ app.use(fileUpload({limits: { fileSize: 50 * 1024 * 1024 }}));
 // Server Filesystem Routes 
 app.post("/uploads", cadbah.handler);
 
-
 // Start serving...
-app.listen(8080, function () {console.log("cadbah serving on http://localhost:8080/")});
+app.listen(8080, function () {console.log("Port     http://localhost:8080/")});
 
 

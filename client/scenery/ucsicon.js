@@ -51,11 +51,11 @@ var ucsicon;
 
 var workspace;
 
-// PUBLIC
 
 // MIXINS, functions like name(), setScene(), onLoadDxf() to be overriden as required
-// $.extend(exports,require("../cadEvents"), require("./tool"));
+$.extend(exports, require("../cadEvents"), require("../tool"));
 
+// PUBLIC
 exports.activate=function(ws, options){
 	workspace=ws;
 	this.options=$.extend({

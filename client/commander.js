@@ -46,13 +46,13 @@ exports.input=function(CAD, inputstr){
 		if (cobs[i].name==first){
 			// valid so keep a copy
 			last_inputstr=inputstr;
-			// is command allowed in "cadbah" or "caddeley"
+			// check if command is allowed in "cadbah" or "caddeley"
 			if (cobs[i].allowed.includes(CAD.appname)){
 				// execute the command
 				cobs[i].action(CAD, rest);
 			} 
 			else {
-				CAD.msg("Sorry, command not allowed in " + CAD.appname);
+				CAD.msg("Sorry, that command not allowed in " + CAD.appname);
 			}
 			break;
 		}

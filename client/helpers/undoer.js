@@ -22,7 +22,7 @@ var Undo=function(name){
 // which should be overriden as required
 $.extend(exports,
 	require("../cadEvents"), 
-	require("./tool")
+	require("../tool")
 );
 
 exports.name="undoer";
