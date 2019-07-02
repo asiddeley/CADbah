@@ -7,6 +7,7 @@ MIT License
 // PRIVATE STATIC
 
 var entity=require("../entity.js");
+var {$V}=require("../helpers/sylvester.src.plus.js");
 
 //line data constructor
 function Line(){
@@ -27,26 +28,38 @@ $.extend(exports, entity);
 //var Pickable=require('./features/Pickable');
 
 // PUBLIC
-exports.activate=function(drawing){
+exports.activate=function(cadbah){
 	//Meant to be called once (by drawing module) to activate this module
 	//other modules that may require this module don't need to activate it.
-	this.drawing=drawing;
+	//NO!! remove activate() - Should only be used top level to set cadbah
+	//this.drawing=drawing;
 };
 
 exports.create=function(options){
 	return new Line(options);
 }
 
-exports.description="line between 2 vertices"
+exports.description="line between 2 vertices";
 
 exports.features=[];
 
-exports.setGC=function(gc, line){
+exports.setGC=function(gc, line, tx){
 	//Caddeley rendering with canvas
 	//defaults
-	gc.lineWidth=1;
-	gc.moveTo(line.vertices[0].x, line.vertices[0].y);
-	gc.lineTo(line.vertices[1].x, line.vertices[1].y);
+	//gc.lineWidth=1;
+	var v=$V([line.vertices[0].x, line.vertices[0].y, 0]);
+	//CAD.debug("vector:", v.inspect());	
+	var v=tx.multiply(v);
+	//CAD.debug("line X tx:", v.inspect());
+	//CAD.debug("tx:", tx.inspect());
+	//CAD.debug("line:", Math.round(v.e(1)), Math.round(v.e(2)));
+
+	gc.moveTo(Math.round(v.e(1)), Math.round(v.e(2)));
+	
+	v=$V([line.vertices[1].x, line.vertices[1].y, 0]);
+	v=tx.multiply(v);	
+	gc.lineTo(Math.round(v.e(1)), Math.round(v.e(2)));
+	
 	gc.stroke();
 };
 

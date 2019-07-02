@@ -1,31 +1,15 @@
-/*****************************************************
+/***
 CADBAH = Computer Aided Design Be Architectural Heroes
 Copyright (c) 2019 Andrew Siddeley
-
 MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*****************************************************/
+***/
 
 // PRIVATE STATIC
 
 var line=require("./entities/line.js");
+var {Bounds}=require("./helpers/bounds.js");
+//var extents=require("./features/extents.js");
+
 var CAD; //set with drawing.activate()
 
 //drawing data constructor
@@ -62,6 +46,7 @@ function Drawing(){
 	this.blocks={};
 	this.entities=[
 		line.create(this)
+		//new line.Line(this)
 	];	
 };
 
@@ -69,20 +54,18 @@ function Drawing(){
 // none
 
 // PUBLIC
-
 exports.activate=function(CADbah){
 	//CADbah.msg("drawing activate...", CADbah);
 	CAD=CADbah;
 	line.activate(this);
-	this.drawing=new Drawing();
+	this.data=new Drawing();
 	//make it chainable, eg. drawing.activate(CADbah).setScene(scene)
 	return exports;
 };
 
-
 exports.deserialize=function(dxf){
 	//merge or overwrite
-	this.drawing=dxf;	
+		
 };
 
 exports.getColorByIndex=function(index){
@@ -96,13 +79,20 @@ exports.getColorByLayer=function(layer){
 
 exports.getExtents=function(){
 	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
-	return [this.drawing.header.$EXTMIN, this.drawing.header.$EXTMAX];
-}
+	return [this.data.header.$EXTMIN, this.data.header.$EXTMAX];
+};
 
-exports.setDrawing=function(drawing){
-	if (typeof drawing == "undefined"){drawing=new Drawing}
+exports.getBounds=function(){
+	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
+	return new Bounds(this.data.header.$EXTMIN,	this.data.header.$EXTMAX);
+};
 
-	this.drawing=drawing;
+
+exports.setDrawing=function(drawingData){
+	if (typeof drawingData == "undefined"){drawingData=new Drawing()}
+
+	//To do - change to this.data
+	this.data=drawingData;
 
 	//Display using Babylon scene OR
 	if (CAD.appname == "cadbah"){
@@ -113,6 +103,7 @@ exports.setDrawing=function(drawing){
 	}
 	//Canvas Graphic Context
 	else if (CAD.appname == "caddeley" ){
+		CAD.graphics.wipe(CAD.gc);
 		this.setGC(CAD.gc);
 	}
 	//trigger drawing change
@@ -120,17 +111,17 @@ exports.setDrawing=function(drawing){
 
 exports.serialize=function(){
 	//To do...
-	return this.drawing;	
+	return this.data;	
 };
 
-exports.setGC=function(gc){
+exports.setGC=function(gc, tx){
 	//render using canvas graphic context
 	var e;
-	for (var i=0; i<this.drawing.entities.length; i++){
-		e=this.drawing.entities[i];
-		CAD.debug("entity:",e.type);
+	for (var i=0; i<this.data.entities.length; i++){
+		e=this.data.entities[i];
+		//CAD.debug("entity:",e.type);
 		switch (e.type){
-			case "LINE":line.setGC(gc,e);break;			
+			case "LINE":line.setGC(gc,e,tx);break;			
 		}		
 	};
 	
@@ -140,9 +131,9 @@ exports.setGC=function(gc){
 exports.setScene=function(scene){
 	//render dxf or meshes
 	var e;
-	for (var i=0; i<this.drawing.entities.length; i++){
-		e=this.drawing.entities[i];
-		CAD.debug("entity:",e.type);
+	for (var i=0; i<this.data.entities.length; i++){
+		e=this.data.entities[i];
+		//CAD.debug("entity:",e.type);
 		switch (e.type){
 			case "LINE":line.setScene(scene,e);break;			
 		}		

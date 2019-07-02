@@ -47,6 +47,7 @@ function chop(argstr){
 };	
 
 
+
 // PUBLIC
 exports.appname="caddeley";
 exports.activate=function(options){
@@ -55,6 +56,7 @@ exports.activate=function(options){
 	if (typeof options=="undefined") {this.options=options={};}
 	else {this.options=options;}
 	
+	/*
 	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
 		//with jquery $ wrapper
@@ -65,18 +67,33 @@ exports.activate=function(options){
 		this.canvas=options.canvas;
 		this.canvas$=$(options.canvas);
 	}
+	*/
 
+	// Prepare optional console for messages
+	if (typeof options.div!="undefined"){
+		this.div$=$('<div></div>').appendTo(window.document.body);
+		this.div=div$.get();
+	};
+
+	
 	// Prepare optional console for messages
 	if (typeof options.console!="undefined"){
 		this.console=options.console;
 		this.console$=$(options.console);
 	};
 		
+	/*
 	// Prepare Graphic Context
 	this.gc=this.canvas.getContext("2d");
+	*/
+	
+
 		
 	// Prepare Main Document
 	this.drawing.activate(this);
+	
+	// Activate Canvas & Graphic Manager, needs CAD.drawing to be activated
+	this.graphics.activate(this);
 		
 	// Prepare the undoer
 	this.undoer.activate(this);
@@ -85,15 +102,17 @@ exports.activate=function(options){
 
 exports.chop=chop;
 exports.commander=require("./commander.js");
-exports.canvas=null;
-exports.canvas$=null;
+//exports.canvas=null;
+//exports.canvas$=null;
 exports.console=null;
 exports.console$=null;
 exports.cmd=function(input){this.commander.input(this, input);};
 exports.div=null;
 exports.div$=null;
+
+//drawing handler - drawing data is this.drawing.drawing
 exports.drawing=require("./drawing.js");
-exports.gc=null;
+
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
@@ -102,7 +121,12 @@ exports.debug=function(){
 };
 exports.debugcount=0;
 exports.debuglimit=100;
-exports.engine=null;
+
+//Canvas Graphic Context & support
+exports.gc=null;
+exports.graphics=require("./helpers/graphics.js")
+
+
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)

@@ -13,7 +13,7 @@ $.extend(exports, require("../command"));
 
 // PUBLIC
 // required exports for any command
-exports.allowed=["caddeley", "cadbah"]
+exports.allowed=["caddeley", "cadbah"];
 exports.name="dxfin";
 exports.help=function(CAD){return htm;};
 exports.action=function(CAD, argstr){
@@ -31,19 +31,13 @@ exports.action=function(CAD, argstr){
 	};
 	reader.onloadend = function(evt){
 		//success
-
-		//MOVED TO CAD.drawing.setDrawing()...
-		//CAD.scene.dispose();
-		//CAD.scene = new BABYLON.Scene(CAD.engine);
-		//CAD.workspace.setScene(CAD.scene);
-	
 		var fileReader = evt.target;
 		if (fileReader.error) {CAD.msg("error reading file")};
 		var parser = new DxfParser();
 		try {
 			CAD.drawing.setDrawing(parser.parseSync(fileReader.result));
 			CAD.msg("DXF file loaded");
-			CAD.cmd("zoom extents");
+			//CAD.cmd("zoom extents");
 		}
 		catch(err) {
 			//return console.error(err.stack);

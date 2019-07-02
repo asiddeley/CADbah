@@ -112,6 +112,7 @@ exports.console$=null;
 exports.cmd=function(input){this.commander.input(this, input);};
 exports.div=null;
 exports.div$=null;
+//drawing handler
 exports.drawing=require("./drawing.js");
 exports.debug=function(){
 	for (var i in arguments){

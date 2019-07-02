@@ -5,8 +5,11 @@ MIT License
 ***/
 
 exports.clone=function(obj){
-	//uses jquery extend to return a copy of object obj ie. exports object of a module
-	return $.extend({}, (obj || {}));	
+	//uses jquery extend to return a copy of object obj 
+	//return $.extend({}, (obj || {}));
+	//returns a copy of object obj 
+	return Object.assign({},(obj||{}));
+	
 };
 
 exports.cloneInit=function(obj, options){
