@@ -33,8 +33,8 @@ const cadbah = require(path.join(__dirname, "server", "CADbah.js"))
 
 // Command line arguments
 var roothtml=process.argv[2]
-console.log("Serving ", roothtml)
 if (typeof roothtml=="undefined"){roothtml="CADbah.html"}
+console.log("Serving ", roothtml)
 
 // Express
 const app = express()
@@ -48,11 +48,17 @@ app.get('/', function (req, res) {res.sendFile(path.join(__dirname, roothtml));}
 app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
 
 // File server
+// root
 app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname, "dist")))
 app.use(express.static(path.join(__dirname, "resources")))
-app.use(express.static(path.join(__dirname, "resources", "ui")))
+app.use(express.static(path.join(__dirname, "resources", "images")))
 app.use(express.static(path.join(__dirname, "resources", "skyboxes")))
+app.use(express.static(path.join(__dirname, "node_modules","babylonjs")))
+app.use(express.static(path.join(__dirname, "node_modules","jquery","dist")))
+app.use(express.static( path.join(__dirname, "node_modules","jquery-ui-dist")))
+app.use(express.static(path.join(__dirname, "node_modules/jquery-ui-dist/external/jquery")))
+app.use(express.static(path.join(__dirname, "node_modules","jquery-ui-dist","images")))
 
 
 if (__dirname!=global.appRoot) {app.use(express.static(global.appRoot))}

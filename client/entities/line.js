@@ -7,7 +7,7 @@ MIT License
 // PRIVATE STATIC
 
 var entity=require("../entity.js");
-var {$V}=require("../helpers/sylvester.src.plus.js");
+//var {$V}=require("../helpers/sylvester.src.plus.js");
 
 //line data constructor
 function Line(){

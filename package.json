@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "cad": "node index.js CADbah.html",
-	"caddeley": "node index.js Caddeley.html",
- 	"dist": "browserify client/index.js -o dist/CADbah.dist.js && ",
-	"dist1": "browserify client/index1.js -o dist/Caddeley.dist.js",
-	"distall":"browserify client/index.js -o dist/CADbah.dist.js && browserify client/index1.js -o dist/Caddeley.dist.js",
+    "caddeley": "node index.js Caddeley.html",
+    "dist": "browserify client/index.js -o dist/CADbah.dist.js",
+    "dist1": "browserify client/index1.js -o dist/Caddeley.dist.js",
+    "distall": "browserify client/index.js -o dist/CADbah.dist.js && browserify client/index1.js -o dist/Caddeley.dist.js",
     "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js"
   },
   "repository": {
@@ -28,11 +28,14 @@
   "dependencies": {
     "@node-minify/cli": "^4.1.0",
     "@node-minify/uglify-js": "^4.0.5",
+    "babylonjs": "^4.0.3",
     "body-parser": "^1.18.3",
     "browserify": "^16.2.3",
     "dxf-parser": "^0.6.1",
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.1",
-    "file-dialog": "0.0.7"
+    "file-dialog": "0.0.7",
+    "jquery": "^3.4.1",
+    "jquery-ui-dist": "^1.12.1"
   }
 }
