@@ -4,12 +4,13 @@
   "description": "Computer Aided Design * Be Architectural Heroes *",
   "main": "index.js",
   "scripts": {
-    "cad": "node index.js CADbah.html",
+    "cadbah": "node index.js CADbah.html",
     "caddeley": "node index.js Caddeley.html",
     "dist": "browserify client/index.js -o dist/CADbah.dist.js",
     "dist1": "browserify client/index1.js -o dist/Caddeley.dist.js",
     "distall": "browserify client/index.js -o dist/CADbah.dist.js && browserify client/index1.js -o dist/Caddeley.dist.js",
-    "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js"
+    "mini": "node-minify --compressor uglify-js --input dist/CADbah.dist.js --output dist/CADbah.min.js",
+    "cad": "electron main.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     "body-parser": "^1.18.3",
     "browserify": "^16.2.3",
     "dxf-parser": "^0.6.1",
+    "electron": "^8.0.0",
+    "electron-window-manager": "^1.0.6",
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.1",
     "file-dialog": "0.0.7",
