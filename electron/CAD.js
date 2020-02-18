@@ -48,45 +48,20 @@ var chop=function(argstr){
 	return [firstword, rest];
 };	
 
-exports.babylonStart=function(CAD){
-	
-	CAD=CAD||this
-	// prepare engine
-	CAD.engine = new BABYLON.Engine(this.canvas, true);
-	/* 	Why warning, webgl dest rect smaller than viewport rect?
-	See: http://doc.babylonjs.com/classes/2.5/Engine, 
-	Try this...  this.engine.setViewport(new BABYLON.Viewport(0,0,700,500)); */
-	
-	// initialize the scene
-	CAD.scene=new BABYLON.Scene(CAD.engine);
-	
-	// WORKSPACE
-	CAD.workspace=require("./workspace.js");
-	CAD.workspace.activate(CAD).setScene(CAD.scene);
-
-	// DOCUMENT
-	CAD.drawing.activate(CAD).setScene(CAD.scene);	
-		
-	// engage the engine
-	//var that=this;
-	CAD.engine.runRenderLoop(function(){ CAD.scene.render();} );
-	
-	// This is a cool Babylon feature
-	// this.scene.debugLayer.show();
-}
 
 // PUBLIC
+exports.appname="cadbah";
 exports.activate=function(options){
 
 	// check options
-	this.options=options||{}
-	this.options.engineStart=this.options.engineStart||this.babylonStart;
+	if (typeof options=="undefined") {this.options=options={};}
+	else {this.options=options;}
 	
 	/* Prepare user interfaces and controls...  
 	Looks in options for {... div:HTMLelementReference, ...} or
 	creates it from scratch if not found */
 	//uisetup(this, {autoOpen:false});	
-
+	
 
 	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
@@ -101,14 +76,34 @@ exports.activate=function(options){
 		this.console=options.console;
 		this.console$=$(options.console);
 	};
+		
+	// prepare engine
+	this.engine = new BABYLON.Engine(this.canvas, true);
+	/* 	Why warning, webgl dest rect smaller than viewport rect?
+	See: http://doc.babylonjs.com/classes/2.5/Engine, 
+	Try this...  this.engine.setViewport(new BABYLON.Viewport(0,0,700,500)); */
+	
+	// initialize the scene
+	this.scene=new BABYLON.Scene(this.engine);
+	
+	// WORKSPACE
+	this.workspace.activate(this).setScene(this.scene);
 
-	this.options.engineStart(this);
+	// DOCUMENT
+	this.drawing.activate(this).setScene(this.scene);
 	
 	// UNDOER
 	this.undoer.activate(this);
+	
+	// This is a cool Babylon feature
+	// this.scene.debugLayer.show();
+	
+	// engage the engine
+	var that=this;
+	this.engine.runRenderLoop(function(){ that.scene.render();} );
 };
 
-exports.chop=chop;
+exports.chop=chop;	
 exports.commander=require("./commander.js");
 exports.canvas=null;
 exports.canvas$=null;
@@ -127,7 +122,6 @@ exports.debug=function(){
 };
 exports.debugcount=0;
 exports.debuglimit=100;
-exports.engineType="undefined"; //'babylon', 'paper, 'canvasgc'
 exports.engine=null;
 exports.msg=function(){
 	for (var i in arguments){
@@ -147,8 +141,7 @@ exports.options={
 exports.scene=null;
 exports.undoer=require("./helpers/undoer");
 // Manages workspace (AKA scenery) light, camera, background, skybox, zoomer etc
-//exports.workspace=require("./workspace.js");
-exports.workspace={};
+exports.workspace=require("./workspace.js");
 
 
 

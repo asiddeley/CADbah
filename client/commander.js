@@ -57,7 +57,7 @@ function input(CAD, inputstr, recursion_count){
 			// valid so keep a copy
 			last_inputstr=inputstr;
 			// check if command is allowed in "cadbah" or "caddeley"
-			if (commands[i].allowed.includes(CAD.appname)){
+			if (commands[i].allowed.includes(CAD.engineType)){
 				// execute the command
 				leftover=commands[i].action(CAD, rest);
 				// continue executing the leftover command_string an action may return... 
@@ -66,7 +66,7 @@ function input(CAD, inputstr, recursion_count){
 				}
 			} 
 			else {
-				CAD.msg("Sorry, that command not allowed in " + CAD.appname);
+				CAD.msg("Sorry, command not allowed in " + CAD.appname);
 			}
 			break;
 		}

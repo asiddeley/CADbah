@@ -14,37 +14,49 @@
 </style>
 <STYLE type="text/css">
 
-#cad-view {
-	display:block;
-	height:400px;
+rembody {
+	background:rgb(38,38,38);
+}
+
+#navbar {
+	padding:0px;
+	margin:0px;
 	width:100%;
 }
 
-#cad-input{width:300px;}
-
-.cad-msg {
-	font-family: Verdana,Arial,sans-serif;
-	font-size: 0.6em;
-	color:white; 
+#cad-view {
+	padding:0px;
+	margin:0px;
+	width:100%;
+	height:400px;
+	background:rgb(38,38,38);
 }
 
-#cad-console {
+#cad-view > div {
 	padding:5px;
 	margin:0px;
 	float:left;
 	word-wrap:break-word;
-	height:100%;
+	height:95%;
 	width:19%;
 	background-color:rgb(11,62,111);
 	overflow-y:auto;
 }
 
-
 #cad-view > canvas {
 	/* border: 1px solid #666; */
 	display:block;
-	width:80%;
-	height:100%
+	width:79%;
+	height:95%;
+	background:rgb(29,76,122);
+}
+
+#cad-input{width:200px;}
+
+.cad-msg {
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 0.6em;
+	color:white; 
 }
 
 .progress {
@@ -59,9 +71,7 @@
 .progress.loading {
 	opacity: 1;
 }	
-	
-#navbar {padding:0px; width:100%;}
-	
+
 	
 </STYLE>
 
@@ -69,74 +79,63 @@
 <script>window.$ = window.jQuery = require('jquery');</script>
 <script type="text/javascript" src="../node_modules/jquery-ui-dist/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.theme.css">
+<link rel="stylesheet" type="text/css" href="../resources/jquery-ui.theme.css">
 <link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.structure.css">
-<script type="text/javascript" src="../node_modules/babylonjs/babylon.js"></script>
-<script type="text/javascript" src="../resources/babylon.canvas2d.js"></script>
-<script type="text/javascript" src="../dist/CADbah.dist.js"></script>
+<!--script type="text/javascript" src="../node_modules/babylonjs/babylon.js"></script-->
+<!--script type="text/javascript" src="../resources/babylon.canvas2d.js"></script-->
+<!--script type="text/javascript" src="../dist/CADbah.dist.js"></script-->
 
-<script>
+
+
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="../node_modules/paper/dist/paper-full.js"></script>
+
+
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script  type="text/paperscript" canvas="cad-canvas">
 //command line
 var input$;
 
-function initMenus(navbuttonIdStr, menuIdStr){
-	var bids=navbuttonIdStr.split(" ");
-	var mids=menuIdStr.split(" ");
-	for (var i in bids){
-		// Register following function triggered by each nav button
-		// When executed, function positions menu at each navbutton location
-		$('#'+bids[i]).mouseenter({bid:bids[i], mid:mids[i]}, function(ev){
-			//note how data is passed using first argument of mouseenter
-			var navbutton=ev.data.bid; 
-			var menu=ev.data.mid;
-			$('.menu').hide();
-			// Show and position menu of interest at its navbutton
-			$('#'+ menu).show().position({
-				my:'left top',
-				at:'left bottom',
-				of:'#'+navbutton
-			});
-			// autohide in case menu is left hanging - don't forget to disarm if entered
-			document.DDAH=setTimeout(function(){$('#'+menu).hide();}, 2000);
-		});
-	};
+const SF=require('../electron/support.js')
+var CAD=require('../client/CADbah.js')
+
+//console.log('CAD...',CAD)
+window.CAD=CAD
+
+var inputHandler=function(ev){
+	// disable normal form submit behavior that refreshes page
+	ev=ev||event
+	ev.preventDefault()
+	//get text from form and pass command to CADbah for processing
+	//CAD.cmd(input$.val()); 
+	//clear the form
+	//input$.val("");
+	//prevent further bubbling of event.  Prevent the form's automatic page refresh
+	return false
 };
 
-function inputHandler(ev){
-	// disable normal form submit behavior that refreshes page
-	ev.preventDefault(); 
-	//get text from form and pass command to CADbah for processing
-	CAD.cmd(input$.val()); 
-	//clear the form
-	input$.val("");
-	//prevent further bubbling of event
-	return false; 
-};
+//Turn off the browser's right-click context menu
+$(document).on('contextmenu', false);
+
+//basic browser behavior
+$(window).on({
+	//prevent accidental drag-and-drop on windox
+	"drop": function(e){ e=e||event; e.preventDefault(); return false;},
+	"dragover":function(e){ e=e||event; e.preventDefault(); false;},
+	//if command line doesn't have focus then give it focus and clear it
+	"keypress":function(e){ e=e||event;
+		if(!input$.is(":focus")){
+			input$.get(0).focus();
+			input$.get(0).select();
+			if(e.keyCode==13){document.forms.navbar.submit();}
+			else {input$.val(e.key);}
+		}	
+	}
+});
 
 $(document).ready(function(){
 
 	input$=$("#cad-input");
-
-	//Turn off the browser's right-click context menu
-	$(document).on('contextmenu', false);
-
-	//basic behavior
-	$(window).on({
-		//prevent accidental drag-and-drop on windox
-		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
-		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-		//if command line doesn't have focus then give it focus and clear it
-		"keypress":function(e){ e=e||event;
-			if(!input$.is(":focus")){
-				input$.get(0).focus();
-				input$.get(0).select();
-				if(e.keyCode==13){document.forms.navbar.submit();}
-				else {input$.val(e.key);}
-			}	
-		}
-	});
-
-
 	// setup Navbar using jquery-ui controlgroup widget
 	$("#navbar").controlgroup({items:{
 		// widgetToApply:selector
@@ -158,118 +157,134 @@ $(document).ready(function(){
 	$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
 
 	// attach menus to navbar buttons
-	initMenus("file edit draw help", "file-menu edit-menu draw-menu help-menu");
+	SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu");
 
 	// Start the CAD app
 	CAD.activate({
 		canvas:document.getElementById("cad-canvas"),
-		console:document.getElementById("cad-console")
+		console:document.getElementById("cad-console"),
+		engineType:'paper',
+		engineStart:function(){
+			// Create a Paper.js Path to draw a line into it:
+			var path = new Path();
+			// Give the stroke a color
+			path.strokeColor = 'black';
+			var start = new Point(100, 100);
+			// Move to start and draw a line from there
+			path.moveTo(start);
+			// Note the plus operator on Point objects.
+			// PaperScript does that for us, and much more!
+			path.lineTo(start + [ 100, -50 ]);
+		}
 	});
 
 // load standard command aliases or shortcuts
-CAD.cmd("alias load aliases.json");
+//CAD.cmd("alias load aliases.json");
 
 }); //end of document ready
+
+
+
+
 </script>
 </head>
 
 
 <body>
-<div id="board" class="container-fluid">
-	<form 
-	name="navbar"
+<form name="navbar"
 	id="navbar" 
 	class="controlgroup ui-widget-header"  
-	onSubmit="return inputHandler(event)">
-		<button>CADbah</button>
-		<button id="file">File</button>
-		<button id="edit">Edit</button>
-		<button id="draw">Draw</button>
-		<button id="help">Help</button>
+	remonSubmit='inputHandler(event)'
+	onSubmit='return false'
+	>
+	<button id="file">File</button>
+	<button id="edit">Edit</button>
+	<button id="draw">Draw</button>
+	<button id="help">Help</button>
 
-		<ul id="file-menu" class="menu">
-			<li onclick="CAD.cmd('new')"><div>New</div></li>
-			<li onclick="dxf$.dialog('open')"><div>Open</div></li>
-			<li onclick="CAD.cmd('save')"><div>Save</div></li>
-			<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
-			<li>--</li>
-			<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
-			<li>--</li>
-			<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
+	<ul id="file-menu" class="menu">
+		<li onclick="CAD.cmd('new')"><div>New</div></li>
+		<li onclick="dxf$.dialog('open')"><div>Open</div></li>
+		<li onclick="CAD.cmd('save')"><div>Save</div></li>
+		<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
+	</ul>
+
+	<ul id="edit-menu" class="menu">
+		<li>--</li>
+		<li onclick="CAD.cmd('CUT')"><div>Cut</div></li>
+		<li onclick="CAD.cmd('COPY')"><div>Copy</div></li>
+		<li onclick="CAD.cmd('PASTE')"><div>Paste</div></li>
+		<li onclick="CAD.cmd('DELETE')"><div>Delete</div></li>
+		<li onclick="CAD.cmd('SELECT')"><div>Select</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('BLOCKDEF')"><div>Block-Def</div></li>
+		<li onclick="CAD.cmd('BLOCKADD')"><div>Block-Add</div></li>
+		<li onclick="CAD.cmd('BLOCKEDIT')"><div>Block-Edit</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('MOVE')"><div>Move</div></li>
+		<li onclick="CAD.cmd('MIRROR')"><div>Mirror</div></li>
+		<li onclick="CAD.cmd('ROTATE')"><div>Rotate</div></li>
+		<li onclick="CAD.cmd('SCALE')"><div>Scale</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('PROPERTIES')"><div>Properties</div></li>
 		</ul>
 
-		<ul id="edit-menu" class="menu">
+	<ul id="draw-menu" class="menu">
+		<li onclick="CAD.cmd('ARC')"><div>arc</div></li>
+		<li onclick="CAD.cmd('BLOCKIN')"><div>block</div></li>
+		<li onclick="CAD.cmd('CIRCLE')"><div>circle</div></li>
+		<li onclick="CAD.cmd('IMAGE')"><div>image</div></li>
+		<li onclick="CAD.cmd('LINE')"><div>line</div></li>
+		<li onclick="CAD.cmd('LINE')"><div>spot</div></li>
+		<li onclick="CAD.cmd('POLYLINE')"><div>polyline</div></li>
+		<li onclick="CAD.cmd('RECTANGLE')"><div>rectangle</div></li>
+		<li onclick="CAD.cmd('TEXT')"><div>text</div></li>
+	</ul>
+
+	<ul id="help-menu" class="menu">
+		<li onclick="CAD.cmd('about')"><div>About</div></li>
+		<li><div>Commands</div>
+			<ul>
+			<li onclick="CAD.cmd('about')"><div>about</div></li>
+			<li onclick="CAD.cmd('help alias')"><div>alias</div></li>
+			<li onclick="CAD.cmd('help clear')"><div>clear</div></li>
+			<li onclick="CAD.cmd('help dir')"><div>dir</div></li>
+			<li onclick="CAD.cmd('help dxfin')"><div>dxfin</div></li>
+			<li onclick="CAD.cmd('help fullscreen')"><div>fullscreen</div></li>
+			<li onclick="CAD.cmd('help open')"><div>open</div></li>
+			<li onclick="CAD.cmd('help orbit')"><div>orbit</div></li>
+			<li onclick="CAD.cmd('help save')"><div>save</div></li>
+			<li onclick="CAD.cmd('help zoom')"><div>zoom</div></li>
 			<li>--</li>
-			<li onclick="CAD.cmd('CUT')"><div>Cut</div></li>
-			<li onclick="CAD.cmd('COPY')"><div>Copy</div></li>
-			<li onclick="CAD.cmd('PASTE')"><div>Paste</div></li>
-			<li onclick="CAD.cmd('DELETE')"><div>Delete</div></li>
-			<li onclick="CAD.cmd('SELECT')"><div>Select</div></li>
-			<li>--</li>
-			<li onclick="CAD.cmd('BLOCKDEF')"><div>Block-Def</div></li>
-			<li onclick="CAD.cmd('BLOCKADD')"><div>Block-Add</div></li>
-			<li onclick="CAD.cmd('BLOCKEDIT')"><div>Block-Edit</div></li>
-			<li>--</li>
-			<li onclick="CAD.cmd('MOVE')"><div>Move</div></li>
-			<li onclick="CAD.cmd('MIRROR')"><div>Mirror</div></li>
-			<li onclick="CAD.cmd('ROTATE')"><div>Rotate</div></li>
-			<li onclick="CAD.cmd('SCALE')"><div>Scale</div></li>
-			<li>--</li>
-			<li onclick="CAD.cmd('PROPERTIES')"><div>Properties</div></li>
+			<li onclick="CAD.cmd('dir')"><div>Directory</div></li>
 			</ul>
+		</li>
+		<li><div>Develper</div>
+			<ul>
+			<li onclick="CAD.cmd('help debug')"><div>debug</div></li>
+			<li><div>Dev Overview</div></li>
+			<li><div>System events</div></li>
+			</ul>		
+		</li>
+		<li><div>Entities</div>
+			<ul>
+			<li onclick="CAD.cmd('help arc')"><div>arc</div></li>
+			<li onclick="CAD.cmd('help line')"><div>line</div></li>
+			</ul>
+		</li>		
+		<li><div>MIT License</div></li>
+	</ul>
+	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
+	<input type="submit" value="Ok">
+</form>
 
-		<ul id="draw-menu" class="menu">
-			<li onclick="CAD.cmd('ARC')"><div>Arc</div></li>
-			<li onclick="CAD.cmd('BLOCKINS')"><div>Block-Ins</div></li>
-			<li onclick="CAD.cmd('CIRCLE')"><div>Circle</div></li>
-			<li onclick="CAD.cmd('IMAGE')"><div>Image</div></li>		
-			<li onclick="CAD.cmd('LINE')"><div>Line</div></li>
-			<li onclick="CAD.cmd('POLYLINE')"><div>Polyline</div></li>
-			<li onclick="CAD.cmd('RECTANGLE')"><div>Rectangle</div></li>
-			<li onclick="CAD.cmd('TEXT')"><div>Text</div></li>
-		</ul>
-
-		<ul id="help-menu" class="menu">
-			<li onclick="CAD.cmd('about')"><div>About</div></li>
-			<li><div>Commands</div>
-				<ul>
-				<li onclick="CAD.cmd('about')"><div>about</div></li>
-				<li onclick="CAD.cmd('help alias')"><div>alias</div></li>
-				<li onclick="CAD.cmd('help clear')"><div>clear</div></li>
-				<li onclick="CAD.cmd('help dir')"><div>dir</div></li>
-				<li onclick="CAD.cmd('help dxfin')"><div>dxfin</div></li>
-				<li onclick="CAD.cmd('help fullscreen')"><div>fullscreen</div></li>
-				<li onclick="CAD.cmd('help open')"><div>open</div></li>
-				<li onclick="CAD.cmd('help orbit')"><div>orbit</div></li>
-				<li onclick="CAD.cmd('help save')"><div>save</div></li>
-				<li onclick="CAD.cmd('help zoom')"><div>zoom</div></li>
-				<li>--</li>
-				<li onclick="CAD.cmd('dir')"><div>Directory</div></li>
-				</ul>
-			</li>
-			<li><div>Develper</div>
-				<ul>
-				<li onclick="CAD.cmd('help debug')"><div>debug</div></li>
-				<li><div>Dev Overview</div></li>
-				<li><div>System events</div></li>
-				</ul>		
-			</li>
-			<li><div>Entities</div>
-				<ul>
-				<li onclick="CAD.cmd('help arc')"><div>arc</div></li>
-				<li onclick="CAD.cmd('help line')"><div>line</div></li>
-				</ul>
-			</li>		
-			<li><div>MIT License</div></li>
-		</ul>
-		<input id="cad-input" type="text" placeholder="command" class="drop-zone">
-		<input type="submit" value="Ok">
-	</form>
-	<div id="cad-view">
-		<div id="cad-console"></div>
-		<canvas id="cad-canvas"></canvas>
-	</div>
+<div id="cad-view">
+	<div id="cad-console"></div>
+	<canvas id="cad-canvas" resize></canvas>
 </div>
-
 </body>
 </html>

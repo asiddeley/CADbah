@@ -42,7 +42,7 @@ if (typeof global.appRoot=="undefined") {global.appRoot=path.resolve(__dirname)}
 if (typeof global.uploads_dir=="undefined") {global.uploads_dir="uploads"}
 
 // Main entry 
-app.get('/', function (req, res) {res.sendFile(path.join(__dirname, roothtml));})
+app.get('/', function (req, res) {res.sendFile(path.join(__dirname, 'client', roothtml));})
 
 // Logger
 app.use(function(req, res, next){console.log("LOG...",req.url);	next();});
