@@ -1,7 +1,7 @@
 /*****************************************************
 CADbah
 Computer Aided Design Be Architectural Heroes
-Copyright (c) 2019 Andrew Siddeley
+Copyright (c) 2019, 2020 Andrew Siddeley
 
 MIT License
 
@@ -24,8 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 // PRIVATE STATIC
-//var FC=require("./cad-fc/cad-fc.js");
-//var uisetup=require("./uis/uisetup.js").uisetup;
 
 var cout=function(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
@@ -48,100 +46,99 @@ var chop=function(argstr){
 	return [firstword, rest];
 };	
 
+const EventEmitter=require('events')
+const EE = new EventEmitter()
+
+const inpterpreter(cmd){
+	cmd=cmd||''
+	try{	
+		exports.msg(cmd)
+		eval(cmd)
+	} catch (er) {
+		exports.debug(er)
+	}
+
+}
+
 
 // PUBLIC
 exports.appname="cadbah";
 exports.activate=function(options){
 
 	// check options
-	if (typeof options=="undefined") {this.options=options={};}
-	else {this.options=options;}
-	
-	/* Prepare user interfaces and controls...  
-	Looks in options for {... div:HTMLelementReference, ...} or
-	creates it from scratch if not found */
-	//uisetup(this, {autoOpen:false});	
-	
+	options==options||{}
 
 	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
 		//with jquery $ wrapper
-		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body);
+		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body)
 		//html element
 		this.canvas=canvas$.get();
-	} else {this.canvas=options.canvas;this.canvas$=$(options.canvas);}
+	} else {
+		this.canvas=options.canvas;this.canvas$=$(options.canvas)
+	}
 
 	// Prepare optional console for messages
 	if (typeof options.console!="undefined"){
-		this.console=options.console;
-		this.console$=$(options.console);
-	};
+		this.console=options.console
+		this.console$=$(options.console)
+	}
 		
-	// prepare engine
-	this.engine = new BABYLON.Engine(this.canvas, true);
-	/* 	Why warning, webgl dest rect smaller than viewport rect?
-	See: http://doc.babylonjs.com/classes/2.5/Engine, 
-	Try this...  this.engine.setViewport(new BABYLON.Viewport(0,0,700,500)); */
-	
-	// initialize the scene
-	this.scene=new BABYLON.Scene(this.engine);
-	
-	// WORKSPACE
-	this.workspace.activate(this).setScene(this.scene);
 
-	// DOCUMENT
-	this.drawing.activate(this).setScene(this.scene);
+
+	// DRAWING DOCUMENT
+	this.drawing.activate(this)
 	
 	// UNDOER
-	this.undoer.activate(this);
+	//this.undoer.activate(this)
 	
-	// This is a cool Babylon feature
-	// this.scene.debugLayer.show();
-	
-	// engage the engine
-	var that=this;
-	this.engine.runRenderLoop(function(){ that.scene.render();} );
+
 };
 
 exports.chop=chop;	
-exports.commander=require("./commander.js");
+
 exports.canvas=null;
 exports.canvas$=null;
 exports.console=null;
 exports.console$=null;
-exports.cmd=function(input){this.commander.input(this, input);};
+//exports.cmd=function(input){this.commander.input(this, input);}
+exports.cmd=function(cmd){interperter.input(cmd)}
+exporet.command=function(command){inperpreter.input(command)}
+
 exports.div=null;
 exports.div$=null;
-//drawing handler
-exports.drawing=require("./drawing.js");
+//dxf document or drawing handler
+exports.dxf=require("../dxf/dxf.js")
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit);
+		cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit)
 	};
 };
-exports.debugcount=0;
-exports.debuglimit=100;
-exports.engine=null;
+exports.debugcount=0
+exports.debuglimit=100
+
+exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
+
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit);
-	};
-};
-exports.msgcount=0;
-exports.msglimit=100;
-// Extended by user in API functions above
+		cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit)
+	}
+}
+
+exports.msgcount=0
+exports.msglimit=100
+
+//program events
+exports.on=function(eventname, fun){EE.emit(eventname, fun)}
+
 exports.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
 	database:null, //to be determined
 };	
-// Babylon scene, initialized by CAD.activate()
-exports.scene=null;
-exports.undoer=require("./helpers/undoer");
-// Manages workspace (AKA scenery) light, camera, background, skybox, zoomer etc
-exports.workspace=require("./workspace.js");
 
+//exports.undoer=require("./helpers/undoer")
 
 
