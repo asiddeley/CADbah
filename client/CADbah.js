@@ -148,7 +148,9 @@ exports.scene=null;
 exports.undoer=require("./helpers/undoer");
 // Manages workspace (AKA scenery) light, camera, background, skybox, zoomer etc
 //exports.workspace=require("./workspace.js");
-exports.workspace={};
+exports.workspace={}
+//make CAD immutable
+Object.seal(exports)
 
 
 

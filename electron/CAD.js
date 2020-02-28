@@ -25,7 +25,7 @@ SOFTWARE.
 *****************************************************/
 // PRIVATE STATIC
 
-var cout=function(CAD, htm, cssClass, count, limit){
+const cout=function(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
 	//add new message
 	CAD.console$.append(p$);
@@ -36,7 +36,7 @@ var cout=function(CAD, htm, cssClass, count, limit){
 	CAD.console.scrollTop=CAD.console.scrollHeight;
 };
 
-var chop=function(argstr){
+const chop=function(argstr){
 	/* 	Takes a string and returns an array containing
 	[0] the first word and
 	[1] the remainder of the string */
@@ -49,11 +49,22 @@ var chop=function(argstr){
 const EventEmitter=require('events')
 const EE = new EventEmitter()
 
-const inpterpreter(cmd){
-	cmd=cmd||''
-	try{	
-		exports.msg(cmd)
-		eval(cmd)
+const interpreter=require('./interpreter.js')
+const interpret=function(cmd){
+
+	var cad=exports
+	try{
+		cad.msg(cmd)
+		var fun=new Function(
+		//argument
+		'cad', 
+		//function body
+		`return ${cmd}`
+		)
+		var result=fun(cad)
+		cad.msg(result)
+		//accesses global and this scope
+		//eval(cmd)
 	} catch (er) {
 		exports.debug(er)
 	}
@@ -65,7 +76,7 @@ const inpterpreter(cmd){
 exports.appname="cadbah";
 exports.activate=function(options){
 
-	// check options
+	// ensure options exists
 	options==options||{}
 
 	// Prepare canvas
@@ -87,7 +98,7 @@ exports.activate=function(options){
 
 
 	// DRAWING DOCUMENT
-	this.drawing.activate(this)
+	this.dxf.activate(this)
 	
 	// UNDOER
 	//this.undoer.activate(this)
@@ -102,12 +113,11 @@ exports.canvas$=null;
 exports.console=null;
 exports.console$=null;
 //exports.cmd=function(input){this.commander.input(this, input);}
-exports.cmd=function(cmd){interperter.input(cmd)}
-exporet.command=function(command){inperpreter.input(command)}
+exports.cmd=interpreter.run
 
 exports.div=null;
 exports.div$=null;
-//dxf document or drawing handler
+//dxf drawing handler
 exports.dxf=require("../dxf/dxf.js")
 exports.debug=function(){
 	for (var i in arguments){
@@ -139,6 +149,7 @@ exports.options={
 	database:null, //to be determined
 };	
 
+Object.seal(exports)
 //exports.undoer=require("./helpers/undoer")
 
 

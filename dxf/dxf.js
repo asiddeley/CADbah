@@ -5,13 +5,10 @@ MIT License
 ***/
 
 // PRIVATE STATIC
+const CAD=require('../electron/CAD.js')
+const line=require('./dxf_line.js')
+var {Bounds}=require('./support.js')
 
-const line=require("./dxf_line.js")
-var {Bounds}=require("./support.js")
-
-
-// CAD context - initialized in activate()
-var CAD
 
 // current drawing
 var dxf 
@@ -79,15 +76,13 @@ render=function(entities){
 
 
 
-exports.activate=function(cad){
-	//cad.msg("drawing activate...", cad);
-	CAD=cad;
+exports.activate=function(){
 	
-	line.activate(cad);
+	//line.activate(cad);
 	dxf=new Dxf();
 
 	//setup event handlers
-	cad.on('dxfchanged, callrender', render)
+	CAD.on('dxfchanged, callrender', render)
 };
 
 exports.initialize=function(cad){exports.activate(cad)}

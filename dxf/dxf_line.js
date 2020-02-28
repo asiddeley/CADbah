@@ -6,7 +6,7 @@ MIT License
 
 // PRIVATE STATIC
 
-var entity=require("../entity.js");
+var entity=require("../dxf/dxf_entity.js");
 //var {$V}=require("../helpers/sylvester.src.plus.js");
 
 //line data constructor
@@ -28,7 +28,7 @@ $.extend(exports, entity);
 //var Pickable=require('./features/Pickable');
 
 // PUBLIC
-exports.activate=function(cadbah){
+exports.activate=function(){
 	//Meant to be called once (by drawing module) to activate this module
 	//other modules that may require this module don't need to activate it.
 	//NO!! remove activate() - Should only be used top level to set cadbah
