@@ -2,125 +2,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>CADbah</title>
+<title>CAD</title>
 <meta charset="utf-8">
 <style id="cad-debug-style" type="text/css">
 .cad-debug {
 	display:block;
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 0.6em;
-	color:gray; 
+	color:gray;
 }
 </style>
 
-<script>window.$ = window.jQuery = require('jquery');</script>
-<script type="text/javascript" src="../node_modules/jquery-ui-dist/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="../resources/jquery-ui.theme.css">
-<link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.structure.css">
-<link rel='stylesheet' type="text/css" href='../client/CADbah.css'>
+<link rel='stylesheet' type='text/css' href='../node_modules/jquery-ui-dist/jquery-ui.css'>
+<link rel='stylesheet' type='text/css' href='../node_modules/jquery-ui-dist/jquery-ui.structure.css'>
+<link rel='stylesheet' type='text/css' href='../electron/CAD.css'>
+<link rel='stylesheet' type='text/css' href='../resources/jquery-ui.theme.css'>
 
-<!-- Load the Paper.js library -->
-<script type="text/javascript" src="../node_modules/paper/dist/paper-full.js"></script>
 
-<!-- PaperScript associated with canvas -->
-<script type="text/paperscript" canvas="cad-canvas">
-//command line
-var input$;
+<script type="text/javascript" canvas="cad-canvas" >
 
-const SF=require('../electron/support.js')
-window.CAD=require('../electron/CAD.js')
+	//load jquery 
+	var jQuery=require('jquery'); window.$=jQuery
+	
+	//load jquery-ui
+	require('../node_modules/jquery-ui-dist/jquery-ui.js')
 
-window.inputHandler=function(ev){
-	// disable normal form submit behavior that refreshes page
-	ev=ev||event
-	ev.preventDefault()
-	//get text from form and pass command to CADbah for processing
-	CAD.cmd(input$.val()); 
-	//clear the form
-	input$.val("");
-	//prevent further bubbling of event.  Prevent the form's automatic page refresh
-	return false
-};
-
-//Turn off the browser's right-click context menu
-$(document).on('contextmenu', false);
-
-//basic browser behavior
-$(window).on({
-	//prevent accidental drag-and-drop on windox
-	"drop": function(e){ e=e||event; e.preventDefault(); return false;},
-	"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-	//if command line doesn't have focus then give it focus and clear it
-	"keypress":function(e){ e=e||event;
-		if(!input$.is(":focus")){
-			input$.get(0).focus();
-			input$.get(0).select();
-			if(e.keyCode==13){document.forms.navbar.submit();}
-			else {input$.val(e.key);}
-		}	
+	var navbarSetup=function(){
+		input$=$("#cad-input");
+		// setup Navbar using jquery-ui controlgroup widget
+		$("#navbar>form").controlgroup({items:{
+			// widgetToApply:selector
+			"button": "a, button, input[type=text], input[type=button], input[type=submit]",
+			"controlgroupLabel": ".ui-controlgroup-label",
+			"checkboxradio": "input[type='checkbox'], input[type='radio']",
+			"selectmenu": "select",
+			"menu":"ul, .dropdown-items",
+			"spinner": ".ui-spinner-input"
+		}});
+		// init dropdown menus... 
+		$(".menu").menu().css("position","absolute", "width", "200px").hide();
+		// auto cleanup any open dropdown menus
+		$(".menu").on('mouseleave',function(){$(".menu").hide();});
+		// auto clear dropdown autohide (DDAH)
+		$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
+		// attach menus to navbar buttons
+		SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu");	
+		
+		
+		
 	}
-});
 
-// load navbar and init menus
-$('#navbar').load('../client/navbar.html', function(){
-	console.log('navbar loaded...')
-	input$=$("#cad-input");
-	// setup Navbar using jquery-ui controlgroup widget
-	$("#navbar>form").controlgroup({items:{
-		// widgetToApply:selector
-		"button": "a, button, input[type=text], input[type=button], input[type=submit]",
-		"controlgroupLabel": ".ui-controlgroup-label",
-		"checkboxradio": "input[type='checkbox'], input[type='radio']",
-		"selectmenu": "select",
-		"menu":"ul, .dropdown-items",
-		"spinner": ".ui-spinner-input"
-	}});
+	//command line
+	var input$;
 
-	// init dropdown menus... 
-	$(".menu").menu().css("position","absolute", "width", "200px").hide();
+	const SF=require('../electron/support.js')
+	window.CAD=require('../electron/CAD.js')
 
-	// auto cleanup any open dropdown menus
-	$(".menu").on('mouseleave',function(){$(".menu").hide();});
+	window.inputHandler=function(ev){
+		// disable normal form submit behavior that refreshes page
+		ev=ev||event
+		ev.preventDefault()
+		//get text from form and pass command to CADbah for processing
+		CAD.run(input$.val()); 
+		//clear the form
+		input$.val("");
+		//prevent further bubbling of event. Prevent the form's automatic page refresh
+		return false
+	};
 
-	// auto clear dropdown autohide (DDAH)
-	$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
+	//basic browser behavior
+	$(window).on({
+		//prevent accidental drag-and-drop on windox
+		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
+		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
+		//if command line doesn't have focus then give it focus and clear it
+		"keypress":function(e){ 
+			e=e||event
+			if(!input$.is(":focus")){
+				input$.get(0).focus()
+				input$.get(0).select()
+				if(e.keyCode==13){document.forms.navbar.submit()}
+				else {input$.val(e.key)}
+			}
+		},
+		'contextmenu':function(){console.log('context menu pressed...')}
+	})
 
-	// attach menus to navbar buttons
-	SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu");	
-})
-
-$(document).ready(function(){
-	// Start the CAD app
-	CAD.activate({
-		canvas:document.getElementById("cad-canvas"),
-		console:document.getElementById("cad-console"),
-		engineType:'paper',
-		engineStart:function(){
-			// Create a Paper.js Path to draw a line into it:
-			var path = new Path();
-			// Give the stroke a color
-			path.strokeColor = 'black';
-			var start = new Point(100, 100);
-			// Move to start and draw a line from there
-			path.moveTo(start);
-			// Note the plus operator on Point objects.
-			// PaperScript does that for us, and much more!
-			path.lineTo(start + [ 100, -50 ]);
-		}
-	});
-
-// load standard command aliases or shortcuts
-//CAD.cmd("alias load aliases.json");
-
-}); //end of document ready
-
+	$(document).ready(function(){
+		navbarSetup()
+		CAD.activate({
+			canvas:document.getElementById("cad-canvas"),
+			console:document.getElementById("cad-console"),
+		})
+	}) 
 
 </script>
 </head>
 
 <body>
-<div id='navbar'></div>
+<div id='navbar'>
+
+<form name="navbar" class="controlgroup ui-widget-header"  onSubmit="return inputHandler(event);">
+
+	<button id="file">File</button>
+	<button id="edit">Edit</button>
+	<button id="draw">Draw</button>
+	<button id="help">Help</button>
+
+	<ul id="file-menu" class="menu">
+		<li onclick="CAD.cmd('new')"><div>New</div></li>
+		<li onclick="dxf$.dialog('open')"><div>Open</div></li>
+		<li onclick="CAD.cmd('save')"><div>Save</div></li>
+		<li onclick="CAD.cmd('saveas')"><div>Save as</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
+	</ul>
+
+	<ul id="edit-menu" class="menu">
+		<li>--</li>
+		<li onclick="CAD.cmd('CUT')"><div>Cut</div></li>
+		<li onclick="CAD.cmd('COPY')"><div>Copy</div></li>
+		<li onclick="CAD.cmd('PASTE')"><div>Paste</div></li>
+		<li onclick="CAD.cmd('DELETE')"><div>Delete</div></li>
+		<li onclick="CAD.cmd('SELECT')"><div>Select</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('BLOCKDEF')"><div>Block-Def</div></li>
+		<li onclick="CAD.cmd('BLOCKADD')"><div>Block-Add</div></li>
+		<li onclick="CAD.cmd('BLOCKEDIT')"><div>Block-Edit</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('MOVE')"><div>Move</div></li>
+		<li onclick="CAD.cmd('MIRROR')"><div>Mirror</div></li>
+		<li onclick="CAD.cmd('ROTATE')"><div>Rotate</div></li>
+		<li onclick="CAD.cmd('SCALE')"><div>Scale</div></li>
+		<li>--</li>
+		<li onclick="CAD.cmd('PROPERTIES')"><div>Properties</div></li>
+		</ul>
+
+	<ul id="draw-menu" class="menu">
+		<li onclick="CAD.cmd('ARC')"><div>Arc</div></li>
+		<li onclick="CAD.cmd('BLOCKINS')"><div>Block-Ins</div></li>
+		<li onclick="CAD.cmd('CIRCLE')"><div>Circle</div></li>
+		<li onclick="CAD.cmd('IMAGE')"><div>Image</div></li>		
+		<li onclick="CAD.run('line(0,100,100,0)')"><div>Line</div></li>
+		<li onclick="CAD.cmd('POLYLINE')"><div>Polyline</div></li>
+		<li onclick="CAD.cmd('RECTANGLE')"><div>Rectangle</div></li>
+		<li onclick="CAD.cmd('TEXT')"><div>Text</div></li>
+	</ul>
+
+	<ul id="help-menu" class="menu">
+		<li onclick="CAD.cmd('about')"><div>About</div></li>
+		<li><div>Terminology</div>
+			<ul>
+			<li onclick="CAD.cmd('about')"><div>about</div></li>
+			<li onclick="CAD.cmd('about(alias)')"><div>alias</div></li>
+			<li onclick="CAD.run('about(clear)')"><div>clear</div></li>
+			<li onclick="CAD.run('about(dir)')"><div>dir</div></li>
+			<li onclick="CAD.cmd('help dxfin')"><div>dxfin</div></li>
+			<li onclick="CAD.cmd('help fullscreen')"><div>fullscreen</div></li>
+			<li onclick="CAD.cmd('help open')"><div>open</div></li>
+			<li onclick="CAD.cmd('help orbit')"><div>orbit</div></li>
+			<li onclick="CAD.cmd('help save')"><div>save</div></li>
+			<li onclick="CAD.cmd('help zoom')"><div>zoom</div></li>
+			<li>--</li>
+			<li onclick="CAD.run('dir')"><div>Terminology</div></li>
+			</ul>
+		</li>
+		<li><div>Develper</div>
+			<ul>
+			<li onclick="CAD.cmd('help debug')"><div>debug</div></li>
+			<li><div>Dev Overview</div></li>
+			<li><div>System events</div></li>
+			</ul>		
+		</li>
+		<li><div>Entities</div>
+			<ul>
+			<li onclick="CAD.cmd('help arc')"><div>arc</div></li>
+			<li onclick="CAD.cmd('help line')"><div>line</div></li>
+			</ul>
+		</li>		
+		<li><div>MIT License</div></li>
+	</ul>
+	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
+	<input type="submit" value="Ok">
+</form>
+
+
+</div>
 <div id='cad-view'>
 	<div id='cad-console'></div>
 	<canvas id='cad-canvas' resize></canvas>

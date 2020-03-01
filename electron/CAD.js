@@ -36,84 +36,52 @@ const cout=function(CAD, htm, cssClass, count, limit){
 	CAD.console.scrollTop=CAD.console.scrollHeight;
 };
 
-const chop=function(argstr){
-	/* 	Takes a string and returns an array containing
-	[0] the first word and
-	[1] the remainder of the string */
-	
-	var firstword=argstr.split(" ")[0];
-	var rest=argstr.substring(firstword.length).trim();
-	return [firstword, rest];
-};	
-
 const EventEmitter=require('events')
 const EE = new EventEmitter()
-
-const interpreter=require('./interpreter.js')
-const interpret=function(cmd){
-
-	var cad=exports
-	try{
-		cad.msg(cmd)
-		var fun=new Function(
-		//argument
-		'cad', 
-		//function body
-		`return ${cmd}`
-		)
-		var result=fun(cad)
-		cad.msg(result)
-		//accesses global and this scope
-		//eval(cmd)
-	} catch (er) {
-		exports.debug(er)
-	}
-
-}
-
+const terms=require('../terms/terms.js')
+var paper=require('../node_modules/paper/dist/paper-core.js')
 
 // PUBLIC
 exports.appname="cadbah";
 exports.activate=function(options){
 
-	// ensure options exists
 	options==options||{}
 
-	// Prepare canvas
 	if (typeof options.canvas=="undefined"){
 		//with jquery $ wrapper
 		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body)
 		//html element
 		this.canvas=canvas$.get();
 	} else {
-		this.canvas=options.canvas;this.canvas$=$(options.canvas)
+		this.canvas=options.canvas;
+		this.canvas$=$(options.canvas)
+		//paper.setup(this.canvas)
 	}
 
-	// Prepare optional console for messages
+	// Prepare console for messages
 	if (typeof options.console!="undefined"){
 		this.console=options.console
 		this.console$=$(options.console)
 	}
-		
 
-
+	paper.install(window)
+	paper.setup(this.canvas)
+	
+	
 	// DRAWING DOCUMENT
-	this.dxf.activate(this)
+	this.dxf.activate()
 	
 	// UNDOER
 	//this.undoer.activate(this)
-	
 
 };
 
-exports.chop=chop;	
+exports.canvas=null
+exports.canvas$=null
+exports.console=null
+exports.console$=null
+exports.cmd=terms.run
 
-exports.canvas=null;
-exports.canvas$=null;
-exports.console=null;
-exports.console$=null;
-//exports.cmd=function(input){this.commander.input(this, input);}
-exports.cmd=interpreter.run
 
 exports.div=null;
 exports.div$=null;
@@ -140,16 +108,17 @@ exports.msg=function(){
 exports.msgcount=0
 exports.msglimit=100
 
-//program events
+//event programmer
 exports.on=function(eventname, fun){EE.emit(eventname, fun)}
 
 exports.options={
 	admin:{user:"unnamed", disc:'arch'},
 	actionsEnabled:false,
 	database:null, //to be determined
-};	
+}	
 
-Object.seal(exports)
+exports.run=terms.run
+//Object.seal(exports)
 //exports.undoer=require("./helpers/undoer")
 
 

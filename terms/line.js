@@ -23,44 +23,37 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
+
 // PRIVATE STATIC
 
-var cad=require('./CAD.js')
+const cad=require('../electron/CAD.js')
+const terms=require('../terms/terms.js')
+var paper=require('../node_modules/paper/dist/paper-full.js')
 
-//standard context declaration items
-var line=function(){cad.msg('LINE function...')}
-var echo=function(mode){echomode=mode||!echomode }
-var echomode=true
-
-//context declarations
-var context={line:line, echo:echo}
-var declarations='var echo=cad.echo; line=cad.line;'
-
-//evaluates the given expression as a new Function with a rich CAD context
-const run=function(expression){
-
-	var parameter='cad'
-	var body=`${declarations} return ${expression}`
-	
-	try{
-		if (echomode){cad.msg(expression)}
-		var fun=new Function(parameter, body)
-		var result=fun(context)
-		cad.msg(result)
-	} catch (er) {
-		cad.debug(er)
-	}
-
-}
+// line
+terms.addTerm(new terms.createTerm({
+	name:'line', 
+	about:'adds a line enetity to the drawing',
+	action:function(u,v,x,y){
+		u=u||0; v=v||0; x=x||100; y=y||100
+		var path = new Path();
+		// Give the stroke a color
+		path.strokeColor = 'black';
+		var start = new Point(u, v);
+		// Move to start and draw a line from there
+		path.moveTo(start);
+		// Note the plus operator on Point objects.
+		// PaperScript does that for us, and much more!
+		//path.lineTo(start + [ 100, -50 ]);
+		path.lineTo(x,y)
+		view.draw()
+	},
+	alias:'ln',
+	topic:'entity', 
+	terms:['[x0, y0], [x1, y1]']
+}))
 
 // PUBLIC
 
-exports.addvar=function(name, content){
-	declarations+=`var ${name}=cad.${name};`
-	context[name]=content
-}
 
-exports.run=run
-exports.echomode=function(mode){
-	echomode=mode||nul
-}
+
