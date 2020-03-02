@@ -18,19 +18,27 @@
 <link rel='stylesheet' type='text/css' href='../electron/CAD.css'>
 <link rel='stylesheet' type='text/css' href='../resources/jquery-ui.theme.css'>
 
+<script type="text/javascript">
 
-<script type="text/javascript" canvas="cad-canvas" >
-
-	//load jquery 
-	var jQuery=require('jquery'); window.$=jQuery
+	// load jquery 
+	var jQuery=require('jquery')
+	window.$=jQuery
 	
-	//load jquery-ui
+	// load jquery-ui
 	require('../node_modules/jquery-ui-dist/jquery-ui.js')
 
-	var navbarSetup=function(){
-		input$=$("#cad-input");
+	// load CAD after jquery
+	window.CAD=require('../electron/CAD.js')
+	
+	// load helpers
+	const SF=require('../electron/support.js')
+	
+	var input$
+	
+	function navbarSetup(){
+		input$=$("#cad-input")
 		// setup Navbar using jquery-ui controlgroup widget
-		$("#navbar>form").controlgroup({items:{
+		$("#navbar").controlgroup({items:{
 			// widgetToApply:selector
 			"button": "a, button, input[type=text], input[type=button], input[type=submit]",
 			"controlgroupLabel": ".ui-controlgroup-label",
@@ -40,54 +48,40 @@
 			"spinner": ".ui-spinner-input"
 		}});
 		// init dropdown menus... 
-		$(".menu").menu().css("position","absolute", "width", "200px").hide();
+		$(".menu").menu().css("position","absolute", "width", "200px").hide()
 		// auto cleanup any open dropdown menus
-		$(".menu").on('mouseleave',function(){$(".menu").hide();});
+		$(".menu").on('mouseleave',function(){$(".menu").hide()})
 		// auto clear dropdown autohide (DDAH)
-		$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH);});
+		$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH)})
 		// attach menus to navbar buttons
-		SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu");	
-		
-		
-		
+		SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu")
+		$('form').on('submit', function(ev){
+			// console.log('submit occured')
+			ev=ev||event			
+			ev.preventDefault()
+			CAD.run(input$.val()) 
+			input$.val("")
+			return false
+		})		
 	}
 
-	//command line
-	var input$;
-
-	const SF=require('../electron/support.js')
-	window.CAD=require('../electron/CAD.js')
-
-	window.inputHandler=function(ev){
-		// disable normal form submit behavior that refreshes page
-		ev=ev||event
-		ev.preventDefault()
-		//get text from form and pass command to CADbah for processing
-		CAD.run(input$.val()); 
-		//clear the form
-		input$.val("");
-		//prevent further bubbling of event. Prevent the form's automatic page refresh
-		return false
-	};
-
-	//basic browser behavior
+	//basic browser behavior...
 	$(window).on({
-		//prevent accidental drag-and-drop on windox
+		//prevent accidental drag-and-drop on window
 		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
 		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-		//if command line doesn't have focus then give it focus and clear it
+		//if command line doesn't have focus then give it focus
 		"keypress":function(e){ 
-			e=e||event
-			if(!input$.is(":focus")){
-				input$.get(0).focus()
-				input$.get(0).select()
-				if(e.keyCode==13){document.forms.navbar.submit()}
-				else {input$.val(e.key)}
-			}
+			if(!input$.is(":focus")){input$.get(0).focus();input$.get(0).select()}
 		},
-		'contextmenu':function(){console.log('context menu pressed...')}
+		"keyup":function(e){
+			//escape
+			if(e.keyCode===27){input$.val('esc');CAD.run(input$.val())}
+		},		
+		'contextmenu':function(){}
 	})
 
+	// ACTIVATE...
 	$(document).ready(function(){
 		navbarSetup()
 		CAD.activate({
@@ -100,9 +94,8 @@
 </head>
 
 <body>
-<div id='navbar'>
 
-<form name="navbar" class="controlgroup ui-widget-header"  onSubmit="return inputHandler(event);">
+<form id='navbar' name='navbar' class='controlgroup ui-widget-header'>
 
 	<button id="file">File</button>
 	<button id="edit">Edit</button>
@@ -188,8 +181,6 @@
 	<input type="submit" value="Ok">
 </form>
 
-
-</div>
 <div id='cad-view'>
 	<div id='cad-console'></div>
 	<canvas id='cad-canvas' resize></canvas>

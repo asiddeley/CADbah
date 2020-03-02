@@ -23,8 +23,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-// PRIVATE STATIC
 
+
+
+var paper=require('../node_modules/paper/dist/paper-core.js')
+paper.install(window)
+
+// PRIVATE STATIC
 const cout=function(CAD, htm, cssClass, count, limit){
 	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
 	//add new message
@@ -38,8 +43,8 @@ const cout=function(CAD, htm, cssClass, count, limit){
 
 const EventEmitter=require('events')
 const EE = new EventEmitter()
+// terms requires paper to be installed
 const terms=require('../terms/terms.js')
-var paper=require('../node_modules/paper/dist/paper-core.js')
 
 // PUBLIC
 exports.appname="cadbah";
@@ -58,15 +63,15 @@ exports.activate=function(options){
 		//paper.setup(this.canvas)
 	}
 
+	paper.setup(this.canvas)	
+	
 	// Prepare console for messages
 	if (typeof options.console!="undefined"){
 		this.console=options.console
 		this.console$=$(options.console)
 	}
 
-	paper.install(window)
-	paper.setup(this.canvas)
-	
+
 	
 	// DRAWING DOCUMENT
 	this.dxf.activate()

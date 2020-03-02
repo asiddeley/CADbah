@@ -26,33 +26,41 @@ SOFTWARE.
 
 // PRIVATE STATIC
 
-const cad=require('../electron/CAD.js')
 const terms=require('../terms/terms.js')
-const pointer=require('../terms/pointer.js')
 
-terms.addTerm(new terms.createTerm({
-	name:'line', 
-	about:'adds a line enetity to the drawing',
-	action:function(u,v,x,y){
-		u=u||0; v=v||0; x=x||100; y=y||100
-		var path = new Path();
-		// Give the stroke a color
-		path.strokeColor = 'black';
-		var start = new Point(u, v);
-		// Move to start and draw a line from there
-		path.moveTo(start);
-		// Note the plus operator on Point objects.
-		// PaperScript does that for us, and much more!
-		//path.lineTo(start + [ 100, -50 ]);
-		path.lineTo(x,y)
-		view.draw()
+// pointer
+const pointer=new Tool()
+pointer.name='pointer'
+pointer.onMouseUp=function(e){
+	CAD.msg(e.point.toString())
+}
+
+terms.addTerm(terms.createTerm({
+	name:'pointer', 
+	about:'returns the paper coordinates of the mouse when clicked',
+	action:function(){
+		//paper commands installed in window scope
+		tools.find(tool => tool.name == 'pointer').activate()
 	},
-	alias:'ln',
-	topic:'entities', 
-	terms:['[x0, y0], [x1, y1]']
+	alias:'pp',
+	topic:'tools', 
+	terms:['none']
 }))
 
+// escape
+const escape=new Tool()
+escape.name='escape'
 
+terms.addTerm(terms.createTerm({
+	name:'escape', 
+	about:'exits from an active tool',
+	action:function(){
+		tools.find(tool => tool.name == 'escape').activate()
+	},
+	alias:'esc',
+	topic:'tools', 
+	terms:['no parameters']
+}))
 
 
 // PUBLIC
