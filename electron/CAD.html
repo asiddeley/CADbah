@@ -21,72 +21,36 @@
 <script type="text/javascript">
 
 	// load jquery 
-	var jQuery=require('jquery')
-	window.$=jQuery
-	
-	// load jquery-ui
-	require('../node_modules/jquery-ui-dist/jquery-ui.js')
+	var jQuery=require('jquery'); window.$=jQuery
 
 	// load CAD after jquery
 	window.CAD=require('../electron/CAD.js')
-	
-	// load helpers
-	const SF=require('../electron/support.js')
-	
-	var input$
-	
-	function navbarSetup(){
-		input$=$("#cad-input")
-		// setup Navbar using jquery-ui controlgroup widget
-		$("#navbar").controlgroup({items:{
-			// widgetToApply:selector
-			"button": "a, button, input[type=text], input[type=button], input[type=submit]",
-			"controlgroupLabel": ".ui-controlgroup-label",
-			"checkboxradio": "input[type='checkbox'], input[type='radio']",
-			"selectmenu": "select",
-			"menu":"ul, .dropdown-items",
-			"spinner": ".ui-spinner-input"
-		}});
-		// init dropdown menus... 
-		$(".menu").menu().css("position","absolute", "width", "200px").hide()
-		// auto cleanup any open dropdown menus
-		$(".menu").on('mouseleave',function(){$(".menu").hide()})
-		// auto clear dropdown autohide (DDAH)
-		$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH)})
-		// attach menus to navbar buttons
-		SF.attachMenu("file edit draw help", "file-menu edit-menu draw-menu help-menu")
-		$('form').on('submit', function(ev){
-			// console.log('submit occured')
-			ev=ev||event			
-			ev.preventDefault()
-			CAD.run(input$.val()) 
-			input$.val("")
-			return false
-		})		
-	}
 
-	//basic browser behavior...
+	// basic browser behavior...
 	$(window).on({
-		//prevent accidental drag-and-drop on window
+		// prevent accidental drag-and-drop on window
 		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
 		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-		//if command line doesn't have focus then give it focus
+		// if command line doesn't have focus then give it focus
 		"keypress":function(e){ 
+			var input$=$('#cad-input')
 			if(!input$.is(":focus")){input$.get(0).focus();input$.get(0).select()}
 		},
 		"keyup":function(e){
 			//escape
+			var input$=$('#cad-input')
 			if(e.keyCode===27){input$.val('esc');CAD.run(input$.val())}
 		},		
 		'contextmenu':function(){}
 	})
 
-	// ACTIVATE...
+	// activate
 	$(document).ready(function(){
-		navbarSetup()
 		CAD.activate({
-			canvas:document.getElementById("cad-canvas"),
-			console:document.getElementById("cad-console"),
+			canvas:document.getElementById('cad-canvas'),
+			console:document.getElementById('cad-console'),
+			navbar:document.getElementById('cad-navbar'),
+			input:document.getElementById('cad-input')
 		})
 	}) 
 
@@ -95,12 +59,12 @@
 
 <body>
 
-<form id='navbar' name='navbar' class='controlgroup ui-widget-header'>
+<form id='cad-navbar' name='navbar' class='controlgroup ui-widget-header'>
 
-	<button id="file">File</button>
-	<button id="edit">Edit</button>
-	<button id="draw">Draw</button>
-	<button id="help">Help</button>
+	<button id="file" menu="file-menu">File</button>
+	<button id="edit" menu="edit-menu">Edit</button>
+	<button id="draw" menu="draw-menu">Draw</button>
+	<button id="help" menu="help-menu">Help</button>
 
 	<ul id="file-menu" class="menu">
 		<li onclick="CAD.cmd('new')"><div>New</div></li>
@@ -111,7 +75,8 @@
 		<li onclick="CAD.cmd('admin')"><div>Admin</div></li>
 		<li>--</li>
 		<li onclick="CAD.cmd('exit')"><div>Exit</div></li>
-	</ul>
+	</ul>	
+
 
 	<ul id="edit-menu" class="menu">
 		<li>--</li>
@@ -138,7 +103,7 @@
 		<li onclick="CAD.cmd('BLOCKINS')"><div>Block-Ins</div></li>
 		<li onclick="CAD.cmd('CIRCLE')"><div>Circle</div></li>
 		<li onclick="CAD.cmd('IMAGE')"><div>Image</div></li>		
-		<li onclick="CAD.run('line(0,100,100,0)')"><div>Line</div></li>
+		<li onclick="CAD.run(line(0,100,100,0))"><div>Line</div></li>
 		<li onclick="CAD.cmd('POLYLINE')"><div>Polyline</div></li>
 		<li onclick="CAD.cmd('RECTANGLE')"><div>Rectangle</div></li>
 		<li onclick="CAD.cmd('TEXT')"><div>Text</div></li>
@@ -180,6 +145,7 @@
 	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
 	<input type="submit" value="Ok">
 </form>
+
 
 <div id='cad-view'>
 	<div id='cad-console'></div>

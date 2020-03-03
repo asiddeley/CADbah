@@ -23,31 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
+// PRIVATE STATIC
 
-
-
+// load  paper.js, the graphic engine of choice
 var paper=require('../node_modules/paper/dist/paper-core.js')
+
+// install paper into window scope, so its accessible from anywhere in code
 paper.install(window)
 
-// PRIVATE STATIC
-const cout=function(CAD, htm, cssClass, count, limit){
-	var p$=$("<p></p>").addClass(cssClass).attr("id", cssClass + count).html(htm);
-	//add new message
-	CAD.console$.append(p$);
-	//delete old messages	
-	if (count>limit){
-		$("[id="+ cssClass + (count-limit) + "]").remove();
-	}
-	CAD.console.scrollTop=CAD.console.scrollHeight;
-};
+// load jquery-ui
+require('../node_modules/jquery-ui-dist/jquery-ui.js')
 
-const EventEmitter=require('events')
+// for CAD events
+const EventEmitter=require('events') 
 const EE = new EventEmitter()
+
 // terms requires paper to be installed
 const terms=require('../terms/terms.js')
 
-// PUBLIC
-exports.appname="cadbah";
+// load support functions
+const SF=require('./support.js')
+
+//////////////////////////////////
+// PUBLIC 
+
 exports.activate=function(options){
 
 	options==options||{}
@@ -71,7 +70,7 @@ exports.activate=function(options){
 		this.console$=$(options.console)
 	}
 
-
+	SF.navbarSetup(options)
 	
 	// DRAWING DOCUMENT
 	this.dxf.activate()
@@ -95,7 +94,7 @@ exports.dxf=require("../dxf/dxf.js")
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit)
+		SF.cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit)
 	};
 };
 exports.debugcount=0
@@ -106,7 +105,7 @@ exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit)
+		SF.cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit)
 	}
 }
 
