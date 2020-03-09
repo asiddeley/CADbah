@@ -32,7 +32,9 @@ const terms=require('../terms/terms.js')
 const pointer=new Tool()
 pointer.name='pointer'
 pointer.onMouseUp=function(e){
-	CAD.msg(e.point.toString())
+	//CAD.msg(e.point.toString())
+	//CAD.submit(e.point.x + ',' + e.point.y)
+	CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))
 }
 
 terms.addTerm(terms.createTerm({

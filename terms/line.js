@@ -35,7 +35,7 @@ terms.addTerm(new terms.createTerm({
 	about:'adds a line to the drawing',
 	action:function(u,v,x,y){
 		CAD.prompt('u,v,x,y OR [enter] for pointer...', function(response){
-			CAD.msg('Coords', response||'nothing entered')
+			//CAD.msg('Coords', response||'nothing entered')
 			
 			
 			

@@ -34,17 +34,20 @@ paper.install(window)
 // load jquery-ui
 require('../node_modules/jquery-ui-dist/jquery-ui.js')
 
+// dxf drawing handler
+const dxf=require("../dxf/dxf.js")
+
 // for CAD events
 const EventEmitter=require('events') 
 const EE = new EventEmitter()
 
-// terms requires paper to be installed
+// terms requires paper to be installed first
 const terms=require('../terms/terms.js')
 
 // load support functions
-const SF=require('./support.js')
+const SF=require('./cadSupport.js')
 
-const submit=function(ev){
+const onSubmit=function(ev){
 	// console.log('submit occured')
 	ev=ev||event			
 	var input$=$('#cad-input')
@@ -69,7 +72,6 @@ exports.activate=function(options){
 	} else {
 		this.canvas=options.canvas;
 		this.canvas$=$(options.canvas)
-		//paper.setup(this.canvas)
 	}
 
 	paper.setup(this.canvas)	
@@ -83,13 +85,13 @@ exports.activate=function(options){
 	SF.navbarSetup(options)
 	
 	// DRAWING DOCUMENT
-	this.dxf.activate()
+	dxf.activate()
 	
 	// UNDOER
 	//this.undoer.activate(this)
 	
 	//program input
-	$('form').on('submit', submit)
+	$('form').on('submit', onSubmit)
 
 };
 
@@ -102,28 +104,31 @@ exports.cmd=terms.run
 
 exports.div=null;
 exports.div$=null;
-//dxf drawing handler
-exports.dxf=require("../dxf/dxf.js")
+
+
+
+// debug - programming & error messages
+var debugcount=0
+var debuglimit=100
 exports.debug=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		SF.cout(this, arguments[i],"cad-debug", this.debugcount++, this.debuglimit)
+		SF.cout(this, arguments[i],"cad-debug", debugcount++, debuglimit)
 	};
 };
-exports.debugcount=0
-exports.debuglimit=100
+
 
 exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
 
+// msg - regular messages or prompts to user
+var msgcount=0
+var msglimit=100
 exports.msg=function(){
 	for (var i in arguments){
 		//cout (CAD, "text", "class", count, limit)
-		SF.cout(this, arguments[i],"cad-msg", this.msgcount++, this.msglimit)
+		SF.cout(this, arguments[i], "cad-msg", msgcount++, msglimit)
 	}
 }
-
-exports.msgcount=0
-exports.msglimit=100
 
 //event programmer
 exports.on=function(eventname, fun){EE.emit(eventname, fun)}
@@ -134,15 +139,15 @@ exports.options={
 	database:null, //to be determined
 }	
 
-var promptStack=[{msg:'command', callback:submit}]
+var promptstack=[{msg:'command', callback:onSubmit}]
 exports.prompt=function(msg, callback){
 	
-	//promptstack.push({msg:msg, callback:callback})
-	var input$=$('#cad-input')
-	var placeholder=input$.attr('placeholder')
+	var input$=$('#cad-input')	
+	promptstack.push({msg:msg, callback:callback})
 	input$.attr('placeholder', msg)
-	//hijack submit event
-	$('form').off('submit', submit)
+	// remove current submit callback
+	$('form').off('submit', promptstack[promptstack.length-1].callback)
+	// replace with new callback to run once
 	$('form').one('submit', function(e){
 		try{			
 			callback(input$.val())
@@ -151,14 +156,38 @@ exports.prompt=function(msg, callback){
 		}catch(e){
 			CAD.debug(e)
 		}finally{
-			//restore command line and submit event
-			input$.attr('placeholder', placeholder)
-			$('form').on('submit', submit)
+			//restore command line and callback
+			if (promptstack.length>1){promptstack.pop()}
+			var last=promptstack[promptstack.length-1]
+			input$.attr('placeholder', last.msg)
+			$('form').on('submit', last.callback)
 		}		
 	})	
 }
 
-exports.run=terms.run
+exports.submit=function(content){
+	//triggers submit, allows tools to input points to command line 
+	exports.input(content)
+	$('form').trigger('submit')	
+}
+
+exports.input=function(content){
+	//aggregates content to the command line without submitting it
+	if (typeof content=='string') {
+		var comma=(input$.val().length>0)?', ':''
+		input$.val(input$.val()+ comma + content)
+	}
+}
+
+exports.escape=function(){
+		
+	
+}
+
+// input content to interpreter, bypassing command line
+exports.run=function(content){terms.run(content)}
+
+
 //Object.seal(exports)
 //exports.undoer=require("./helpers/undoer")
 
