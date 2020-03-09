@@ -32,8 +32,14 @@ const pointer=require('../terms/pointer.js')
 
 terms.addTerm(new terms.createTerm({
 	name:'line', 
-	about:'adds a line enetity to the drawing',
+	about:'adds a line to the drawing',
 	action:function(u,v,x,y){
+		CAD.prompt('u,v,x,y OR [enter] for pointer...', function(response){
+			CAD.msg('Coords', response||'nothing entered')
+			
+			
+			
+		})
 		u=u||0; v=v||0; x=x||100; y=y||100
 		var path = new Path();
 		// Give the stroke a color

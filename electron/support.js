@@ -38,6 +38,7 @@ exports.navbarSetup=function(options){
 	// auto clear dropdown autohide (DDAH)
 	$(".menu").on('mouseenter',function(){clearTimeout(document.DDAH)})
 	// submit event
+	/*
 	$('form').on('submit', function(ev){
 		// console.log('submit occured')
 		ev=ev||event			
@@ -47,6 +48,7 @@ exports.navbarSetup=function(options){
 		input$.val("")
 		return false
 	})		
+	*/
 	// attach menus to navbar buttons
 	$(options.navbar||'cad-navbar').find('button').each(function(i, e){
 		var mid=$(e).attr('menu')

@@ -44,6 +44,16 @@ const terms=require('../terms/terms.js')
 // load support functions
 const SF=require('./support.js')
 
+const submit=function(ev){
+	// console.log('submit occured')
+	ev=ev||event			
+	var input$=$('#cad-input')
+	ev.preventDefault()
+	terms.run(input$.val()) 
+	input$.val("")
+	return false
+}
+
 //////////////////////////////////
 // PUBLIC 
 
@@ -77,6 +87,9 @@ exports.activate=function(options){
 	
 	// UNDOER
 	//this.undoer.activate(this)
+	
+	//program input
+	$('form').on('submit', submit)
 
 };
 
@@ -120,6 +133,30 @@ exports.options={
 	actionsEnabled:false,
 	database:null, //to be determined
 }	
+
+var promptStack=[{msg:'command', callback:submit}]
+exports.prompt=function(msg, callback){
+	
+	//promptstack.push({msg:msg, callback:callback})
+	var input$=$('#cad-input')
+	var placeholder=input$.attr('placeholder')
+	input$.attr('placeholder', msg)
+	//hijack submit event
+	$('form').off('submit', submit)
+	$('form').one('submit', function(e){
+		try{			
+			callback(input$.val())
+			input$.val('')
+			return false
+		}catch(e){
+			CAD.debug(e)
+		}finally{
+			//restore command line and submit event
+			input$.attr('placeholder', placeholder)
+			$('form').on('submit', submit)
+		}		
+	})	
+}
 
 exports.run=terms.run
 //Object.seal(exports)
