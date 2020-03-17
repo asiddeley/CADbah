@@ -24,13 +24,54 @@ SOFTWARE.
 
 const PATH=require('path')
 const APP=require('electron').app
-const WM=require(PATH.join(__dirname, 'electron', 'windowMaster.js'))
+//const WM=require(PATH.join(__dirname, 'electron', 'windowMaster.js'))
+const WM=require('electron-window-manager')
+const OPTIONS={
+	width: 1000,
+	height: 500,
+	//position: 'topLeft',
+	position:[20, 20],
+	resizable:true,
+	showDevTools:true,
+	frame:true,
+	webPreferences: {nodeIntegration: true}
+}
+
+function cascade(offset){
+	offset=offset||[10, 10]
+	return OPTIONS.position.map(function(v,i){v+offset[i]})	
+}
+
 
 //APP.commandLine.appendSwitch('--enable-logging')
 
 APP.on('ready', function(){
 	console.log('Electron App Ready...')
-	WM.open()	
+	//WM.open('CAD.html')
+	//open( name, title, url, setupTemplate, setup, showDevTools )
+	WM.open(
+		'main', 
+		'CadBah - Main', 
+		`file://${__dirname}/electron/CAD.html`, 
+		false, 
+		OPTIONS
+	)
+	
+	WM.open(
+		'tilemenu', 
+		'CadBah - TileMenu', 
+		`file://${__dirname}/electron/tilemenu.html`, 
+		false, 
+		Object.assign(OPTIONS, {
+			width:100,
+			height:200,
+			position:cascade(20, 20)
+		})
+	)	
+	
+	
+	
+	//WM.open('CAD.html')
 })
 
 

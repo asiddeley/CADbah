@@ -9,12 +9,13 @@ MIT License
 const windowManager = require('electron-window-manager')
 
 ///// MODULE Scope Variables & Functions
-const HTML=`file://${__dirname}/CAD.html`
+//const HTML=`file://${__dirname}/CAD.html`
 
 //holds name of window that was closed -- DEPRECATED?
-var closed=[]
+//var closed=[]
 
 //deprecated, use <.. :class=windowName> instead
+/*
 var colours=[
 	'aquamarine', 'blueviolet', 'coral', 'darkmagenta', 'cyan',
 	'white', 'orange', 'orange', 'blue', 'blue', 'gold',
@@ -23,6 +24,7 @@ var colours=[
 	'purple', 'purple',	'purple', 'purple',	'purple', 'black',
 	'black'
 ]
+*/
 
 var themes=[
 	'light','dark','light','dark','light',
@@ -42,7 +44,7 @@ var names=[
 	"Zulu"
 ]
 
-var options={
+var OPTIONS={
 	width: 1200,
 	height: 400,
 	//position: 'topLeft',
@@ -52,20 +54,21 @@ var options={
 	frame:true,
 	webPreferences: {nodeIntegration: true}
 }
-var prefix='CA'
-var positionDelta=[20,20]
+
+//var prefix='CA'
+//var positionDelta=[20,20]
 
 //names of windows to reuse beacuse of refresh or closed
-var reuse=[]
+//var reuse=[]
 
-var windex=-1
+//var windex=-1
 
-function getNextWindowName(){
-	//assign a new name from the list
-	windex+=1
-	if(windex<names.length){return names[windex]}
-	else{return ( prefix + windex.toString() ) }
-}
+//function getNextWindowName(){
+	////assign a new name from the list
+	//windex+=1
+	//if(windex<names.length){return names[windex]}
+	//else{return ( prefix + windex.toString() ) }
+//}
 
 function getFreeWindowName(name){
 	
@@ -81,6 +84,7 @@ exports.get=function(name){return windowManager.get(name)}
 //exports.getWindowName=getWindowName
 exports.getCurrent=function(){return windowManager.getCurrent()}
 
+/*
 //deprecated, use class instead 
 exports.getColour=function(name){
 	var i=names.indexOf(name)
@@ -98,6 +102,7 @@ exports.getTheme=function(name){
 exports.getReloaded=function(){	
 	return Object.create({reuse:reuse, closed:closed})
 }
+*/
 
 exports.isolate=function(name){
 	names.forEach(function(n){
@@ -116,30 +121,31 @@ exports.list=function(key){
 	return openWindows
 }
 
-exports.onBeforeUnload=function(windowName){
-	reuse.push(windowName)
-}
+//exports.onBeforeUnload=function(windowName){
+//	reuse.push(windowName)
+//}
 
 //window onClose event listener not working
-exports.onClose=function(windowName){
-	closed.push(windowName)
-}
+//exports.onClose=function(windowName){
+//	closed.push(windowName)
+//}
 
-exports.open=function(callingWindowName){
+exports.open=function(options){
+	options=options||{cascadeFrom:null, html:'CAD.html'}
 	
-	if (callingWindowName){
+	if (options.cascadeFrom){
 		//Cascade new window from callingWindowName
-		var win=windowManager.get(callingWindowName)
+		var win=windowManager.get(options.cascadeFrom)
 		//console.info('Caller properties:', win)
 		var pos=win.object.getPosition().map(function(v, i){
 			return v+positionDelta[i]
 		})
 	}
 	var name=getFreeWindowName()
-	//var html=`file://${__dirname}/CADbah.html`
+	var html=`file://${__dirname}/options.html`
 
 	if (names.includes(name)){
-		windowManager.open(name, name, HTML, false, Object.assign(options,{position:pos}))
+		windowManager.open(name, name, html, false, Object.assign(options,{position:pos}))
 		return true
 	} else { 
 		return 'window limit reached.'

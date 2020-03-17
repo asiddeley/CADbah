@@ -41,6 +41,7 @@ const dxf=require("../dxf/dxf.js")
 const EventEmitter=require('events') 
 const EE = new EventEmitter()
 
+
 // terms requires paper to be installed first
 const terms=require('../terms/terms.js')
 
@@ -49,13 +50,43 @@ const SF=require('./cadSupport.js')
 
 const onSubmit=function(ev){
 	// console.log('submit occured')
-	ev=ev||event			
+	ev=ev||event
+	data=ev.data||{}
+	success=data.success||function(){}
+	failure=data.failure||function(){}
 	var input$=$('#cad-input')
 	ev.preventDefault()
-	terms.run(input$.val()) 
+	terms.run(input$.val(), success, failure) 
 	input$.val("")
 	return false
 }
+
+const submit=function(content, success, failure){
+	//loads the command line and pulls the trigger 
+	exports.input(content)
+	$('form').trigger('submit')	
+}
+
+//get main.js electron process - we are in the CAD.html rendering process
+const REMOTE = require('electron').remote
+const WM=REMOTE.require('electron-window-manager')
+//listen for xCommand set by the other rendering process, tilemenu.html 
+WM.sharedData.watch('xCommantTime', function(prop, action, newValue, oldValue){
+	var content=WM.sharedData.fetch('xCommand')
+	submit(content,
+		function(result){
+			//report success result to other process via sharedData
+			WM.sharedData.set('xSuccess', result)
+			WM.sharedData.set('xSuccessTime', new Date())			
+		},
+		function(er){
+			//report failure error to other process via sharedData
+			WM.sharedData.set('xFailure', result)
+			WM.sharedData.set('xFailureTime', new Date())			
+		}		
+	)	
+})
+
 
 //////////////////////////////////
 // PUBLIC 
@@ -166,7 +197,7 @@ exports.prompt=function(msg, callback){
 }
 
 exports.submit=function(content){
-	//triggers submit, allows tools to input points to command line 
+	//adds content to the command line and pulls the trigger - submits it 
 	exports.input(content)
 	$('form').trigger('submit')	
 }
