@@ -38,16 +38,18 @@ exports.addvar=function(name, content){
 }
 
 //evaluates the given expression as a new Function with a rich CAD context
-exports.run=function(expression){
+exports.run=function(expression, success, failure){
 	var parameterName='argo'
 	var body=`${declare} return ${expression}`
 	try{
-		if (terms.getEcho()){cad.msg(expression)}
+		//if (terms.getEcho()){cad.msg(expression)}
 		var fun=new Function(parameterName, body)
 		var result=fun(context)
-		cad.msg(result)
+		//cad.msg(result)
+		success(result)
 	} catch (er) {
-		cad.debug(er)
+		//cad.debug(er)
+		failure(er)
 	}
 }
 

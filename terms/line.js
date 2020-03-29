@@ -28,37 +28,32 @@ SOFTWARE.
 
 const cad=require('../electron/CAD.js')
 const terms=require('../terms/terms.js')
-const pointer=require('../terms/pointer.js')
 
-terms.addTerm(new terms.createTerm({
+const lineTracer=function(path, points){
+	points.forEach(function(p, i, all){path.add(p)})
+}
+
+terms.addTerm({
 	name:'line', 
-	about:'adds a line to the drawing',
-	action:function(u,v,x,y){
-		CAD.prompt('u,v,x,y OR [enter] for pointer...', function(response){
-			//CAD.msg('Coords', response||'nothing entered')
-			
-			
-			
+	about:'adds lines to the drawing',
+	action:function(){
+		cad.pointer.activate(lineTracer)
+		cad.prompt('enter x1, y1, x2, y2 OR point & click...', function(responseText){
+			var points=[]
+			responseText.split(',').forEach(function(n, i, all){
+				if (i%2==1){points.push(new Point(Number(all[i-1]), Number(n)))}
+			})
+			var path=new Path()
+			path.strokeColor = 'black'			
+			lineTracer(path, points)
+			cad.pointer.standby()	
 		})
-		u=u||0; v=v||0; x=x||100; y=y||100
-		var path = new Path();
-		// Give the stroke a color
-		path.strokeColor = 'black';
-		var start = new Point(u, v);
-		// Move to start and draw a line from there
-		path.moveTo(start);
-		// Note the plus operator on Point objects.
-		// PaperScript does that for us, and much more!
-		//path.lineTo(start + [ 100, -50 ]);
-		path.lineTo(x,y)
-		view.draw()
+
 	},
 	alias:'ln',
 	topic:'entities', 
 	terms:['[x0, y0], [x1, y1]']
-}))
-
-
+})
 
 
 // PUBLIC

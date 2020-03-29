@@ -23,66 +23,68 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-// PRIVATE STATIC
+//PRIVATE STATIC
 
-// load  paper.js, the graphic engine of choice
+//first, install paper into window scope so its accessible from anywhere in code
 var paper=require('../node_modules/paper/dist/paper-core.js')
-
-// install paper into window scope, so its accessible from anywhere in code
 paper.install(window)
 
-// load jquery-ui
-require('../node_modules/jquery-ui-dist/jquery-ui.js')
-
-// dxf drawing handler
-const dxf=require("../dxf/dxf.js")
-
-// for CAD events
+//requires
+const $UI=require('../node_modules/jquery-ui-dist/jquery-ui.js')
+const drawing=require("../drawing/drawing.js")
 const EventEmitter=require('events') 
+const TERMS=require('../terms/terms.js')
+const SF=require('./support.js')
+const REMOTE = require('electron').remote
+const WM=REMOTE.require('electron-window-manager')
+const POINTER=require('../terms/pointer.js')
+
+//definitions
 const EE = new EventEmitter()
+var input$
 
+const onSubmit=function(ev, success, failure){
+	ev.preventDefault() 
+	//console.log('submit occured...', ev, 'success:', success, 'failure', failure)
+	
+	var cad=exports
+	success=success||function(re){cad.msg(re)}
+	failure=failure||function(er){cad.debug(er)}
 
-// terms requires paper to be installed first
-const terms=require('../terms/terms.js')
+	//pop top {prompt, handler} object that was pushed by cad.prompt()
+	var ph
+	if(promptstack.length>1){ph=promptstack.pop()}
+	else{ph=promptstack[0]}
+	
+	//execute the command 
+	ph.handler(input$.val(), success, failure)
 
-// load support functions
-const SF=require('./cadSupport.js')
-
-const onSubmit=function(ev){
-	// console.log('submit occured')
-	ev=ev||event
-	data=ev.data||{}
-	success=data.success||function(){}
-	failure=data.failure||function(){}
-	var input$=$('#cad-input')
-	ev.preventDefault()
-	terms.run(input$.val(), success, failure) 
-	input$.val("")
+	//cleanup
+	input$.val('')
+	input$.attr('placeholder', promptstack[promptstack.length-1].prompt)
 	return false
 }
 
-const submit=function(content, success, failure){
+//default command handler
+var promptstack=[{prompt:'command', handler:TERMS.run}]
+
+const submit=function(command, success, failure){
 	//loads the command line and pulls the trigger 
-	exports.input(content)
-	$('form').trigger('submit')	
+	exports.input(command)
+	$('form').trigger('submit',[window.event, success, failure])
 }
 
-//get main.js electron process - we are in the CAD.html rendering process
-const REMOTE = require('electron').remote
-const WM=REMOTE.require('electron-window-manager')
-//listen for xCommand set by the other rendering process, tilemenu.html 
-WM.sharedData.watch('xCommantTime', function(prop, action, newValue, oldValue){
-	var content=WM.sharedData.fetch('xCommand')
-	submit(content,
+WM.sharedData.watch('xSubmit', function(prop, action, newValue, oldValue){
+	//listen for xSubmit from the tilemenu.html rendering process
+	console.log('xSubmit received', newValue.command)
+	submit(newValue.command,
 		function(result){
 			//report success result to other process via sharedData
-			WM.sharedData.set('xSuccess', result)
-			WM.sharedData.set('xSuccessTime', new Date())			
+			WM.sharedData.set('xSuccess', {result:result, date:new Date()})
 		},
 		function(er){
 			//report failure error to other process via sharedData
-			WM.sharedData.set('xFailure', result)
-			WM.sharedData.set('xFailureTime', new Date())			
+			WM.sharedData.set('xFailure', {result:er, date:new Date()})
 		}		
 	)	
 })
@@ -96,110 +98,46 @@ exports.activate=function(options){
 	options==options||{}
 
 	if (typeof options.canvas=="undefined"){
-		//with jquery $ wrapper
 		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body)
-		//html element
-		this.canvas=canvas$.get();
+		this.canvas=canvas$.get()
 	} else {
-		this.canvas=options.canvas;
+		this.canvas=options.canvas
 		this.canvas$=$(options.canvas)
 	}
 
-	paper.setup(this.canvas)	
-	
-	// Prepare console for messages
-	if (typeof options.console!="undefined"){
-		this.console=options.console
-		this.console$=$(options.console)
-	}
 
+	paper.setup(this.canvas)	
 	SF.navbarSetup(options)
-	
-	// DRAWING DOCUMENT
-	dxf.activate()
-	
-	// UNDOER
+	drawing.activate()
+
+	//UNDOER
 	//this.undoer.activate(this)
 	
-	//program input
+	//program the command input
+	input$=$('#cad-input')
 	$('form').on('submit', onSubmit)
 
-};
+}
 
 exports.canvas=null
 exports.canvas$=null
-exports.console=null
-exports.console$=null
-exports.cmd=terms.run
+exports.cmd=TERMS.run
 
-
-exports.div=null;
-exports.div$=null;
-
-
-
-// debug - programming & error messages
-var debugcount=0
-var debuglimit=100
+//debug - programming & error messages
 exports.debug=function(){
 	for (var i in arguments){
-		//cout (CAD, "text", "class", count, limit)
-		SF.cout(this, arguments[i],"cad-debug", debugcount++, debuglimit)
-	};
-};
-
-
-exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
-
-// msg - regular messages or prompts to user
-var msgcount=0
-var msglimit=100
-exports.msg=function(){
-	for (var i in arguments){
-		//cout (CAD, "text", "class", count, limit)
-		SF.cout(this, arguments[i], "cad-msg", msgcount++, msglimit)
+		WM.sharedData.set('xMessage', {html:arguments[i], date:new Date(), debug:true})
 	}
 }
 
-//event programmer
-exports.on=function(eventname, fun){EE.emit(eventname, fun)}
-
-exports.options={
-	admin:{user:"unnamed", disc:'arch'},
-	actionsEnabled:false,
-	database:null, //to be determined
-}	
-
-var promptstack=[{msg:'command', callback:onSubmit}]
-exports.prompt=function(msg, callback){
-	
-	var input$=$('#cad-input')	
-	promptstack.push({msg:msg, callback:callback})
-	input$.attr('placeholder', msg)
-	// remove current submit callback
-	$('form').off('submit', promptstack[promptstack.length-1].callback)
-	// replace with new callback to run once
-	$('form').one('submit', function(e){
-		try{			
-			callback(input$.val())
-			input$.val('')
-			return false
-		}catch(e){
-			CAD.debug(e)
-		}finally{
-			//restore command line and callback
-			if (promptstack.length>1){promptstack.pop()}
-			var last=promptstack[promptstack.length-1]
-			input$.attr('placeholder', last.msg)
-			$('form').on('submit', last.callback)
-		}		
-	})	
+exports.debugshow=function(val){
+	console.log('debugshow:', val)
 }
 
-exports.submit=function(content){
-	//adds content to the command line and pulls the trigger - submits it 
-	exports.input(content)
-	$('form').trigger('submit')	
+exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
+
+exports.escape=function(){
+	//resets the promptstack	
 }
 
 exports.input=function(content){
@@ -210,16 +148,37 @@ exports.input=function(content){
 	}
 }
 
-exports.escape=function(){
-		
-	
+exports.msg=function(){
+	for (var i in arguments){
+		WM.sharedData.set('xMessage', {html:arguments[i], date:new Date()})
+	}
 }
 
-// input content to interpreter, bypassing command line
-exports.run=function(content){terms.run(content)}
+exports.on=function(eventname, fun){EE.emit(eventname, fun)}
 
+exports.options={
+	admin:{user:"unnamed", disc:'arch'},
+	actionsEnabled:false,
+	database:null, 
+}	
 
-//Object.seal(exports)
+exports.pointer=POINTER
+
+exports.prompt=function(prompt, handler){
+	promptstack.push({prompt:prompt, handler:handler})
+	input$.attr('placeholder', prompt)
+}
+
+//input content to interpreter, bypassing command line
+exports.run=function(content){
+	exports.msg('RUN:',content)
+	TERMS.run(content)
+}
+
+exports.wipe=function(){
+	WM.sharedData.set('xMessage', {wipe:true, date:new Date()})
+}
+
 //exports.undoer=require("./helpers/undoer")
 
 

@@ -6,7 +6,7 @@ MIT License
 
 // PRIVATE STATIC
 const CAD=require('../electron/CAD.js')
-const line=require('./dxf_line.js')
+const line=require('./line.js')
 var {Bounds}=require('./support.js')
 
 

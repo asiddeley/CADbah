@@ -6,7 +6,7 @@ MIT License
 
 // PRIVATE STATIC
 
-var entity=require("../dxf/dxf_entity.js");
+var entity=require("../drawing/entity.js");
 //var {$V}=require("../helpers/sylvester.src.plus.js");
 
 //line data constructor

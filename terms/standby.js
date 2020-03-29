@@ -28,57 +28,17 @@ SOFTWARE.
 
 const terms=require('../terms/terms.js')
 
-const pointer=new Tool()
-pointer.name='pointer'
-
-var onMouseUp=function(e){
-	CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))
-	points.push(e.point)
-}
-
-var onMouseMove=function(e){
-	path.removeSegments()
-	//note that points.concat doesn't change points in any way
-	tracer(path, points.concat(e.point))	
-}
-
-var path=null
-var points=[]
-var tracer=function(){}
+const standby=new Tool()
+standby.name='standby'
 
 terms.addTerm(terms.createTerm({
-	name:'pointer', 
-	about:'returns the paper coordinates of the mouse when clicked',
+	name:'standby', 
+	about:'deactivates current paper tool',
 	action:function(){
-		//paper commands installed in window scope
-		tools.find(tool => tool.name == 'pointer').activate()
+		tools.find(tool => tool.name == 'standby').activate()
 	},
-	alias:'pp',
+	alias:'esc',
 	topic:'tools', 
-	terms:['none']
+	terms:['no parameters']
 }))
 
-
-// PUBLIC
-exports.activate=function(traceFunction){
-	if (path==null){path=new Path()}
-	path.strokeColor='silver'
-	tracer=traceFunction||function(){}
-	pointer.onMouseMove=onMouseMove
-	pointer.onMouseUp=onMouseUp
-	
-	//paper commands installed in window scope
-	tools.find(tool => tool.name == 'pointer').activate()
-}
-
-exports.getPoints=function(){return points}
-
-exports.setTracer=function(tracerFunction){tracer=tracerFunction}
-
-exports.standby=function(){
-	//clear everything
-	tracer=function(){}
-	path.removeSegments()
-	points=[]
-	tools.find(tool => tool.name == 'standby').activate()
-}

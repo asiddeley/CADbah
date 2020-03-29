@@ -42,7 +42,10 @@ var Term=function(options){
 }
 
 var addTerm=function(term){
-	if (!(term instanceof Term)) {return}
+	if (!(term instanceof Term)) {
+		if (typeof term == 'object'){term=new Term(term)}
+		else {return}
+	}
 	//store it
 	terms.push(term)
 	//program name
@@ -57,60 +60,47 @@ var addTerm=function(term){
 // CORE TERMS
 
 // clear
-addTerm(new Term({
-	name:'clear', 
-	about:'Clears the message console',
-	action:function(){cad.console$.empty()},
-	alias:'cls',
+addTerm({
+	name:'wipe', 
+	about:'Wipes the message console clean',
+	action:function(){cad.wipe()},
+	alias:null,
 	topic:'core', 
 	terms:['no parameters']
-}))
+})
 
 // debug
-addTerm(new Term({
-	name:'debug', 
+addTerm({
+	name:'debugshow', 
 	about:`Controls whether debugging messages are shown<br>
 		&gt;true<br>
 		shows debugging messages<br>"
 		&gt;false<br>
 		hides debugging messages`,
-	action:function(showTrue){
-		showTrue=showTrue||1
-		//change the contents of <style> </style> 
-		var bug$=$("#cad-debug-style")
-		if (bug$.length==0){
-			cad.debug("missing style tag (id='cad-debug-style')")
-			return
-		}
-		if(showTrue==1){
-			bug$.html(bug$.html().replace("display:none","display:block"))
-			cad.msg('Error messages displayed')
-		} 
-		else if(showTrue==0) {
-			bug$.html(bug$.html().replace("display:block","display:none"))
-			cad.msg('Error messages hidden')			
-		}
-		cad.console.scrollTop=cad.console.scrollHeight
+	action:function(){
+		cad.prompt('debug messages (hide 0, show 1)', function(val){			
+			cad.debugshow(val)			
+		})
 	},
-	alias:null,
+	alias:'bug',
 	topic:'core', 
 	terms:['no parameters']
-}))
+})
 
 // echo
 var echomode=true
-addTerm(new Term({
+addTerm({
 	name:'echo', 
 	about:'Enables or disables the display of user input on the console',
 	action:function(){echomode=!echomode},
 	alias:null,
 	topic:'core', 
 	terms:['no parameters']
-}))
+})
 exports.getEcho=function(){return echomode}
 
 // terminology - dir
-addTerm(new Term({
+addTerm({
 	name:'terminology', 
 	about:'Lists all available terms or commands',
 	action:function(){
@@ -127,18 +117,23 @@ addTerm(new Term({
 	alias:'dir',
 	topic:'core', 
 	terms:['no parameters']
-}))
+})
 
 ////////////////////////////////
 // PUBLIC
 exports.addTerm=addTerm
 exports.createTerm=function(options){return new Term(options)}
 exports.Term=Term
-exports.run=inter.run
+exports.run=function(expression, success, failure){
+	//console.log('Exp:', expression, 'Success:', success, 'Failure:', failure,'=====================')
+	inter.run(expression, success, failure)
+}
+
 
 ////////////////////////////////
 // Load rest of the terms
 // require('./point.js')
+//require('./pointer.js')
 require('./line.js')
-
+require('./standby.js')
 

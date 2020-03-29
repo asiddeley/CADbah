@@ -6,97 +6,163 @@
 
 
 <style>
-body {background-color:beige;}
 
-.tile-group {background-color:black; width:96px; height:96px;}
-.msgbox{
+.oldmsgbox{
 	width:96px; height:96px;
 	background-color:silver; 
 	border-color:black;
 	border-width:1px;
 	color:black;
 	overflow:auto;
-	font-family:'roboto' sans-serif;
+	font-family:'roboto', sans-serif;
 	font-size:0.75em;
 }
-p {
-	background-color:gray;
+
+.status-bar {height:16px;}
+.message-board {height:192px;}
+.status-bar, .message-board{
+	background-color:rgb(11,62,111);
+	padding:8px;
+	color:white;
+	overflow:auto;
+	font-family:'roboto', sans-serif;
+	font-size:0.75em;
+}
+
+
+.tile-group {
+	background-color:black; 
+	width:96px;
+	height:112px;
+}
+
+.tile-group-text {
+	background-color:silver;
 	border-color:black;
 	border-width:1px;
-	width:96px;
 	padding:0px;
 	margin:0px;
-	color:white;
+	color:black;
+	fill:black;
 	font-family:roboto, sans-serif; 
 	font-size:0.75em;
 	text-align:center;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 8px;
+  background-color:rgb(11,62,111);
+  padding: 8px;
+}
+
+.cad-msg {
+	display:block;
+	color:ren\d;
+}
+
+.cad-debug {
+	display:block;
+	color:gray;
+}
+
 </style>
 <script type="text/javascript">
 
-	function msgBoxClear(){$('.msgbox').text('')}
+	const jQuery=require('jquery'); window.$=jQuery
+
+	const CS=require('../electron/support.js')
+
+	// messageboard
+	var MB
 	
-	function commandEcho(command){
-		$('.msgbox').text(command)
-		setTimeout(msgBoxClear, 1000)
+	var onMessage=function(prop, action, newValue, oldValue){
+		//console.log('xMessage received', newValue)
+		if (newValue.debug){MB.debug(newValue.html)}
+		if (newValue.wipe){MB.wipe()}
+		else {MB.message(newValue.html)}
 	}
 
-	var onSuccess
-	const onSuccessMain=function(response){
+	function statusClear(){$('.status-bar').text('')}
+	
+	function echo(command){
+		$('.status-bar').text(command)
+		setTimeout(statusClear, 1000)
+	}
+
+	var onSuccessText
+	var onSuccess=function(response, action, newValue, oldValue){
+		//console.log('onSuccess...', response, action, newValue, oldValue)
 		//typical handler
-		if (typeof onSuccess=='function'){
-		
-		} else {
-			$('.msgbox').text(response)
-			setTimeout(msgBoxClear, 1000)
+		if (typeof onSuccessText=='function'){
+			//onSuccessText()
 		}
+		else { MB.message(newValue.result) }
 	}
 	
-	var onFailure
-	const onFailureMain=function(er){
+	var onFailureText
+	var onFailure=function(response){
+		//console.log('onFailure...', response, action, newValue, oldValue)
 		//typical handler
-		$('.msgbox').text(er)
-		setTimeout(msgBoxClear, 1000)
+		if (typeof onFailureText=='function'){
+			//onFailureText()
+		}
+		else { MB.debug(newValue) }
 	}
 	
-	// load jquery 
-	var jQuery=require('jquery')
-	window.$=jQuery
-	
+	// remote or external interactions
+	var REMOTE = require('electron').remote
+	var WM=REMOTE.require('electron-window-manager')
+	WM.sharedData.watch('xSuccess', onSuccess)
+	WM.sharedData.watch('xFailure', onFailure)
+	WM.sharedData.watch('xMessage', onMessage)
 
-	const REMOTE = require('electron').remote
-	const WM=REMOTE.require('electron-window-manager')
-	WM.sharedData.watch('xSuccessTime', onSuccessMain)
-	WM.sharedData.watch('xFailureTime', onFailureMain)
-
+	// asynchronous checker
+	var whenlimit=20
+	var wheninterval=500
+	var when=function(check, callback){
+		whenlimit-=1
+		// callback or keep on watching within limit
+		if (check()){callback()}
+		else if (whenlimit>0){setTimeout(function(){when(check, callback)}, wheninterval)}		
+	}
 	
-	// basic browser behavior...
-	$(window).on({
-		// prevent accidental drag-and-drop on window
-		"drop": function(e){ e=e||event; e.preventDefault(); return false;},
-		"dragover":function(e){ e=e||event; e.preventDefault(); false;},
-		'contextmenu':function(){}
-	})
-	
-	// activate
 	$(document).ready(function(){
-		$('.tile')
-		.on('mouseenter', function(){$(this).css('fill','gold')})
-		.on('mouseleave', function(){$(this).css('fill','silver')})
-		.on('mousedown', function(){$(this).css('fill','gray')})
-		.on('mouseup', function(){$(this).css('fill','silver')})
-		.on('click',function(){
-			//find desc submit to CAD as a command
-			var command=$(this).find('.command').text()
-			onSuccess=$(this).find('.onSuccess').text()
-			onFailure=$(this).find('.onFailure').text()
-			commandEcho(command)
-			//command may be the same as previous, not changing so
-			WM.sharedData.set('xCommand', command)
-			//CAD.js watches for time stamp which always changes...
-			WM.sharedData.set('xCommandTime', new Date())
+
+		MB=new CS.MessageBoard({
+			el:$('.message-board'),
+			cssMessage:'cad-msg',
+			cssDebug:'cad-debug'		
 		})
+	
+		// load external tile-groups
+		var loaded=0
+		var loadables=$('.tile-group[src]').length
+		$('.tile-group').each(function(index){
+			var xml=$(this).attr('src')
+			if (xml){$(this).load(xml, ()=>loaded++)}			
+		})
+
+		var doneLoading=function(){return (loaded==loadables)}
+		
+		// program tiles when all external tile files are loaded
+		when(doneLoading, function(){
+			$('.tile')
+			.on('mouseenter', function(){$(this).css('fill','gold')})
+			.on('mouseleave', function(){$(this).css('fill','silver')})
+			.on('mousedown', function(){$(this).css('fill','gray')})
+			.on('mouseup', function(){$(this).css('fill','silver')})
+			.on('click',function(){
+				// find desc element and submit content to CAD as a command
+				var command=$(this).find('.command').text()
+				onSuccessText=$(this).find('.onSuccess').text()
+				onFailureText=$(this).find('.onFailure').text()
+				echo(command)
+				WM.sharedData.set('xSubmit', {command:command,	date:new Date()})
+			})
+		})
+
 	}) 
 
 </script>
@@ -106,111 +172,21 @@ p {
 
 <body>
 
-
-<p>Line Tools</p>
-<div class='tile-group' >
-<svg  viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'>
-
-<defs>
-	<g id='line2p'>
-		<line x1='8' y1='24' x2='24' y2='8' stroke='black' stroke-width='1'/>
-		<circle cx='8' cy='24' r='2' stroke='red' fill='black'/>
-		<circle cx='24' cy='8' r='2' stroke='red' fill='black'/>
-	</g>
-</defs>
-
-	<rect x='0' y='0' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='onSuccess'>onSuccess</desc>
-		<desc class='onFailure'>onFailure</desc>
-	</rect>
-	<use x='0' y='0' xlink:href="#line2p" />
-
-	<rect x='32' y='0' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='32' y='0' xlink:href="#line2p" />
-
-	<rect x='64' y='0' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='64' y='0' xlink:href="#line2p" />
-
-	<!-- 2ND ROW -->
-	
-	<rect x='0' y='32' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='0' y='32' xlink:href="#line2p" />
-
-	<rect x='32' y='32' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='32' y='32' xlink:href="#line2p" />
-
-	<rect x='64' y='32' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='64' y='32' xlink:href="#line2p" />
-
-	<!-- 3RD ROW -->
-	
-	<rect x='0' y='64' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='0' y='64' xlink:href="#line2p" />
-
-	<rect x='32' y='64' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='32' y='64' xlink:href="#line2p" />
-
-	<rect x='64' y='64' class='tile' width='32' height='32' 
-		fill='silver' stroke='black' stroke-width='1'>
-		<title>line2p</title>
-		<desc class='command'>line(1,1,100,100)</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
-	</rect>
-	<use x='64' y='64' xlink:href="#line2p" />
-
-</svg>
-</div REM='tile-group'>
-<p>Messages</p>
-<div class='msgbox'> 
-
+<div class='grid-container'>
+	<div class='tile-group' src='tilemenu_lines.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
 </div>
-
+<div class='tile-group-text'>STATUS BAR</div>
+<div class='status-bar'>status</div>
+<div class='tile-group-text'>MESSAGE BOARD</div>
+<div class='message-board'>message board</div>
 
 
 </body>
