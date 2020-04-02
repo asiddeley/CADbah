@@ -33,11 +33,11 @@ paper.install(window)
 const $UI=require('../node_modules/jquery-ui-dist/jquery-ui.js')
 const drawing=require("../drawing/drawing.js")
 const EventEmitter=require('events') 
-const TERMS=require('../terms/terms.js')
+const TERMS=require('../terminology/cadTerminology.js')
 const SF=require('./support.js')
-const REMOTE = require('electron').remote
+const REMOTE=require('electron').remote
 const WM=REMOTE.require('electron-window-manager')
-const POINTER=require('../terms/pointer.js')
+const POINTER=require('../terminology/pointer.js')
 
 //definitions
 const EE = new EventEmitter()
@@ -45,7 +45,7 @@ var input$
 
 const onSubmit=function(ev, success, failure){
 	ev.preventDefault() 
-	//console.log('submit occured...', ev, 'success:', success, 'failure', failure)
+	//console.log('submit occured...', 'success:', success, 'failure', failure)
 	
 	var cad=exports
 	success=success||function(re){cad.msg(re)}
@@ -71,12 +71,12 @@ var promptstack=[{prompt:'command', handler:TERMS.run}]
 const submit=function(command, success, failure){
 	//loads the command line and pulls the trigger 
 	exports.input(command)
-	$('form').trigger('submit',[window.event, success, failure])
+	$('form').trigger('submit',[success, failure])
 }
 
 WM.sharedData.watch('xSubmit', function(prop, action, newValue, oldValue){
 	//listen for xSubmit from the tilemenu.html rendering process
-	console.log('xSubmit received', newValue.command)
+	//console.log('xSubmit received', newValue.command)
 	submit(newValue.command,
 		function(result){
 			//report success result to other process via sharedData
@@ -85,7 +85,7 @@ WM.sharedData.watch('xSubmit', function(prop, action, newValue, oldValue){
 		function(er){
 			//report failure error to other process via sharedData
 			WM.sharedData.set('xFailure', {result:er, date:new Date()})
-		}		
+		}
 	)	
 })
 

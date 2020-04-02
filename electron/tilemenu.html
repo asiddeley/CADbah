@@ -6,6 +6,11 @@
 
 
 <style>
+body{
+	background-color:rgb(11,62,111);
+}
+
+
 
 .oldmsgbox{
 	width:96px; height:96px;
@@ -18,12 +23,37 @@
 	font-size:0.75em;
 }
 
-.status-bar {height:16px;}
-.message-board {height:192px;}
+.tile-full {
+	background-color:silver;
+	border-color:gray;
+	border-width:2px;
+	margin:1px;
+	padding:1px;
+	width:288px;
+} 
+
+.inset {
+	border-style:inset;
+}
+
+.outset {
+	border-style:outset;
+}
+
+.ridge {
+	border-style:ridge;
+}
+
+
+.status-bar {
+	height:16px;
+}
+.message-board {
+	height:192px;
+}
 .status-bar, .message-board{
-	background-color:rgb(11,62,111);
-	padding:8px;
-	color:white;
+	background-color:silver;
+	color:black;
 	overflow:auto;
 	font-family:'roboto', sans-serif;
 	font-size:0.75em;
@@ -37,11 +67,6 @@
 }
 
 .tile-group-text {
-	background-color:silver;
-	border-color:black;
-	border-width:1px;
-	padding:0px;
-	margin:0px;
 	color:black;
 	fill:black;
 	font-family:roboto, sans-serif; 
@@ -51,15 +76,15 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 8px;
+  grid-template-columns: 96px 96px 96px;
+  grid-gap: 1px;
   background-color:rgb(11,62,111);
-  padding: 8px;
+  padding: 1px;
 }
 
 .cad-msg {
 	display:block;
-	color:ren\d;
+	color:red;
 }
 
 .cad-debug {
@@ -84,25 +109,28 @@
 		else {MB.message(newValue.html)}
 	}
 
-	function statusClear(){$('.status-bar').text('')}
+	function statusBar(text){text=text||''; $('.status-bar').text(text)}
 	
 	function echo(command){
-		$('.status-bar').text(command)
-		setTimeout(statusClear, 1000)
+		statusBar(command)
+		setTimeout(statusBar, 1000)
 	}
 
 	var onSuccessText
 	var onSuccess=function(response, action, newValue, oldValue){
 		//console.log('onSuccess...', response, action, newValue, oldValue)
 		//typical handler
-		if (typeof onSuccessText=='function'){
+		if (typeof REMonSuccessText=='string'){			
+			var fn=new Function(onSuccessText)
+			fn()
+			MB.message(onSuccessText)
 			//onSuccessText()
 		}
 		else { MB.message(newValue.result) }
 	}
 	
 	var onFailureText
-	var onFailure=function(response){
+	var onFailure=function(response, action, newValue, oldValue){
 		//console.log('onFailure...', response, action, newValue, oldValue)
 		//typical handler
 		if (typeof onFailureText=='function'){
@@ -158,9 +186,15 @@
 				var command=$(this).find('.command').text()
 				onSuccessText=$(this).find('.onSuccess').text()
 				onFailureText=$(this).find('.onFailure').text()
-				echo(command)
+				echo(command+','+onSuccessText)
 				WM.sharedData.set('xSubmit', {command:command,	date:new Date()})
 			})
+			$('.tile-group-text')
+			.on('mouseenter', function(){$(this).css('background-color','gold')})
+			.on('mouseleave', function(){$(this).css('background-color','silver')})
+			.on('mousedown', function(){$(this).addClass('inset').removeClass('outset')})
+			.on('mouseup', function(){$(this).css('fill','silver').addClass('outset').removeClass('inset')})
+	
 		})
 
 	}) 
@@ -183,10 +217,10 @@
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 </div>
-<div class='tile-group-text'>STATUS BAR</div>
-<div class='status-bar'>status</div>
-<div class='tile-group-text'>MESSAGE BOARD</div>
-<div class='message-board'>message board</div>
+<div class='tile-group-text outset tile-full '>ECHO BAR</div>
+<div class='status-bar ridge tile-full ' ></div>
+<div class='tile-group-text outset tile-full '>MESSAGE BOARD</div>
+<div class='message-board ridge tile-full '></div>
 
 
 </body>

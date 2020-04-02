@@ -24,114 +24,72 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
+//////////////////
 // PRIVATE STATIC
 
 const cad=require('../electron/CAD.js')
-const inter=require('./interpreter.js')
-
-var terms=[]
-
-var Term=function(options){
-	options=options||{}
-	this.name=options.name||'unnamed' 
-	this.about=options.about||'No description'
-	this.alias=options.alias||null
-	this.action=options.action||function(){}
-	this.topic=options.topic||'none' 
-	this.terms=options.terms||[]
-}
-
-var addTerm=function(term){
-	if (!(term instanceof Term)) {
-		if (typeof term == 'object'){term=new Term(term)}
-		else {return}
-	}
-	//store it
-	terms.push(term)
-	//program name
-	inter.addvar(term.name, term.action)
-	//program alias
-	if (typeof term.alias=='string'){
-		inter.addvar(term.alias, term.action)
-	}
-}
+const {Terminology}=require('../electron/support.js')
+const cadterms=new Terminology()
 
 ////////////////////////////////
 // CORE TERMS
-
-// clear
-addTerm({
+cadterms.define({
 	name:'wipe', 
 	about:'Wipes the message console clean',
 	action:function(){cad.wipe()},
 	alias:null,
 	topic:'core', 
-	terms:['no parameters']
+	terms:[]
 })
 
-// debug
-addTerm({
+cadterms.define({
 	name:'debugshow', 
 	about:`Controls whether debugging messages are shown<br>
 		&gt;true<br>
 		shows debugging messages<br>"
 		&gt;false<br>
 		hides debugging messages`,
-	action:function(){
+	action:function(param){
 		cad.prompt('debug messages (hide 0, show 1)', function(val){			
 			cad.debugshow(val)			
 		})
 	},
 	alias:'bug',
-	topic:'core', 
-	terms:['no parameters']
+	topic:'core',
+	param:{}
 })
 
-// echo
 var echomode=true
-addTerm({
+cadterms.define({
 	name:'echo', 
 	about:'Enables or disables the display of user input on the console',
 	action:function(){echomode=!echomode},
 	alias:null,
 	topic:'core', 
-	terms:['no parameters']
+	terms:[]
 })
+
 exports.getEcho=function(){return echomode}
 
-// terminology - dir
-addTerm({
+cadterms.define({
 	name:'terminology', 
 	about:'Lists all available terms or commands',
-	action:function(){
-		var names=terms.map(function(t){return t.name})
-		var aliasterms=terms.filter(function(t){return (typeof t.alias == 'string')})
-		var dir=names.concat(aliasterms.map(function(t){return t.alias + ' (alias)'}))
-		dir.sort()
-		var htm=dir.reduce(
-			function(ac, cv){return ac+'<li>'+cv+'</li>'}, 
-			'<h3>Terminology</h3><ol>'
-		)
-		cad.msg(htm+"</ol><hr>")
-	},
+	action:function(){cad.msg(cadterms.directory())},
 	alias:'dir',
 	topic:'core', 
-	terms:['no parameters']
+	terms:[]
 })
 
 ////////////////////////////////
 // PUBLIC
-exports.addTerm=addTerm
-exports.createTerm=function(options){return new Term(options)}
-exports.Term=Term
-exports.run=function(expression, success, failure){
-	//console.log('Exp:', expression, 'Success:', success, 'Failure:', failure,'=====================')
-	inter.run(expression, success, failure)
-}
-
+exports.addTerm=cadterms.addTerm
+exports.define=cadterms.define
+exports.createTerm=function(options){return cadterms.createTerm(options)}
+exports.Term=cadterms.Term
+exports.run=cadterms.run
 
 ////////////////////////////////
-// Load rest of the terms
+// Load and define rest of the terms
 // require('./point.js')
 //require('./pointer.js')
 require('./line.js')

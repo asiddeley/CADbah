@@ -23,33 +23,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
-// PRIVATE STATIC
+
 
 const cad=require('../electron/CAD.js')
-const terms=require('./terms.js')
+const CT=require('../terminology/cadTerminology.js')
 
-var context={'hello':function(){return 'hello world!'}}
-var declare='var hello=argo.hello;'
-
-// PUBLIC
-exports.addvar=function(name, content){
-	declare+=`var ${name}=argo.${name};`
-	context[name]=content
+const lineTracer=function(path, points){
+	points.forEach(function(p, i, all){path.add(p)})
 }
 
-//evaluates the given expression as a new Function with a rich CAD context
-exports.run=function(expression, success, failure){
-	var parameterName='argo'
-	var body=`${declare} return ${expression}`
-	try{
-		//if (terms.getEcho()){cad.msg(expression)}
-		var fun=new Function(parameterName, body)
-		var result=fun(context)
-		//cad.msg(result)
-		success(result)
-	} catch (er) {
-		//cad.debug(er)
-		failure(er)
-	}
-}
+CT.define({
+	name:'line', 
+	about:'adds lines to the drawing',
+	action:function(success, failure){
+		cad.pointer.activate({tracer:lineTracer, echo:true})
+		cad.prompt('[x1, y1, x2, y2...][point & click...]OK', function(responseText){
+			var points=[]
+			//responseText.split(',').forEach(function(n, i, all){
+			//	if (i%2==1){points.push(new Point(Number(all[i-1]), Number(n)))}
+			//})
+			points=cad.pointer.getPoints()
+			var path=new Path()
+			path.strokeColor = 'black'
+			lineTracer(path, points)
+			cad.pointer.standby()	
+			success('line created')					
+		})
+	},
+	alias:'ln',
+	topic:'entities', 
+	terms:[]
+})
+
 

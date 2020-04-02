@@ -26,19 +26,64 @@ SOFTWARE.
 
 // PRIVATE STATIC
 
-const terms=require('../terms/terms.js')
+const CT=require('../terminology/cadTerminology.js')
 
-const standby=new Tool()
-standby.name='standby'
+const pointer=new Tool()
+pointer.name='pointer'
 
-terms.addTerm(terms.createTerm({
-	name:'standby', 
-	about:'deactivates current paper tool',
+var echo=false
+
+var onMouseUp=function(e){
+	if (echo){CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))}
+	points.push(e.point)
+}
+
+var onMouseMove=function(e){
+	path.removeSegments()
+	//note that points.concat doesn't change points in any way
+	tracer(path, points.concat(e.point))	
+}
+
+var path=null
+var points=[]
+var tracer=function(){}
+
+CT.define({
+	name:'pointer', 
+	about:'returns the paper coordinates of the mouse when clicked',
 	action:function(){
-		tools.find(tool => tool.name == 'standby').activate()
+		//paper commands installed in window scope
+		tools.find(tool => tool.name == 'pointer').activate()
 	},
-	alias:'esc',
+	alias:'pp',
 	topic:'tools', 
-	terms:['no parameters']
-}))
+	terms:[]
+})
 
+
+// PUBLIC
+exports.activate=function(options){
+	options=options||{}
+	echo=options.echo||false
+	tracer=options.tracer||function(){}
+
+	if (path==null){path=new Path()}
+	path.strokeColor='silver'
+	pointer.onMouseMove=onMouseMove
+	pointer.onMouseUp=onMouseUp
+	
+	//paper commands installed in window scope
+	tools.find(tool => tool.name == 'pointer').activate()
+}
+
+exports.getPoints=function(){return points}
+
+exports.setTracer=function(tracerFunction){tracer=tracerFunction}
+
+exports.standby=function(){
+	//clear everything
+	tracer=function(){}
+	path.removeSegments()
+	points=[]
+	tools.find(tool => tool.name == 'standby').activate()
+}

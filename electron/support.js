@@ -5,7 +5,7 @@ Copyright (c) 2018, 2019, 2020  Andrew Siddeley
 MIT License
 *****/
 
-//don't require cad because this file may be required by separate processes cad.html vs tilemenu.html
+//don't require cad.  This file may be required by separate processes cad.html vs tilemenu.html
 //var cad=require('../electron/CAD.js')
 
 
@@ -142,3 +142,67 @@ exports.navbarSetup=function(options){
 		})
 	})
 }
+
+////////////////////////
+// dictionary and interperter
+
+exports.Terminology=function(){
+
+	var addvar=function(name, content){
+		context+=`var ${name}=contexto.${name};`
+		contexto[name]=content
+	}
+	var contexto={'hello':function(){return 'hello world!'}}
+	var context='var hello=contexto.hello;'
+	var terms=[]
+	
+	this.addTerm=function(term){
+		if (!(term instanceof this.Term)) {
+			if (typeof term == 'object'){term=new this.Term(term)}
+			else {return}
+		}
+		terms.push(term)
+		addvar(term.name, term.action)
+		if (typeof term.alias=='string'){addvar(term.alias, term.action)}
+	}
+	this.define=this.addTerm
+
+	this.directory=function(title){
+		title=title||'Terminology'
+		var names=terms.map(function(t){return t.name})
+		var aliasterms=terms.filter(function(t){return (typeof t.alias == 'string')})
+		var dir=names.concat(aliasterms.map(function(t){return t.alias + ' (alias)'}))
+		dir.sort()
+		var htm=dir.reduce(
+			function(ac, cv){return ac+'<li>'+cv+'</li>'}, 
+			`<h3>${title}</h3><ol>`
+		)
+		return (htm+"</ol><hr>")
+	}
+
+	this.run=function(term, success, failure){
+		//term eg: 'line' not 'line(0,0,10,10)'
+		var body=`${context} return ${term}(success, failure);`
+		try{
+			var fun=new Function('contexto', 'success', 'failure', body)
+			fun(contexto, success, failure)
+		} catch (er) {
+			if (typeof failure=='function'){failure(er)}
+		}
+	}
+
+	this.Term=function(options){
+		options=options||{}
+		this.name=options.name||'unnamed' 
+		this.about=options.about||'No description'
+		this.alias=options.alias||null
+		this.action=options.action||function(){}
+		this.topic=options.topic||'none' 
+		this.terms=options.terms||[]
+	}
+	
+	this.createTerm=function(options){
+		return new this.Term(options)		
+	}
+	
+} 
