@@ -12,8 +12,8 @@
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>line2p</title>
 		<desc class='command'>line</desc>
-		<desc class='onSuccess'>echo('line created')</desc>
-		<desc class='onFailure'>echo('problem creating line')</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
 	<use x='0' y='0' xlink:href="#line2p" />
 
@@ -21,8 +21,8 @@
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>line2p</title>
 		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
 	<!--use x='32' y='64' xlink:href="#line2p" /-->
 

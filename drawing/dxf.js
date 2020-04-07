@@ -5,13 +5,13 @@ MIT License
 ***/
 
 // PRIVATE STATIC
-const CAD=require('../electron/CAD.js')
-const line=require('./line.js')
-var {Bounds}=require('./support.js')
+const cad=require('../electron/CAD.js')
+const lib=require('./dxf-library.js')
+const line=require('./entity-line.js')
 
 
 // current drawing
-var dxf 
+var data
 
 // drawing constructor - data structure
 function Dxf(){
@@ -21,6 +21,7 @@ function Dxf(){
 		$EXTMIN:{x:0,y:0,z:0},
 		$EXTMAX:{x:10,y:10,z:0}
 	}
+
 	this.tables={
 		linetype:{
 			Continuous:{
@@ -45,71 +46,73 @@ function Dxf(){
 		}
 	}
 	this.blocks={}
-	this.entities=[
-		line.create(this)
-		//new line.Line(this)
-	]	
+	
+	this.entities=[]	
+
 }
 
 
-render=function(entities){
-	
-	entities=entities||dxf.entities
-	var e, i
-	for (i=0; i<entities.length; i++){
-		e=entities[i];
-		//CAD.debug("entity:",e.type);
-		switch (e.type){
-			case "LINE":line.render(e); break;
 
-			
-		}		
-	};
-	
-	CAD.debug("drawing.setScene() done");
-};
 
-// MIXINS
-// none
-
+////////////
 // PUBLIC
 
+exports.about='dxf'
 
+exports.add=function(graphic){
+	data.entities.push[graphic]	
+}
 
 exports.activate=function(){
-	
-	//line.activate(cad);
-	dxf=new Dxf();
-
+	//line.activate(cad)
+	data=new Dxf()	
 	//setup event handlers
-	CAD.on('dxfchanged, callrender', render)
-};
+	//CAD.on('dxfchanged, callrender', render)
+}
 
+//not required - one drawing open at a time for now
+exports.create=function(options){return new Drawing(options)}
+
+//current drawing
+exports.data=data
+
+//deseiralize
+exports.deserialize=function(dxf){}
+
+//activate alias
 exports.initialize=function(cad){exports.activate(cad)}
 
-exports.deserialize=function(dxf){
-	//merge or overwrite
-		
-};
-
+//getters
 exports.getColorByIndex=function(index){
-	return "Black";
-};
+	return "Black"
+}
 
 exports.getColorByLayer=function(layer){
 
-	return "Black";
-};
+	return "Black"
+}
 
 exports.getExtents=function(){
 	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
-	return [this.data.header.$EXTMIN, this.data.header.$EXTMAX];
-};
+	return [this.data.header.$EXTMIN, this.data.header.$EXTMAX]
+}
 
 exports.getBounds=function(){
 	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
-	return new Bounds(dxf.header.$EXTMIN,	dxf.header.$EXTMAX);
-};
+	return new lib.Bounds(drawing.header.$EXTMIN,	drawing.header.$EXTMAX)
+}
+
+//renderer
+exports.render=function(){
+	data.entities.forEach(function(entity){
+		//CAD.debug("entity:",e.type);
+		switch (entity.type){
+			case 'line':line.render(entity); break;
+
+			
+		}		
+	})
+}
 
 //set drawing
 exports.setDxf=function(data){
@@ -132,5 +135,5 @@ exports.serialize=function(){
 	return dxf	
 }
 
-exports.render=render
+
 

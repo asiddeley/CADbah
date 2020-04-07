@@ -84,12 +84,12 @@ body{
 
 .cad-msg {
 	display:block;
-	color:red;
+	color:rgb(11,62,111);
 }
 
 .cad-debug {
 	display:block;
-	color:gray;
+	color:red;
 }
 
 </style>
@@ -111,40 +111,24 @@ body{
 
 	function statusBar(text){text=text||''; $('.status-bar').text(text)}
 	
-	function echo(command){
-		statusBar(command)
-		setTimeout(statusBar, 1000)
-	}
+	function echo(command){	statusBar(command);	setTimeout(statusBar, 1000)}
 
-	var onSuccessText
-	var onSuccess=function(response, action, newValue, oldValue){
-		//console.log('onSuccess...', response, action, newValue, oldValue)
-		//typical handler
-		if (typeof REMonSuccessText=='string'){			
-			var fn=new Function(onSuccessText)
-			fn()
-			MB.message(onSuccessText)
-			//onSuccessText()
-		}
-		else { MB.message(newValue.result) }
-	}
-	
-	var onFailureText
-	var onFailure=function(response, action, newValue, oldValue){
-		//console.log('onFailure...', response, action, newValue, oldValue)
-		//typical handler
-		if (typeof onFailureText=='function'){
-			//onFailureText()
-		}
-		else { MB.debug(newValue) }
+	var onSuccessText='success'
+	var onFailureText='failure'	
+	function onSubmitResponse(response, action, newvalue, oldvalue){
+		//arguments ('onSubmitResponse', 'set', {success:true, result:'text', date:timestamp}, {previous})
+		if(newvalue.success==true){
+			MB.message(newvalue.result||onSuccessText)
+		} else {
+			MB.debug(newvalue.result||onFailureText)
+		}	
 	}
 	
 	// remote or external interactions
 	var REMOTE = require('electron').remote
 	var WM=REMOTE.require('electron-window-manager')
-	WM.sharedData.watch('xSuccess', onSuccess)
-	WM.sharedData.watch('xFailure', onFailure)
-	WM.sharedData.watch('xMessage', onMessage)
+	WM.sharedData.watch('x-submit-response', onSubmitResponse)
+	WM.sharedData.watch('x-message', onMessage)
 
 	// asynchronous checker
 	var whenlimit=20
@@ -184,10 +168,10 @@ body{
 			.on('click',function(){
 				// find desc element and submit content to CAD as a command
 				var command=$(this).find('.command').text()
-				onSuccessText=$(this).find('.onSuccess').text()
-				onFailureText=$(this).find('.onFailure').text()
+				onSuccessText=$(this).find('.success').text()
+				onFailureText=$(this).find('.failure').text()
 				echo(command+','+onSuccessText)
-				WM.sharedData.set('xSubmit', {command:command,	date:new Date()})
+				WM.sharedData.set('x-submit', {command:command,	date:new Date()})
 			})
 			$('.tile-group-text')
 			.on('mouseenter', function(){$(this).css('background-color','gold')})

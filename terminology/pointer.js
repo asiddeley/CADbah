@@ -80,10 +80,11 @@ exports.getPoints=function(){return points}
 
 exports.setTracer=function(tracerFunction){tracer=tracerFunction}
 
-exports.standby=function(){
+exports.standby=function(success){
 	//clear everything
 	tracer=function(){}
 	path.removeSegments()
 	points=[]
 	tools.find(tool => tool.name == 'standby').activate()
+	success('pointer on standby')
 }

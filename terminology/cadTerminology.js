@@ -74,7 +74,10 @@ exports.getEcho=function(){return echomode}
 cadterms.define({
 	name:'terminology', 
 	about:'Lists all available terms or commands',
-	action:function(){cad.msg(cadterms.directory())},
+	action:function(success, failure){
+		cad.msg(cadterms.directory()) 
+		success('terminology listed')
+	},
 	alias:'dir',
 	topic:'core', 
 	terms:[]

@@ -27,32 +27,55 @@ SOFTWARE.
 
 const cad=require('../electron/CAD.js')
 const CT=require('../terminology/cadTerminology.js')
+const line=require('../drawing/entity-line.js')
 
-const lineTracer=function(path, points){
+//const CT=cad.terminology
+//const LINE=require('../drawing/line.js') //OR
+//const LINE=cad.drawing.Line
+//const tracer=cad.drawing.Line.prototype.tracer
+//var path=new Path(); LINE.tracer(path, points); LINE.commit(path) 
+
+const tracer=function(path, points){
 	points.forEach(function(p, i, all){path.add(p)})
+}
+
+const action=function(success, failure){
+	cad.pointer.activate({tracer:tracer, echo:true})
+	cad.prompt('[x1, y1, x2, y2...][point & click...]OK', function(responseText){
+		var points=[]
+		//responseText.split(',').forEach(function(n, i, all){
+		//	if (i%2==1){points.push(new Point(Number(all[i-1]), Number(n)))}
+		//})
+		points=cad.pointer.getPoints()
+		var path=new Path()
+		path.strokeColor = 'black'
+		//paper point = cad vertice
+		//line.tracer(path, points)
+		cad.add(new line.Data({points:points}))
+		//LINE.tracer(path, points)
+		//
+		//LINE.commit(path, undoer)
+		cad.pointer.standby(success)
+		//failure('line failed')
+		success('line created')
+	})
+}
+
+const undoer=function(id){
+	
+	
 }
 
 CT.define({
 	name:'line', 
-	about:'adds lines to the drawing',
-	action:function(success, failure){
-		cad.pointer.activate({tracer:lineTracer, echo:true})
-		cad.prompt('[x1, y1, x2, y2...][point & click...]OK', function(responseText){
-			var points=[]
-			//responseText.split(',').forEach(function(n, i, all){
-			//	if (i%2==1){points.push(new Point(Number(all[i-1]), Number(n)))}
-			//})
-			points=cad.pointer.getPoints()
-			var path=new Path()
-			path.strokeColor = 'black'
-			lineTracer(path, points)
-			cad.pointer.standby()	
-			success('line created')					
-		})
-	},
 	alias:'ln',
-	topic:'entities', 
-	terms:[]
+	about:'adds lines to the drawing',
+	topic:'entities',
+	action:action,
+	inputs:[
+		{name:'success', type:'function', optional:true, remark:'success callback'},
+		{name:'failure', type:'function', optional:true, remark:'failure callback'}
+	]
 })
 
 

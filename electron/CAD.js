@@ -31,7 +31,7 @@ paper.install(window)
 
 //requires
 const $UI=require('../node_modules/jquery-ui-dist/jquery-ui.js')
-const drawing=require("../drawing/drawing.js")
+const DRAWING=require("../drawing/dxf.js")
 const EventEmitter=require('events') 
 const TERMS=require('../terminology/cadTerminology.js')
 const SF=require('./support.js')
@@ -74,25 +74,17 @@ const submit=function(command, success, failure){
 	$('form').trigger('submit',[success, failure])
 }
 
-WM.sharedData.watch('xSubmit', function(prop, action, newValue, oldValue){
-	//listen for xSubmit from the tilemenu.html rendering process
-	//console.log('xSubmit received', newValue.command)
-	submit(newValue.command,
-		function(result){
-			//report success result to other process via sharedData
-			WM.sharedData.set('xSuccess', {result:result, date:new Date()})
-		},
-		function(er){
-			//report failure error to other process via sharedData
-			WM.sharedData.set('xFailure', {result:er, date:new Date()})
-		}
+//listen for x-submit from the tilemenu.html rendering process
+WM.sharedData.watch('x-submit', function(self, action, newvalue, oldvalue){
+	//report success/failure result to other process(es) via sharedData
+	submit(newvalue.command,
+		(result)=>{WM.sharedData.set('x-submit-response', {success:true, result:result, date:new Date()})},
+		(er)=>{WM.sharedData.set('x-submit-response', {success:false, result:er, date:new Date()})}
 	)	
 })
 
-
 //////////////////////////////////
 // PUBLIC 
-
 exports.activate=function(options){
 
 	options==options||{}
@@ -108,7 +100,7 @@ exports.activate=function(options){
 
 	paper.setup(this.canvas)	
 	SF.navbarSetup(options)
-	drawing.activate()
+	DRAWING.activate()
 
 	//UNDOER
 	//this.undoer.activate(this)
@@ -117,6 +109,12 @@ exports.activate=function(options){
 	input$=$('#cad-input')
 	$('form').on('submit', onSubmit)
 
+}
+
+//shortcut
+exports.add=function(entity){
+	cad.msg(entity.type + ' added')
+	DRAWING.add(entity)
 }
 
 exports.canvas=null
@@ -134,6 +132,9 @@ exports.debugshow=function(val){
 	console.log('debugshow:', val)
 }
 
+exports.drawing=DRAWING.data
+
+
 exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
 
 exports.escape=function(){
@@ -150,7 +151,7 @@ exports.input=function(content){
 
 exports.msg=function(){
 	for (var i in arguments){
-		WM.sharedData.set('xMessage', {html:arguments[i], date:new Date()})
+		WM.sharedData.set('x-message', {html:arguments[i], date:new Date()})
 	}
 }
 
@@ -176,9 +177,9 @@ exports.run=function(content){
 }
 
 exports.wipe=function(){
-	WM.sharedData.set('xMessage', {wipe:true, date:new Date()})
+	WM.sharedData.set('x-message', {wipe:true, date:new Date()})
 }
 
 //exports.undoer=require("./helpers/undoer")
-
+window.cad=exports
 

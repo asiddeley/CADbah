@@ -33,12 +33,14 @@ standby.name='standby'
 
 CT.define(CT.createTerm({
 	name:'standby', 
+	alias:'esc',	
 	about:'deactivates current paper tool',
-	action:function(){
-		tools.find(tool => tool.name == 'standby').activate()
+	topic:'tools', 	
+	action:function(success){
+		cad.msg('current tool:'+tool.name)
+		//tools.find(tool => tool.name == 'standby').activate()
+		success('tools on standby')
 	},
-	alias:'esc',
-	topic:'tools', 
-	terms:[]
+	inputs:[{name:'success', type:'function', remark:'success callback'}]
 }))
 

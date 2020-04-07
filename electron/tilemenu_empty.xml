@@ -1,7 +1,7 @@
 <svg  viewBox='0 0 96 112' xmlns='http://www.w3.org/2000/svg'>
 
 <defs>
-	<g id='line2p'>
+	<g id='success'>
 		<line x1='8' y1='24' x2='24' y2='8' stroke='black' stroke-width='1'/>
 		<circle cx='8' cy='24' r='2' stroke='red' fill='black'/>
 		<circle cx='24' cy='8' r='2' stroke='red' fill='black'/>
@@ -14,28 +14,28 @@
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='onSuccess'>onSuccess</desc>
-		<desc class='onFailure'>onFailure</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='32' y='0' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='64' y='0' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<!-- 2ND ROW -->
 	
@@ -43,28 +43,28 @@
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='32' y='32' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='64' y='32' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<!-- 3RD ROW -->
 	
@@ -72,28 +72,28 @@
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='32' y='64' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='64' y='64' class='tile' width='32' height='32' 
 		fill='silver' stroke='black' stroke-width='1'>
 		<title>empty</title>
 		<desc class='command'>dir</desc>
-		<desc class='success'>line2p</desc>
-		<desc class='failure'>line2p_fail</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
 	</rect>
-	<!-- use x='0' y='0' xlink:href="#line2p" /-->
+	<!-- use x='0' y='0' xlink:href="#success" /-->
 
 	<rect x='0' y='96' width='96' height='16' 
 		fill='silver' stroke='black' stroke-width='1'/>	
