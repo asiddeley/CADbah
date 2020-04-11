@@ -93,8 +93,8 @@ exports.run=cadterms.run
 
 ////////////////////////////////
 // Load and define rest of the terms
-// require('./point.js')
 //require('./pointer.js')
 require('./line.js')
 require('./standby.js')
+require("./layer.js")
 

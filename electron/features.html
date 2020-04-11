@@ -10,30 +10,30 @@ body{
 	background-color:rgb(11,62,111);
 }
 
-.box, .bar {
+.w9t {
 	background-color:silver;
 	border-color:gray;
 	border-width:2px;
-	border-style:ridge;
-	margin:2px;
-	padding:2px;
-}
-	
-.w9t {width:282px;} 
-.h1t {height:32px;}
-.h6t {height:192px;}
-.scroll {
-	overflow-y:scroll;
-	overflow-x:hidden;
-}
+	margin:1px;
+	padding:1px;
+	width:288px;
+} 
 
-.echo-bar, .message-box{
+.inset {border-style:inset;}
+.outset {border-style:outset;}
+.ridge {border-style:ridge;}
+
+.h1t{height:32px;}
+.h6t{height:192px;}
+
+.status-bar, .message-board{
 	display:block;
 	position:absolute;
-	color:rgb(11,62,111);
+	background-color:silver;
+	color:black;
+	overflow:auto;
 	font-family:'roboto', sans-serif;
-	font-size:1.0em;
-	font-weight:bold;
+	font-size:0.75em;
 	z-index:1;
 }
 
@@ -43,14 +43,15 @@ body{
 	color:gray;
 	font-family:roboto, sans-serif; 
 	font-size:30px;
-	font-weight:bold;
-	/* text-align:center; */
+	text-align:center;
+	min-height:50%;
+	min-width:50%;
 	z-index:0;
 }
 
 
 .tile-group {
-	/* background-color:black; */
+	background-color:black; 
 	width:96px;
 	height:112px;
 }
@@ -61,7 +62,6 @@ body{
 	font-family:roboto, sans-serif; 
 	font-size:0.75em;
 	text-align:center;
-	/* font-weight:bold; */
 }
 
 .grid-container {
@@ -99,17 +99,16 @@ body{
 		else {MB.message(newValue.html)}
 	}
 
-	function echoBar(text){text=text||''; $('.echo-bar').text(text)}
+	function statusBar(text){text=text||''; $('.status-bar').text(text)}
 	
-	function echo(command){	echoBar(command); setTimeout(echoBar, 3000)}
+	function echo(command){	statusBar(command);	setTimeout(statusBar, 3000)}
 
 	var onSuccessText='success'
 	var onFailureText='failure'	
 	function onSubmitResponse(response, action, newvalue, oldvalue){
 		//arguments ('onSubmitResponse', 'set', {success:true, result:'text', date:timestamp}, {previous})
 		if(newvalue.success==true){
-			//MB.message(newvalue.result||onSuccessText)
-			echo(newvalue.result||onSuccessText)
+			MB.message(newvalue.result||onSuccessText)
 		} else {
 			MB.debug(newvalue.result||onFailureText)
 		}	
@@ -120,23 +119,21 @@ body{
 	var WM=REMOTE.require('electron-window-manager')
 	WM.sharedData.watch('x-submit-response', onSubmitResponse)
 	WM.sharedData.watch('x-message', onMessage)
-	WM.sharedData.watch('x-echo', function(r,a,v,o){echo(v.text, v.timeout||1000)})
 
 	// asynchronous checker
-	var when=function(check, callback, limit){
-		limit=limit||40
-		var interval=700
+	var whenlimit=20
+	var wheninterval=500
+	var when=function(check, callback){
+		whenlimit-=1
 		// callback or keep on watching within limit
 		if (check()){callback()}
-		else if (limit>0){
-			setTimeout(function(){when(check, callback, limit-1)}, interval)
-		}		
+		else if (whenlimit>0){setTimeout(function(){when(check, callback)}, wheninterval)}		
 	}
 	
 	$(document).ready(function(){
 
-		MB=new CS.MessageBox({
-			el:$('.message-box'),
+		MB=new CS.MessageBoard({
+			el:$('.message-board'),
 			cssMessage:'cad-msg',
 			cssDebug:'cad-debug'		
 		})
@@ -163,9 +160,15 @@ body{
 				var command=$(this).find('.command').text()
 				onSuccessText=$(this).find('.success').text()
 				onFailureText=$(this).find('.failure').text()
-				echo(command)
+				echo(command+','+onSuccessText)
 				WM.sharedData.set('x-submit', {command:command,	date:new Date()})
 			})
+			$('.tile-group-text')
+			.on('mouseenter', function(){$(this).css('background-color','gold')})
+			.on('mouseleave', function(){$(this).css('background-color','silver')})
+			.on('mousedown', function(){$(this).addClass('inset').removeClass('outset')})
+			.on('mouseup', function(){$(this).css('fill','silver').addClass('outset').removeClass('inset')})
+	
 		})
 
 	}) 
@@ -179,26 +182,24 @@ body{
 
 <div class='grid-container'>
 	<div class='tile-group' src='tilemenu_lines.xml'></div>
-	<div class='tile-group' src='tilemenu_tools.xml'></div>
-	<div class='tile-group' src='tilemenu_layer.xml'></div>
-
-	<div class='tile-group' src='tilemenu_terms.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
-
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_empty.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 </div>
 
-<div class='bar w9t h1t'>
-	<div class='watermark w9t h1t'>STATUS</div>
-	<div class='echo-bar w9t h1t' ></div>
+<div class='ridge w9t h1t'>
+	<div class='watermark'>STATUS BAR</div>
+	<div class='status-bar' ></div>
 </div>
 
-<div class='box w9t h6t'>
-	<div class='watermark w9t h6t'>REPORT</div>
-	<div class='message-box w9t h6t scroll'></div>
+<div class='ridge w9t h6t'>
+	<div class='watermark'>MESSAGE BOX</div>
+	<div class='message-board'></div>
 </div>
 
 </body>

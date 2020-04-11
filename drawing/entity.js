@@ -20,21 +20,29 @@ var Entity=function(){
 	this.layer="0"
 	this.linetype="BYLAYER"
 	this.vertices=[]
+	
+	//paper setups
+	//layer
+	
+	this.path=new Path()
+	this.path.strokeColor='black'
+	render(this)
+	cad.add(this)
+	
 }
 
-const tracer=function (path, drawing){
+const trace=function (path, points){}
+
+const render=function (entity){
 	//defaults
-	drawing=drawing||cad.drawing
-	path=path||new Path()
 	//TODO diameter=pdsize (acad system variable)
 
-	if (drawing.color=="BYLAYER"){
-		//path.color=drawing.getColorByLayer(drawing.layer);			
-	}
-	else {
+	if (entity.color!="BYLAYER"){
+		//path.color=cad.dxf.getColorByLayer(entity.layer);			
+	} else {
 		//path.color=drawing.getColorByIndex(drawing.color)
 	}
-	return path
+	return entity.path
 }
 
 //features or graphic property accessors
@@ -62,9 +70,17 @@ exports.about='Base for all drawing entities'
 exports.create=function(options){return new Entity(options)}
 exports.Data=Entity
 exports.features=features
-exports.tracer=tracer
+exports.render=render
+exports.trace=trace
 
 
-exports.deserialize=function(entity){}
-exports.serialize=function(){}
+exports.deserialize=function(entity){
+	
+	
+}
+
+exports.serialize=function(){
+	
+	
+}
 

@@ -12,7 +12,7 @@ MIT License
 ///////////////////////////////////
 // LOCAL 
 
-MessageBoard=function(options){
+MessageBox=function(options){
 	options=options||{}
 	if(!options.el){var div=$('<div></div>');$('body').append(d)}
 	this.el=options.el||div	
@@ -23,12 +23,12 @@ MessageBoard=function(options){
 	this.msg=options.msg||'Message Board'
 }
 
-MessageBoard.prototype.wipe=function(){
+MessageBox.prototype.wipe=function(){
 	this.count=0
 	$(this.el).empty()
 }
 
-MessageBoard.prototype.debug=function(msg){
+MessageBox.prototype.debug=function(msg){
 	var p$=$("<p></p>")
 	p$.addClass(this.cssDebug).attr("id", this.cssDebug + this.count).html(msg)
 	$(this.el).append(p$)
@@ -38,7 +38,7 @@ MessageBoard.prototype.debug=function(msg){
 	this.gotoBottom()
 }
 
-MessageBoard.prototype.debugShow=function(showTrue){
+MessageBox.prototype.debugShow=function(showTrue){
 	showTrue=showTrue||1
 	// change the contents of <style> </style> 
 	var bug$=$("#cad-debug-style")
@@ -58,7 +58,7 @@ MessageBoard.prototype.debugShow=function(showTrue){
 	this.gotoBottom()
 }
 
-MessageBoard.prototype.message=function(msg){
+MessageBox.prototype.message=function(msg){
 	var p$=$("<p></p>")
 	p$.addClass(this.cssMessage).attr("id", this.cssMessage + this.count).html(msg)
 	$(this.el).append(p$)
@@ -68,7 +68,7 @@ MessageBoard.prototype.message=function(msg){
 	this.gotoBottom()
 }
 
-MessageBoard.prototype.gotoBottom=function(){
+MessageBox.prototype.gotoBottom=function(){
 	$(this.el).animate({scrollTop: $(this.el)[0].scrollHeight}, 200)
 }
 
@@ -100,7 +100,7 @@ exports.LocalStore=function(path, defaultContent, defaultContentRules){
 }
 
 
-exports.MessageBoard=MessageBoard
+exports.MessageBox=MessageBox
 
 exports.navbarSetup=function(options){
 	options=options||{}

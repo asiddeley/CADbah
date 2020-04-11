@@ -1,0 +1,112 @@
+<svg  viewBox='0 0 96 112' xmlns='http://www.w3.org/2000/svg'
+	color="gray"
+	stroke="rgb(11,62,111)"
+	stroke-width="1"
+	stroke-linecap="round"
+	stroke-linejoin="round" 
+	fill="silver">
+
+<defs>
+
+	<g id="pointer">
+		<line x1="-4" y1="1" x2="20" y2="1" /><line x1="1" y1="-4" x2="1" y2="20"  />
+		<circle cx="1" cy="1" r="3" />
+		<path d="M3 3l7 17 2.50-7.40 7.40-2.50 L3 3z" /><path d="M13 13l6 6" />
+	</g>
+	<g id='move' >
+		<polyline points='5 9 2 12 5 15' /><polyline points='9 5 12 2 15 5' />
+		<polyline points='15 19 12 22 9 19' /><polyline points='19 9 22 12 19 15' />
+		<line x1='2' y1='12' x2='22' y2='12' /><line x1='12' y1='2' x2='12' y2='22' />
+	</g>
+
+</defs>
+
+	<g class='tile'>
+		<rect x='0' y='0' width='32' height='32'/>
+		<title>pointer</title>
+		<desc class='command'>pointer</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<use x='7' y='7' xlink:href='#pointer' stroke="currentColor"/>
+	</g>
+
+	<g class='tile'>
+		<rect x='32' y='0' width='32' height='32' />
+		<title>move</title>
+		<desc class='command'>move</desc>
+		<desc class='success'>move OK</desc>
+		<desc class='failure'>move ER</desc>
+		<use x='36' y='4' xlink:href='#move' stroke="currentColor"/>
+	</g>
+
+	<g class='tile'>
+		<rect x='64' y='0' width='32' height='32'/>
+		<title>empty</title>
+		<desc class='command'>dir</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='0' y='0' xlink:href="#success" /-->
+	</g>
+
+	<!-- 2ND ROW -->
+	<g class="tile">	
+		<rect x='0' y='32' width='32' height='32'/>
+		<title>empty</title>
+		<desc class='command'>dir</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='0' y='0' xlink:href="#success" /-->
+	</g>
+
+	<g class="tile">
+		<rect x='32' y='32' width='32' height='32' />
+		<title>empty</title>
+		<desc class='command'>dir</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='0' y='0' xlink:href="#success" /-->
+	</g>
+	
+	<g class="tile">
+		<rect x='64' y='32' width='32' height='32' />
+		<title>terminology</title>
+		<desc class='command'>terminology</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!--use x='64' y='32' xlink:href="#bulletlist" /-->
+	</g>
+
+	<!-- 3RD ROW -->
+	<g class="tile">	
+		<rect x='0' y='64' width='32' height='32' />
+		<title>empty</title>
+		<desc class='command'>dir</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='0' y='0' xlink:href="#success" /-->
+	</g>
+
+	<g class="tile">
+		<rect x='32' y='64' width='32' height='32' />
+		<title>terminology</title>
+		<desc class='command'>terminology</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='32' y='64' xlink:href='#bulletlist' /-->
+	</g>
+
+	<g class="tile">
+		<rect x='64' y='64' width='32' height='32' />
+		<title>empty</title>
+		<desc class='command'>dir</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+		<!-- use x='0' y='0' xlink:href="#success" /-->
+	</g>
+
+	<g class="tile">
+		<rect x='0' y='96' width='96' height='16'  stroke='rgb(11,62,111)' stroke-width='1' />	
+		<text x='2' y='108' class='tile-group-text' stroke='gray'>TOOLS</text>
+	</g>
+
+</svg>

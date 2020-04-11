@@ -56,18 +56,19 @@ APP.on('ready', function(){
 		false, 
 		OPTIONS
 	)
-	
+
 	WM.open(
 		'tilemenu', 
 		'CadBah - TileMenu', 
 		`file://${__dirname}/electron/tilemenu.html`, 
 		false, 
 		Object.assign(OPTIONS, {
-			width:100,
-			height:200,
-			position:cascade(20, 20)
+			width:(96 * 3) + 16,
+			height:(96 * 3) + 192 + 32 + 16,
+			position:cascade(20, 20),
+			showDevTools:false
 		})
-	)	
+	)
 	
 	
 	

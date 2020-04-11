@@ -41,12 +41,12 @@ var onMouseUp=function(e){
 var onMouseMove=function(e){
 	path.removeSegments()
 	//note that points.concat doesn't change points in any way
-	tracer(path, points.concat(e.point))	
+	trace(path, points.concat(e.point))	
 }
 
 var path=null
 var points=[]
-var tracer=function(){}
+var trace=function(){}
 
 CT.define({
 	name:'pointer', 
@@ -65,7 +65,7 @@ CT.define({
 exports.activate=function(options){
 	options=options||{}
 	echo=options.echo||false
-	tracer=options.tracer||function(){}
+	trace=options.trace||function(){}
 
 	if (path==null){path=new Path()}
 	path.strokeColor='silver'
@@ -78,11 +78,11 @@ exports.activate=function(options){
 
 exports.getPoints=function(){return points}
 
-exports.setTracer=function(tracerFunction){tracer=tracerFunction}
+exports.setTrace=function(traceFunction){trace=traceFunction}
 
 exports.standby=function(success){
 	//clear everything
-	tracer=function(){}
+	trace=function(){}
 	path.removeSegments()
 	points=[]
 	tools.find(tool => tool.name == 'standby').activate()

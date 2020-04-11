@@ -1,0 +1,100 @@
+<svg  viewBox='0 0 96 112' xmlns='http://www.w3.org/2000/svg'>
+
+<defs>
+	<g id='line2p'>
+		<line x1='8' y1='24' x2='24' y2='8' stroke='black' stroke-width='1'/>
+		<circle cx='8' cy='24' r='2' stroke='red' fill='black'/>
+		<circle cx='24' cy='8' r='2' stroke='red' fill='black'/>
+	</g>
+</defs>
+
+	<rect x='0' y='0' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+	</rect>
+	<use x='0' y='0' xlink:href="#line2p" />
+
+	<rect x='32' y='0' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>success</desc>
+		<desc class='failure'>failure</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='64' y='0' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<!-- 2ND ROW -->
+	
+	<rect x='0' y='32' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='32' y='32' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='64' y='32' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<!-- 3RD ROW -->
+	
+	<rect x='0' y='64' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='32' y='64' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='64' y='64' class='tile' width='32' height='32' 
+		fill='silver' stroke='black' stroke-width='1'>
+		<title>line2p</title>
+		<desc class='command'>line</desc>
+		<desc class='success'>echo('line created')</desc>
+		<desc class='failure'>echo('problem creating line')</desc>
+	</rect>
+	<!--use x='32' y='64' xlink:href="#line2p" /-->
+
+	<rect x='0' y='96' width='96' height='16' 
+		fill='silver' stroke='black' stroke-width='1'/>	
+	<text x='2' y='108' class='tile-group-text'>LINES</text>
+
+</svg>

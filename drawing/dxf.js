@@ -19,7 +19,8 @@ function Dxf(){
 	this.header={
 		$INSBASE:{x:0,y:0,z:0},
 		$EXTMIN:{x:0,y:0,z:0},
-		$EXTMAX:{x:10,y:10,z:0}
+		$EXTMAX:{x:10,y:10,z:0},
+		$CECOLOR:'black'
 	}
 
 	this.tables={
@@ -59,8 +60,8 @@ function Dxf(){
 
 exports.about='dxf'
 
-exports.add=function(graphic){
-	data.entities.push[graphic]	
+exports.add=function(entity){
+	data.entities.push[entity]	
 }
 
 exports.activate=function(){
@@ -71,7 +72,7 @@ exports.activate=function(){
 }
 
 //not required - one drawing open at a time for now
-exports.create=function(options){return new Drawing(options)}
+exports.create=function(options){return new Dxf(options)}
 
 //current drawing
 exports.data=data

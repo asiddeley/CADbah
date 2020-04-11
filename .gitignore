@@ -62,7 +62,7 @@ typings/
 *.bat
 
 ## ignore cadbah private folders - contains user data & files
-uploads/
+private/
 ## ignore browserify and minify results - always changing
 dist/
 

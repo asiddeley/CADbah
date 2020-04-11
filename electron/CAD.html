@@ -59,14 +59,14 @@ body{
 	// basic browser behavior...
 	$(window).on({
 		// if command line doesn't have focus then give it focus
-		"keypress":function(e){ 
+		keypress:function(e){ 
 			var input$=$('#cad-input')
 			if(!input$.is(":focus")){input$.get(0).focus();input$.get(0).select()}
 		},
-		"keyup":function(e){
-			//escape
+		keyup:function(e){
+			var escape=27
 			var input$=$('#cad-input')
-			if(e.keyCode===27){input$.val('esc');CAD.run(input$.val())}
+			if(e.keyCode==escape){input$.val('esc');CAD.run(input$.val())}
 		}
 	})
 
@@ -74,7 +74,6 @@ body{
 	$(document).ready(function(){
 		CAD.activate({
 			canvas:document.getElementById('cad-canvas'),
-			//console:document.getElementById('cad-console'),
 			navbar:document.getElementById('cad-navbar'),
 			input:document.getElementById('cad-input')
 		})

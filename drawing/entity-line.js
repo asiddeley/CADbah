@@ -5,38 +5,42 @@ MIT License
 ***/
 
 // PRIVATE STATIC
-const graphic=require('../drawing/entity.js')
+const entity=require('../drawing/entity.js')
 const lib=require('../drawing/dxf-library.js')
+
 
 //line data constructor
 function Line(options){
 
-	//inherit common graphic stuff
-	Object.assign(this, graphic.create())
+	//inherit common entity stuff 
+	Object.assign(this, entity.create(options))
 
+	options=options||{}
 	//override entity.type="entity" 
-	this.dxf='line'
 	this.type="line"
-	this.vertices.push(new lib.Vertice())
-	this.vertices.push(new lib.Vertice())
 
-	//render 
-	//tracer(new Path(), )
+	if (options.points){
+		//cad.msg('points detected')
+		this.vertices=this.vertices.concat(options.points)
+	}
+
+	trace(this.path, this.vertices) 
+
 }
 
-//takes paper.js path and points as input and modifies the path
-//meant to be passed to the pointer tool
-const tracer=function(path, points){
+//input paper.js path, points to modify path. Meant to be passed to the pointer tool
+const trace=function(path, points){
 	points.forEach(function(p, i, all){path.add(p)})
+	return path
 }
 
-//takes dxf line data as input, returns a paper.js path 
-//const render=function(path, line){
-	//set layer, coloour, linetype
-	//graphic.render(path, line)
-	//tracer(path, (line.getPoints()))
-//}
-
+//input line data
+const render=function(line){
+	//sets layer, colour, linetype
+	entity.render(line)
+	//sets path
+	trace(line.path, line.vertices)
+}
 
 //features or line property accessors
 const features=[
@@ -51,7 +55,6 @@ const features=[
 ]
 
 
-
 // PUBLIC
 exports.about="line between 2 vertices"
 exports.create=function(options){
@@ -60,8 +63,8 @@ exports.create=function(options){
 }
 exports.Data=Line
 // combine line features (vertices) and core features (layer, color etc)
-exports.features=graphic.features.concat(features)
-exports.tracer=tracer
+exports.features=entity.features.concat(features)
+exports.trace=trace
 
 
 

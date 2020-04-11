@@ -1,56 +1,56 @@
-<svg  
-	viewBox="0 0 96 112" 
-	xmlns="http://www.w3.org/2000/svg"
+<svg  viewBox='0 0 96 112' xmlns='http://www.w3.org/2000/svg'
 	color="gray"
 	fill="silver"
 	stroke="rgb(11,62,111)" 
 	stroke-width="1" 
 	stroke-linecap="round" 
-	stroke-linejoin="round"
+	stroke-linejoin="round" 
 >
 
 <defs>
-	<g id='bulletlist2'>
-		<line x1='4' y1='4' x2='20' y2='4' stroke='black' stroke-width='1'/>
-		<line x1='4' y1='10' x2='8' y2='10' stroke='black' stroke-width='1'/>
-		<line x1='4' y1='16' x2='8' y2='16' stroke='black' stroke-width='1'/>
-		<line x1='4' y1='22' x2='8' y2='22' stroke='black' stroke-width='1'/>
-		<line x1='4' y1='28' x2='8' y2='28' stroke='black' stroke-width='1'/>
-		<line x1='12' y1='10' x2='28' y2='10' stroke='black' stroke-width='1'/>
-		<line x1='12' y1='16' x2='28' y2='16' stroke='black' stroke-width='1'/>
-		<line x1='12' y1='22' x2='28' y2='22' stroke='black' stroke-width='1'/>
-		<line x1='12' y1='28' x2='28' y2='28' stroke='black' stroke-width='1'/>
+	<g id='bulletlist'>
+		<line x1='4' y1='4' x2='20' y2='4' />
+		<line x1='4' y1='10' x2='8' y2='10' />
+		<line x1='4' y1='16' x2='8' y2='16' />
+		<line x1='4' y1='22' x2='8' y2='22' />
+		<line x1='4' y1='28' x2='8' y2='28' />
+		<line x1='12' y1='10' x2='28' y2='10' />
+		<line x1='12' y1='16' x2='28' y2='16' />
+		<line x1='12' y1='22' x2='28' y2='22' />
+		<line x1='12' y1='28' x2='28' y2='28' />
+	</g>
+	<g id='wipe'>
+		<text x='12' y='20' class='tile-group-text' stroke="gray" >W</text>
 	</g>
 	
 </defs>
 
 	<g class="tile">
 		<rect x='0' y='0' width='32' height='32' />
-		<title></title>
-		<desc class='command'></desc>
+		<title>terminology</title>
+		<desc class='command'>terminology</desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='0' y='0' xlink:href="#bulletlist2" / -->
+		<use x='0' y='0' xlink:href="#bulletlist" stroke="currentColor" />
 	</g>
 
-	<g class="tile">
+	<g class='tile'>
 		<rect x='32' y='0' width='32' height='32' />
-		<title></title>
-		<desc class='command'></desc>
+		<title>wipe report area</title>
+		<desc class='command'>wipe</desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='32' y='0' xlink:href="#line2p" /-->
+		<use x='32' y='0' xlink:href="#wipe" stroke="currentColor" />
 	</g>
 
-	<g class="tile">
+	<g class='tile'>
 		<rect x='64' y='0' width='32' height='32' />
 		<title></title>
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='64' y='0' xlink:href="#line2p" /-->
 	</g>
-	
+
 	<!-- 2ND ROW -->
 	<g class='tile'>
 		<rect x='0' y='32' width='32' height='32' />
@@ -59,7 +59,6 @@
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!--use x='0' y='32' xlink:href="#line2p" /-->
 	</g>	
 
 	<g class='tile'>
@@ -68,7 +67,6 @@
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!--use x='32' y='32' xlink:href="#" /-->
 	</g>
 
 	<g class='tile'>
@@ -77,7 +75,6 @@
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!--use x='64' y='32' xlink:href="#l" /-->
 	</g>
 
 	<!-- 3RD ROW -->
@@ -87,16 +84,14 @@
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='0' y='64' xlink:href="#l" /-->
 	</g>
-	
+
 	<g class='tile'>
 		<rect x='32' y='64' width='32' height='32' />
 		<title></title>
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='32' y='64' xlink:href="#l" /-->
 	</g>
 
 	<g class='tile'>
@@ -105,12 +100,11 @@
 		<desc class='command'></desc>
 		<desc class='success'></desc>
 		<desc class='failure'></desc>
-		<!-- use x='64' y='64' xlink:href="#l" /-->
 	</g>
 
 	<g class='tile'>
-		<rect x='0' y='96' width='96' height='16' />
-		<text x='2' y='108' class='tile-group-text' stroke="gray" ></text>
+		<rect x='0' y='96' width='96' height='16' />	
+		<text x='2' y='108' class='tile-group-text' stroke="gray" >TERMS</text>
 	</g>
 
 </svg>

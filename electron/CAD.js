@@ -31,7 +31,7 @@ paper.install(window)
 
 //requires
 const $UI=require('../node_modules/jquery-ui-dist/jquery-ui.js')
-const DRAWING=require("../drawing/dxf.js")
+const DXF=require("../drawing/dxf.js")
 const EventEmitter=require('events') 
 const TERMS=require('../terminology/cadTerminology.js')
 const SF=require('./support.js')
@@ -100,7 +100,7 @@ exports.activate=function(options){
 
 	paper.setup(this.canvas)	
 	SF.navbarSetup(options)
-	DRAWING.activate()
+	DXF.activate()
 
 	//UNDOER
 	//this.undoer.activate(this)
@@ -113,8 +113,8 @@ exports.activate=function(options){
 
 //shortcut
 exports.add=function(entity){
-	cad.msg(entity.type + ' added')
-	DRAWING.add(entity)
+	CAD.echo(entity.type + ' added')
+	DXF.add(entity)
 }
 
 exports.canvas=null
@@ -132,8 +132,10 @@ exports.debugshow=function(val){
 	console.log('debugshow:', val)
 }
 
-exports.drawing=DRAWING.data
-
+exports.dxf=DXF.data
+exports.echo=function(text){
+	WM.sharedData.set('x-echo', {text:text, timeout:3000, date:new Date()})	
+}
 
 exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
 
@@ -182,4 +184,4 @@ exports.wipe=function(){
 
 //exports.undoer=require("./helpers/undoer")
 window.cad=exports
-
+window.CAD=exports
