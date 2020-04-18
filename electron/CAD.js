@@ -25,142 +25,182 @@ SOFTWARE.
 *****************************************************/
 //PRIVATE STATIC
 
-//first, install paper into window scope so its accessible from anywhere in code
-var paper=require('../node_modules/paper/dist/paper-core.js')
-paper.install(window)
-
 //requires
-const $UI=require('../node_modules/jquery-ui-dist/jquery-ui.js')
+//first, install paper into window scope so its accessible from anywhere in code
+const paper=require("../node_modules/paper/dist/paper-core.js"); paper.install(window)
+const $UI=require("../node_modules/jquery-ui-dist/jquery-ui.js")
 const DXF=require("../drawing/dxf.js")
-const EventEmitter=require('events') 
-const TERMS=require('../terminology/cadTerminology.js')
-const SF=require('./support.js')
-const REMOTE=require('electron').remote
-const WM=REMOTE.require('electron-window-manager')
-const POINTER=require('../terminology/pointer.js')
-
-//definitions
+const EventEmitter=require("events") 
 const EE = new EventEmitter()
+const TERMS=require("../terminology/cadTerminology.js")
+const SF=require("./support.js")
+const REMOTE=require("electron").remote
+const WM=REMOTE.require("electron-window-manager")
+const POINTER=require("../terminology/pointer.js")
+
+// private variables
+const queue_timeout=25
+var canvas=null
+var canvas$=null
+var dxf={}
 var input$
+
+// array with default command handler for use by cad.prompt(...)
+var promptstack=[{prompt:"command", handler:TERMS.run}]
 
 const onSubmit=function(ev, success, failure){
 	ev.preventDefault() 
-	//console.log('submit occured...', 'success:', success, 'failure', failure)
 	
-	var cad=exports
+	//var cad=exports
 	success=success||function(re){cad.msg(re)}
 	failure=failure||function(er){cad.debug(er)}
 
-	//pop top {prompt, handler} object that was pushed by cad.prompt()
-	var ph
-	if(promptstack.length>1){ph=promptstack.pop()}
-	else{ph=promptstack[0]}
+	//pop top or first {prompt, handler} object that was pushed by cad.prompt()
+	var ph=(promptstack.length>1)?promptstack.pop():promptstack[0]
 	
-	//execute the command 
-	ph.handler(input$.val(), success, failure)
+	//process input one term at a time 
+	var queue=input$.val().split(";")
+	var nextCommand=queue.shift()
+	ph.handler(nextCommand, success, failure)
 
 	//cleanup
-	input$.val('')
-	input$.attr('placeholder', promptstack[promptstack.length-1].prompt)
-	return false
+	input$.attr("placeholder", promptstack[promptstack.length-1].prompt)
+	input$.val("")
+	setTimeout(function(){
+		var remainingCommands=(queue.join(";"))
+		if (remainingCommands.length>0){
+			input$.val(remainingCommands)
+			setTimeout(submit, queue_timeout)			
+		}
+	}, queue_timeout)
 }
 
-//default command handler
-var promptstack=[{prompt:'command', handler:TERMS.run}]
 
-const submit=function(command, success, failure){
+const submit=function(input, success, failure){
 	//loads the command line and pulls the trigger 
-	exports.input(command)
-	$('form').trigger('submit',[success, failure])
+	exports.input(input)
+	$("form").trigger("submit",[success, failure])
 }
+
+////////////////////////
+//external interactions
 
 //listen for x-submit from the tilemenu.html rendering process
-WM.sharedData.watch('x-submit', function(self, action, newvalue, oldvalue){
-	//report success/failure result to other process(es) via sharedData
-	submit(newvalue.command,
-		(result)=>{WM.sharedData.set('x-submit-response', {success:true, result:result, date:new Date()})},
-		(er)=>{WM.sharedData.set('x-submit-response', {success:false, result:er, date:new Date()})}
-	)	
+WM.sharedData.watch("x-submit", function(self, action, newvalue, oldvalue){
+	//report success|failure result to other process(es) via sharedData
+	//newvalue eg. {command:"snapper;e;1;exit", title:"endpoint", date:"20200418..."}
+	var success=function(result){
+		WM.sharedData.set("x-submit-response", {
+			success:true, 
+			result:result, 
+			date:new Date()
+		})		
+	}
+	var failure=function(error){
+		WM.sharedData.set("x-submit-response", {
+			success:false,
+			result:error, 
+			date:new Date()
+		})
+	}
+	
+	submit(newvalue.command, success, failure)	
 })
 
 //////////////////////////////////
 // PUBLIC 
 exports.activate=function(options){
 
-	options==options||{}
+	options=options||{}
 
 	if (typeof options.canvas=="undefined"){
-		this.canvas$=$('<canvas></canvas>').appendTo(window.document.body)
-		this.canvas=canvas$.get()
+		canvas$=$("<canvas></canvas>").appendTo(window.document.body)
+		canvas=canvas$.get()
 	} else {
-		this.canvas=options.canvas
-		this.canvas$=$(options.canvas)
+		canvas=options.canvas
+		canvas$=$(options.canvas)
 	}
 
-
-	paper.setup(this.canvas)	
+	paper.setup(canvas)	
 	SF.navbarSetup(options)
-	DXF.activate()
+	dxf=new DXF.Dxf()
 
 	//UNDOER
 	//this.undoer.activate(this)
 	
 	//program the command input
-	input$=$('#cad-input')
-	$('form').on('submit', onSubmit)
-
+	input$=$(options.input||"#cad-input")
+	$("form").on("submit", onSubmit)
 }
 
 //shortcut
 exports.add=function(entity){
-	CAD.echo(entity.type + ' added')
-	DXF.add(entity)
+	CAD.echo(entity.type + " added")
+	//DXF.add(entity)
 }
 
-exports.canvas=null
-exports.canvas$=null
 exports.cmd=TERMS.run
 
 //debug - programming & error messages
 exports.debug=function(){
 	for (var i in arguments){
-		WM.sharedData.set('xMessage', {html:arguments[i], date:new Date(), debug:true})
+		WM.sharedData.set("xMessage", {html:arguments[i], date:new Date(), debug:true})
 	}
 }
 
 exports.debugshow=function(val){
-	console.log('debugshow:', val)
+	console.log("debugshow:", val)
 }
 
-exports.dxf=DXF.data
-exports.echo=function(text){
-	WM.sharedData.set('x-echo', {text:text, timeout:3000, date:new Date()})	
+exports.getdxf=function(){return dxf}
+
+exports.echo=function(text, timeout){
+	timeout=timeout||4000
+	WM.sharedData.set("x-echo", {text:text, timeout:timeout, date:new Date()})	
 }
 
 exports.emit=function(eventname, parameter){EE.emit(eventname, parameter)}
 
 exports.escape=function(){
-	//resets the promptstack	
+	//clear the promptstack, keeping default
+	while (promptstack.length>1){promptstack.pop()}
+	//clear the input	
+	input$.val("")
 }
 
 exports.input=function(content){
 	//aggregates content to the command line without submitting it
-	if (typeof content=='string') {
-		var comma=(input$.val().length>0)?', ':''
+	if (typeof content=="string") {
+		var comma=(input$.val().length>0)?", ":""
 		input$.val(input$.val()+ comma + content)
 	}
 }
 
 exports.msg=function(){
 	for (var i in arguments){
-		WM.sharedData.set('x-message', {html:arguments[i], date:new Date()})
+		WM.sharedData.set('x-message', {text:arguments[i], date:new Date()})
 	}
+}
+
+exports.xFunction=function(argo){
+	//EXPERIMENTAL
+	argo=argo||{}
+	var tag=argo.tag||"toggle"
+	var input=JSON.stringify(argo.input||{a:1, b:2})
+	var body=argo.body||"return {a:a, b:b}"
+
+	WM.sharedData.set("x-function", {
+		tag:tag, 
+		input:input,
+		body:body,
+		date:new Date()
+	})
 }
 
 exports.on=function(eventname, fun){EE.emit(eventname, fun)}
 
 exports.options={
-	admin:{user:"unnamed", disc:'arch'},
+	admin:{user:"unnamed", disc:"arch"},
 	actionsEnabled:false,
 	database:null, 
 }	
@@ -169,17 +209,19 @@ exports.pointer=POINTER
 
 exports.prompt=function(prompt, handler){
 	promptstack.push({prompt:prompt, handler:handler})
-	input$.attr('placeholder', prompt)
+	input$.attr("placeholder", prompt)
 }
 
 //input content to interpreter, bypassing command line
 exports.run=function(content){
-	exports.msg('RUN:',content)
+	exports.msg("RUN:",content)
 	TERMS.run(content)
 }
 
+exports.report=exports.msg
+exports.status=exports.echo
 exports.wipe=function(){
-	WM.sharedData.set('x-message', {wipe:true, date:new Date()})
+	WM.sharedData.set("x-message", {wipe:true, date:new Date()})
 }
 
 //exports.undoer=require("./helpers/undoer")

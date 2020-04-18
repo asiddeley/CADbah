@@ -28,7 +28,7 @@ SOFTWARE.
 // PRIVATE STATIC
 
 const cad=require('../electron/CAD.js')
-const {Terminology}=require('../electron/support.js')
+const {Terminology, format}=require('../electron/support.js')
 const cadterms=new Terminology()
 
 ////////////////////////////////
@@ -75,7 +75,7 @@ cadterms.define({
 	name:'terminology', 
 	about:'Lists all available terms or commands',
 	action:function(success, failure){
-		cad.msg(cadterms.directory()) 
+		cad.report(format("Terminology", cadterms.directory())) 
 		success('terminology listed')
 	},
 	alias:'dir',
@@ -97,4 +97,4 @@ exports.run=cadterms.run
 require('./line.js')
 require('./standby.js')
 require("./layer.js")
-
+require("./snapper.js")

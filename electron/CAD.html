@@ -21,17 +21,6 @@ body{
 	background:rgb(38,38,38);
 }
 
-#REM-cad-view > div {
-	padding:5px;
-	margin:0px;
-	float:left;
-	word-wrap:break-word;
-	height:95%;
-	width:19%;
-	background-color:rgb(11,62,111);
-	overflow-y:auto;
-}
-
 #cad-view > canvas {
 	/* border: 1px solid #666; */
 	display:block;
@@ -40,42 +29,42 @@ body{
 	background:rgb(29,76,122);
 }
 
-#cad-input{width:300px;}
+#cad-input{width:400px;}
 </style>
 
-<link rel='stylesheet' type='text/css' href='../node_modules/jquery-ui-dist/jquery-ui.css'>
-<link rel='stylesheet' type='text/css' href='../node_modules/jquery-ui-dist/jquery-ui.structure.css'>
-<!--link rel='stylesheet' type='text/css' href='../electron/CAD.css'-->
-<link rel='stylesheet' type='text/css' href='../resources/jquery-ui.theme.css'>
+<link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/jquery-ui-dist/jquery-ui.structure.css">
+<!--link rel="stylesheet" type="text/css" href="../electron/CAD.css"-->
+<link rel="stylesheet" type="text/css" href="../resources/jquery-ui.theme.css">
 
 <script type="text/javascript">
 
 	// load jquery 
-	var jQuery=require('jquery'); window.$=jQuery
+	var jQuery=require("jquery"); window.$=jQuery
 
 	// load CAD after jquery
-	window.CAD=require('../electron/CAD.js')
+	window.CAD=require("../electron/CAD.js")
 
 	// basic browser behavior...
 	$(window).on({
-		// if command line doesn't have focus then give it focus
+		// if command line doesn"t have focus then give it focus
 		keypress:function(e){ 
-			var input$=$('#cad-input')
+			var input$=$("#cad-input")
 			if(!input$.is(":focus")){input$.get(0).focus();input$.get(0).select()}
 		},
 		keyup:function(e){
 			var escape=27
-			var input$=$('#cad-input')
-			if(e.keyCode==escape){input$.val('esc');CAD.run(input$.val())}
+			var input$=$("#cad-input")
+			if(e.keyCode==escape){input$.val("esc");CAD.run(input$.val())}
 		}
 	})
 
 	// activate
 	$(document).ready(function(){
 		CAD.activate({
-			canvas:document.getElementById('cad-canvas'),
-			navbar:document.getElementById('cad-navbar'),
-			input:document.getElementById('cad-input')
+			canvas:document.getElementById("cad-canvas"),
+			navbar:document.getElementById("cad-navbar"),
+			input:document.getElementById("cad-input")
 		})
 	}) 
 
@@ -84,8 +73,8 @@ body{
 
 <body>
 
-<div id='cad-view'>
-<form id='cad-navbar' name='navbar' class='controlgroup ui-widget-header'>
+<div id="cad-view">
+<form id="cad-navbar" name="navbar" class="controlgroup ui-widget-header">
 
 	<button id="file" menu="file-menu">File</button>
 	<button id="edit" menu="edit-menu">Edit</button>
@@ -171,7 +160,7 @@ body{
 	<input id="cad-input" type="text" placeholder="command" class="drop-zone">
 	<input type="submit" value="Ok">
 </form>
-<canvas id='cad-canvas' resize></canvas>
+<canvas id="cad-canvas" resize></canvas>
 </div>
 </body>
 </html>

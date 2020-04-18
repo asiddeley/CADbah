@@ -7,10 +7,10 @@ MIT License
 
 //don't require cad.  This file may be required by separate processes cad.html vs tilemenu.html
 //var cad=require('../electron/CAD.js')
-
+const FSX=require("fs-extra")
 
 ///////////////////////////////////
-// LOCAL 
+// LOCAL
 
 MessageBox=function(options){
 	options=options||{}
@@ -72,33 +72,37 @@ MessageBox.prototype.gotoBottom=function(){
 	$(this.el).animate({scrollTop: $(this.el)[0].scrollHeight}, 200)
 }
 
-
+MessageBox.prototype.html=MessageBox.prototype.message
 
 ////////////////////////////////////
 // EXPORTS
-exports.LocalStore=function(path, defaultContent, defaultContentRules){
-	if (arguments.length < 3){
-		throw('LocalStore requires 3 arguments')
-	}
+exports.LocalStore=function(path, defaultContent, trueResetsJSONfile){
+	//if (arguments.length < 1){throw('LocalStore requires at least 1 argument(s)')}
+	trueResetsJSONfile=trueResetsJSONfile||false
 	content=defaultContent||{}
 	try { 
-		if(!defaultContentRules) {content = require(path)}
+		if(trueResetsJSONfile){FSX.writeFileSync(path, content)} 
+		else {content = require(path)}
 	}
 	catch(err){
-		//console.log('Error reading JSON from (path):', path)
-	}	
-	Object.assign(this, content)
+		console.log('Error reading JSON from (path):', path)
+	}
+	finally {
+		Object.assign(this, content)
+	}
 	//console.log('localStore:',this)
 	this.stringify=function(){return JSON.stringify(this)}
 	this.set=function(name, val){
-		if (name && val){this[name]=val}
-		try {FSP.writeFileSync(path, this.stringify())}
-		catch(err){
+		try {
+			this[name]=val
+			//console.log("writing store...", this)
+			FSX.writeFileSync(path, this.stringify())
+		} catch(err){
 			console.log('Error saving JSON to (path): ', path)
 		}
+		finally {return val}
 	}
 }
-
 
 exports.MessageBox=MessageBox
 
@@ -143,27 +147,47 @@ exports.navbarSetup=function(options){
 	})
 }
 
+/////////
+// formatter
+exports.format=function(title, list){
+	title=title||"Format Report 1"
+	list=list||["hello", "world"]
+	list.sort()
+	var htm=list.reduce(
+		function(ac, cv){return ac+"<li>"+cv+"</li>"}, 
+		`<h3>${title}</h3><ol>`
+	)
+	return (htm+"</ol><hr>")
+}
+
+
 ////////////////////////
 // dictionary and interperter
 
 exports.Terminology=function(){
-
+	
+	//DEP
 	var addvar=function(name, content){
 		context+=`var ${name}=contexto.${name};`
 		contexto[name]=content
 	}
 	var contexto={'hello':function(){return 'hello world!'}}
 	var context='var hello=contexto.hello;'
-	var terms=[]
+	//DEP END
 	
+	var terms=[]
+
 	this.addTerm=function(term){
 		if (!(term instanceof this.Term)) {
 			if (typeof term == 'object'){term=new this.Term(term)}
 			else {return}
 		}
 		terms.push(term)
+		
+		//DEP
 		addvar(term.name, term.action)
 		if (typeof term.alias=='string'){addvar(term.alias, term.action)}
+		//END DEP
 	}
 	this.define=this.addTerm
 
@@ -173,32 +197,56 @@ exports.Terminology=function(){
 		var aliasterms=terms.filter(function(t){return (typeof t.alias == 'string')})
 		var dir=names.concat(aliasterms.map(function(t){return t.alias + ' (alias)'}))
 		dir.sort()
-		var htm=dir.reduce(
-			function(ac, cv){return ac+'<li>'+cv+'</li>'}, 
-			`<h3>${title}</h3><ol>`
-		)
-		return (htm+"</ol><hr>")
+		return dir
 	}
 
-	this.run=function(term, success, failure){
+	//DEP //formerly this.run
+	this.DEPrun=function(term, success, failure){
 		//term eg: 'line' not 'line(0,0,10,10)'
 		var body=`${context} return ${term}(success, failure);`
-		try{
+		try {
 			var fun=new Function('contexto', 'success', 'failure', body)
-			fun(contexto, success, failure)
+			var r=fun(contexto, success, failure)
+			if (r) {cad.report(r)}			
 		} catch (er) {
 			if (typeof failure=='function'){failure(er)}
 		}
 	}
-
+	
+	//NEW
+	const runExpression=function(expression, success, failure){
+		var body=`return ${expression}`
+		try {
+			var fun=new Function(body)
+			success(fun())
+		} catch (er) {
+			failure(er)
+		}
+	}
+	
+	//NEW
+	this.run=function(command, success, failure){
+		//command = term | expression
+		success=success||function(){}
+		failure=failure||function(){}
+		var term=terms.find(function(i){return command.includes(i.name)})
+		if (term){
+			//what about term inputs? eg. line(0,0,10,10)
+			//what about multitle commands? eg. layer; list; exit; //USE CAD.prompt 
+			try {term.action(success, failure)}
+			catch(e){failure(e)}
+		} else {
+			runExpression(command, success, failure)			
+		}		
+	}
+	
 	this.Term=function(options){
 		options=options||{}
 		this.name=options.name||'unnamed' 
 		this.about=options.about||'No description'
 		this.alias=options.alias||null
 		this.action=options.action||function(){}
-		this.topic=options.topic||'none' 
-		this.terms=options.terms||[]
+		this.inputs=options.inputs||[] 
 	}
 	
 	this.createTerm=function(options){

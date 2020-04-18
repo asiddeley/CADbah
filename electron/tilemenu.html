@@ -6,20 +6,19 @@
 
 
 <style>
-body{
-	background-color:rgb(11,62,111);
-}
+body {background-color:rgb(11,62,111);}
+svg text{user-select: none;}
 
 .box, .bar {
 	background-color:silver;
-	border-color:gray;
-	border-width:2px;
-	border-style:ridge;
-	margin:2px;
+	border-color:silver;
+	border-width:3px;
+	border-style:inset;
+	margin:0px;
 	padding:2px;
 }
 	
-.w9t {width:282px;} 
+.w9t {width:290px;} 
 .h1t {height:32px;}
 .h6t {height:192px;}
 .scroll {
@@ -42,34 +41,31 @@ body{
 	position:absolute;
 	color:gray;
 	font-family:roboto, sans-serif; 
-	font-size:30px;
+	font-size:1.5em;
 	font-weight:bold;
 	/* text-align:center; */
 	z-index:0;
 }
 
-
 .tile-group {
-	/* background-color:black; */
-	width:96px;
-	height:112px;
+	width:100px;
+	height:120px;
 }
 
 .tile-group-text {
 	color:black;
-	fill:black;
+
 	font-family:roboto, sans-serif; 
 	font-size:0.75em;
 	text-align:center;
-	/* font-weight:bold; */
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 96px 96px 96px;
-  grid-gap: 1px;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 0px;
   background-color:rgb(11,62,111);
-  padding: 1px;
+  padding: 0px;
 }
 
 .cad-msg {
@@ -82,60 +78,147 @@ body{
 	color:red;
 }
 
+
+
 </style>
 <script type="text/javascript">
 
+	//requires
 	const jQuery=require('jquery'); window.$=jQuery
+	const REMOTE=require('electron').remote
+	const PATH=require('path')	
+	const STOREPATH=PATH.join(__dirname, '../private', '/tilemenu.json')
+	const WM=REMOTE.require('electron-window-manager')
+	var {MessageBox, LocalStore }=require('../electron/support.js')
 
-	const CS=require('../electron/support.js')
+	//constants
+	const SHINE="gold"
+	const DOWN="gray"
+	const NORMAL="silver"
+	const LIT="yellowgreen"
 
-	// messageboard
-	var MB
-	
-	var onMessage=function(prop, action, newValue, oldValue){
-		//console.log('xMessage received', newValue)
-		if (newValue.debug){MB.debug(newValue.html)}
-		if (newValue.wipe){MB.wipe()}
-		else {MB.message(newValue.html)}
-	}
+	//globals
+	var report={}
+	var _command=""
+	var _element=null
+	var _failure="echo('Fail')"
+	var _success="echo('OK')"
+	var _title=""
+	var store=new LocalStore(STOREPATH, {
+		endpoint:1,	midpoint:0,	intersection:0,
+		quadrant:0,	centre:0, tangent:0,
+		base:0,	grid:0, perpendicular:0
+	})
 
-	function echoBar(text){text=text||''; $('.echo-bar').text(text)}
-	
+	function echoBar(text){text=text||""; $(".echo-bar").text(text)}
+
 	function echo(command){	echoBar(command); setTimeout(echoBar, 3000)}
 
-	var onSuccessText='success'
-	var onFailureText='failure'	
-	function onSubmitResponse(response, action, newvalue, oldvalue){
-		//arguments ('onSubmitResponse', 'set', {success:true, result:'text', date:timestamp}, {previous})
-		if(newvalue.success==true){
-			//MB.message(newvalue.result||onSuccessText)
-			echo(newvalue.result||onSuccessText)
-		} else {
-			MB.debug(newvalue.result||onFailureText)
-		}	
+	function tile_click(){
+		var el=$(this)
+		_title=el.find("title").text()
+		_element=el	
+		_command=el.find("command").text()
+		_success=el.find("success").text()
+		_failure=el.find("failure").text()
+		if (_element.hasClass("toggle")){
+			var state=el.attr("state")
+			//convert command string to a template for state value
+			//eg. snapper;endpoint;${state};exit => snapper;endpoint;1;exit
+			try {_command=eval("`"+_command+"`")}
+			catch(er){cad.debug(er)}
+		}
+		WM.sharedData.set("x-submit", {command:_command, date:new Date(), title:_title})
 	}
 	
-	// remote or external interactions
-	var REMOTE = require('electron').remote
-	var WM=REMOTE.require('electron-window-manager')
-	WM.sharedData.watch('x-submit-response', onSubmitResponse)
-	WM.sharedData.watch('x-message', onMessage)
-	WM.sharedData.watch('x-echo', function(r,a,v,o){echo(v.text, v.timeout||1000)})
-
-	// asynchronous checker
-	var when=function(check, callback, limit){
-		limit=limit||40
-		var interval=700
+	function toggle_confirmed(state){
+		store.set(_title, state)
+		_element.attr("state", state)
+		if(state=="1"){_element.css("fill",LIT)}
+		else{_element.css("fill",NORMAL)}
+	}
+	
+	function tile_normal(){
+		var el=$(this)
+		if(el.attr("state")==1){el.css("fill", LIT)}
+		else{el.css("fill", NORMAL)}		
+	}
+	
+	function tile_states(i){
+		//load states from local store for selectable tiles
+		var el=$(this)
+		var title=el.find("title").text()
+		if (store[title]==1){
+			el.attr("state", 1)
+			el.css({fill:LIT})
+		} else {
+			el.attr("state", 0)
+			el.css({fill:NORMAL})
+		} 
+		//WHAT ABOUT SETTING SNAPPER?
+	}
+	
+	function when(check, callback, limit){
+		// asynchronous checker
+		limit=limit||10
+		var interval=100
 		// callback or keep on watching within limit
 		if (check()){callback()}
 		else if (limit>0){
 			setTimeout(function(){when(check, callback, limit-1)}, interval)
 		}		
 	}
+
+	////////////////////////
+	// external interactions
+	WM.sharedData.watch("x-submit", function(p,a,v,o){echo(v.command)})
+	WM.sharedData.watch('x-submit-response', xSubmitResponse)
+	WM.sharedData.watch('x-message', xMessage)
+	WM.sharedData.watch('x-echo', function(r,a,v,o){echo(v.text, v.timeout||1000)})
+	WM.sharedData.watch("x-function", xFunction)
+
+	function xFunction(p,a,v,o){
+		// NOT IMPLEMENTED
+		v=v||{}
+		var e="*undefined*"
+		report.message("x-function (tag, input, body)...")
+		report.message(v.tag||e)
+		report.message(v.input||e)
+		report.message(v.body||e)
+	}
 	
+	function xMessage(property, action, newValue, oldValue){
+		//console.log('xMessage received', newValue)
+		if (newValue.debug){report.debug(newValue.text)}
+		if (newValue.wipe){report.wipe()}
+		else {report.html(newValue.text)}
+	}
+
+	function xSubmitResponse(response, action, newvalue, oldvalue){
+		//response eg. 'xSubmitResponse', action eg. 'set'
+		//newvalue eg. {success:true, result:'text', title:title, date:timestamp}
+
+		if(newvalue.success==true){
+			//report.message(newvalue.result||onSuccessText)
+			//_success eg. "tile_confimed(${result})"			
+			echo(newvalue.result)
+			try{
+				var result=newvalue.result
+				_success=eval("`"+_success+"`")
+				eval(_success)
+			}
+			catch(er){echo(er)}
+		} else {
+			report.debug(newvalue.result||onFailureText)
+		}	
+	}
+	
+	
+	/////////////////
+	// document ready
 	$(document).ready(function(){
 
-		MB=new CS.MessageBox({
+		report=new MessageBox({
 			el:$('.message-box'),
 			cssMessage:'cad-msg',
 			cssDebug:'cad-debug'		
@@ -153,19 +236,13 @@ body{
 		
 		// program tiles when all external tile files are loaded
 		when(doneLoading, function(){
-			$('.tile')
-			.on('mouseenter', function(){$(this).css('fill','gold')})
-			.on('mouseleave', function(){$(this).css('fill','silver')})
-			.on('mousedown', function(){$(this).css('fill','gray')})
-			.on('mouseup', function(){$(this).css('fill','silver')})
-			.on('click',function(){
-				// find desc element and submit content to CAD as a command
-				var command=$(this).find('.command').text()
-				onSuccessText=$(this).find('.success').text()
-				onFailureText=$(this).find('.failure').text()
-				echo(command)
-				WM.sharedData.set('x-submit', {command:command,	date:new Date()})
-			})
+			$(".tile")
+			.on("mouseenter", function(){$(this).css("fill", SHINE)})
+			.on("mouseleave", tile_normal)
+			.on("mousedown", function(){$(this).css("fill", DOWN)})
+			.on("mouseup", tile_normal)
+			.on("click", tile_click)
+			$(".tile.toggle").each(tile_states)
 		})
 
 	}) 
@@ -183,7 +260,7 @@ body{
 	<div class='tile-group' src='tilemenu_layer.xml'></div>
 
 	<div class='tile-group' src='tilemenu_terms.xml'></div>
-	<div class='tile-group' src='tilemenu_empty.xml'></div>
+	<div class='tile-group' src='tilemenu_snaps.xml'></div>
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
 
 	<div class='tile-group' src='tilemenu_empty.xml'></div>
@@ -192,12 +269,12 @@ body{
 </div>
 
 <div class='bar w9t h1t'>
-	<div class='watermark w9t h1t'>STATUS</div>
+	<div class='watermark w9t h1t'>Status</div>
 	<div class='echo-bar w9t h1t' ></div>
 </div>
 
 <div class='box w9t h6t'>
-	<div class='watermark w9t h6t'>REPORT</div>
+	<div class='watermark w9t h6t'>Report</div>
 	<div class='message-box w9t h6t scroll'></div>
 </div>
 

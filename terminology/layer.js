@@ -27,53 +27,57 @@ SOFTWARE.
 
 //const cad=require('../electron/CAD.js')
 const CT=require("../terminology/cadTerminology.js")
-//const line=require('../drawing/entity-line.js')
+const LAY=require('../drawing/dxf-layer.js')
+const LIB=require('../electron/support.js')
 
-var _success
+var _success=function(){cad.status('layer_success')}
+var _failure=function(){cad.status('layer_failure')}
 
 const action=function(success, failure){
-	//cad.pointer.activate({trace:line.trace, echo:true})
-	cad.prompt("Add|Current|Edit|Info|List OK", function(entered){
-		_success=success
+	_success=success||_success
+	_failure=failure||_failure
+	cad.prompt("Current | Edit | List | New | Report | eXit", function(entered){
 		entered=entered||""
 		switch (entered.toUpperCase()){
-			case "A":
-			case "ADD":cad.prompt("enter new layer name", add); break
 			case "C":
 			case "CURRENT":cad.prompt("enter layer to make current", current); break
 			case "E":
 			case "EDIT":cad.prompt("enter new layer name", edit); break 
-			case "I":
-			case "INFO":cad.prompt("All|<layer name> OK", info); break
 			case "L":
-			case "LIST":list(); break
-			default: success("layer input not recognized")		
+			case "LIST":list(); break;
+			case "N":
+			case "NEW":cad.prompt("enter new layer name", add); break
+			case "R":
+			case "REPORT":cad.prompt("All|<layer name> OK", report); break
+			case "X":
+			case "EXIT":_success("layer done"); break
+			default: _failure("layer input not recognized: "+entered)		
 		}
 	})
 }
 
 const add=function(entered){
-	//cad.echo("layer add not inplemented: "+entered)
-	_success("layer add not inplemented. " + entered)	
+	LAY.create({name:entered})
+	_success(entered + " layer added")
+	//continue in layer 
+	action()
 }
 const current=function(entered){
-	//cad.echo("layer current not inplemented")
 	_success("layer current not inplemented. " + entered)
+	action()
 }
 const edit=function(entered){
-	//cad.echo("layer edit not inplemented")
 	_success("layer edit not inplemented. " + entered)
-	
-}
-const info=function(entered){
-	//cad.echo("layer info not inplemented")
-	_success("layer info not inplemented. " + entered)
+	action()
 }
 const list=function(entered){
-	//cad.echo("layer list not inplemented")
-	//_success("layer list not inplemented. " + entered)
-	
-	
+	cad.report(LIB.format("Layer Names", LAY.getNames()))
+	action()	
+}
+
+const report=function(entered){
+	_success("layer info not inplemented. " + entered)
+	action()
 }
 
 

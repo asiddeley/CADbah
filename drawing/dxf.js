@@ -5,24 +5,20 @@ MIT License
 ***/
 
 // PRIVATE STATIC
-const cad=require('../electron/CAD.js')
-const lib=require('./dxf-library.js')
-const line=require('./entity-line.js')
+const cad=require("../electron/CAD.js")
+const lib=require("./dxf-library.js")
+const line=require("./entity-line.js")
+const layer=require("./dxf-layer.js")
 
-
-// current drawing
-var data
 
 // drawing constructor - data structure
 function Dxf(){
-
 	this.header={
 		$INSBASE:{x:0,y:0,z:0},
 		$EXTMIN:{x:0,y:0,z:0},
 		$EXTMAX:{x:10,y:10,z:0},
 		$CECOLOR:'black'
 	}
-
 	this.tables={
 		linetype:{
 			Continuous:{
@@ -47,12 +43,10 @@ function Dxf(){
 		}
 	}
 	this.blocks={}
-	
 	this.entities=[]	
-
+	
+	cad.report('dxf created')
 }
-
-
 
 
 ////////////
@@ -64,24 +58,12 @@ exports.add=function(entity){
 	data.entities.push[entity]	
 }
 
-exports.activate=function(){
-	//line.activate(cad)
-	data=new Dxf()	
-	//setup event handlers
-	//CAD.on('dxfchanged, callrender', render)
-}
-
-//not required - one drawing open at a time for now
 exports.create=function(options){return new Dxf(options)}
 
-//current drawing
-exports.data=data
+exports.Dxf=Dxf
 
-//deseiralize
 exports.deserialize=function(dxf){}
 
-//activate alias
-exports.initialize=function(cad){exports.activate(cad)}
 
 //getters
 exports.getColorByIndex=function(index){
@@ -100,8 +82,11 @@ exports.getExtents=function(){
 
 exports.getBounds=function(){
 	//eg. [{x:0,y:0,z:0},{x:1,y:1,z:1}]
-	return new lib.Bounds(drawing.header.$EXTMIN,	drawing.header.$EXTMAX)
+	return new lib.Bounds(drawing.header.$EXTMIN, drawing.header.$EXTMAX)
 }
+
+
+
 
 //renderer
 exports.render=function(){
