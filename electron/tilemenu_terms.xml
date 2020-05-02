@@ -1,4 +1,4 @@
-<svg  viewBox='0 0 100 120' xmlns='http://www.w3.org/2000/svg'
+<svg  viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"
 	color="gray"
 	fill="silver"
 	stroke="rgb(11,62,111)" 
@@ -8,7 +8,7 @@
 >
 
 <defs>
-	<g id='bulletlist'>
+	<g id="bulletlist">
 		<polyline points="4 4 28 4 28 28 4 28 4 4" fill="none"/>
 		<path d="M 8 8 H 20"/>
 		<path d="M 8 12 h 2 m 4 0 h 10"/>
@@ -16,101 +16,95 @@
 		<path d="M 8 20 h 2 m 4 0 h 10"/>
 		<path d="M 8 24 h 2 m 4 0 h 10"/>
 	</g>
-	<g id='wipe'>
+	<g id="wipe">
 		<polyline points="4 4 28 4 28 28 4 28 4 4" fill="none"/>
-		<text x='8' y='24' class='tile-group-text' stroke="gray" >W</text>
+		<text x="8" y="24" class="tile-group-text" stroke="gray" >W</text>
 	</g>
 	
-	<g id='layerlist'>
+	<g id="layerlist">
 		<polyline points="4 4 28 4 28 28 4 28 4 4" fill="none"/>
-		<text x='8' y='24' class='tile-group-text' stroke="gray" >L</text>
+		<text x="8" y="24" class="tile-group-text" stroke="gray" >L</text>
 	</g>	
 	
 </defs>
 
 	<rect x="0" y="0" width="100" height="120" stroke-width="0"/>
 
-	<g class="tile">
-		<rect x='2' y='2' width='32' height='32' />
+	<g class="tile" transform="translate(2,2)">
+		<rect width="32" height="32" />
 		<title>terminology</title>
-		<desc class='command'>terminology</desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<use x='2' y='2' xlink:href="#bulletlist" stroke="currentColor" />
+		<command>terminology</command>
+		<success>echo("cad terminology reported")</success>
+		<use xlink:href="#bulletlist" stroke="currentColor" />
 	</g>
 
-	<g class='tile'>
-		<rect x='34' y='2' width='32' height='32' />
+	<g class="tile" transform="translate(34,2)">
+		<rect x="0" y="0" width="32" height="32" />
 		<title>wipe report area</title>
-		<desc class='command'>wipe</desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<use x='34' y='2' xlink:href="#wipe" stroke="currentColor" />
+		<command>wipe</command>
+		<success></success>
+		<use  xlink:href="#wipe" stroke="currentColor" />
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='2' width='32' height='32' />
+	<g class="tile" transform="translate(66,2)">
+		<rect width="32" height="32" />
 		<title>layer names</title>
-		<desc class='command'>layer;list;exit</desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<use x='66' y='2' xlink:href="#layerlist" stroke="currentColor" />
+		<command>layer;list;exit</command>
+		<success>echo("layers names listed")</success>
+		<use xlink:href="#layerlist" stroke="currentColor" />
 	</g>
 
 	<!-- 2ND ROW -->
-	<g class='tile'>
-		<rect x='2' y='34' width='32' height='32' />
-		<title></title>
-		<desc class='echo'></desc>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+	<g class="tile" transform="translate(2,34)">
+		<rect width="32" height="32" />
+		<title>test action</title>
+		<action>echo(1+2+3+4);repo(title)</action>
+		<text x="3" y="24" class="tile-group-text" stroke="gray" >Test</text>
 	</g>	
 
-	<g class='tile'>
-		<rect x='34' y='34' width='32' height='32' />
-		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+	<g class="tile" transform="translate(34,34)">
+		<rect width="32" height="32" />
+		<title>alt wipe</title>
+		<action>report.wipe()</action>
+		<use xlink:href="#wipe" stroke="currentColor" />
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='34' width='32' height='32' />
+	<g class="tile">
+		<rect x="66" y="34" width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+		<desc class="command"></desc>
+		<desc class="success"></desc>
+		<desc class="failure"></desc>
 	</g>
 
 	<!-- 3RD ROW -->
-	<g class='tile'>	
-		<rect x='2' y='66' width='32' height='32' />
+	<g class="tile">	
+		<rect x="2" y="66" width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+		<desc class="command"></desc>
+		<desc class="success"></desc>
+		<desc class="failure"></desc>
 	</g>
 
-	<g class='tile'>
-		<rect x='34' y='66' width='32' height='32' />
+	<g class="tile">
+		<rect x="34" y="66" width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+		<desc class="command"></desc>
+		<desc class="success"></desc>
+		<desc class="failure"></desc>
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='66' width='32' height='32' />
+	<g class="tile">
+		<rect x="66" y="66" width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
+		<desc class="command"></desc>
+		<desc class="success"></desc>
+		<desc class="failure"></desc>
 	</g>
 
-	<g class='tile'>
-		<rect x='2' y='96' width='96' height='20' />	
-		<text x='4' y='110' class='tile-group-text' stroke="gray" >Report</text>
+	<g class="tile">
+		<rect x="2" y="96" width="96" height="20" />	
+		<text x="4" y="110" class="tile-group-text" stroke="gray" >Report</text>
 	</g>
 
 </svg>

@@ -1,107 +1,81 @@
-<svg  viewBox='0 0 100 120' xmlns='http://www.w3.org/2000/svg'	
+<svg  viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"	
 	color="gray"
 	stroke="rgb(11,62,111)"
 	stroke-width="1" 
 	stroke-linecap="round" 
 	stroke-linejoin="round"
-	fill='silver'>
+	fill="silver">
 
 <defs>
 	<g id="line2p">
-		<line x1='8' y1='24' x2='24' y2='8' />
-		<circle cx='8' cy='24' r='1.5'  />
-		<circle cx='24' cy='8' r='1.5'  />
+		<line x1="8" y1="24" x2="24" y2="8" />
+		<circle cx="8" cy="24" r="1.5"  />
+		<circle cx="24" cy="8" r="1.5"  />
 	</g>
 </defs>
 
 	<rect x="0" y="0" width="100" height="120" stroke-width="0"/>
 
 
-	<g class="tile">
-		<rect x='2' y='2' width='32' height='32' />
+	<g class="tile" transform="translate(2,2)">
+		<rect width="32" height="32" />
 		<title>line</title>
-		<desc class='command'>line</desc>
-		<desc class='echobar'>key-in x1,y1,x2,y2... OR point-click THEN OK </desc>
-		<desc class='failure'></desc>
-		<desc class='success'></desc>
-		<use x='2' y='2' xlink:href="#line2p" stroke="currentColor"/>
+		<command>line</command>
+		<use xlink:href="#line2p" stroke="currentColor"/>
 	</g>
 
-	<g class='tile'>
-		<rect x='34' y='2' class='tile' width='32' height='32' />
+	<g class="tile" transform="translate(34,2)">
+		<rect width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<!--use x='34' y='2' xlink:href="#line2p" /-->
+		<!-- xlink:href="#line2p" /-->
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='2' class='tile' width='32' height='32' />
+	<g class="tile" transform="translate(66,2)">
+		<rect width="32" height="32" />
 		<title></title>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<!--use x='32' y='64' xlink:href="#line2p" /-->
+		<!--use xlink:href="#line2p" /-->
 	</g>
 
 	<!-- 2ND ROW -->
-	<g class='tile'>
-		<rect x='2' y='34' class='tile' width='32' height='32' />
+	<g class="tile" transform="translate(2,34)">
+		<rect width="32" height="32" />
 		<title></title>
-		<desc class='echo'></desc>
-		<desc class='command'></desc>
-		<desc class='success'></desc>
-		<desc class='failure'></desc>
-		<!--use x='32' y='64' xlink:href="#line2p" /-->
+		<!--use xlink:href="#line2p" /-->
 	</g>	
 
-	<g class='tile'>
-		<rect x='34' y='34' class='tile' width='32' height='32' />
-		<title>line2p</title>
-		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
-		<!--use x='32' y='64' xlink:href="#line2p" /-->
+	<g class="tile" transform="translate(34,34)">
+		<rect width="32" height="32" />
+		<title></title>
+		<!--use xlink:href="#line2p" /-->
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='34' class='tile' width='32' height='32' />
-		<title>line2p</title>
-		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
+	<g class="tile" transform="translate(66,34)">
+		<rect width="32" height="32" />
+		<title></title>
 	</g>
-	<!--use x='32' y='64' xlink:href="#line2p" /-->
+	<!--use xlink:href="#line2p" /-->
 
 	<!-- 3RD ROW -->
-	<g class='tile'>	
-		<rect x='2' y='66' class='tile' width='32' height='32' />
-		<title>line2p</title>
-		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
+	<g class="tile" transform="translate(2,66)">	
+		<rect width="32" height="32" />
+		<title></title>
 	</g>
 	
-	<g class='tile'>
-		<rect x='34' y='66' class='tile' width='32' height='32' />
-		<title>line2p</title>
-		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
+	<g class="tile" transform="translate(34,66)">
+		<rect width="32" height="32" />
+		<title></title>
+
 	</g>
 
-	<g class='tile'>
-		<rect x='66' y='66' class='tile' width='32' height='32' />
-		<title>line2p</title>
-		<desc class='command'>line</desc>
-		<desc class='success'>echo('line created')</desc>
-		<desc class='failure'>echo('problem creating line')</desc>
+	<g class="tile" transform="translate(66,66)">
+		<rect width="32" height="32" />
+		<title></title>
+
 	</g>
 
-	<g class='tile'>
-		<rect x='2' y='98' width='96' height='20' />	
-		<text x='2' y='110' class='tile-group-text' stroke='gray'>Lines</text>
+	<g class="tile" transform="translate(2,98)">
+		<rect width="96" height="20" />	
+		<text x="2" y="12" class="tile-group-text" stroke="gray">Lines</text>
 	</g>
 
 </svg>

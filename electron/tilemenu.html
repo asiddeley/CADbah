@@ -17,7 +17,7 @@ svg text{user-select: none;}
 	margin:0px;
 	padding:2px;
 }
-	
+
 .w9t {width:290px;} 
 .h1t {height:32px;}
 .h6t {height:192px;}
@@ -25,8 +25,12 @@ svg text{user-select: none;}
 	overflow-y:scroll;
 	overflow-x:hidden;
 }
+.clip {
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
 
-.echo-bar, .message-box{
+.status, .report{
 	display:block;
 	position:absolute;
 	color:rgb(11,62,111);
@@ -78,86 +82,110 @@ svg text{user-select: none;}
 	color:red;
 }
 
-
+.shine {fill:gold !important;}
+.down  {fill:gray !important;}
 
 </style>
 <script type="text/javascript">
 
-	//requires
-	const jQuery=require('jquery'); window.$=jQuery
+	// Jquery extensions
+	const jQuery=require('jquery'); 
+	window.$=jQuery
+	jQuery.fn.extend({
+		echo:function(attr_name){return this.each(function(){
+			var e=$(this)
+			//if (typeof attr !== typeof undefined && attr !== false) 
+			if (typeof attr_name == "string"){echo(attr_name+":"+e.attr(attr_name))}
+			else if (typeof attr_name == "object"){echo(JSON.stringify(attr_name))}
+		})},
+		flip:function(attr_name){return this.each(function(){
+			var e=$(this), state=e.attr(attr_name)
+			//repo("before:"+state)
+			e.attr(attr_name, state^=1)
+			//repo("after:"+e.attr(attr_name))
+		})},
+		lite:function(attr_name, css){return this.each(function(){
+			//repo("LITE")
+			var e=$(this)
+			if (e.attr(attr_name)==1){e.css("fill", css||"yellowgreen")}
+			else {e.css("fill", "")}
+		})},
+		//poke into object, a key:element_attribute_value pair 
+		poke:function(obj, key, elem_attr){return this.each(function(){
+			obj[key]=$(this).attr(elem_attr) 
+			//repo("CONS:"+JSON.stringify(obj))
+		})},			
+		repo:function(attr_name){return this.each(function(){
+			var e=$(this)
+			if (typeof attr_name == "string"){repo(attr_name+":"+e.attr(attr_name))}
+			else if (typeof attr_name == "object"){repo(JSON.stringify(attr_name))}
+		})}
+
+	})	
+	
+	//requires	
 	const REMOTE=require('electron').remote
 	const PATH=require('path')	
-	const STOREPATH=PATH.join(__dirname, '../private', '/tilemenu.json')
+	const STORE_PATH=PATH.join(__dirname, '../private', '/tilemenu.json')
 	const WM=REMOTE.require('electron-window-manager')
 	var {MessageBox, LocalStore }=require('../electron/support.js')
 
-	//constants
-	const SHINE="gold"
-	const DOWN="gray"
-	const NORMAL="silver"
-	const LIT="yellowgreen"
+	//Local Storage 
+	const STORE_DEFAULT={snaps:{e:1,m:0,i:0,q:0,c:0,t:0,b:0,g:0,p:0}}
+	const STORE=new LocalStore(STORE_PATH, STORE_DEFAULT, false)
+	//program storage loaders
+	STORE.onReady(function(store){
+		//snapper settings
+		WM.sharedData.set("snapper", {data:store.snaps, date:new Date()})
+	})	
+
+	
+	const echo=function(t){
+		if(typeof t == "object"){t=JSON.stringify(t)}
+		status(t); setTimeout(status, 3000)
+	}	
+	const repo=function(t){
+		if(typeof t=="object"){t=JSON.stringify(t)}
+		report.message(t)
+	}
+	const status=function(text){text=text||""; $(".status").text(text)}	
 
 	//globals
 	var report={}
-	var _command=""
-	var _element=null
-	var _failure="echo('Fail')"
-	var _success="echo('OK')"
-	var _title=""
-	var store=new LocalStore(STOREPATH, {
-		endpoint:1,	midpoint:0,	intersection:0,
-		quadrant:0,	centre:0, tangent:0,
-		base:0,	grid:0, perpendicular:0
-	})
-
-	function echoBar(text){text=text||""; $(".echo-bar").text(text)}
-
-	function echo(command){	echoBar(command); setTimeout(echoBar, 3000)}
 
 	function tile_click(){
-		var el=$(this)
-		_title=el.find("title").text()
-		_element=el	
-		_command=el.find("command").text()
-		_success=el.find("success").text()
-		_failure=el.find("failure").text()
-		if (_element.hasClass("toggle")){
-			var state=el.attr("state")
-			//convert command string to a template for state value
-			//eg. snapper;endpoint;${state};exit => snapper;endpoint;1;exit
-			try {_command=eval("`"+_command+"`")}
-			catch(er){cad.debug(er)}
+		//console.log("tile_click..")
+		var $tile=$(this)
+		var data={}, $self, text, title
+
+		if($tile.find("action").length){
+			//console.log("action...")
+			$self=$tile.find("action")
+			text=$self.text()
+			try {eval(text)} catch(er) {report.debug(er)}		
 		}
-		WM.sharedData.set("x-submit", {command:_command, date:new Date(), title:_title})
+		else if($tile.find("command").length){	
+			//console.log("command...")
+			$self=$tile.find("command")
+			text=$self.text()
+			title=$tile.find("title").text()
+			//process command text as a template for dynamic values eg. current date or calculation
+			try {text=eval("`"+text+"`")} catch(er) {report.debug(er)}
+			WM.sharedData.set("command", {data:text, title:title, date:new Date()})
+		}
+		else if($tile.find("signal").length){
+			//console.log("signal...")
+			$self=$tile.find("signal")
+			text=$self.text()			
+			var channel=$self.attr("channel")||$self.attr("for")||"none"
+			try {eval(text)} catch(er) {report.debug(er)}
+			WM.sharedData.set(channel, {data:data, title:title, date:new Date()})
+		}
+		else {
+			echo("tile not programmed")
+		}
 	}
-	
-	function toggle_confirmed(state){
-		store.set(_title, state)
-		_element.attr("state", state)
-		if(state=="1"){_element.css("fill",LIT)}
-		else{_element.css("fill",NORMAL)}
-	}
-	
-	function tile_normal(){
-		var el=$(this)
-		if(el.attr("state")==1){el.css("fill", LIT)}
-		else{el.css("fill", NORMAL)}		
-	}
-	
-	function tile_states(i){
-		//load states from local store for selectable tiles
-		var el=$(this)
-		var title=el.find("title").text()
-		if (store[title]==1){
-			el.attr("state", 1)
-			el.css({fill:LIT})
-		} else {
-			el.attr("state", 0)
-			el.css({fill:NORMAL})
-		} 
-		//WHAT ABOUT SETTING SNAPPER?
-	}
-	
+
 	function when(check, callback, limit){
 		// asynchronous checker
 		limit=limit||10
@@ -170,58 +198,86 @@ svg text{user-select: none;}
 	}
 
 	////////////////////////
-	// external interactions
-	WM.sharedData.watch("x-submit", function(p,a,v,o){echo(v.command)})
-	WM.sharedData.watch('x-submit-response', xSubmitResponse)
-	WM.sharedData.watch('x-message', xMessage)
-	WM.sharedData.watch('x-echo', function(r,a,v,o){echo(v.text, v.timeout||1000)})
-	WM.sharedData.watch("x-function", xFunction)
-
-	function xFunction(p,a,v,o){
-		// NOT IMPLEMENTED
-		v=v||{}
-		var e="*undefined*"
-		report.message("x-function (tag, input, body)...")
-		report.message(v.tag||e)
-		report.message(v.input||e)
-		report.message(v.body||e)
-	}
+	// setup external interactions
+	WM.sharedData.watch("command", function(s,a,present,o){echo(present.command)})
 	
-	function xMessage(property, action, newValue, oldValue){
-		//console.log('xMessage received', newValue)
-		if (newValue.debug){report.debug(newValue.text)}
-		if (newValue.wipe){report.wipe()}
-		else {report.html(newValue.text)}
-	}
-
-	function xSubmitResponse(response, action, newvalue, oldvalue){
-		//response eg. 'xSubmitResponse', action eg. 'set'
-		//newvalue eg. {success:true, result:'text', title:title, date:timestamp}
-
-		if(newvalue.success==true){
-			//report.message(newvalue.result||onSuccessText)
-			//_success eg. "tile_confimed(${result})"			
-			echo(newvalue.result)
+	WM.sharedData.watch("command-response", function(s,a,present,o){
+		var $tile
+		$("title").each(function(){
+			if ($(this).text()==present.title){$tile=$($(this).parent())}		
+		})
+		if(present.success==true){
+			//get script from <success>echo(data)</success> and process it
+			//data, $self, text, $tile are accessible by the script
 			try{
-				var result=newvalue.result
-				_success=eval("`"+_success+"`")
-				eval(_success)
-			}
+				var $self=$tile.find("success")
+				var text=$self.text()
+				var data=present.data||present.response||"command success"			
+				eval(text)
+			} 
 			catch(er){echo(er)}
 		} else {
-			report.debug(newvalue.result||onFailureText)
-		}	
-	}
+			try{
+				var $self=$tile.find("failure")
+				var text=$self.text()
+				var data=present.data||present.response||"command failure"
+				eval(text)
+			} 
+			catch(er){echo(er)}
+		}
+	})
+
+	WM.sharedData.watch("report", function(s,a,present,o){	
+		//console.log('xMessage received', present)
+		if (present.debug){report.debug(present.text)}
+		if (present.wipe){report.wipe()}
+		else {report.html(present.text)}
+	})
+
+	WM.sharedData.watch("snapper", function(s,a,present,o){
+		//update local store...
+		var snaps=STORE["snaps"]
+		Object.assign(snaps, present.data)
+		//console.log("updating store...", snaps)
+		STORE.set("snaps", snaps)		
+	})
 	
+	WM.sharedData.watch("snapper-response", function(s,a,present,o){
+		//present eg {data:{a:1, e:1, m:0, ...}, title:"endpoint", date:"20200426..."}
+		$("watch[for='snapper-response']").each(function(){
+			//expose tile & data for use in <watch>tile.attr("state")</watch>
+			var $self=$(this)
+			var $tile=$($self.parent())
+			var data=present.data
+			var text=$self.text()
+			//console.log("watch response...",text)
+			try{eval(text)}
+			catch(er){report.debug(er)}
+		})
+	})	
+
+	WM.sharedData.watch("status", function(s,a,present,o){
+		echo(present.text, present.timeout||1000)
+	})
+	
+	WM.sharedData.watch("function", function(s,a,p,o){
+		// NOT IMPLEMENTED
+		p=p||{}
+		var e="*undefined*"
+		report.message("function (tag, input, body)...")
+		report.message(p.tag||e)
+		report.message(p.input||e)
+		report.message(p.body||e)
+	})
 	
 	/////////////////
 	// document ready
 	$(document).ready(function(){
 
 		report=new MessageBox({
-			el:$('.message-box'),
+			el:$('.report'),
 			cssMessage:'cad-msg',
-			cssDebug:'cad-debug'		
+			cssDebug:'cad-debug'	
 		})
 	
 		// load external tile-groups
@@ -237,12 +293,13 @@ svg text{user-select: none;}
 		// program tiles when all external tile files are loaded
 		when(doneLoading, function(){
 			$(".tile")
-			.on("mouseenter", function(){$(this).css("fill", SHINE)})
-			.on("mouseleave", tile_normal)
-			.on("mousedown", function(){$(this).css("fill", DOWN)})
-			.on("mouseup", tile_normal)
+			.on("mouseenter", function(){$(this).addClass("shine")})
+			.on("mouseleave", function(){$(this).removeClass("shine")})
+			.on("mousedown",  function(){$(this).addClass("down")})
+			.on("mouseup",    function(){$(this).removeClass("down")})
 			.on("click", tile_click)
-			$(".tile.toggle").each(tile_states)
+			//run the store loaders that restore persistant cad settings
+			STORE.ready()	
 		})
 
 	}) 
@@ -270,12 +327,12 @@ svg text{user-select: none;}
 
 <div class='bar w9t h1t'>
 	<div class='watermark w9t h1t'>Status</div>
-	<div class='echo-bar w9t h1t' ></div>
+	<div class='status w9t h1t clip' ></div>
 </div>
 
 <div class='box w9t h6t'>
 	<div class='watermark w9t h6t'>Report</div>
-	<div class='message-box w9t h6t scroll'></div>
+	<div class='report w9t h6t scroll'></div>
 </div>
 
 </body>

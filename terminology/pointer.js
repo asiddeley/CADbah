@@ -27,21 +27,25 @@ SOFTWARE.
 // PRIVATE STATIC
 
 const CT=require('../terminology/cadTerminology.js')
+const snapper=require("./snapper.js")
 
+//Tool is a window scope paper.js constructor
 const pointer=new Tool()
 pointer.name='pointer'
 
-var echo=false
+var echo=null
 
 var onMouseUp=function(e){
-	if (echo){CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))}
-	points.push(e.point)
+	//if (echo){CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))}
+	path.removeSegments()	
+	points.push(snapper.probe(e.point, true))
 }
 
 var onMouseMove=function(e){
 	path.removeSegments()
+	var point=snapper.probe(e.point, true)
 	//note that points.concat doesn't change points in any way
-	trace(path, points.concat(e.point))	
+	trace(path, points.concat(point))	
 }
 
 var path=null
@@ -52,7 +56,7 @@ CT.define({
 	name:'pointer', 
 	about:'returns the paper coordinates of the mouse when clicked',
 	action:function(){
-		//paper commands installed in window scope
+		//tools is a window scope paper.js array
 		tools.find(tool => tool.name == 'pointer').activate()
 	},
 	alias:'pp',
@@ -71,7 +75,7 @@ exports.activate=function(options){
 	path.strokeColor='silver'
 	pointer.onMouseMove=onMouseMove
 	pointer.onMouseUp=onMouseUp
-	
+
 	//paper commands installed in window scope
 	tools.find(tool => tool.name == 'pointer').activate()
 }
@@ -88,3 +92,5 @@ exports.standby=function(success){
 	tools.find(tool => tool.name == 'standby').activate()
 	success('pointer on standby')
 }
+
+

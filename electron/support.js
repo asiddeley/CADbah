@@ -102,6 +102,14 @@ exports.LocalStore=function(path, defaultContent, trueResetsJSONfile){
 		}
 		finally {return val}
 	}
+	var handlers=[]
+	this.onReady=function(handler){handlers.push(handler)}
+	this.ready=function(){
+		//executes loaders
+		var that=this
+		handlers.map(function(h){try{h(that)} catch(er){console.log(er)}})
+	}
+
 }
 
 exports.MessageBox=MessageBox
@@ -153,11 +161,12 @@ exports.format=function(title, list){
 	title=title||"Format Report 1"
 	list=list||["hello", "world"]
 	list.sort()
-	var htm=list.reduce(
-		function(ac, cv){return ac+"<li>"+cv+"</li>"}, 
-		`<h3>${title}</h3><ol>`
+	var init=`<h3>${title}</h3><ol>`
+	var html=list.reduce(
+		function(accumulator, item){return accumulator+"<li>"+item+"</li>"}, 
+		init
 	)
-	return (htm+"</ol><hr>")
+	return (html+"</ol><hr>")
 }
 
 

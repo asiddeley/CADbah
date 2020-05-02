@@ -64,86 +64,86 @@
 
 	<rect x="0" y="0" width="100" height="120" stroke-width="0"/>
 
-	<g class="tile toggle">
-		<rect x="2" y="2" width="32" height="32" />
+	<g class="tile toggle" transform="translate(2,2)">
+		<rect width="32" height="32" />
 		<title>endpoint</title>
-		<command>snapper;e;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="2" y="2" xlink:href="#endpoint" stroke="currentColor" />
+		<signal for="snapper">$tile.flip("state").poke(data, "e", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.e).lite("state").echo(data)</watch>
+		<use xlink:href="#endpoint" stroke="currentColor" />
 	</g>
 
-	<g class="tile toggle">
-		<rect x="34" y="2" width="32" height="32" />
+	<g class="tile toggle" transform="translate(34,2)">
+		<rect width="32" height="32" />
 		<title>midpoint</title>
-		<command>snapper;m;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x='34' y='2' xlink:href="#midpoint" stroke="currentColor" />
+		<signal for="snapper">$tile.flip("state").poke(data, "m", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.m).lite("state").echo(data)</watch>
+		<use xlink:href="#midpoint" stroke="currentColor" />
 	</g>
 
-	<g class="tile toggle">
-		<rect x="66" y="2" width="32" height="32" />
+	<g class="tile toggle" transform="translate(66,2)">
+		<rect width="32" height="32" />
 		<title>intersection</title>
-		<command>snapper;i;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="66" y="2" xlink:href="#intersection" stroke="currentColor" />
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "i", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.i).lite("state").echo(data)</watch>
+		<use xlink:href="#intersection" stroke="currentColor" />
 	</g>
 	
 	<!-- 2ND ROW -->
-	<g class="tile toggle">
-		<rect x="2" y="34" width="32" height="32" />
+	<g class="tile toggle" transform="translate(2,34)">
+		<rect width="32" height="32" />
 		<title>quadrant</title>
-		<command>snapper;q;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="2" y="34" xlink:href="#quadrant" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "q", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.q).lite("state").echo(data)</watch>
+		<use xlink:href="#quadrant" stroke="currentColor"/>
 	</g>	
 
-	<g class="tile toggle">
-		<rect x="34" y="34" width="32" height="32" />
+	<g class="tile toggle" transform="translate(34,34)">
+		<rect width="32" height="32" />
 		<title>centre</title>
-		<command>snapper;c;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="34" y="34" xlink:href="#centre" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "c", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.c).lite("state").echo(data)</watch>
+		<use xlink:href="#centre" stroke="currentColor"/>
 	</g>
 
-	<g class="tile toggle">
-		<rect x="66" y="34" width="32" height="32" />
+	<g class="tile toggle" transform="translate(66,34)">
+		<rect width="32" height="32" />
 		<title>tangent</title>
-		<command>snapper;t;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x='66' y='34' xlink:href="#tangent" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "t", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.t).lite("state").echo(data)</watch>
+		<use xlink:href="#tangent" stroke="currentColor"/>
 	</g>
 
 	<!-- 3RD ROW -->
-	<g class="tile toggle">	
-		<rect x="2" y="66" width="32" height="32" />
+	<g class="tile toggle" transform="translate(2,66)">	
+		<rect width="32" height="32" />
 		<title>base</title>
-		<command>snapper;b;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="0" y="64" xlink:href="#base" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "b", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.b).lite("state").echo(data)</watch>
+		<use xlink:href="#base" stroke="currentColor"/>
 	</g>
 	
-	<g class="tile toggle">
-		<rect x="34" y="66" width="32" height="32" />
+	<g class="tile toggle" transform="translate(34,66)">
+		<rect width="32" height="32" />
 		<title>grid</title>
-		<command>snapper;g;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="34" y="66" xlink:href="#grid" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "g", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.g).lite("state").echo(data)</watch>
+		<use xlink:href="#grid" stroke="currentColor"/>
 	</g>
 
-	<g class="tile toggle">
-		<rect x="66" y="66" width="32" height="32" />
+	<g class="tile toggle" transform="translate(66,66)">
+		<rect width="32" height="32" />
 		<title>perpendicular</title>
-		<command>snapper;p;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
-		<use x="66" y="66" xlink:href="#perpendicular" stroke="currentColor"/>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "p", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.p).lite("state").echo(data)</watch>
+		<use xlink:href="#perpendicular" stroke="currentColor"/>
 	</g>
 
-	<g class="tile toggle">
-		<rect x="2" y="96" width="96" height="20" />
-		<text x="4" y="110" class="tile-group-text" stroke="gray" >Snaps</text>
+	<g class="tile toggle" transform="translate(2,96)">
+		<rect width="96" height="20" />
+		<text x="2" y="14" class="tile-group-text" stroke="gray" >Snaps</text>
 		<title>activates|deactivates snapping</title>
-		<command>snapper;a;${state^=1};exit</command>
-		<success>toggle_confirmed(${result})</success>
+		<signal for="snapper">$tile.flip("state").lite("state").poke(data, "a", "state")</signal>
+		<watch  for="snapper-response">$tile.attr("state", data.a).lite("state").echo(data)</watch>
 	</g>
 
 </svg>
