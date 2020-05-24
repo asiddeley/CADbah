@@ -128,15 +128,19 @@ svg text{user-select: none;}
 	const PATH=require('path')	
 	const STORE_PATH=PATH.join(__dirname, '../private', '/tilemenu.json')
 	const WM=REMOTE.require('electron-window-manager')
+	const SD=require("../terminology/sharedData.js")
 	var {MessageBox, LocalStore }=require('../electron/support.js')
 
 	//Local Storage 
-	const STORE_DEFAULT={snaps:{e:1,m:0,i:0,q:0,c:0,t:0,b:0,g:0,p:0}}
-	const STORE=new LocalStore(STORE_PATH, STORE_DEFAULT, false)
+	//const STORE_DEFAULT={snapper:{e:1,m:0,i:0,q:0,c:0,t:0,b:0,g:0,p:0}}
+	const STORE_DEFAULT_DATA={
+		snapperStates:new SD.SnapperStates()
+	}
+	const STORE=new LocalStore(STORE_PATH, STORE_DEFAULT_DATA, false)
 	//program storage loaders
 	STORE.onReady(function(store){
 		//snapper settings
-		WM.sharedData.set("snapper", {data:store.snaps, date:new Date()})
+		WM.sharedData.set("snapper", {data:store.snapperStates, date:new Date()})
 	})	
 
 	
@@ -169,7 +173,7 @@ svg text{user-select: none;}
 			$self=$tile.find("command")
 			text=$self.text()
 			title=$tile.find("title").text()
-			//process command text as a template for dynamic values eg. current date or calculation
+			//process command text as a template for dynamic values eg. calculation 1+2+3
 			try {text=eval("`"+text+"`")} catch(er) {report.debug(er)}
 			WM.sharedData.set("command", {data:text, title:title, date:new Date()})
 		}
@@ -236,10 +240,10 @@ svg text{user-select: none;}
 
 	WM.sharedData.watch("snapper", function(s,a,present,o){
 		//update local store...
-		var snaps=STORE["snaps"]
-		Object.assign(snaps, present.data)
+		var ss=STORE["snapperStates"]
+		Object.assign(ss, present.data)
 		//console.log("updating store...", snaps)
-		STORE.set("snaps", snaps)		
+		STORE.set("snapperStates", ss)
 	})
 	
 	WM.sharedData.watch("snapper-response", function(s,a,present,o){

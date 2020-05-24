@@ -24,73 +24,85 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-// PRIVATE STATIC
+// REQUIRES
 
-const CT=require('../terminology/cadTerminology.js')
+const CT=require("../terminology/cadTerminology.js")
 const snapper=require("./snapper.js")
+const REMOTE=require("electron").remote
+const WM=REMOTE.require("electron-window-manager")
+
+// Define as a cad term for user interaction
+CT.define({
+	name:"pointer", 
+	about:"returns the paper coordinates of the mouse when clicked",
+	action:activate,
+	alias:"pp",
+	topic:"tools", 
+	terms:[]
+})
 
 //Tool is a window scope paper.js constructor
 const pointer=new Tool()
-pointer.name='pointer'
-
-var echo=null
-
-var onMouseUp=function(e){
-	//if (echo){CAD.input(Math.round(e.point.x) + ', ' + Math.round(e.point.y))}
-	path.removeSegments()	
-	points.push(snapper.probe(e.point, true))
-}
-
-var onMouseMove=function(e){
+pointer.name="pointer"
+pointer.onMouseMove=function(e){
 	path.removeSegments()
-	var point=snapper.probe(e.point, true)
+	var point=snapper.probe(e.point)
 	//note that points.concat doesn't change points in any way
 	trace(path, points.concat(point))	
+	tentative=null
+}
+
+pointer.onMouseUp=function(e){
+	//if (echo){CAD.input(Math.round(e.point.x) + ", " + Math.round(e.point.y))}
+	path.removeSegments()	
+	//confirm tentative-point or else get a fresh point 
+	points.push(tentative||snapper.probe(e.point))
+	tentative=null
+}
+
+pointer.onKeyUp=function(ev){
+	//cycle through multiple hits by pressing shift	
+	//console.log("SHIFT...")
+	if (ev.key=="shift"){
+		tentative=snapper.probe()
+	}
 }
 
 var path=null
 var points=[]
+var tentative=null
 var trace=function(){}
 
-CT.define({
-	name:'pointer', 
-	about:'returns the paper coordinates of the mouse when clicked',
-	action:function(){
-		//tools is a window scope paper.js array
-		tools.find(tool => tool.name == 'pointer').activate()
-	},
-	alias:'pp',
-	topic:'tools', 
-	terms:[]
-})
+function activate(options){
+	//console.log("pointer activated...")
+	options=options||{}
+	//default tracer just draws circles at each point...
+	trace=options.trace||function(path, points){
+		//points.forEach(function(p){path.add(new Path.Circle(p, 3))})	
+	}
+
+	if (path==null){path=new Path()}
+	path.strokeColor="silver"
+	
+	pointer.activate()
+	//if tilemenu.html has focus then onKeyUp in cad.html won't hear keystrokes until it gets focus so... 
+	WM.get("cad").focus()
+}
 
 
 // PUBLIC
-exports.activate=function(options){
-	options=options||{}
-	echo=options.echo||false
-	trace=options.trace||function(){}
-
-	if (path==null){path=new Path()}
-	path.strokeColor='silver'
-	pointer.onMouseMove=onMouseMove
-	pointer.onMouseUp=onMouseUp
-
-	//paper commands installed in window scope
-	tools.find(tool => tool.name == 'pointer').activate()
-}
+exports.activate=activate
 
 exports.getPoints=function(){return points}
 
-exports.setTrace=function(traceFunction){trace=traceFunction}
-
 exports.standby=function(success){
+	success=success||function(){}
 	//clear everything
 	trace=function(){}
 	path.removeSegments()
 	points=[]
-	tools.find(tool => tool.name == 'standby').activate()
-	success('pointer on standby')
+	tools.find(tool => tool.name == "standby").activate()
+	success("pointer on standby")
 }
 
 

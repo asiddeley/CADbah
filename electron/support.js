@@ -170,11 +170,13 @@ exports.format=function(title, list){
 }
 
 
-////////////////////////
-// dictionary and interperter
 
+/////////////////////////////
+// dictionary and interperter
+//
 exports.Terminology=function(){
 	
+	/*
 	//DEP
 	var addvar=function(name, content){
 		context+=`var ${name}=contexto.${name};`
@@ -183,6 +185,7 @@ exports.Terminology=function(){
 	var contexto={'hello':function(){return 'hello world!'}}
 	var context='var hello=contexto.hello;'
 	//DEP END
+	*/
 	
 	var terms=[]
 
@@ -194,8 +197,8 @@ exports.Terminology=function(){
 		terms.push(term)
 		
 		//DEP
-		addvar(term.name, term.action)
-		if (typeof term.alias=='string'){addvar(term.alias, term.action)}
+		//addvar(term.name, term.action)
+		//if (typeof term.alias=='string'){addvar(term.alias, term.action)}
 		//END DEP
 	}
 	this.define=this.addTerm
@@ -209,8 +212,10 @@ exports.Terminology=function(){
 		return dir
 	}
 
-	//DEP //formerly this.run
-	this.DEPrun=function(term, success, failure){
+
+	/*	
+	//DEP - formerly this.run
+	this.run=function(term, success, failure){
 		//term eg: 'line' not 'line(0,0,10,10)'
 		var body=`${context} return ${term}(success, failure);`
 		try {
@@ -221,6 +226,7 @@ exports.Terminology=function(){
 			if (typeof failure=='function'){failure(er)}
 		}
 	}
+	*/
 	
 	//NEW
 	const runExpression=function(expression, success, failure){
@@ -261,5 +267,5 @@ exports.Terminology=function(){
 	this.createTerm=function(options){
 		return new this.Term(options)		
 	}
-	
-} 
+
+}

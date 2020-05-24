@@ -28,7 +28,8 @@ SOFTWARE.
 // PRIVATE STATIC
 
 const cad=require('../electron/CAD.js')
-const {Terminology, format}=require('../electron/support.js')
+const {format}=require('../electron/support.js')
+const {Terminology}=require('../electron/terminology.js')
 const cadterms=new Terminology()
 
 ////////////////////////////////
@@ -91,10 +92,19 @@ exports.createTerm=function(options){return cadterms.createTerm(options)}
 exports.Term=cadterms.Term
 exports.run=cadterms.run
 
+//expose rest of terminology methods
+exports.bind=cadterms.bind
+exports.escape=cadterms.escape
+exports.prompt=cadterms.prompt
+exports.ready=cadterms.ready
+exports.submit=cadterms.submit
+
+
 ////////////////////////////////
 // Load and define rest of the terms
-//require('./pointer.js')
+// require('./pointer.js') //pointer loaded in cad.js
 require('./line.js')
 require('./standby.js')
 require("./layer.js")
 require("./snapper.js")
+require("./zoomer.js")

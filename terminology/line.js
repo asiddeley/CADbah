@@ -25,36 +25,77 @@ SOFTWARE.
 *****************************************************/
 
 
-//const cad=require('../electron/CAD.js')
-const CT=require('../terminology/cadTerminology.js')
-const line=require('../drawing/entity-line.js')
+//const cad=require("../electron/CAD.js")
+const CT=require("../terminology/cadTerminology.js")
+const line=require("../drawing/entity-line.js")
 
-const action=function(success, failure){
-	cad.pointer.activate({trace:line.trace, echo:true})
-	cad.prompt('[x1, y1, x2, y2...][point & click...]OK', function(responseText){
-		
-		
-		line.create({points:cad.pointer.getPoints()})
-		cad.pointer.standby(success)
-		success('lines created')
-	})
-}
-
-const undoer=function(id){
-	
-	
-}
+const undoer=function(id){}
 
 CT.define({
-	name:'line', 
-	alias:'ln',
-	about:'adds lines to the drawing',
-	topic:'entities',
+	name:"line", 
+	alias:"ln",
+	about:"adds lines to the drawing",
+	topic:"entities",
 	action:action,
 	inputs:[
-		{name:'success', type:'function', optional:true, remark:'success callback'},
-		{name:'failure', type:'function', optional:true, remark:'failure callback'}
+		{name:"success", type:"function", optional:true, remark:"success callback"},
+		{name:"failure", type:"function", optional:true, remark:"failure callback"}
 	]
 })
 
+function parsePoints(coords){
+	return coords.split(",").reduce(function(r,v,i,all){
+		if(i%2==1){
+			r.push(new Point(Number(v), Number(all[i-1])))
+		}
+		return r		
+	},[])
+}
+
+function action(success, failure){
+	//success (result)=>{WM.sharedData.set("x-submit-response", {success:true, result:result...})}
+	
+	_success=success||_success
+	_failure=failure||_failure
+
+	cad.prompt("Coordinates | Pointer | Random | eXit", function(entered){
+		entered=entered||""
+		switch (entered.toUpperCase()){
+			case "C":
+			case "COORD":
+			case "COORDINATES":
+				cad.prompt("x1, y1, x2, y2... OK", function(coords){
+					line.create({points:parsePoints(coords)})
+					success("lines created")
+					action()
+				})
+				break
+			case "P":
+			case "POINTER":
+				cad.pointer.activate({trace:line.trace})
+				console.log("line tool...")
+				cad.prompt("point & click, press OK when done...", function(text){
+					line.create({points:cad.pointer.getPoints()})
+					cad.pointer.standby(success)
+					action()
+				})
+				break
+			case "R":
+			case "RANDOM":		
+				cad.prompt("Quantity", function(q){
+					q=q||"0"; q=Number(q)
+					var i, p, w=view.size.width, h=view.size.height, r=Math.random
+					for (i=0; i<q; i++){
+						p=new Path.Line(w*r(), h*r(), w*r(), h*r())
+						p.strokeColor="black"
+					}
+					action()
+				})
+				break
+			case "X":
+			case "EXIT":_success("line done"); break
+			default: _failure("input not recognized: "+entered)		
+		}
+	})	
+}
 

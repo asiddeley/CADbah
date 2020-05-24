@@ -24,27 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *****************************************************/
 
-// PRIVATE STATIC
 
-const CT=require('../terminology/cadTerminology.js')
-
-const standby=new Tool()
-standby.name='standby'
-
-CT.define(CT.createTerm({
-	name:'standby', 
-	alias:'esc',	
-	about:'deactivates current paper tool',
-	topic:'tools', 	
-	action:function(success){
-		cad.msg('current tool:'+tool.name)
-		//tools.find(tool => tool.name == 'standby').activate()
-		success('tools on standby')
-	},
-	inputs:[{name:'success', type:'function', remark:'success callback'}]
-}))
-
-exports.activate=function(){
-	standby.activate()
+exports.SnapperStates=function(){
+	this.box=0; this.cen=0
+	this.div=0;	this.end=0;	this.grid=0
+	this.int=0; this.near=0; this.pos=0
+	this.right=0; this.snap=0; this.tan=0 
+	this.status="none"; this.radius=0; this.zone=true	
 }
-

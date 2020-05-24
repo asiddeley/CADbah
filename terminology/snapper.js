@@ -27,6 +27,7 @@ SOFTWARE.
 ///////////
 // Requires
 const CT=require("../terminology/cadTerminology.js")
+const SD=require("../terminology/sharedData")
 const REMOTE=require('electron').remote
 const WM=REMOTE.require('electron-window-manager')
 
@@ -43,24 +44,51 @@ CT.define({
 
 ///////////
 // external interactions
-WM.sharedData.watch("snapper", function(s,a,present,o){
-	//p eg. {data:{a:1, b:1, e:1... }, title:"endpoint", date:new Date()}
+WM.sharedData.watch("snapper", function(s,a,packet,o){
+	//p eg. {data:{a:1, b:1, e:1... }, title:"endpoint", date:new Date(), status:"..."}
 
-	Object.assign(states, present.data, {status:"snapper signalled"})	
-	//console.log("snapper states", states)
+	//update states from present data
+	Object.assign(states, packet.data)	
+	console.log("snapper states", states)
 	//send respnonse object based on present object with changed states
-	WM.sharedData.set("snapper-response", new Object(present, {"data":states}))
+	WM.sharedData.set("snapper-response", new Object(packet, {"data":states, status:"snapper updated"}))
 })
 
-WM.sharedData.watch("ready", function(s,a,present,o){
-	//path=new Path(); path.strokeColor="silver"
+WM.sharedData.watch("ready", function(s,a,packet,o){
 
-	marker=new SymbolDefinition(new Path.Circle({
+	spot=new Path.Circle({
 		center:[0,0],
 		radius:3,
 		strokeColor: "silver"
-	}))	
-	console.log("Snapper ready...")
+	})	
+	spot.visible=false
+	
+	zone=new Path.Circle({
+		center:[0,0],
+		radius:states.radius,
+		strokeColor: "red"
+	})
+	zone.visible=false
+	
+	tag=new PointText({
+		point: [10, 10],
+		content: "end",
+		fillColor: "silver",
+		fontFamily: "Courier New",
+		fontSize: 12
+	})
+	tag.visible=false
+	
+
+	snappo={
+		a:{name:"active", options:new Options(), process:function(hits){return hits}},
+		b:{name:"base", options:new Options(), process:function(hits){}},
+		c:{name:"centre", options:new Options(), process:function(hits){}},
+		e:{name:"endpoint", options: new Options(), process:function(hits){}},
+		n:{name:"nearest"}
+	}	
+
+	//console.log("Snapper ready...")	
 })
 
 /////////////////
@@ -68,33 +96,21 @@ WM.sharedData.watch("ready", function(s,a,present,o){
 
 var _success=function(){}
 var _failure=function(){}
-const states={a:0, b:0, c:0, e:0, g:0, i:0, m:0, p:0, q:0, t:0, status:"none"}
-const m01="enter state 0|1"
+var states=new SD.SnapperStates()
+
+//defined on cad ready
+var snappo={}
+const msg="Snap | Box | Cen | Div | End | Grid | Int | Nearest | Position | Right | Tan | Radius | eXit"
 const hits=[]
 
-//marker shape is defined when cad triggers "ready"
-var marker={} 
-var markers=[]
-function mark (point, index){
-	if (index<markers.length){
-		var m=markers[index]
-		m.position=point
-		m.visible=true
-		//console.log("marker positioned")
-	} else {
-		//create more marker instances as needed
-		var m=marker.place(point)
-		m.visible=true
-		//m.position=point
-		markers.push(m)
-		//console.log("marker created")
-	}
-}
+//defined on cad "ready"
+var spot={} 
+var tag={}
+var zone={}
+var index=0
 
 function check01(entered){
-	//cad.xFunction()
-	//result=entered
-	return (entered=="1")?true:false
+	return (entered=="1"||"on")?"1":"0"
 }
 
 function action(success, failure){
@@ -102,76 +118,93 @@ function action(success, failure){
 	
 	_success=success||_success
 	_failure=failure||_failure
-	
-	cad.prompt("Active|Base|Cent|Grid|Int|Mid|Perp|Quad|Tan|Settings|eXit", function(entered){
+
+	cad.prompt(msg, function(entered){
 		entered=entered||""
 		switch (entered.toUpperCase()){
-			case "A":
-			case "Active":cad.prompt(m01, function(t){states.a=check01(t); action()}); break
+			case "S":
+			case "SNAP":cad.prompt("snap off|0|on|1", function(t){states.snap=check01(t); update(); action()}); break
 			case "B":
-			case "Base":cad.prompt(m01, function(t){states.b=check01(t); action()}); break
+			case "BOX":cad.prompt("box off|0|on|1", function(t){states.box=check01(t); update(); action()}); break
 			case "C":
-			case "Cent":cad.prompt(m01, function(t){states.c=check01(t); action()}); break
+			case "CEN":cad.prompt("centre off|0|on|1", function(t){states.cen=check01(t); update(); action()}); break
+			case "D":
+			case "DIV":cad.prompt("divide off|2|3|4|...", function(t){states.div=t; update(); action()}); break
 			case "E":
-			case "End":cad.prompt(m01, function(t){states.e=check01(t); action()}); break
+			case "END":cad.prompt("endpoint off|0|on|1", function(t){states.end=check01(t); update(); action()}); break
 			case "G":
-			case "Grid":cad.prompt(m01, function(t){states.g=check01(t); action()}); break
+			case "GRID":cad.prompt("grid off|0|on|1", function(t){states.grid=check01(t); update(); action()}); break
 			case "I":
-			case "Int":cad.prompt(m01, function(t){states.i=check01(t); action()}); break
-			case "M":
-			case "Mid":cad.prompt(m01, function(t){states.m=check01(t); action()}); break
+			case "INT":cad.prompt("intersection off|0|on|1", function(t){states.int=check01(t); update(); action()}); break
+			case "N":
+			case "NEAR":cad.prompt("near off|0|on|1", function(t){states.near=check01(t); update(); action()}); break
 			case "P":
-			case "Perp":cad.prompt(m01, function(t){states.p=check01(t); action()}); break
-			case "Q":
-			case "Quad":cad.prompt(m01, function(t){states.q=check01(t); action()}); break
+			case "POS":cad.prompt("position off|0|on|1", function(t){states.pos=check01(t); update(); action()}); break
+			case "R":
+			case "RIGHT":cad.prompt("right angle off|0|on|1", function(t){states.right=check01(t); update(); action()}); break
 			case "T":
-			case "Tan":cad.prompt(m01, function(t){states.t=check01(t); action()}); break
+			case "TAN":cad.prompt("tangent off|0|on|1", function(t){states.tan=check01(t); update(); action()}); break
+			case "H":
+			case "HIT":cad.prompt("hit radius 2..10", function(t){states.radius=t; update(); action()}); break
 			case "X":
-			case "EXIT":_success(Object.assign(states, {status:"snapper commanded"})); break
+			case "EXIT":_success(Object.assign(states, {status:"snapper done"})); break
 			default: _failure("input not recognized: "+entered)		
 		}
 	})	
 }
 
-const options={
-	//options.tolerance: Number — the tolerance of the hit-test — default: paperScope.settings.hitTolerance
-	tolerance:10,
-	//options.class: Function — only hit-test against a specific item class, or any of its sub-classes, by providing the constructor function against which an instanceof check is performed: Group, Layer, Path, CompoundPath, Shape, Raster, SymbolItem, PointText, …
-	"class":Path,
-	//options.match: Function — a match function to be called for each found hit result: Return true to return the result, false to keep searching
-	match:function(hit){hits.push(hit); return false},
-	//options.fill: Boolean — hit-test the fill of items — default: true
-	fill:false,
-	//options.stroke: Boolean — hit-test the stroke of path items, taking into account the setting of stroke color and width — default: true
-	stroke:false,
-	//options.segments: Boolean — hit-test for segment.point of Path items — default: true
-	segments:true,
-	//options.curves: Boolean — hit-test the curves of path items, without taking the stroke color or width into account
-	curves:false,
-	//options.handles: Boolean — hit-test for the handles (segment.handleIn / segment.handleOut) of path segments.
-	handles:false,
-	//options.ends: Boolean — only hit-test for the first or last segment points of open path items
-	ends:true,
-	//options.position: Boolean — hit-test the item.position of of items, which depends on the setting of item.pivot
-	position:false,
-	//options.center: Boolean — hit-test the rectangle.center of the bounding rectangle of items (item.bounds)
-	center:false,
-	//options.bounds: Boolean — hit-test the corners and side-centers of the bounding rectangle of items (item.bounds)
-	bounds:false,
-	//options.guides: Boolean — hit-test items that have Item#guide set to true	
-	guides:false,
-	//options.selected: Boolean — only hit selected items
-	selected:false	
+function update(options){
+	options=options||{}
+	Object.assign(states, options)
+	WM.sharedData.set("snapper-response", {data:states, status:"snapper updated"})
 }
 
-/////////////////
+function Options(options){
+/***
+	options.tolerance: Number — the tolerance of the hit-test — default: paperScope.settings.hitTolerance
+	options.class: Function — only hit-test against a specific item class, or any of its sub-classes, by providing the constructor function against which an instanceof check is performed: Group, Layer, Path, CompoundPath, Shape, Raster, SymbolItem, PointText, …
+	options.match: Function — a match function to be called for each found hit result: Return true to return the result, false to keep searching
+	options.fill: Boolean — hit-test the fill of items — default: true
+	options.stroke: Boolean — hit-test the stroke of path items, taking into account the setting of stroke color and width — default: true
+	options.segments: Boolean — hit-test for segment.point of Path items — default: true
+	options.curves: Boolean — hit-test the curves of path items, without taking the stroke color or width into account
+	options.handles: Boolean — hit-test for the handles (segment.handleIn / segment.handleOut) of path segments.
+	options.ends: Boolean — only hit-test for the first or last segment points of open path items
+	options.position: Boolean — hit-test the item.position of of items, which depends on the setting of item.pivot
+	options.center: Boolean — hit-test the rectangle.center of the bounding rectangle of items (item.bounds)
+	options.bounds: Boolean — hit-test the corners and side-centers of the bounding rectangle of items (item.bounds)
+	options.guides: Boolean — hit-test items that have Item#guide set to true	
+	options.selected: Boolean — only hit selected items
+***/
+	
+	options=options||{}
+	this.tolerance=options.tolerance||10
+	this.class=options.class||Path
+	this.match=options.match||function(hit){
+		hits.push(hit)
+		return false
+	}
+	this.fill=options.fill||false
+	this.stroke=options.stroke||false
+	this.segments=options.segments||true
+	this.curves=options.curves||false
+	this.handles=options.handles||false
+	this.ends=options.ends||true
+	this.position=options.position||false
+	this.center=options.centre||false
+	this.bounds=options.bounds||false
+	this.guides=options.guides||false
+	this.selected=options.selected||false	
+}
+const options=new Options()
+
+////////////////
 // PUBLIC ACCESS
 
-/******
- 	HIT RESULT
+/***
+	HIT RESULT from project.hitTest(point)
 	hit={type:t, name:n, item:i, location:l, color:c, segment:s, point:p}	
-
-	WHERE
+	
 	type = describes the hit result. For example, if you hit a segment point, the type would be 'segment'.
 	Eg. 'handle-in', 'handle-out', 'curve', 'stroke', 'fill', 'bounds', 'center', 'pixel' for type.bounds, 
 
@@ -179,52 +212,67 @@ const options={
 	Eg. 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'left-center', 'top-center', 'right-center', 'bottom- center' 
 
 	item = item that was hit
-
-	location = If the HitResult has a type of ‘curve’ or ‘stroke’, this property gives more information about the exact position that was hit on the path.
+	
+	location = If the HitResult has a type of ‘curve’ or ‘stroke’, this property gives more information about the exact position
+	that was hit on the path.
 
 	color = If the HitResult has a type of ‘pixel’, this property refers to the color of the pixel on the Raster that was hit.
-	
-	segment = If the HitResult has a type of ‘stroke’, ‘segment’, ‘handle-in’ or ‘handle-out’, this property refers to the segment that was hit or that is closest to the hitResult.location on the curve.
 
+	segment = If the HitResult has a type of ‘stroke’, ‘segment’, ‘handle-in’ or ‘handle-out’, 
+	this property refers to the segment that was hit or that is closest to the hitResult.location on the curve. 
 	Describes the actual coordinates of the segment, handle or bounding box corner that was hit.
-*/
+***/
 
 
-exports.probe=function(point, showMarkers){
+exports.clear=function(){
+	cycle=0
+	spot.visible=false
+	tag.visible=false
+	zone.visible=false
+}
 
+exports.probe=function(point){
 	//snapper function accessed by pointer tool
 	//given a point, returns the best matching point based on snap options and user input 
 	
-	//hits=[{snap, point, hit_point, hit_entity}]
-	
-	//reset 
-	hits.length=0
-	//if (!showMarkers){
-		markers.forEach(function(m){m.visible=false})
-	//}
+	//exit if snap not active
+	if (states.snap!="1"){return point}
 
-	//probe	- hitTest is a window scope paper.js function
-	project.hitTest(point, options)
-
-	//show resulting snap points
-	hits.forEach(function(h,i){
-		mark(h.point,i)	
-	})
-
-	if (hits.length==0){
-		//nothing found near point
-		return point
-	}	
-	else if (hits.length==1){
-		//console.log("ONE...", hits[0].point)		
-		return hits[0].point
+	if (point==null){
+		//no arguments means cycle through previous hits	
+		if (index >= hits.length-1){index=0}
+		else {index+=1}
+	} else {
+		//fresh point to probe so reset everything
+		index=0		
+		hits.length=0
+		//need to hide these or else they'll be added to the hits
+		tag.visible=false
+		spot.visible=false
+		zone.visible=false
+		//project.hitTest is a window scope paper.js function, it fills hits[] via options.match()
+		project.hitTest(point, options)		
+		zone.position=point	
+		zone.radius=states.radius/view.zoom
+		zone.visible=states.zone	
+		zone.strokeWidth=1/view.zoom
 	}
-	//for multiple hits, get user to choose best	
-	else {hits.length>0}{
-		//console.log("MORE...")	
-		return hits[0].point
-	}
+
+	if (hits.length>0){
+		var f=1/view.zoom
+		var pt=hits[index].point
+		spot.position=pt
+		spot.strokeWidth=f
+		spot.visible=true
+		tag.content="snap("+(1+index).toString()+"/"+hits.length.toString()+")" + "end"
+		tag.point=new Point(pt.x+5, pt.y-5)
+		tag.radius=states.radius*f
+		tag.visible=true
+		tag.scale=f
+		tag.fontSize=10*f
+		tag.strokeWidth=f
+		return pt
+	} else {return point}	
 
 }
-
 

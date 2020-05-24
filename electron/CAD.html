@@ -59,12 +59,13 @@ body{
 		}
 	})
 
-	// activate
+	// ready
 	$(document).ready(function(){
-		CAD.activate({
+		CAD.ready({
 			canvas:document.getElementById("cad-canvas"),
 			navbar:document.getElementById("cad-navbar"),
-			inputs:document.getElementById("cad-inputs")
+			inputs:document.getElementById("cad-inputs"),
+			form:document.getElementById("cad-navbar")
 		})
 	}) 
 

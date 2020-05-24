@@ -50,8 +50,8 @@ APP.on('ready', function(){
 	//WM.open('CAD.html')
 	//open( name, title, url, setupTemplate, setup, showDevTools )
 	WM.open(
-		'main', 
-		'CadBah - Main', 
+		'cad', 
+		'cadbah', 
 		`file://${__dirname}/electron/CAD.html`, 
 		false, 
 		OPTIONS
@@ -59,7 +59,7 @@ APP.on('ready', function(){
 
 	WM.open(
 		'tilemenu', 
-		'CadBah - TileMenu', 
+		'cadbah - tilemenu', 
 		`file://${__dirname}/electron/tilemenu.html`, 
 		false, 
 		Object.assign(OPTIONS, {
