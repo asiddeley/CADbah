@@ -50,6 +50,8 @@ var OPTIONS={
 	form:{}
 }
 
+var onmousewheel=function(e){console.log(e.deltaY)}
+
 //DEP
 //var dxf={}
 
@@ -106,6 +108,9 @@ exports.ready=function(options){
 	} 
 
 	Object.assign(OPTIONS, options)
+	
+	//to allow for wheel to control zoom or other. Change handler with; cad.onmousewheel(handler)
+	OPTIONS.canvas.addEventListener('wheel', function(e){onmousewheel(e)})	
 
 	paper.setup(options.canvas)	
 	SF.navbarSetup(options)
@@ -113,7 +118,7 @@ exports.ready=function(options){
 	//DEPRECATED - just use terminology actions and paper.js elements
 	//dxf=new DXF.Dxf()
 	
-	//pass options, mainly to bind the form input element to the terminology processor
+	//pass options, mainly {inputs:HTMLinputElement} to bind the form input element to the terminology processor
 	TERMS.ready(options)
 	
 	//ready broadcast for modules that require paper setup
@@ -165,6 +170,12 @@ exports.options={
 	actionsEnabled:false,
 	database:null, 
 }	
+
+exports.onmousewheel=function(handler){
+	onmousewheel=handler||function(){}
+	//OPTIONS.canvas.addEventListener('wheel', handler)	
+}
+
 
 //tools for getting points from the project
 exports.pointer=POINTER

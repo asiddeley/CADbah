@@ -84,6 +84,7 @@ cadterms.define({
 	terms:[]
 })
 
+
 ////////////////////////////////
 // PUBLIC
 exports.addTerm=cadterms.addTerm
@@ -107,4 +108,4 @@ require('./line.js')
 require('./standby.js')
 require("./layer.js")
 require("./snapper.js")
-require("./zoomer.js")
+require("./zoom.js")

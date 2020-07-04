@@ -70,13 +70,22 @@ function Terminology(){
 	}
 	
 	///////////////////////////////////////////
-	// Form binding and input functions  
+	// Form binding and input options & functions 
+	
 	var OPTIONS={
-		inputs:{}, //input element where commands are typed by user
-		inputsTimeout:100,
-		form:{} //form that triggers submit
+		//number of characters for the input placeholder before it starts bouncing or boinks 
+		boinkThreshold:80,
+		//character that separates commands in the input field
+		splitter:";",
+		//input element where commands are inputted by the user
+		inputs:{}, 
+		//default wait time in milliseconds before promptstack action handlers are executed 
+		timeout:100,
+		//HTML form element that triggers submit
+		form:{} 
 	}
 
+	//ready, sets the options and binds the form element submit event to the root handler
 	function ready(options){
 		options=options||{}
 		Object.assign(OPTIONS, options)
@@ -92,7 +101,7 @@ function Terminology(){
 		//console.log("Submitting...", text)
 		setTimeout(function(){
 			$(OPTIONS.form).trigger("submit",[success, failure])
-		}, OPTIONS.inputsTimeout)
+		}, OPTIONS.timeout)
 	}
 	this.submit=submit
 
@@ -104,24 +113,50 @@ function Terminology(){
 		failure=failure||function(er){cad.debug(er)}
 
 		//pop top or first {prompt, handler} object that was pushed by cad.prompt()
-		var ph=(promptstack.length>1)?promptstack.pop():promptstack[0]
+		var head=(promptstack.length>1)?promptstack.pop():promptstack[0]
+		var sp=OPTIONS.splitter
+		var id
 		
 		//process input one term at a time 
 		var input$=$(OPTIONS.inputs)
-		var queue=input$.val().split(";")
-		var next=queue.shift()
-		var rest=queue.join(";")
-		input$.val(rest)	
-		ph.handler(next, success, failure)
+		var queue=input$.val().split(sp)
+		var command=queue.shift()
+		var remains=queue.join(sp)
+		//input$.val(remains)
+		//allows terminology/action to release the HOLD by calling success()/failure().  
+		//Eg. terminology line
+		var setter=(head.hold==true)?function(){HOLD=true}:function(){HOLD=false}
+		head.handler(
+			command, 
+			function(){setter();success()},
+			function(){setter();failure()}
+		)
 
-		placeholder(promptstack[promptstack.length-1].prompt, true)
+		//looking ahead...
+		//show prompt
+		var next=promptstack[promptstack.length-1]
+		//placeholder(promptstack[promptstack.length-1].prompt)
+		placeholder(next.prompt)
+		//console.log("NEXT PROMPT:",next.prompt)
+		HOLD=next.hold||false
+		if (HOLD==false){input$.val(remains)}
 
-		if (rest.length>0){
-			setTimeout(function(){submit(rest)}, OPTIONS.inputsTimeout)			
+		//process remaining commands or hold if required by current handler 
+		if (remains.length>0){
+			//setTimeout(function(){submit(rest)}, OPTIONS.timeout)		
+			id=setInterval(function(){
+				//loop until hold release ie. success() called in terminology 
+				if (HOLD==false){	
+					input$.val(remains)	
+					submit(remains)
+					clearTimeout(id)	
+				} 
+			}, OPTIONS.timeout)
 		}
 	}
+	var HOLD=false
 
-	var promptstack=[{prompt:"command", handler:run}]
+	var promptstack=[{prompt:"command", handler:run, hold:false}]
 
 	function escape(){
 		//clears the promptstack, keeping the root handler
@@ -132,18 +167,22 @@ function Terminology(){
 	}
 	this.escape=escape
 
-	function prompt(text, handler){
+	function prompt(text, handler, hold){
+		//text for placeholder to prompt user for input
 		text=text||" "
+		//true means wait for for hold release before processing more commands from prompt stack
+		hold=hold||false
+		//handler for processing text
 		handler=handler||function(){}
-		promptstack.push({prompt:text, handler:handler})
+		promptstack.push({prompt:text, handler:handler, hold:hold})
 		placeholder(text)
 	}
 	this.prompt=prompt
 
 	function placeholder(text){
-		//TO DO: calculate c=characters from pixel width of input field
+		//console.log("PROMPT:",text)
 		clearInterval(placeholderid)
-		var x=0, d=1, c=80
+		var x=0, d=1, c=OPTIONS.boinkThreshold
 		//scrolls text back and forth in form/input area when text is wider than the area 
 		function boink(){
 			//change direction

@@ -46,5 +46,7 @@ CT.define(CT.createTerm({
 
 exports.activate=function(){
 	standby.activate()
+	//clear handler a tool may have linked to onmousewheel event 
+	cad.onmousewheel()	
 }
 

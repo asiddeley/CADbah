@@ -20,14 +20,14 @@
 	<g class="tile" transform="translate(2,2)">
 		<rect width="32" height="32" />
 		<title>line</title>
-		<command>line;pointer</command>
+		<command>;;line;pointer;exit</command>
 		<use xlink:href="#line2p" stroke="currentColor"/>
 	</g>
 
 	<g class="tile" transform="translate(34,2)">
 		<rect width="32" height="32" />
 		<title>Lines at random x 10</title>
-		<command>line;random;10</command>
+		<command>;line;random;10;exit</command>
 		<!-- xlink:href="#line2p" /-->
 		<text x="2" y="28" class="tile-group-text" stroke="gray">LR10</text>
 	</g>

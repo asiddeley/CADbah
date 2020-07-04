@@ -73,12 +73,13 @@ function action(success, failure){
 			case "P":
 			case "POINTER":
 				cad.pointer.activate({trace:line.trace})
-				console.log("line tool...")
-				cad.prompt("point & click, press OK when done...", function(text){
+				//console.log("line tool...")
+				cad.prompt("point & click, press OK when done...", function(text, done){
 					line.create({points:cad.pointer.getPoints()})
 					cad.pointer.standby(success)
+					done()
 					action()
-				})
+				}, "hold")
 				break
 			case "R":
 			case "RANDOM":		
