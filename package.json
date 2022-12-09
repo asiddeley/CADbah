@@ -35,7 +35,7 @@
     "dxf-parser": "^0.6.1",
     "electron": "^8.0.2",
     "electron-window-manager": "^1.0.6",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-fileupload": "^1.1.1-alpha.1",
     "file-dialog": "0.0.7",
     "jquery": "^3.4.1",
